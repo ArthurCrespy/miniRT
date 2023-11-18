@@ -1,0 +1,116 @@
+{
+   ignore_leaks_mlx
+   Memcheck:Leak
+   ...
+   obj:./mlx/*
+}
+
+
+{
+   ignore_uninitialised_jump_AppKit
+   Memcheck:Cond
+   ...
+   obj:/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit
+}
+
+
+{
+   ignore_uninitialised_jump_libsystem_info
+   Memcheck:Cond
+   ...
+   obj:/usr/lib/system/libsystem_info.dylib
+}
+{
+   ignore_uninitialised_use_libsystem_info
+   Memcheck:Value8
+   ...
+   obj:/usr/lib/system/libsystem_info.dylib
+}
+
+
+{
+   ignore_uninitialised_jump_libsystem_trace
+   Memcheck:Cond
+   ...
+   obj:/usr/lib/system/libsystem_trace.dylib
+}
+
+
+{
+   ignore_leaks_libdispatch
+   Memcheck:Leak
+   ...
+   obj:/usr/lib/system/libdispatch.dylib
+}
+
+{
+   ignore_leaks_libsystemb
+   Memcheck:Leak
+   ...
+   obj:/usr/lib/libSystem.B.dylib
+}
+
+
+{
+   ignore_leaks_libobjca
+   Memcheck:Leak
+   ...
+   obj:/usr/lib/libobjc.A.dylib
+}
+
+
+{
+   ignore_inval_read_libxpc
+   Memcheck:Addr16
+   ...
+   obj:/usr/lib/system/libxpc.dylib
+}
+
+
+{
+   ignore_leaks_dyld
+   Memcheck:Leak
+   ...
+   obj:/usr/lib/dyld
+}
+{
+   ignore_uninitialised_use_dyld
+   Memcheck:Value8
+   ...
+   obj:/usr/lib/dyld
+}
+{
+   ignore_uninitialised_jump_dyld
+   Memcheck:Cond
+   ...
+   obj:/usr/lib/dyld
+}
+{
+   ignore_syscall_open_dyld
+   Memcheck:Param
+   open(filename)
+   ...
+   obj:/usr/lib/dyld
+}
+{
+   ignore_syscall_mach_msg2_dyld
+   Memcheck:Param
+   mach_msg2(msgh_voucher_and_id)
+   ...
+   obj:/usr/lib/dyld
+}
+{
+   ignore_syscall_mach_msg2_dyld
+   Memcheck:Param
+   mach_msg2(msgh_bits_and_send_size)
+   ...
+   obj:/usr/lib/dyld
+}
+{
+   ignore_syscall_map_with_linking_np_dyld
+   Memcheck:Param
+   map_with_linking_np(link_info)
+   ...
+   obj:/usr/lib/dyld
+}
+
