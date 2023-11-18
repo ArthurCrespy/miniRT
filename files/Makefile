@@ -44,9 +44,22 @@ RM          := rm -f
 MAKEFLAGS   += --no-print-directory
 DIR_DUP     = mkdir -p ${@D}
 
-all: miniLibX ${NAME}
+all: git miniLibX ${NAME}
 
-miniLibX:
+git:
+	@if [ -d "$(MLX_DIR)" ]; then \
+		${MAKE} pull_mlx; \
+	else \
+		${MAKE} clone_mlx; \
+	fi
+
+clone_mlx:
+	git clone https://github.com/42Paris/minilibx-linux.git ${MLX_DIR}
+
+pull_mlx:
+	git -C ${MLX_DIR} pull
+
+miniLibX: ${MLX_DIR}
 	${MAKE} -C ${MLX_DIR}
 
 ${NAME}: ${OBJS}
@@ -58,9 +71,6 @@ ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c
 	${DIR_DUP}
 	${CC} ${CFLAGS} ${MLX_INCL} -c -o $@ $<
 	${info OBJECT CREATED: $@}
-
-${MLX_DIR}:
-    git clone https://github.com/42Paris/minilibx-linux.git ${MLX_DIR}
 
 miniLibXClean:
 	${MAKE} clean -C ${MLX_DIR}
