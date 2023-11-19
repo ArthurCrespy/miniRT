@@ -1,0 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mlx_initialize.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/19 14:40:43 by acrespy           #+#    #+#             */
+/*   Updated: 2023/11/19 14:40:46 by acrespy          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "./../includes/miniRT.h"
+
+void	mlx_initialize_win(t_data *data)
+{
+	data->mlx->mlx = NULL;
+	data->mlx->mlx_win = NULL;
+	data->mlx->mlx = mlx_init();
+	if (!data->mlx->mlx)
+		mlx_error(data);
+	mlx_get_screen_size(data->mlx->mlx, &data->mlx->screen_width, &data->mlx->screen_height);
+	data->mlx->mlx_win = mlx_new_window(data->mlx->mlx, 1920, 1080, "miniRT | acrespy");
+	if (!data->mlx->mlx_win)
+		mlx_error(data);
+
+}
