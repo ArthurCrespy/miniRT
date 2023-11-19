@@ -16,6 +16,7 @@ SRC_DIR     := srcs
 SRCS := \
 			args/args_check.c \
 			events/event_key.c \
+			events/event_resize.c \
 			file/file_check.c \
 			file/file_save.c \
 			mlx/mlx_exit.c \

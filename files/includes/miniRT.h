@@ -31,10 +31,13 @@ typedef struct	s_mlx
 	void		*mlx;
 	void		*mlx_win;
 	void		*img;
+	char		*addr;
 	int			screen_width;
 	int			screen_height;
-	int			img_width;
-	int			img_height;
+	int			win_width;
+	int			win_height;
+	int			line_length;
+	int			endian;
 	int			bpp;
 }				t_mlx;
 
@@ -54,10 +57,12 @@ int		args_check(int argc, char **argv, char **envp);
 
 int		event_key(int keycode, void *data);
 
+int		event_resize(t_data *data);
+
 void	file_check_ext(char *path);
 void	file_check_path(char *path);
 
-void file_save(t_data *data, char *path);
+void	file_save(t_data *data, char *path);
 
 void	mlx_free(t_data *data);
 void	mlx_exit(t_data *data, char *msg, int status);
