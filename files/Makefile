@@ -14,6 +14,20 @@ NAME        := miniRT
 
 SRC_DIR     := srcs
 SRCS := \
+			args/args_check.c \
+			events/event_key.c \
+			file/file_check.c \
+			file/file_save.c \
+			mlx/mlx_exit.c \
+			mlx/mlx_initialize.c \
+			mlx/mlx_loop.c \
+			mlx/mlx_render.c \
+			parsing/parsing.c \
+			utils/ft_calloc.c \
+			utils/ft_exit.c \
+			utils/ft_gnl.c \
+			utils/ft_put.c \
+			utils/ft_str.c \
 			main.c
 
 SRCS := ${SRCS:%=${SRC_DIR}/%}
@@ -55,9 +69,11 @@ git:
 
 clone_mlx:
 	git clone https://github.com/42Paris/minilibx-linux.git ${MLX_DIR}
+	${info VERSION CONTROL: ${MLX_DIR} cloned}
 
 pull_mlx:
 	git -C ${MLX_DIR} pull
+	${info VERSION CONTROL: ${MLX_DIR} up to date}
 
 miniLibX: ${MLX_DIR}
 	${MAKE} -C ${MLX_DIR}
@@ -88,4 +104,4 @@ re:
 	${MAKE} all
 
 .PHONY: miniLibX clone_mlx clean miniLibXClean fclean re
-.SILENT: ${NAME} ${SRCS} ${OBJS} clean fclean re
+.SILENT: ${NAME} ${SRCS} ${OBJS} all miniLibX git clone_mlx pull_mlx clean fclean re
