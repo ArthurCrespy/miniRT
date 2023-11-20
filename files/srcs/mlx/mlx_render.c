@@ -14,8 +14,10 @@
 
 int	mlx_render_frame(t_data *data)
 {
-	mlx_string_put(data->mlx->mlx, data->mlx->mlx_win, 50, 50, 0x00FFFFFF, "Hello, World!");
-	mlx_string_put(data->mlx->mlx, data->mlx->mlx_win, 50, 70, 0x00FFFFFF, "Welcome in miniRT!");
+	mlx_string_put(data->mlx->mlx, data->mlx->mlx_win, 50, 50, 0x00FFFFFF,
+		"Hello, World!");
+	mlx_string_put(data->mlx->mlx, data->mlx->mlx_win, 50, 70, 0x00FFFFFF,
+		"Welcome in miniRT!");
 	usleep(100000 / 60);
 	return (0);
 }
