@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   data_initialize.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/18 18:30:53 by acrespy           #+#    #+#             */
-/*   Updated: 2023/11/18 19:17:22 by acrespy          ###   ########.fr       */
+/*   Created: 2023/11/20 07:46:43 by acrespy           #+#    #+#             */
+/*   Updated: 2023/11/20 07:46:43 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../includes/miniRT.h"
+#include "../../includes/miniRT.h"
 
-int	main(int argc, char **argv, char **envp)
+void	data_initialize(t_data *data)
 {
-	t_data	data;
-
-	printf("Hello, World!\n");
-
-	data_initialize(&data);
-
-	args_check(argc, argv, envp);
-	file_save(&data, argv[1]);
-
-	for (int i = 0; data.file->content[i]; i++)
-		printf("%s\n", data.file->content[i]);
-
-	mlx_initialize_win(&data);
-	mlx_hook_loop(&data);
-	mlx_free(&data);
-	data_free(&data);
-
-	return (0);
+	data->mlx = malloc(sizeof(t_mlx));
+	if (!data->mlx)
+		ft_exit("Error: malloc failed\n", 1);
+	data->file = malloc(sizeof(t_file));
+	if (!data->file)
+		ft_exit("Error: malloc failed\n", 1);
 }
