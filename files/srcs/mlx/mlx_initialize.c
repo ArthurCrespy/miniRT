@@ -19,7 +19,8 @@ void	mlx_initialize_win(t_data *data)
 	data->mlx->mlx = mlx_init();
 	if (!data->mlx->mlx)
 		mlx_error(data);
-	mlx_get_screen_size(data->mlx->mlx, &data->mlx->screen_width, &data->mlx->screen_height);
+	mlx_get_screen_size(data->mlx->mlx,
+		&data->mlx->screen_width, &data->mlx->screen_height);
 	if (data->mlx->screen_width <= 0 || data->mlx->screen_height <= 0)
 		mlx_error(data);
 	data->mlx->screen_width /= 2;
@@ -27,10 +28,11 @@ void	mlx_initialize_win(t_data *data)
 	data->mlx->win_width = data->mlx->screen_width;
 	data->mlx->win_height = data->mlx->screen_height;
 	data->mlx->mlx_win = mlx_new_window(data->mlx->mlx, data->mlx->win_width,
-										data->mlx->win_height, "miniRT | acrespy");
+			data->mlx->win_height, "miniRT | acrespy");
 	if (!data->mlx->mlx_win)
 		mlx_error(data);
-	data->mlx->img = mlx_new_image(data->mlx->mlx, data->mlx->win_width, data->mlx->win_height);
+	data->mlx->img = mlx_new_image(data->mlx->mlx,
+			data->mlx->win_width, data->mlx->win_height);
 	if (!data->mlx->img)
 		mlx_error(data);
 }
