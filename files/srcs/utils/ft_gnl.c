@@ -12,7 +12,7 @@
 
 #include "./../../includes/miniRT.h"
 
-char	*ft_free(char *buffer, char *buf)
+char	*ft_free_buffer(char *buffer, char *buf)
 {
 	char	*temp;
 
@@ -89,7 +89,7 @@ char	*read_file(int fd, char *result)
 			return (NULL);
 		}
 		buffer[byte_read] = '\0';
-		result = ft_free(result, buffer);
+		result = ft_free_buffer(result, buffer);
 		if (ft_strchr(buffer, '\n'))
 			break ;
 	}

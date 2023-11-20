@@ -25,6 +25,7 @@ void	mlx_free(t_data *data)
 void	mlx_exit(t_data *data, char *msg, int status)
 {
 	mlx_free(data);
+	data_free(data);
 	ft_exit(msg, status);
 }
 
@@ -37,5 +38,6 @@ void	mlx_error(t_data *data)
 void	mlx_hook_exit(t_data *data)
 {
 	mlx_free(data);
+	data_free(data);
 	exit(0);
 }

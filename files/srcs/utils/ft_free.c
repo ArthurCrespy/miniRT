@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/18 18:30:53 by acrespy           #+#    #+#             */
-/*   Updated: 2023/11/18 19:17:22 by acrespy          ###   ########.fr       */
+/*   Created: 2023/11/20 07:25:46 by acrespy           #+#    #+#             */
+/*   Updated: 2023/11/20 07:25:46 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../includes/miniRT.h"
 
-
-
-int	main(int argc, char **argv, char **envp)
+void	ft_free(char **tab)
 {
-	t_data	data;
+	int	i;
 
-	printf("Hello, World!\n");
-
-	args_check(argc, argv, envp);
-	file_save(&data, argv[1]);
-
-	for (int i = 0; data.file->content[i]; i++)
-		printf("%s\n", data.file->content[i]);
-
-	mlx_initialize_win(&data);
-	mlx_hook_loop(&data);
-	mlx_free(&data);
-	data_free(&data);
-
-	return (0);
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
 }
