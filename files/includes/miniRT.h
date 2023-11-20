@@ -52,8 +52,11 @@ typedef struct	s_data
 	t_file		*file;
 }				t_data;
 
-
 int		args_check(int argc, char **argv, char **envp);
+
+void	data_free(t_data *data);
+
+void	data_initialize(t_data *data);
 
 int		event_key(int keycode, void *data);
 
@@ -78,6 +81,8 @@ int		mlx_render_frame(t_data *data);
 char	*ft_calloc(size_t nmemb, size_t size);
 
 void	ft_exit(char *msg, int status);
+
+void	ft_free(char **tab);
 
 char	*get_next_line(int fd);
 

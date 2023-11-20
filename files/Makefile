@@ -15,6 +15,8 @@ NAME        := miniRT
 SRC_DIR     := srcs
 SRCS := \
 			args/args_check.c \
+			data/data_free.c \
+			data/data_initialize.c \
 			events/event_key.c \
 			events/event_resize.c \
 			file/file_check.c \
@@ -26,6 +28,7 @@ SRCS := \
 			parsing/parsing.c \
 			utils/ft_calloc.c \
 			utils/ft_exit.c \
+			utils/ft_free.c \
 			utils/ft_gnl.c \
 			utils/ft_put.c \
 			utils/ft_str.c \
@@ -46,7 +49,7 @@ CC          := clang
 CFLAGS      := -Wall -Wextra -Werror -g
 
 ifeq ($(OS_NAME),linux)
-	MLX_LINK	:= -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lz
+	MLX_LINK	:= -L$(MLX_DIR) -lmlx -lX11 -lXext
 	MLX_INCL	:= -I$(MLX_DIR)
 endif
 ifeq ($(OS_NAME),darwin)
