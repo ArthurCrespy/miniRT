@@ -33,6 +33,8 @@ AR = ar rc
 RANLIB = ranlib
 
 SRC_FILES = main\
+			hooks\
+			free
 
 
 SRCS = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES) $(SRC_FILES_THREAD)))
@@ -43,12 +45,13 @@ all: $(NAME)
 thread: $(NAME_THREAD)
 
 $(LIBFT):
+	git submodule update --init
 	make all -C $(LIBFT_DIR)
 
 $(MLX):
 	make all -C $(MLX_DIR)
 
-$(NAME):	$(OBJS) $(MLX) $(LIBFT)
+$(NAME):	$(LIBFT) $(OBJS) $(MLX)
 			$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(MLX) $(MLX_FLAGS) -lm
 
 

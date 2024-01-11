@@ -6,12 +6,12 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 15:14:02 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/01/06 13:13:09 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/01/11 19:00:48 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-# define FRACTOL_H
+#ifndef MINIRT_H
+# define MINIRT_H
 
 # include <../minilibx-linux/mlx.h>
 # include <../libft/includes/libft.h>
@@ -34,15 +34,24 @@ typedef struct s_vars {
 	void	*win;
 }				t_vars;
 
+typedef struct s_minirt {
+	t_data		*img_data;
+	t_vars		*vars;
+}				t_minirt;
+
 typedef struct s_color {
 	double	chan_1;
 	double	chan_2;
 	double	chan_3;
 }				t_color;
 
-typedef struct s_complex {
-	double	real;
-	double	imaginary;
+typedef struct s_vector {
+	double	x;
+	double	y;
+	double	z;
 }				t_complex;
+
+int	exit_program(t_minirt *mini_struct);
+int	handle_keys(int keycode, t_minirt	*mini_struct);
 
 #endif
