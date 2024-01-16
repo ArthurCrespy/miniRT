@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+         #
+#    By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 14:54:39 by acrespy           #+#    #+#              #
-#    Updated: 2023/01/16 15:01:53 by acrespy          ###   ########.fr        #
+#    Updated: 2024/01/16 20:30:12 by dkeraudr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,7 @@ $(LIBFT):
 	git submodule update --init
 	make all -C $(LIBFT_DIR)
 
-${NAME}: ${OBJS}
+${NAME}: $(LIBFT) ${OBJS}
 	${CC} ${OBJS} ${LIBFT} ${MLX_LINK} -o ${NAME}
 	${info EXECUTABLE CREATED: ${NAME}}
 
@@ -104,10 +104,12 @@ miniLibXClean:
 
 clean: miniLibXClean
 	${RM} ${OBJS}
+	make clean -C $(LIBFT_DIR)
 	${info REMOVED OBJECTS: ${OBJS}}
 
 fclean: clean
 	${RM} ${NAME}
+	make fclean -C $(LIBFT_DIR)
 	${info REMOVED EXECUTABLES: ${NAME}}
 
 re:
