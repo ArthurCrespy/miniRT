@@ -15,6 +15,6 @@
 int	event_key(int keycode, void *data)
 {
 	if (keycode == 65307)
-		mlx_exit(data, NULL, 0);
+		mlx_exit(data, "NULL", 0);
 	return (0);
 }

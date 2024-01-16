@@ -17,6 +17,12 @@
 #ifndef MINIRT_H
 # define MINIRT_H
 
+# include <../mlx/mlx.h>
+# include <../libft/includes/libft.h>
+# include "structs.h"
+# include <stdio.h>
+# include <stdlib.h>
+
 # include "./../mlx/mlx.h"
 # include "./../mlx/mlx_int.h"
 
@@ -78,22 +84,22 @@ void	mlx_hook_loop(t_data *data);
 
 int		mlx_render_frame(t_data *data);
 
-char	*ft_calloc(size_t nmemb, size_t size);
+//char	*ft_calloc(size_t nmemb, size_t size);
 
 void	ft_exit(char *msg, int status);
 
 void	ft_free(char **tab);
 
-char	*get_next_line(int fd);
-
-void	ft_putchar(char c);
-void	ft_putstr(char *str);
-void	ft_putnbr(int n);
-
-int		ft_strlen(const char *str);
-int		ft_strncmp(char *s1, char *s2, int i);
-char	*ft_strchr(const char *string, int c);
-char	*ft_strdup(char *str);
-char	*ft_strjoin(char const *s1, char const *s2);
+//char	*get_next_line(int fd);
+//
+//void	ft_putchar(char c);
+//void	ft_putstr(char *str);
+//void	ft_putnbr(int n);
+//
+//int		ft_strlen(const char *str);
+//int		ft_strncmp(char *s1, char *s2, int i);
+//char	*ft_strchr(const char *string, int c);
+//char	*ft_strdup(char *str);
+//char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif

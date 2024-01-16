@@ -13,15 +13,15 @@
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-# include <../libft/includes/libft.h>
+# include "../libft/includes/libft.h"
 
-typedef struct s_data {
+typedef struct s_img_data {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}				t_data;
+}			t_img_data;
 
 typedef struct s_vars {
 	void	*mlx;
@@ -80,7 +80,7 @@ typedef struct s_scene {
 }				t_scene;
 
 typedef struct s_minirt {
-	t_data		*img_data;
+	t_img_data	*img_data;
 	t_vars		*vars;
 	t_scene		*scene;
 }				t_minirt;

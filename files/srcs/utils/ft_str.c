@@ -12,6 +12,7 @@
 
 #include "./../includes/miniRT.h"
 
+/*
 int	ft_strlen(const char *str)
 {
 	int	i;
@@ -74,6 +75,7 @@ char	*ft_strdup(char *str)
 	return (result);
 }
 
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	int		i_s1;
@@ -101,3 +103,4 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	result[i_s1 + i_s2] = '\0';
 	return (result);
 }
+*/

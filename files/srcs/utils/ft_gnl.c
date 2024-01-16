@@ -12,6 +12,7 @@
 
 #include "./../../includes/miniRT.h"
 
+/*
 char	*ft_free_buffer(char *buffer, char *buf)
 {
 	char	*temp;
@@ -111,3 +112,4 @@ char	*get_next_line(int fd)
 	buffer[fd] = ft_next(buffer[fd]);
 	return (line);
 }
+*/

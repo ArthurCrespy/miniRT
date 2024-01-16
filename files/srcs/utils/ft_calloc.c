@@ -12,6 +12,7 @@
 
 #include "./../../includes/miniRT.h"
 
+/*
 char	*ft_calloc(size_t nmemb, size_t size)
 {
 	size_t	i;
@@ -32,3 +33,4 @@ char	*ft_calloc(size_t nmemb, size_t size)
 	}
 	return (result);
 }
+*/

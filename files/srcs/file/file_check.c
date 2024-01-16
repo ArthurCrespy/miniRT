@@ -23,7 +23,7 @@ void	file_check_ext(char *path)
 	ext = ".rt";
 	if (ft_strlen(path) <= 3 || path[i_path - 1] == '/')
 		ft_exit("Error: File must be a .rt\n", 1);
-	while (i_path != ft_strlen(path))
+	while (i_path != (int)ft_strlen(path))
 	{
 		if (path[i_path] != ext[i_ext])
 			ft_exit("Error: File must be a .rt\n", 1);

@@ -12,6 +12,9 @@
 
 NAME        := miniRT
 
+LIBFT_DIR	:= libft
+LIBFT		:= $(LIBFT_DIR)/libft.a
+
 SRC_DIR     := srcs
 SRCS := \
 			args/args_check.c \
@@ -82,8 +85,12 @@ pull_mlx:
 miniLibX: ${MLX_DIR}
 	${MAKE} -C ${MLX_DIR}
 
+$(LIBFT):
+	git submodule update --init
+	make all -C $(LIBFT_DIR)
+
 ${NAME}: ${OBJS}
-	${CC} ${OBJS} ${MLX_LINK} -o ${NAME}
+	${CC} ${OBJS} ${LIBFT} ${MLX_LINK} -o ${NAME}
 	${info EXECUTABLE CREATED: ${NAME}}
 
 
