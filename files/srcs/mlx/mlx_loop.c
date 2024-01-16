@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_loop.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 15:02:08 by acrespy           #+#    #+#             */
-/*   Updated: 2023/11/19 15:02:11 by acrespy          ###   ########.fr       */
+/*   Updated: 2024/01/16 21:00:56 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../includes/miniRT.h"
 
-void	mlx_hook_loop(t_data *data)
+void	mlx_hook_loop(t_minirt *data)
 {
 	mlx_loop_hook(data->mlx->mlx,
 		(int (*)(void)) mlx_render_frame, data);

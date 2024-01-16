@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_initialize.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 14:40:43 by acrespy           #+#    #+#             */
-/*   Updated: 2023/11/19 14:40:46 by acrespy          ###   ########.fr       */
+/*   Updated: 2024/01/16 21:00:56 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../includes/miniRT.h"
 
-void	mlx_initialize_win(t_data *data)
+void	mlx_initialize_win(t_minirt *data)
 {
 	data->mlx->mlx = NULL;
 	data->mlx->mlx_win = NULL;

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_render.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 15:00:18 by acrespy           #+#    #+#             */
-/*   Updated: 2023/11/19 15:00:21 by acrespy          ###   ########.fr       */
+/*   Updated: 2024/01/16 21:00:56 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../includes/miniRT.h"
 
-int	mlx_render_frame(t_data *data)
+int	mlx_render_frame(t_minirt *data)
 {
 	mlx_string_put(data->mlx->mlx, data->mlx->mlx_win, 50, 50, 0x00FFFFFF,
 		"Hello, World!");

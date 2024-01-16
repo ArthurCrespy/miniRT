@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_exit.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 14:37:39 by acrespy           #+#    #+#             */
-/*   Updated: 2023/11/19 14:37:42 by acrespy          ###   ########.fr       */
+/*   Updated: 2024/01/16 21:00:56 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../includes/miniRT.h"
 
-void	mlx_free(t_data *data)
+void	mlx_free(t_minirt *data)
 {
 	if (data->mlx->img)
 		mlx_destroy_image(data->mlx->mlx, data->mlx->img);
@@ -24,20 +24,20 @@ void	mlx_free(t_data *data)
 		free(data->mlx->mlx);
 }
 
-void	mlx_exit(t_data *data, char *msg, int status)
+void	mlx_exit(t_minirt *data, char *msg, int status)
 {
 	mlx_free(data);
 	data_free(data);
 	ft_exit(msg, status);
 }
 
-void	mlx_error(t_data *data)
+void	mlx_error(t_minirt *data)
 {
 	mlx_free(data);
 	ft_exit("Error: Something went wrong with MiniLibX\n", 1);
 }
 
-void	mlx_hook_exit(t_data *data)
+void	mlx_hook_exit(t_minirt *data)
 {
 	mlx_free(data);
 	data_free(data);

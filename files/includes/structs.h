@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/01/16 19:41:11 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/01/16 20:59:14 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,5 @@ typedef struct s_scene {
 	t_list		*objects;
 	t_camera	*camera;
 }				t_scene;
-
-typedef struct s_minirt {
-	t_img_data	*img_data;
-	t_vars		*vars;
-	t_scene		*scene;
-}				t_minirt;
-
 
 #endif

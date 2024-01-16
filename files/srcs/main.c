@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 18:30:53 by acrespy           #+#    #+#             */
-/*   Updated: 2023/11/18 19:17:22 by acrespy          ###   ########.fr       */
+/*   Updated: 2024/01/16 21:01:59 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,20 @@
 
 int	main(int argc, char **argv, char **envp)
 {
-	t_data	data;
+	t_minirt	minirt;
 
 	printf("Hello, World!\n");
 
-	data_initialize(&data);
+	data_initialize(&minirt);
 
 	args_check(argc, argv, envp);
-	file_save(&data, argv[1]);
+	// file_save(&minirt, argv[1]);
 
-	for (int i = 0; data.file->content[i]; i++)
-		printf("%s\n", data.file->content[i]);
 
-	mlx_initialize_win(&data);
-	mlx_hook_loop(&data);
-	mlx_free(&data);
-	data_free(&data);
+	mlx_initialize_win(&minirt);
+	mlx_hook_loop(&minirt);
+	mlx_free(&minirt);
+	data_free(&minirt);
 
 	return (0);
 }

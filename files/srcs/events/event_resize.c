@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   event_resize.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 17:53:32 by acrespy           #+#    #+#             */
-/*   Updated: 2023/11/19 17:53:36 by acrespy          ###   ########.fr       */
+/*   Updated: 2024/01/16 21:00:56 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../includes/miniRT.h"
 
-int	event_resize(t_data *data)
+int	event_resize(t_minirt *data)
 {
 	// ?
 	mlx_render_frame(data);

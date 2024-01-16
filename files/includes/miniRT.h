@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:31:24 by acrespy           #+#    #+#             */
-/*   Updated: 2023/02/23 13:00:06 by acrespy          ###   ########.fr       */
+/*   Updated: 2024/01/16 21:00:58 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,42 +47,37 @@ typedef struct	s_mlx
 	int			bpp;
 }				t_mlx;
 
-typedef struct s_file
-{
-	char		**content;
-}				t_file;
-
-typedef struct	s_data
-{
+typedef struct s_minirt {
 	t_mlx		*mlx;
-	t_file		*file;
-}				t_data;
+	t_scene		*scene;
+}				t_minirt;
+
 
 int		args_check(int argc, char **argv, char **envp);
 
-void	data_free(t_data *data);
+void	data_free(t_minirt *data);
 
-void	data_initialize(t_data *data);
+void	data_initialize(t_minirt *data);
 
 int		event_key(int keycode, void *data);
 
-int		event_resize(t_data *data);
+int		event_resize(t_minirt *data);
 
 void	file_check_ext(char *path);
 void	file_check_path(char *path);
 
-void	file_save(t_data *data, char *path);
+void	file_save(t_minirt *data, char *path);
 
-void	mlx_free(t_data *data);
-void	mlx_exit(t_data *data, char *msg, int status);
-void	mlx_error(t_data *data);
-void	mlx_hook_exit(t_data *data);
+void	mlx_free(t_minirt *data);
+void	mlx_exit(t_minirt *data, char *msg, int status);
+void	mlx_error(t_minirt *data);
+void	mlx_hook_exit(t_minirt *data);
 
-void	mlx_initialize_win(t_data *data);
+void	mlx_initialize_win(t_minirt *data);
 
-void	mlx_hook_loop(t_data *data);
+void	mlx_hook_loop(t_minirt *data);
 
-int		mlx_render_frame(t_data *data);
+int		mlx_render_frame(t_minirt *data);
 
 //char	*ft_calloc(size_t nmemb, size_t size);
 
