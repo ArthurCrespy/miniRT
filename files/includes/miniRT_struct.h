@@ -10,10 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTS_H
-# define STRUCTS_H
-
-# include "../libft/includes/libft.h"
+#ifndef MINIRT_STRUCT_H
+# define MINIRT_STRUCT_H
 
 typedef struct s_img_data {
 	void	*img;
@@ -78,5 +76,25 @@ typedef struct s_scene {
 	t_list		*objects;
 	t_camera	*camera;
 }				t_scene;
+
+typedef struct	s_mlx
+{
+	void		*mlx;
+	void		*mlx_win;
+	void		*img;
+	char		*addr;
+	int			screen_width;
+	int			screen_height;
+	int			win_width;
+	int			win_height;
+	int			line_length;
+	int			endian;
+	int			bpp;
+}				t_mlx;
+
+typedef struct s_minirt {
+	t_mlx		*mlx;
+	t_scene		*scene;
+}				t_minirt;
 
 #endif
