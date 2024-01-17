@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 14:31:24 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/16 21:00:58 by dkeraudr         ###   ########.fr       */
+/*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
+/*   Updated: 2024/01/16 20:59:14 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef MINIRT_INCLUDE_H
+# define MINIRT_INCLUDE_H
 
-# include "./miniRT_include.h"
-# include "./miniRT_define.h"
-# include "./miniRT_struct.h"
-# include "./miniRT_cmd.h"
+# include "./../mlx/mlx.h"
+# include "./../mlx/mlx_int.h"
+
+# include <../libft/includes/libft.h>
+
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <limits.h>
+# include <math.h>
 
 #endif
