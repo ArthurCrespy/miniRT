@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/01/16 20:59:14 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/01/17 22:07:02 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,13 @@ typedef struct s_light {
 	t_color	color;
 }				t_light;
 
-typedef struct s_ambiant {
+typedef struct s_ambient {
 	double	brightness;
 	t_color	color;
-}				t_ambiant;
+}				t_ambient;
 
 typedef struct s_scene {
-	t_ambiant	*ambiant;
+	t_ambient	*ambient;
 	t_list		*lights;
 	t_list		*objects;
 	t_camera	*camera;

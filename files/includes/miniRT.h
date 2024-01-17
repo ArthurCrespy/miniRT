@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:31:24 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/16 21:00:58 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/01/17 21:04:04 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <../mlx/mlx.h>
 # include <../libft/includes/libft.h>
 # include "structs.h"
+# include "constants.h"
 # include <stdio.h>
 # include <stdlib.h>
 
