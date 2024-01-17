@@ -17,5 +17,6 @@
 # include "./miniRT_define.h"
 # include "./miniRT_struct.h"
 # include "./miniRT_cmd.h"
+# include "./miniRT_cmd_maths.h"
 
 #endif
