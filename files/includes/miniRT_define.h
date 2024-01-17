@@ -17,4 +17,8 @@
 #  define BUFFER_SIZE 50
 # endif
 
+# ifndef EPSILON
+#  define EPSILON 0.000001
+# endif
+
 #endif

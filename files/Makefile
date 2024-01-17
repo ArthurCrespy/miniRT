@@ -3,50 +3,61 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+         #
+#    By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 14:54:39 by acrespy           #+#    #+#              #
-#    Updated: 2024/01/16 20:30:12 by dkeraudr         ###   ########.fr        #
+#    Updated: 2024/01/16 20:30:12 by acrespy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        := miniRT
 
 LIBFT_DIR	:= libft
-LIBFT		:= $(LIBFT_DIR)/libft.a
+LIBFT		:= ${LIBFT_DIR}/libft.a
 
 SRC_DIR     := srcs
-SRCS := \
-			args/args_check.c \
-			data/data_free.c \
-			data/data_initialize.c \
-			events/event_key.c \
-			events/event_resize.c \
-			file/file_check.c \
-			file/file_save.c \
-			mlx/mlx_exit.c \
-			mlx/mlx_initialize.c \
-			mlx/mlx_loop.c \
-			mlx/mlx_render.c \
-			parsing/parsing.c \
-			utils/ft_calloc.c \
-			utils/ft_exit.c \
-			utils/ft_free.c \
-			utils/ft_gnl.c \
-			utils/ft_put.c \
-			utils/ft_str.c \
-			main.c
+SRCS		:= \
+				main.c \
+				args/args_check.c \
+				data/data_free.c \
+				data/data_initialize.c \
+				double/double_comparaisons.c \
+				events/event_key.c \
+				events/event_resize.c \
+				file/file_check.c \
+				file/file_save.c \
+				mlx/mlx_exit.c \
+				mlx/mlx_initialize.c \
+				mlx/mlx_loop.c \
+				mlx/mlx_render.c \
+				parsing/parsing.c \
+				points/point_comparaisons.c \
+				points/point_functions.c \
+				points/point_operations.c \
+				points/point_scalar.c \
+				utils/ft_calloc.c \
+				utils/ft_exit.c \
+				utils/ft_free.c \
+				utils/ft_gnl.c \
+				utils/ft_put.c \
+				utils/ft_str.c \
+				vector/vector_comparaisons.c \
+				vector/vector_create.c \
+				vector/vector_functions.c \
+				vector/vector_operations.c \
+				vector/vector_scalar.c \
 
-SRCS := ${SRCS:%=${SRC_DIR}/%}
 
-OBJ_DIR     := .objs
+SRCS		:= ${SRCS:%=${SRC_DIR}/%}
+
+OBJ_DIR		:= .objs
 OBJS := ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 
-INCL_DIR     := includes
+INCL_DIR	:= includes
 
-MLX_DIR     := mlx
+MLX_DIR		:= mlx
 
-OS_NAME := $(shell uname -s | tr A-Z a-z)
+OS_NAME		:= $(shell uname -s | tr A-Z a-z)
 
 CC          := clang
 CFLAGS      := -Wall -Wextra -Werror -g
@@ -58,12 +69,12 @@ endif
 ifeq ($(OS_NAME),darwin)
 	MLX_LINK	:= -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit -L/usr/X11/lib -lX11 -lXext
 	MLX_INCL	:= -I$(MLX_DIR) -I/usr/X11/include
-	CFLAGS      := -Wall -Wextra -g
+	CFLAGS		:= -Wall -Wextra -g
 endif
 
-RM          := rm -f
-MAKEFLAGS   += --no-print-directory
-DIR_DUP     = mkdir -p ${@D}
+RM			:= rm -f
+MAKEFLAGS	+= --no-print-directory
+DIR_DUP		= mkdir -p ${@D}
 
 all: git miniLibX ${NAME}
 
@@ -85,31 +96,35 @@ pull_mlx:
 miniLibX: ${MLX_DIR}
 	${MAKE} -C ${MLX_DIR}
 
-$(LIBFT):
+${LIBFT}:
 	git submodule update --init
-	make all -C $(LIBFT_DIR)
+	make all -C ${LIBFT_DIR}
 
-${NAME}: $(LIBFT) ${OBJS}
-	${CC} ${OBJS} ${LIBFT} ${MLX_LINK} -o ${NAME}
+${NAME}: ${LIBFT} ${OBJS}
+	${CC} ${OBJS} ${LIBFT} ${MLX_LINK} -lm -o ${NAME}
 	${info EXECUTABLE CREATED: ${NAME}}
 
 
 ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c
 	${DIR_DUP}
-	${CC} ${CFLAGS} ${MLX_INCL} -c -o $@ $<
+	${CC} ${CFLAGS} ${MLX_INCL} -c $< -o $@
 	${info OBJECT CREATED: $@}
 
 miniLibXClean:
 	${MAKE} clean -C ${MLX_DIR}
 
-clean: miniLibXClean
+libftClean:
+	${MAKE} clean -C ${LIBFT_DIR}
+
+fcleanLibft:
+	${MAKE} fclean -C ${LIBFT_DIR}
+
+clean: miniLibXClean libftClean
 	${RM} ${OBJS}
-	make clean -C $(LIBFT_DIR)
 	${info REMOVED OBJECTS: ${OBJS}}
 
-fclean: clean
+fclean: clean fcleanLibft
 	${RM} ${NAME}
-	make fclean -C $(LIBFT_DIR)
 	${info REMOVED EXECUTABLES: ${NAME}}
 
 re:
