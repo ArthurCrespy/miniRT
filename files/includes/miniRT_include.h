@@ -16,7 +16,7 @@
 # include "./../mlx/mlx.h"
 # include "./../mlx/mlx_int.h"
 
-# include <../libft/includes/libft.h>
+# include "./../libft/includes/libft.h"
 
 # include <stdio.h>
 # include <stdlib.h>
