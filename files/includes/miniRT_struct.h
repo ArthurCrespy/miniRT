@@ -49,6 +49,21 @@ typedef struct s_point
 	double	z;
 }				t_point;
 
+typedef struct s_void
+{
+	double	x;
+	double	y;
+	double	z;
+}				t_void;
+
+typedef struct t_tuple
+{
+	double	x;
+	double	y;
+	double	z;
+	double	w;
+}				t_tuple;
+
 typedef struct s_hittable
 {
 	int			id;
