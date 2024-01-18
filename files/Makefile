@@ -12,9 +12,6 @@
 
 NAME        := miniRT
 
-LIBFT_DIR	:= libft
-LIBFT		:= ${LIBFT_DIR}/libft.a
-
 SRC_DIR     := srcs
 SRCS		:= \
 				main.c \
@@ -47,21 +44,36 @@ SRCS		:= \
 				vector/vector_operations.c \
 				vector/vector_scalar.c \
 
-
 SRCS		:= ${SRCS:%=${SRC_DIR}/%}
 
+TEST_FLAGS	:= -Icriterion/include/criterion -Wl,-rpath=criterion/build/src -Lcriterion/build/src -lcriterion
+
+TEST_DIR	:= tests
+TESTS		:= test.c
+TESTS		:= ${TESTS:%=${TEST_DIR}/%}
+
+
 OBJ_DIR		:= .objs
-OBJS := ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
+OBJS		:= ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
+
+OBJS_TESTS	:= ${TESTS:${TEST_DIR}/%.c=${OBJ_DIR}/%.o}
+
 
 INCL_DIR	:= includes
 
-MLX_DIR		:= mlx
+LIBFT_DIR	:= libft
+LIBFT		:= ${LIBFT_DIR}/libft.a
 
-OS_NAME		:= $(shell uname -s | tr A-Z a-z)
+MLX_DIR		:= mlx
 
 CC          := clang
 CFLAGS      := -Wall -Wextra -Werror -g
 
+RM			:= rm -f
+MAKEFLAGS	+= --no-print-directory
+DIR_DUP		= mkdir -p ${@D}
+
+OS_NAME		:= $(shell uname -s | tr A-Z a-z)
 ifeq ($(OS_NAME),linux)
 	MLX_LINK	:= -L$(MLX_DIR) -lmlx -lX11 -lXext
 	MLX_INCL	:= -I$(MLX_DIR)
@@ -71,10 +83,6 @@ ifeq ($(OS_NAME),darwin)
 	MLX_INCL	:= -I$(MLX_DIR) -I/usr/X11/include
 	CFLAGS		:= -Wall -Wextra -g
 endif
-
-RM			:= rm -f
-MAKEFLAGS	+= --no-print-directory
-DIR_DUP		= mkdir -p ${@D}
 
 all: git miniLibX ${NAME}
 
@@ -107,8 +115,17 @@ ${NAME}: ${LIBFT} ${OBJS}
 
 ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c
 	${DIR_DUP}
-	${CC} ${CFLAGS} ${MLX_INCL} -c $< -o $@
+	${CC} ${CFLAGS} -c $< -o $@
 	${info OBJECT CREATED: $@}
+
+${OBJ_DIR}/%.o: ${TEST_DIR}/%.c
+	${DIR_DUP}
+	${CC} ${CFLAGS} -c $< -o $@
+	${info OBJECT CREATED: $@}
+
+test: ${OBJS_TESTS} ${OBJS}
+	${CC} ${OBJS} ${OBJS_TESTS} ${LIBFT} ${MLX_LINK} ${TEST_FLAGS} -lm -o miniRTtest
+	${info EXECUTABLE CREATED: miniRTtest}
 
 miniLibXClean:
 	${MAKE} clean -C ${MLX_DIR}
@@ -123,6 +140,10 @@ clean: miniLibXClean libftClean
 	${RM} ${OBJS}
 	${info REMOVED OBJECTS: ${OBJS}}
 
+cleantest:
+	${RM} miniRTtest
+	${info REMOVED OBJECTS: miniRTtest}
+
 fclean: clean fcleanLibft
 	${RM} ${NAME}
 	${info REMOVED EXECUTABLES: ${NAME}}
@@ -132,4 +153,4 @@ re:
 	${MAKE} all
 
 .PHONY: miniLibX clone_mlx clean miniLibXClean fclean re
-.SILENT: ${NAME} ${SRCS} ${OBJS} all miniLibX git clone_mlx pull_mlx clean fclean re
+.SILENT: ${NAME} ${SRCS} ${OBJS} all test miniLibX git clone_mlx pull_mlx clean cleantest fclean re
