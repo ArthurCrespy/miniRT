@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/miniRT.h"
+#include "./../../includes/miniRT.h"
 
 double	tuple_mag(t_tuple v1)
 {

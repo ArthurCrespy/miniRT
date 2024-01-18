@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../includes/miniRT.h"
+#include "./../../includes/miniRT.h"
 
 bool	tuple_equal(t_tuple v1, t_tuple v2)
 {

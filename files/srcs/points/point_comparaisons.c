@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../includes/miniRT.h"
+#include "./../../includes/miniRT.h"
 
 bool	point_equal(t_point v1, t_point v2)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/miniRT.h"
+#include "./../../includes/miniRT.h"
 
 t_vector	vect_new(double x, double y, double z)
 {

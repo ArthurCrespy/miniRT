@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../includes/miniRT.h"
+#include "./../../includes/miniRT.h"
 
 void	file_check_ext(char *path)
 {

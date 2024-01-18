@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../includes/miniRT.h"
+#include "./../../includes/miniRT.h"
 
 bool	vect_equal(t_vector v1, t_vector v2)
 {

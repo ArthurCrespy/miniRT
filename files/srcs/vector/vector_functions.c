@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/miniRT.h"
+#include "./../../includes/miniRT.h"
 
 double	vect_mag(t_vector v1)
 {

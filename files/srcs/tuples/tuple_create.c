@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/miniRT.h"
+#include "./../../includes/miniRT.h"
 
 t_tuple	tuple_new(double x, double y, double z, double w)
 {
