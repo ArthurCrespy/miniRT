@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:31:24 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/18 21:26:42 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/01/18 21:40:06 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,4 +111,7 @@ int	ft_parse_color(char *line, t_color *color);
 int	ft_parse_point(char *line, t_point *point);
 int	ft_parse_vector(char *line, t_vector *vector);
 
+// utils
+
+void	ft_print_scene(t_scene *scene);
 #endif
