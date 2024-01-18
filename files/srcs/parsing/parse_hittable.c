@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 19:51:55 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/01/17 22:01:14 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/01/18 21:26:53 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	ft_parse_sphere(t_scene *scene, char *line)
 {
 	t_hittable	*sphere;
-	t_point		*point;
 	char		**tab;
 
 	sphere = malloc(sizeof(t_hittable));

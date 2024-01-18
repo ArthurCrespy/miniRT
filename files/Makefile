@@ -6,7 +6,7 @@
 #    By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 14:54:39 by acrespy           #+#    #+#              #
-#    Updated: 2024/01/16 20:30:12 by dkeraudr         ###   ########.fr        #
+#    Updated: 2024/01/18 21:23:39 by dkeraudr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME        := miniRT
 
 LIBFT_DIR	:= libft
 LIBFT		:= $(LIBFT_DIR)/libft.a
-
+INC_DIR		=includes/
 SRC_DIR     := srcs
 SRCS := \
 			args/args_check.c \
@@ -29,6 +29,10 @@ SRCS := \
 			mlx/mlx_loop.c \
 			mlx/mlx_render.c \
 			parsing/parsing.c \
+			parsing/parse_camera.c \
+			parsing/parse_hittable.c \
+			parsing/parse_lighting.c \
+			parsing/parse_subcomponents.c \
 			utils/ft_calloc.c \
 			utils/ft_exit.c \
 			utils/ft_free.c \
@@ -96,7 +100,7 @@ ${NAME}: $(LIBFT) ${OBJS}
 
 ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c
 	${DIR_DUP}
-	${CC} ${CFLAGS} ${MLX_INCL} -c -o $@ $<
+	${CC} ${CFLAGS} ${MLX_INCL} -I$(INC_DIR) -c -o $@ $<
 	${info OBJECT CREATED: $@}
 
 miniLibXClean:

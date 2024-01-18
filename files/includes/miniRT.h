@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:31:24 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/17 21:04:04 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/01/18 21:26:42 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,18 @@ void	ft_free(char **tab);
 //char	*ft_strchr(const char *string, int c);
 //char	*ft_strdup(char *str);
 //char	*ft_strjoin(char const *s1, char const *s2);
+
+// parsing
+
+int	ft_parse_rt_file(t_scene *scene, char *file);
+int	ft_parse_sphere(t_scene *scene, char *line);
+int	ft_parse_plane(t_scene *scene, char *line);
+int	ft_parse_cylinder(t_scene *scene, char *line);
+int	ft_parse_camera(t_scene *scene, char *line);
+int	ft_parse_light(t_scene *scene, char *line);
+int	ft_parse_ambient(t_scene *scene, char *line);
+int	ft_parse_color(char *line, t_color *color);
+int	ft_parse_point(char *line, t_point *point);
+int	ft_parse_vector(char *line, t_vector *vector);
 
 #endif

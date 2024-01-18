@@ -6,23 +6,42 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 18:30:53 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/16 21:01:59 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/01/18 21:28:03 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../includes/miniRT.h"
 
+int	init_minirt(t_minirt *minirt)
+{
+	minirt->scene = malloc(sizeof(t_scene));
+	if (!minirt->scene)
+		return (0);
+	minirt->scene->camera = malloc(sizeof(t_camera));
+	if (!minirt->scene->camera)
+		return (0);
+	minirt->scene->ambient = malloc(sizeof(t_ambient));
+	if (!minirt->scene->ambient)
+		return (0);
+	minirt->scene->lights = NULL;
+	minirt->scene->objects = NULL;
+	return (1);
+}
+
+
 int	main(int argc, char **argv, char **envp)
 {
 	t_minirt	minirt;
 
-	printf("Hello, World!\n");
-
 	data_initialize(&minirt);
 
 	args_check(argc, argv, envp);
-	// file_save(&minirt, argv[1]);
-
+	if (!init_minirt(&minirt))
+		return (0);
+	if (!ft_parse_rt_file(minirt.scene, argv[1]))
+	{
+		ft_printf("Error while parsing\n");
+	}
 
 	mlx_initialize_win(&minirt);
 	mlx_hook_loop(&minirt);
