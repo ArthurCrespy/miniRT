@@ -64,6 +64,28 @@ typedef struct t_tuple
 	double	w;
 }				t_tuple;
 
+
+typedef struct s_ray
+{
+	t_point	origin;
+	t_vector	direction;
+}				t_ray;
+
+typedef struct s_matrix_2
+{
+	double		m[2][2];
+}				t_matrix_2;
+
+typedef struct s_matrix_3
+{
+	double		m[3][3];
+}				t_matrix_3;
+
+typedef struct s_matrix_4
+{
+	double		m[4][4];
+}				t_matrix_4;
+
 typedef struct s_hittable
 {
 	int			id;
