@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/miniRT.h"
+#include "./../../includes/miniRT.h"
 
 /*
  * void	ft_putchar(char c)

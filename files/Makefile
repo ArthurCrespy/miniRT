@@ -45,6 +45,7 @@ OBJS := ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 INCL_DIR     := includes
 
 MLX_DIR     := minilibx-linux
+MLX         := $(MLX_DIR)/libmlx.a
 
 OS_NAME := $(shell uname -s | tr A-Z a-z)
 
@@ -67,15 +68,15 @@ DIR_DUP     = mkdir -p ${@D}
 
 all: ${NAME}
 
-${MLX}:
-	git submodule update --init
-	make all -C ${MLX_DIR}
-
 ${LIBFT}:
 	git submodule update --init
 	make all -C ${LIBFT_DIR}
 
-${NAME}: $(LIBFT) ${OBJS}
+${MLX}:
+	git submodule update --init
+	make all -C ${MLX_DIR}
+
+${NAME}: ${MLX} ${LIBFT} ${OBJS}
 	${CC} ${OBJS} ${LIBFT} ${MLX_LINK} -o ${NAME}
 	${info EXECUTABLE CREATED: ${NAME}}
 
@@ -88,7 +89,6 @@ ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c
 clean:
 	${RM} ${OBJS}
 	make clean -C ${LIBFT_DIR}
-	make clean -C ${MLX_DIR}
 	${info REMOVED OBJECTS: ${OBJS}}
 
 fclean: clean
@@ -101,4 +101,4 @@ re:
 	${MAKE} all
 
 .PHONY: clean fclean re
-.SILENT: ${NAME} ${SRCS} ${OBJS} all clean fclean re
+.SILENT: ${NAME} ${SRCS} ${OBJS} ${LIBFT} all clean fclean re
