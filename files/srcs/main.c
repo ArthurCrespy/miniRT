@@ -17,17 +17,12 @@ int	main(int argc, char **argv, char **envp)
 	t_minirt	minirt;
 
 	printf("Hello, World!\n");
-
 	data_initialize(&minirt);
-
 	args_check(argc, argv, envp);
-	// file_save(&minirt, argv[1]);
-
-
+	file_save(&minirt, argv[1]);
 	mlx_initialize_win(&minirt);
 	mlx_hook_loop(&minirt);
 	mlx_free(&minirt);
 	data_free(&minirt);
-
 	return (0);
 }

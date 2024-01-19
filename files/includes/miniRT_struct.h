@@ -77,7 +77,7 @@ typedef struct s_scene {
 	t_camera	*camera;
 }				t_scene;
 
-typedef struct	s_mlx
+typedef struct s_mlx
 {
 	void		*mlx;
 	void		*mlx_win;
