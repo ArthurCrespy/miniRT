@@ -46,18 +46,8 @@ SRCS		:= \
 
 SRCS		:= ${SRCS:%=${SRC_DIR}/%}
 
-TEST_FLAGS	:= -Icriterion/include/criterion -Wl,-rpath=criterion/build/src -Lcriterion/build/src -lcriterion
-
-TEST_DIR	:= tests
-TESTS		:= test.c
-TESTS		:= ${TESTS:%=${TEST_DIR}/%}
-
-
 OBJ_DIR		:= .objs
 OBJS		:= ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
-
-OBJS_TESTS	:= ${TESTS:${TEST_DIR}/%.c=${OBJ_DIR}/%.o}
-
 
 INCL_DIR	:= includes
 
@@ -74,6 +64,7 @@ MAKEFLAGS	+= --no-print-directory
 DIR_DUP		= mkdir -p ${@D}
 
 OS_NAME		:= $(shell uname -s | tr A-Z a-z)
+
 ifeq ($(OS_NAME),linux)
 	MLX_LINK	:= -L$(MLX_DIR) -lmlx -lX11 -lXext
 	MLX_INCL	:= -I$(MLX_DIR)
@@ -118,15 +109,6 @@ ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c
 	${CC} ${CFLAGS} -c $< -o $@
 	${info OBJECT CREATED: $@}
 
-${OBJ_DIR}/%.o: ${TEST_DIR}/%.c
-	${DIR_DUP}
-	${CC} ${CFLAGS} -c $< -o $@
-	${info OBJECT CREATED: $@}
-
-test: ${OBJS_TESTS} ${OBJS}
-	${CC} ${OBJS} ${OBJS_TESTS} ${LIBFT} ${MLX_LINK} ${TEST_FLAGS} -lm -o miniRTtest
-	${info EXECUTABLE CREATED: miniRTtest}
-
 miniLibXClean:
 	${MAKE} clean -C ${MLX_DIR}
 
@@ -138,11 +120,8 @@ fcleanLibft:
 
 clean: miniLibXClean libftClean
 	${RM} ${OBJS}
+	${RM} -r ${OBJ_DIR}
 	${info REMOVED OBJECTS: ${OBJS}}
-
-cleantest:
-	${RM} miniRTtest
-	${info REMOVED OBJECTS: miniRTtest}
 
 fclean: clean fcleanLibft
 	${RM} ${NAME}
@@ -153,4 +132,4 @@ re:
 	${MAKE} all
 
 .PHONY: miniLibX clone_mlx clean miniLibXClean fclean re
-.SILENT: ${NAME} ${SRCS} ${OBJS} all test miniLibX git clone_mlx pull_mlx clean cleantest fclean re
+.SILENT: ${NAME} ${SRCS} ${OBJS} all miniLibX git clone_mlx pull_mlx clean fclean re
