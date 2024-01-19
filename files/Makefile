@@ -70,11 +70,11 @@ all: ${NAME}
 
 ${LIBFT}:
 	git submodule update --init
-	make all -C ${LIBFT_DIR}
+	${MAKE} all -C ${LIBFT_DIR}
 
 ${MLX}:
 	git submodule update --init
-	make all -C ${MLX_DIR}
+	${MAKE} all -C ${MLX_DIR}
 
 ${NAME}: ${MLX} ${LIBFT} ${OBJS}
 	${CC} ${OBJS} ${LIBFT} ${MLX_LINK} -o ${NAME}
@@ -89,6 +89,7 @@ ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c
 clean:
 	${RM} ${OBJS}
 	make clean -C ${LIBFT_DIR}
+	make clean -C ${MLX_DIR}
 	${info REMOVED OBJECTS: ${OBJS}}
 
 fclean: clean
