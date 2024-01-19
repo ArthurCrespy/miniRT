@@ -44,7 +44,7 @@ OBJS := ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 
 INCL_DIR     := includes
 
-MLX_DIR     := mlx
+MLX_DIR     := minilibx-linux
 
 OS_NAME := $(shell uname -s | tr A-Z a-z)
 
@@ -65,29 +65,15 @@ RM          := rm -f
 MAKEFLAGS   += --no-print-directory
 DIR_DUP     = mkdir -p ${@D}
 
-all: git miniLibX ${NAME}
+all: ${NAME}
 
-git:
-	@if [ -d "$(MLX_DIR)" ]; then \
-		${MAKE} pull_mlx; \
-	else \
-		${MAKE} clone_mlx; \
-	fi
-
-clone_mlx:
-	git clone https://github.com/42Paris/minilibx-linux.git ${MLX_DIR}
-	${info VERSION CONTROL: ${MLX_DIR} cloned}
-
-pull_mlx:
-	git -C ${MLX_DIR} pull
-	${info VERSION CONTROL: ${MLX_DIR} up to date}
-
-miniLibX: ${MLX_DIR}
-	${MAKE} -C ${MLX_DIR}
-
-$(LIBFT):
+${MLX}:
 	git submodule update --init
-	make all -C $(LIBFT_DIR)
+	make all -C ${MLX_DIR}
+
+${LIBFT}:
+	git submodule update --init
+	make all -C ${LIBFT_DIR}
 
 ${NAME}: $(LIBFT) ${OBJS}
 	${CC} ${OBJS} ${LIBFT} ${MLX_LINK} -o ${NAME}
@@ -96,25 +82,23 @@ ${NAME}: $(LIBFT) ${OBJS}
 
 ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c
 	${DIR_DUP}
-	${CC} ${CFLAGS} ${MLX_INCL} -c -o $@ $<
+	${CC} ${CFLAGS} -c -o $@ $<
 	${info OBJECT CREATED: $@}
 
-miniLibXClean:
-	${MAKE} clean -C ${MLX_DIR}
-
-clean: miniLibXClean
+clean:
 	${RM} ${OBJS}
-	make clean -C $(LIBFT_DIR)
+	make clean -C ${LIBFT_DIR}
+	make clean -C ${MLX_DIR}
 	${info REMOVED OBJECTS: ${OBJS}}
 
 fclean: clean
 	${RM} ${NAME}
-	make fclean -C $(LIBFT_DIR)
+	make fclean -C ${LIBFT_DIR}
 	${info REMOVED EXECUTABLES: ${NAME}}
 
 re:
 	${MAKE} fclean
 	${MAKE} all
 
-.PHONY: miniLibX clone_mlx clean miniLibXClean fclean re
-.SILENT: ${NAME} ${SRCS} ${OBJS} all miniLibX git clone_mlx pull_mlx clean fclean re
+.PHONY: clean fclean re
+.SILENT: ${NAME} ${SRCS} ${OBJS} all clean fclean re
