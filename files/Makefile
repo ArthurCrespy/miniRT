@@ -28,10 +28,10 @@ SRCS		:= \
 				mlx/mlx_loop.c \
 				mlx/mlx_render.c \
 				parsing/parsing.c \
-				points/point_comparaisons.c \
-				points/point_functions.c \
-				points/point_operations.c \
-				points/point_scalar.c \
+				point/point_comparaisons.c \
+				point/point_operations.c \
+				point/point_scalar.c \
+				point/point_vector_operations.c \
 				utils/ft_calloc.c \
 				utils/ft_exit.c \
 				utils/ft_free.c \
@@ -42,6 +42,7 @@ SRCS		:= \
 				vector/vector_create.c \
 				vector/vector_functions.c \
 				vector/vector_operations.c \
+				vector/vector_point_operations.c \
 				vector/vector_scalar.c \
 
 SRCS		:= ${SRCS:%=${SRC_DIR}/%}
