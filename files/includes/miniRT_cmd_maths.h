@@ -45,8 +45,23 @@ double			matrix_3_minor(t_matrix_3 m, int i, int j);
 
 t_matrix_4		matrix_4_mult(t_matrix_4 m1, t_matrix_4 m2);
 
+t_matrix_4		matrix_4_reflection(t_vector v);
+
+t_matrix_4		matrix_4_rotation_x(double angle);
+t_matrix_4		matrix_4_rotation_y(double angle);
+t_matrix_4		matrix_4_rotation_z(double angle);
+
+t_matrix_4		matrix_4_scale(t_vector v, double scale);
+t_matrix_4		matrix_4_unscale(t_vector v, double scale);
+
+
+t_matrix_4		matrix_4_shearing(t_vector v);
+
 t_matrix_3		matrix_4_sub(t_matrix_4 m, int row, int col);
 t_matrix_2		matrix_3_sub(t_matrix_3 m, int row, int col);
+
+t_matrix_4		matrix_4_translation(t_vector v);
+t_matrix_4		matrix_4_translation_inv(t_vector v);
 
 t_matrix_4		matrix_4_transpose(t_matrix_4 m);
 
@@ -80,6 +95,9 @@ bool			vect_sup(t_vector v1, t_vector v2);
 
 t_vector		vect_new(double x, double y, double z);
 t_vector		vect_zero(void);
+
+t_vector		vec_double_mult(t_vector v, double nb);
+t_vector		vec_double_div(t_vector v, double nb);
 
 double			vect_mag(t_vector v1);
 double			vect_dot(t_vector v1, t_vector v2);

@@ -78,10 +78,11 @@ typedef struct s_matrix_4
 typedef struct s_hittable
 {
 	int			id;
+	int 		type;
 	t_point		center;
 	t_color		color;
 	t_vector	orientation;
-	double		diameter;
+	double		radius;
 	double		height;
 }				t_hittable;
 

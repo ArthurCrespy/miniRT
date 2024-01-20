@@ -31,7 +31,12 @@ SRCS		:= \
 				matrix/matrix_invert.c \
 				matrix/matrix_minor.c \
 				matrix/matrix_operations.c \
+				matrix/matrix_reflection.c \
+				matrix/matrix_rotation.c \
+				matrix/matrix_scalar.c \
+				matrix/matrix_shearing.c \
 				matrix/matrix_submatrix.c \
+				matrix/matrix_translation.c \
 				matrix/matrix_transpose.c \
 				mlx/mlx_exit.c \
 				mlx/mlx_initialize.c \
@@ -39,9 +44,11 @@ SRCS		:= \
 				mlx/mlx_render.c \
 				parsing/parsing.c \
 				point/point_comparaisons.c \
+				point/point_create.c \
 				point/point_operations.c \
 				point/point_scalar.c \
 				point/point_vector_operations.c \
+				ray/ray_create.c \
 				utils/ft_calloc.c \
 				utils/ft_exit.c \
 				utils/ft_free.c \
@@ -50,6 +57,7 @@ SRCS		:= \
 				utils/ft_str.c \
 				vector/vector_comparaisons.c \
 				vector/vector_create.c \
+				vector/vector_double_operations.c \
 				vector/vector_functions.c \
 				vector/vector_operations.c \
 				vector/vector_point_operations.c \
