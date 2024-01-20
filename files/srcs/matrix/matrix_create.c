@@ -31,13 +31,16 @@ t_matrix_4	matrix_4_new_value(double value)
 
 t_matrix_4	matrix_4_new_identity(void)
 {
+	int			i;
 	t_matrix_4	m;
 
+	i = 0;
 	m = matrix_4_new();
-	m.m[0][0] = 1;
-	m.m[1][1] = 1;
-	m.m[2][2] = 1;
-	m.m[3][3] = 1;
+	while (i < 4)
+	{
+		m.m[i][i] = 1;
+		i++;
+	}
 	return (m);
 }
 
