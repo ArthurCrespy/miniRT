@@ -52,7 +52,7 @@ t_vector	vect_div(t_vector v1, t_vector v2)
 	return (v3);
 }
 
-t_vector vect_invert(t_vector v1)
+t_vector	vect_invert(t_vector v1)
 {
 	t_vector	v2;
 

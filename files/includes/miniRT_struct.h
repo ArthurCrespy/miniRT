@@ -56,18 +56,9 @@ typedef struct s_void
 	double	z;
 }				t_void;
 
-typedef struct t_tuple
-{
-	double	x;
-	double	y;
-	double	z;
-	double	w;
-}				t_tuple;
-
-
 typedef struct s_ray
 {
-	t_point	origin;
+	t_point		origin;
 	t_vector	direction;
 }				t_ray;
 

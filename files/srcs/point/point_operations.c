@@ -52,7 +52,7 @@ t_point	point_div(t_point v1, t_point v2)
 	return (v3);
 }
 
-t_point point_invert(t_point v1)
+t_point	point_invert(t_point v1)
 {
 	t_point	v2;
 
