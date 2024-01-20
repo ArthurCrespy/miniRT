@@ -49,12 +49,10 @@ typedef struct s_point
 	double	z;
 }				t_point;
 
-typedef struct s_void
+typedef struct s_type_4
 {
-	double	x;
-	double	y;
-	double	z;
-}				t_void;
+	double	t[4];
+}				t_type_4;
 
 typedef struct s_ray
 {

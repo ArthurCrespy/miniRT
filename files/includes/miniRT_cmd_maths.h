@@ -19,6 +19,39 @@ bool			double_sup(double nb1, double nb2);
 
 /* -- */
 
+double			matrix_4_cofactor(t_matrix_4 m, int i, int j);
+double			matrix_3_cofactor(t_matrix_3 m, int i, int j);
+
+bool			matrix_4_equal(t_matrix_4 m);
+
+t_matrix_4		matrix_4_new_value(double value);
+t_matrix_4		matrix_4_new_identity(void);
+t_matrix_4		matrix_4_new(void);
+t_matrix_3		matrix_3_new(void);
+t_matrix_2		matrix_2_new(void);
+
+double			matrix_4_determinant(t_matrix_4 m);
+double			matrix_3_determinant(t_matrix_3 m);
+double			matrix_2_determinant(t_matrix_2 m);
+
+bool			matrix_4_invertible(t_matrix_4 m);
+bool			matrix_3_invertible(t_matrix_3 m);
+
+t_matrix_4		matrix_4_invert(t_matrix_4 m);
+t_matrix_3		matrix_3_invert(t_matrix_3 m);
+
+double			matrix_4_minor(t_matrix_4 m, int i, int j);
+double			matrix_3_minor(t_matrix_3 m, int i, int j);
+
+t_matrix_4		matrix_4_mult(t_matrix_4 m1, t_matrix_4 m2);
+
+t_matrix_3		matrix_4_sub(t_matrix_4 m, int row, int col);
+t_matrix_2		matrix_3_sub(t_matrix_3 m, int row, int col);
+
+t_matrix_4		matrix_4_transpose(t_matrix_4 m);
+
+/* -- */
+
 bool			point_equal(t_point v1, t_point v2);
 bool			point_inf(t_point v1, t_point v2);
 bool			point_sup(t_point v1, t_point v2);

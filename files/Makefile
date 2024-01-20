@@ -23,6 +23,15 @@ SRCS		:= \
 				events/event_resize.c \
 				file/file_check.c \
 				file/file_save.c \
+				matrix/matrix_cofactor.c \
+				matrix/matrix_comparaisons.c \
+				matrix/matrix_create.c \
+				matrix/matrix_determinant.c \
+				matrix/matrix_invert.c \
+				matrix/matrix_minor.c \
+				matrix/matrix_operations.c \
+				matrix/matrix_submatrix.c \
+				matrix/matrix_transpose.c \
 				mlx/mlx_exit.c \
 				mlx/mlx_initialize.c \
 				mlx/mlx_loop.c \
