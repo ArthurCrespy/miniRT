@@ -20,14 +20,6 @@ double	vect_mag(t_vector v1)
 	return (mag);
 }
 
-double	vect_dot(t_vector v1, t_vector v2)
-{
-	double	dot;
-
-	dot = v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
-	return (dot);
-}
-
 t_vector	vect_norm(t_vector v1)
 {
 	t_vector	v2;
@@ -38,6 +30,14 @@ t_vector	vect_norm(t_vector v1)
 	v2.y = v1.y / mag;
 	v2.z = v1.z / mag;
 	return (v2);
+}
+
+double	vect_dot(t_vector v1, t_vector v2)
+{
+	double	dot;
+
+	dot = v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
+	return (dot);
 }
 
 t_vector	vect_cross(t_vector v1, t_vector v2)
