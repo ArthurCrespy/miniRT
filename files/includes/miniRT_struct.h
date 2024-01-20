@@ -114,6 +114,14 @@ typedef struct s_scene
 	t_camera	*camera;
 }				t_scene;
 
+typedef struct s_intersect
+{
+	bool		hit;
+	double		t;
+	t_point		point;
+	t_vector	normal;
+}				t_intersect;
+
 typedef struct s_mlx
 {
 	void		*mlx;
