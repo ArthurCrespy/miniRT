@@ -15,6 +15,7 @@ NAME        := miniRT
 SRC_DIR     := srcs
 SRCS		:= \
 				main.c \
+				test.c \
 				args/args_check.c \
 				data/data_free.c \
 				data/data_initialize.c \
