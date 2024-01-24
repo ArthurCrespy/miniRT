@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 22:05:20 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/01/22 23:50:44 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/01/24 22:04:41 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ int	ft_parse_light(t_scene *scene, char *line)
 	if (!tab)
 		return (free(light), ft_error(ERROR_MALLOC), 0);
 	if (ft_tablen(tab) != 4)
-		return (free(light), free(tab), ft_error(ERROR_WRONG_ARGS_NB),
+		return (free(light), ft_free_2d_list(tab), ft_error(ERROR_WRONG_ARGS_NB),
 			ft_error(ERROR_PARSING_LIGHT), 0);
 	if (!ft_parse_point(tab[1], &light->center))
-		return (free(light), free(tab), ft_error(ERROR_PARSING_LIGHT), 0);
+		return (free(light), ft_free_2d_list(tab), ft_error(ERROR_PARSING_LIGHT), 0);
 	if (!ft_isfloat(tab[2]))
-		return (free(light), free(tab), ft_error(ERROR_PARSING_LIGHT), 0);
+		return (free(light), ft_free_2d_list(tab), ft_error(ERROR_PARSING_LIGHT), 0);
 	light->brightness = ft_atof(tab[2]);
 	if (!ft_parse_color(tab[3], &light->color))
-		return (free(light), free(tab), ft_error(ERROR_PARSING_LIGHT), 0);
+		return (free(light), ft_free_2d_list(tab), ft_error(ERROR_PARSING_LIGHT), 0);
 	ft_lstadd_back(&scene->lights, ft_lstnew(light));
-	free(tab);
+	ft_free_2d_list(tab);
 	return (1);
 }
 
@@ -53,12 +53,12 @@ int	ft_parse_ambient(t_scene *scene, char *line)
 		return (free(ambient), ft_error(ERROR_WRONG_ARGS_NB),
 			ft_error(ERROR_PARSING_AMBIENT), 0);
 	if (!ft_isfloat(tab[1]))
-		return (free(ambient), free(tab), ft_error(ERROR_PARSING_AMBIENT), 0);
+		return (free(ambient), ft_free_2d_list(tab), ft_error(ERROR_PARSING_AMBIENT), 0);
 	ambient->brightness = ft_atof(tab[1]);
 	if (!ft_parse_color(tab[2], &ambient->color))
-		return (free(ambient), free(tab), ft_error(ERROR_PARSING_AMBIENT), 0);
+		return (free(ambient), ft_free_2d_list(tab), ft_error(ERROR_PARSING_AMBIENT), 0);
 	scene->ambient = ambient;
-	free(tab);
+	ft_free_2d_list(tab);
 	free(ambient);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:31:24 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/18 21:40:06 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/01/24 21:41:40 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_minirt {
 int		args_check(int argc, char **argv, char **envp);
 
 void	data_free(t_minirt *data);
+void	free_scene(t_scene *scene);
 
 void	data_initialize(t_minirt *data);
 

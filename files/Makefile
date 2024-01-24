@@ -6,7 +6,7 @@
 #    By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 14:54:39 by acrespy           #+#    #+#              #
-#    Updated: 2024/01/18 21:40:54 by dkeraudr         ###   ########.fr        #
+#    Updated: 2024/01/24 22:02:01 by dkeraudr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ MLX_DIR     := mlx
 OS_NAME := $(shell uname -s | tr A-Z a-z)
 
 CC          := clang
-CFLAGS      := -Wall -Wextra -Werror -g
+CFLAGS      := -Wall -Wextra -Werror
 
 ifeq ($(OS_NAME),linux)
 	MLX_LINK	:= -L$(MLX_DIR) -lmlx -lX11 -lXext
