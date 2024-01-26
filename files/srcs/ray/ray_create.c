@@ -67,3 +67,12 @@ t_intersect ray_intersect_sphere(t_ray ray, t_hittable sphere)
 	intersect.normal = vec_double_div(point_point_sub(intersect.point, sphere.center), sphere.radius);
 	return (intersect);
 }
+
+t_ray transform_ray(t_ray ray, t_matrix_4 matrix)
+{
+	t_ray	new_ray;
+
+	new_ray.origin = matrix_4_mult_point(matrix, ray.origin);
+	new_ray.direction = matrix_4_mult_vect(matrix, ray.direction);
+	return (new_ray);
+}
