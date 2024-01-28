@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_loop.c                                        :+:      :+:    :+:   */
+/*   t_rgb_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/28 16:31:59 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/01/28 17:07:30 by dkeraudr         ###   ########.fr       */
+/*   Created: 2024/01/28 18:15:45 by dkeraudr          #+#    #+#             */
+/*   Updated: 2024/01/28 18:15:57 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	ft_main_loop(t_minirt *ministruct)
+int	create_trgb(int t, int r, int g, int b)
 {
-	int	x;
-	int	y;
+	return (t << 24 | r << 16 | g << 8 | b);
+}
 
-	x = 0;
-	y = 0;
-	while (y < ministruct->mlx->win_height)
-	{
-		while (x < ministruct->mlx->win_width)
-		{
-			printf("x: %d\n", x);
-			printf("y: %d\n", y);
-			my_mlx_pixel_put(ministruct->mlx, x, y, 0x00FF0000);
-			// my_mlx_pixel_put(ministruct->mlx, 0, 0, 0x00FF0000);
-			// my_mlx_pixel_put(ministruct->mlx, 1, 1, 0x00FF0000);
-			x++;
-		}
-	}
-	
+int	get_t(int trgb)
+{
+	return ((trgb >> 24) & 0xFF);
+}
+
+int	get_r(int trgb)
+{
+	return ((trgb >> 16) & 0xFF);
+}
+
+int	get_g(int trgb)
+{
+	return ((trgb >> 8) & 0xFF);
+}
+
+int	get_b(int trgb)
+{
+	return (trgb & 0xFF);
 }

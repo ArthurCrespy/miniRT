@@ -6,7 +6,7 @@
 #    By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 14:54:39 by acrespy           #+#    #+#              #
-#    Updated: 2024/01/28 16:40:05 by dkeraudr         ###   ########.fr        #
+#    Updated: 2024/01/28 19:19:25 by dkeraudr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,11 @@ SRCS := \
 			utils/ft_gnl.c \
 			utils/ft_put.c \
 			utils/ft_str.c \
-			engine/main_loop.c \
 			image/pixel_manipulation.c \
+			image/trgb_utils.c \
+			vector/operations.c \
+			vector/creation.c \
+			engine/viewport.c \
 			main.c
 
 SRCS := ${SRCS:%=${SRC_DIR}/%}

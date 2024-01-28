@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:31:24 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/28 16:41:09 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/01/28 19:37:51 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,13 +96,30 @@ int	ft_parse_vector(char *line, t_vector *vector);
 
 // engine
 
-void	ft_main_loop(t_minirt *ministruct);
+t_point	pixel_center_viewport(t_minirt *data, int x, int y);
 
 // image
 
 void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color);
+int		create_trgb(int t, int r, int g, int b);
+int		get_t(int trgb);
+int		get_r(int trgb);
+int		get_g(int trgb);
+int		get_b(int trgb);
 
+// vector
+
+t_vector	vector_new(double x, double y, double z);
+t_point		point_new(double x, double y, double z);
+t_vector	vector_add(t_vector v1, t_vector v2);
+t_vector	vector_sub(t_vector v1, t_vector v2);
+t_vector	vector_mult(t_vector v1, t_vector v2);
+t_vector	vector_div(t_vector v1, t_vector v2);
+double		vector_dot(t_vector v1, t_vector v2);
+t_point		point_from_vector(t_vector v);
+t_vector	vector_from_point(t_point p);
 // utils
 
 void	ft_print_scene(t_scene *scene);
+
 #endif
