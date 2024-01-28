@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 19:51:55 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/01/24 22:52:25 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/01/28 16:44:56 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	ft_parse_cylinder(t_scene *scene, char *line)
 		return (free_parse_hittable(cylinder, tab, CYLINDER), 0);
 	if (!ft_parse_vector(tab[2], &cylinder->orientation))
 		return (free_parse_hittable(cylinder, tab, CYLINDER), 0);
-	if (!ft_isfloat(tab[3]) || ft_isfloat(tab[4]))
+	if (!ft_isfloat(tab[3]) || !ft_isfloat(tab[4]))
 		return (free_parse_hittable(cylinder, tab, CYLINDER), 0);
 	cylinder->diameter = ft_atof(tab[3]);
 	cylinder->height = ft_atof(tab[4]);

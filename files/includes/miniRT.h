@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:31:24 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/24 22:51:48 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/01/28 16:41:09 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # include <fcntl.h>
 # include <limits.h>
 
+# define WIDTH 800
+# define HEIGHT 600
 
 int		args_check(int argc, char **argv, char **envp);
 
@@ -91,6 +93,14 @@ int	ft_parse_ambient(t_scene *scene, char *line);
 int	ft_parse_color(char *line, t_color *color);
 int	ft_parse_point(char *line, t_point *point);
 int	ft_parse_vector(char *line, t_vector *vector);
+
+// engine
+
+void	ft_main_loop(t_minirt *ministruct);
+
+// image
+
+void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color);
 
 // utils
 

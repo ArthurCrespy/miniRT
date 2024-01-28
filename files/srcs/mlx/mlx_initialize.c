@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 14:40:43 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/16 21:00:56 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/01/28 17:27:31 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	mlx_initialize_win(t_minirt *data)
 		mlx_error(data);
 	data->mlx->img = mlx_new_image(data->mlx->mlx,
 			data->mlx->win_width, data->mlx->win_height);
+	data->mlx->addr = mlx_get_data_addr(data->mlx->img,
+			&data->mlx->bpp, &data->mlx->line_length, &data->mlx->endian);
 	if (!data->mlx->img)
 		mlx_error(data);
 }

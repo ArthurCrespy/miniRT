@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_render.c                                       :+:      :+:    :+:   */
+/*   main_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/19 15:00:18 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/28 17:33:40 by dkeraudr         ###   ########.fr       */
+/*   Created: 2024/01/28 16:31:59 by dkeraudr          #+#    #+#             */
+/*   Updated: 2024/01/28 17:07:30 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../includes/miniRT.h"
+#include "miniRT.h"
 
-int	mlx_render_frame(t_minirt *data)
+void	ft_main_loop(t_minirt *ministruct)
 {
 	int	x;
 	int	y;
 
+	x = 0;
 	y = 0;
-	while (y < data->mlx->win_height)
+	while (y < ministruct->mlx->win_height)
 	{
-		x = 0;
-		while (x < data->mlx->win_width)
+		while (x < ministruct->mlx->win_width)
 		{
-			my_mlx_pixel_put(data->mlx, x, y, 0x00FFFFFF);
+			printf("x: %d\n", x);
+			printf("y: %d\n", y);
+			my_mlx_pixel_put(ministruct->mlx, x, y, 0x00FF0000);
+			// my_mlx_pixel_put(ministruct->mlx, 0, 0, 0x00FF0000);
+			// my_mlx_pixel_put(ministruct->mlx, 1, 1, 0x00FF0000);
 			x++;
 		}
-		y++;
-		printf("here\n");
 	}
-	mlx_put_image_to_window(data->mlx->mlx, data->mlx->mlx_win,
-		data->mlx->img, 0, 0);
-	usleep(100000 / 10);
-	return (0);
+	
 }

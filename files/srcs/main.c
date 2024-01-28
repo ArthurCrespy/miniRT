@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 18:30:53 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/28 16:24:27 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/01/28 16:39:11 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,9 @@ int	main(int argc, char **argv, char **envp)
 	}
 	mlx_initialize_win(&minirt);
 	mlx_hook_loop(&minirt);
+	ft_main_loop(&minirt);
+	mlx_loop(minirt.mlx);
 	mlx_free(&minirt);
 	data_free(&minirt);
-	if (!init_minirt(&minirt))
-		return (0);
-	ft_print_scene(minirt.scene);
-	// mlx_initialize_win(&minirt);
-	// mlx_hook_loop(&minirt);
-	// mlx_free(&minirt);
-	// data_free(&minirt);
-
 	return (0);
 }
