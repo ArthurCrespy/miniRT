@@ -13,6 +13,36 @@
 #ifndef MINIRT_STRUCT_H
 # define MINIRT_STRUCT_H
 
+typedef struct s_tuple
+{
+	double	x;
+	double	y;
+	double	z;
+	double	w;
+}	t_tuple;
+
+typedef t_tuple	t_point;
+
+typedef t_tuple	t_vector;
+
+typedef struct s_ray
+{
+	t_point		origin;
+	t_vector	direction;
+}				t_ray;
+
+typedef struct s_matrix
+{
+	double	matrix[4][4];
+	size_t	size;
+}	t_matrix;
+
+typedef struct s_shearing
+{
+	double	p1;
+	double	p2;
+}				t_shearing;
+
 typedef struct s_img_data
 {
 	void	*img;
@@ -34,46 +64,6 @@ typedef struct s_color
 	double	chan_2;
 	double	chan_3;
 }				t_color;
-
-typedef struct s_vector
-{
-	double	x;
-	double	y;
-	double	z;
-}				t_vector;
-
-typedef struct s_point
-{
-	double	x;
-	double	y;
-	double	z;
-}				t_point;
-
-typedef struct s_type_4
-{
-	double	t[4];
-}				t_type_4;
-
-typedef struct s_ray
-{
-	t_point		origin;
-	t_vector	direction;
-}				t_ray;
-
-typedef struct s_matrix_2
-{
-	double		m[2][2];
-}				t_matrix_2;
-
-typedef struct s_matrix_3
-{
-	double		m[3][3];
-}				t_matrix_3;
-
-typedef struct s_matrix_4
-{
-	double		m[4][4];
-}				t_matrix_4;
 
 typedef struct s_hittable
 {

@@ -115,4 +115,52 @@ t_vector		vect_unscale(t_vector v1, double scale);
 
 t_vector		point_point_sub(t_point p1, t_point p2);
 
+
+/* -- */
+
+t_tuple            tuple_new(double x, double y, double z, double w);
+t_tuple            tuple_new_point(double x, double y, double z);
+t_tuple            tuple_new_vector(double x, double y, double z);
+
+bool               tuple_equal(t_tuple t1, t_tuple t2);
+bool               tuple_inf(t_tuple t1, t_tuple t2);
+bool               tuple_sup(t_tuple t1, t_tuple t2);
+
+t_tuple            tuple_add(t_tuple t1, t_tuple t2);
+t_tuple            tuple_sub(t_tuple t1, t_tuple t2);
+t_tuple            tuple_mult(t_tuple t1, double nb);
+t_tuple            tuple_div(t_tuple t1, t_tuple t2);
+t_tuple            tuple_negate(t_tuple t1);
+
+double             tuple_mag(t_tuple t1);
+t_tuple            tuple_norm(t_tuple t1);
+double             tuple_dot(t_tuple t1, t_tuple t2);
+t_tuple            tuple_cross(t_tuple t1, t_tuple t2);
+t_tuple            tuple_reflect(t_tuple in, t_tuple normal);
+
+/* -- */
+
+t_ray				ray_new(t_point origin, t_vector direction);
+
+t_point				ray_position(t_ray ray, double t);
+t_ray				ray_transform(t_ray ray, t_matrix m);
+
+/* -- */
+
+t_matrix    multiply_mx_mx(t_matrix m1, t_matrix m2);
+t_tuple     multiply_tp_mx(t_matrix m, t_tuple t);
+t_matrix    transpose_mx(t_matrix m);
+t_matrix    mx_inverse(t_matrix m);
+
+t_matrix    mx_translation(double x, double y, double z);
+t_matrix    mx_scale(double x, double y, double z);
+
+t_matrix    shearing(t_shearing x, t_shearing y, t_shearing z);
+
+
+t_matrix    mx_rotation_x(double angle);
+t_matrix    mx_rotation_y(double angle);
+t_matrix    mx_rotation_z(double angle);
+
+
 #endif
