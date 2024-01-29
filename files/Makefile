@@ -14,7 +14,7 @@ NAME        := miniRT
 
 LIBFT_DIR	:= libft
 LIBFT		:= $(LIBFT_DIR)/libft.a
-INC_DIR		=includes/
+INC_DIR		= includes/
 SRC_DIR     := srcs
 SRCS := \
 			args/args_check.c \

@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   matrix_cofactor.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/01/16 20:59:14 by dkeraudr         ###   ########.fr       */
+/*   Created: 2024/01/29 14:51:24 by acrespy           #+#    #+#             */
+/*   Updated: 2024/01/29 14:56:35 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_DEFINE_H
-# define MINIRT_DEFINE_H
+#include "./../../includes/miniRT.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 50
-# endif
+double			matrix_cofactor(t_matrix m, int row, int col)
+{
+	double		minor;
 
-# ifndef EPSILON
-#  define EPSILON 0.000001
-# endif
-
-#endif
+	minor = matrix_minor(m, row, col);
+	if ((row + col) % 2 == 0)
+		return (minor);
+	else
+		return (-minor);
+}

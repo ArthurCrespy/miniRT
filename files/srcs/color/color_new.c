@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   color_new.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/01/16 20:59:14 by dkeraudr         ###   ########.fr       */
+/*   Created: 2024/01/29 15:18:19 by acrespy           #+#    #+#             */
+/*   Updated: 2024/01/29 15:18:19 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_DEFINE_H
-# define MINIRT_DEFINE_H
+#include "./../../includes/miniRT.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 50
-# endif
+t_color	color_new(double r, double g, double b)
+{
+	t_color	color;
 
-# ifndef EPSILON
-#  define EPSILON 0.000001
-# endif
-
-#endif
+	color.chan_1 = r;
+	color.chan_2 = b;
+	color.chan_3 = g;
+	return (color);
+}

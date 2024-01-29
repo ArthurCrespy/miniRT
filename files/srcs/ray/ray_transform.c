@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   ray_transform.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/01/16 20:59:14 by dkeraudr         ###   ########.fr       */
+/*   Created: 2024/01/29 15:16:09 by acrespy           #+#    #+#             */
+/*   Updated: 2024/01/29 15:16:09 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_DEFINE_H
-# define MINIRT_DEFINE_H
+#include "./../../includes/miniRT.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 50
-# endif
-
-# ifndef EPSILON
-#  define EPSILON 0.000001
-# endif
-
-#endif
+t_ray	ray_transform(t_ray r, t_matrix m)
+{
+    return (ray_new(matrix_tuple_mult(m, r.origin),matrix_tuple_mult(m, r.direction)));
+}

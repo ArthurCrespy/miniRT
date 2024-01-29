@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   maxtrix_minor.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/01/16 20:59:14 by dkeraudr         ###   ########.fr       */
+/*   Created: 2024/01/29 14:50:35 by acrespy           #+#    #+#             */
+/*   Updated: 2024/01/29 14:57:35 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_DEFINE_H
-# define MINIRT_DEFINE_H
+#include "./../../includes/miniRT.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 50
-# endif
+double	matrix_minor(t_matrix m, int row, int col)
+{
+	t_matrix	m2;
 
-# ifndef EPSILON
-#  define EPSILON 0.000001
-# endif
-
-#endif
+	m2 = matrix_submatrix(m, row, col);
+	return (matrix_determinant(m2));
+}

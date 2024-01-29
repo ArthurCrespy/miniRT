@@ -78,6 +78,10 @@ void	ft_free(char **tab);
 # include "./miniRT_define.h"
 # include "./miniRT_struct.h"
 # include "./miniRT_cmd.h"
+# include "./miniRT_cmd_maths.h"
+
+void    test_tick(t_minirt *minirt);
+void    test_maths(t_minirt *minirt);
 
 // parsing
 

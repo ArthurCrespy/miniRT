@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   args_check.c                                       :+:      :+:    :+:   */
+/*   double_comparaisons.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/19 16:14:01 by acrespy           #+#    #+#             */
-/*   Updated: 2023/11/19 16:14:03 by acrespy          ###   ########.fr       */
+/*   Created: 2024/01/17 13:48:38 by acrespy           #+#    #+#             */
+/*   Updated: 2024/01/17 13:48:38 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../includes/miniRT.h"
 
-int	args_check(int argc, char **argv, char **envp)
+bool	double_equal(double nb1, double nb2)
 {
-	if (!envp[0])
-		ft_exit("Error: No environment\n", 1);
-	if (argc != 2)
-		ft_exit("Error: Wrong number of arguments\n", 1);
-	if (argv[1][0] == '0')
-		return (0);
-	file_check_ext(argv[1]);
-	file_check_path(argv[1]);
-	return (0);
+	if (nb1 - nb2 < EPSILON)
+		return (true);
+	return (false);
+}
+
+bool	double_inf(double nb1, double nb2)
+{
+	if (nb1 - nb2 < EPSILON || nb1 - nb2 > -EPSILON)
+		return (true);
+	return (false);
+}
+
+bool	double_sup(double nb1, double nb2)
+{
+	if (nb1 - nb2 > EPSILON || nb1 - nb2 < -EPSILON)
+		return (true);
+	return (false);
 }

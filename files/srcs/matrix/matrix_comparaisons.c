@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   args_check.c                                       :+:      :+:    :+:   */
+/*   matrix_comparaisons.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/19 16:14:01 by acrespy           #+#    #+#             */
-/*   Updated: 2023/11/19 16:14:03 by acrespy          ###   ########.fr       */
+/*   Created: 2024/01/29 14:43:59 by acrespy           #+#    #+#             */
+/*   Updated: 2024/01/29 14:56:28 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../includes/miniRT.h"
 
-int	args_check(int argc, char **argv, char **envp)
+bool	matrix_compare(t_matrix m1, t_matrix m2)
 {
-	if (!envp[0])
-		ft_exit("Error: No environment\n", 1);
-	if (argc != 2)
-		ft_exit("Error: Wrong number of arguments\n", 1);
-	if (argv[1][0] == '0')
-		return (0);
-	file_check_ext(argv[1]);
-	file_check_path(argv[1]);
-	return (0);
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < m1.size)
+	{
+		j = 0;
+		while (j < m1.size)
+		{
+			if (m1.matrix[i][j] != m2.matrix[i][j])
+				return (false);
+			j++;
+		}
+		i++;
+	}
+	return (true);
 }

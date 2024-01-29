@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   args_check.c                                       :+:      :+:    :+:   */
+/*   matrix_deteminant.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/19 16:14:01 by acrespy           #+#    #+#             */
-/*   Updated: 2023/11/19 16:14:03 by acrespy          ###   ########.fr       */
+/*   Created: 2024/01/29 14:49:30 by acrespy           #+#    #+#             */
+/*   Updated: 2024/01/29 14:56:47 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../includes/miniRT.h"
 
-int	args_check(int argc, char **argv, char **envp)
+double	matrix_determinant(t_matrix m)
 {
-	if (!envp[0])
-		ft_exit("Error: No environment\n", 1);
-	if (argc != 2)
-		ft_exit("Error: Wrong number of arguments\n", 1);
-	if (argv[1][0] == '0')
-		return (0);
-	file_check_ext(argv[1]);
-	file_check_path(argv[1]);
-	return (0);
+    int		i;
+    double	det;
+
+    i = 0;
+    det = 0;
+    if (m.size == 2)
+        return (m.matrix[0][0] * m.matrix[1][1] - m.matrix[0][1] * m.matrix[1][0]);
+    while (i < m.size)
+    {
+		det += (m.matrix[0][i] * matrix_cofactor(m, 0, i));
+        i++;
+    }
+    return (det);
 }

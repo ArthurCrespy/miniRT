@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   args_check.c                                       :+:      :+:    :+:   */
+/*   matrix_submatrix.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/19 16:14:01 by acrespy           #+#    #+#             */
-/*   Updated: 2023/11/19 16:14:03 by acrespy          ###   ########.fr       */
+/*   Created: 2024/01/29 14:48:47 by acrespy           #+#    #+#             */
+/*   Updated: 2024/01/29 14:57:17 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../includes/miniRT.h"
 
-int	args_check(int argc, char **argv, char **envp)
+t_matrix	matrix_submatrix(t_matrix m, int row, int col)
 {
-	if (!envp[0])
-		ft_exit("Error: No environment\n", 1);
-	if (argc != 2)
-		ft_exit("Error: Wrong number of arguments\n", 1);
-	if (argv[1][0] == '0')
-		return (0);
-	file_check_ext(argv[1]);
-	file_check_path(argv[1]);
-	return (0);
+	int			i;
+	int			j;
+	t_matrix	m2;
+
+	i = 0;
+	while (i < m.size)
+	{
+		j = 0;
+		while (j < m.size)
+		{
+			if (i != row && j != col)
+				m2.matrix[i][j] = m.matrix[i][j];
+			j++;
+		}
+		i++;
+	}
+	m2.size = m.size - 1;
+	return (m2);
 }

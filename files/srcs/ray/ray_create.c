@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   ray_create.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/01/16 20:59:14 by dkeraudr         ###   ########.fr       */
+/*   Created: 2024/01/20 13:39:12 by acrespy           #+#    #+#             */
+/*   Updated: 2024/01/20 13:39:12 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_DEFINE_H
-# define MINIRT_DEFINE_H
+#include "./../../includes/miniRT.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 50
-# endif
+t_ray	ray_new(t_point origin, t_vector direction)
+{
+    t_ray	ray;
 
-# ifndef EPSILON
-#  define EPSILON 0.000001
-# endif
-
-#endif
+    ray.origin = origin;
+    ray.direction = direction;
+    return (ray);
+}
