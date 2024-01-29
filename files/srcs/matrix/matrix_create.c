@@ -12,7 +12,7 @@
 
 #include "./../../includes/miniRT.h"
 
-t_matrix		matrix_new(double **m, int size)
+t_matrix	matrix_new(double **m, int size)
 {
 	int			i;
 	int			j;
@@ -33,11 +33,11 @@ t_matrix		matrix_new(double **m, int size)
 	return (matrix);
 }
 
-t_matrix		matrix_identity(void)
+t_matrix	matrix_identity(void)
 {
-	int 		i;
-	int 		j;
-	int 		k;
+	int			i;
+	int			j;
+	int			k;
 	t_matrix	m;
 
 	i = 0;

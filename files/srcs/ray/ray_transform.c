@@ -14,5 +14,6 @@
 
 t_ray	ray_transform(t_ray r, t_matrix m)
 {
-    return (ray_new(matrix_tuple_mult(m, r.origin),matrix_tuple_mult(m, r.direction)));
+	return (ray_new(matrix_tuple_mult(m, r.origin),
+			matrix_tuple_mult(m, r.direction)));
 }

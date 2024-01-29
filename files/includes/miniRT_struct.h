@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./miniRT_include.h"
-
 #ifndef MINIRT_STRUCT_H
 # define MINIRT_STRUCT_H
 
 # define MATRIX 4
+
+# include "./miniRT_include.h"
 
 typedef struct s_tuple
 {
@@ -72,7 +72,7 @@ typedef struct s_color
 typedef struct s_hittable
 {
 	int			id;
-	int 		type;
+	int			type;
 	t_point		center;
 	t_color		color;
 	t_vector	orientation;

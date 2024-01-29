@@ -13,31 +13,31 @@
 
 t_matrix	matrix_mult(t_matrix m1, t_matrix m2)
 {
-    int			i;
-    int			j;
-    t_matrix	m3;
+	int			i;
+	int			j;
+	t_matrix	m3;
 
-    i = 0;
-    while (i < MATRIX)
-    {
-        j = 0;
-        while (j < MATRIX)
-        {
-            m3.matrix[i][j] = m1.matrix[i][0] * m2.matrix[0][j]
-                + m1.matrix[i][1] * m2.matrix[1][j]
-                + m1.matrix[i][2] * m2.matrix[2][j]
-                + m1.matrix[i][3] * m2.matrix[3][j];
-            j++;
-        }
-        i++;
-    }
+	i = 0;
+	while (i < MATRIX)
+	{
+		j = 0;
+		while (j < MATRIX)
+		{
+			m3.matrix[i][j] = m1.matrix[i][0] * m2.matrix[0][j]
+				+ m1.matrix[i][1] * m2.matrix[1][j]
+				+ m1.matrix[i][2] * m2.matrix[2][j]
+				+ m1.matrix[i][3] * m2.matrix[3][j];
+			j++;
+		}
+		i++;
+	}
 	m3.size = m1.size;
-    return (m3);
+	return (m3);
 }
 
 t_tuple	matrix_tuple_mult(t_matrix m, t_tuple t)
 {
-    int		i;
+	int		i;
 	double	result[MATRIX];
 
 	i = 0;

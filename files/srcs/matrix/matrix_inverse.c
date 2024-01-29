@@ -19,13 +19,13 @@ bool	matrix_invertible(t_matrix m)
 
 t_matrix	matrix_inverse(t_matrix m)
 {
-    int			i;
-    int			j;
-    double		det;
-    t_matrix	m2;
+	int			i;
+	int			j;
+	double		det;
+	t_matrix	m2;
 
-    if (!matrix_invertible(m))
-	    return (matrix_identity());
+	if (!matrix_invertible(m))
+		return (matrix_identity());
 	det = matrix_determinant(m);
 	i = 0;
 	while (i < m.size)

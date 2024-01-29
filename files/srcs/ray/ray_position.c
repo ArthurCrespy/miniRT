@@ -14,5 +14,5 @@
 
 t_point	ray_position(t_ray ray, double t)
 {
-    return (tuple_add(ray.origin, tuple_mult(ray.direction, t)));
+	return (tuple_add(ray.origin, tuple_mult(ray.direction, t)));
 }

@@ -45,6 +45,7 @@ int	ft_parse_camera(t_scene *scene, char *line)
 	scene->camera = camera;
 	ft_free_2d_list(tab);
 	return (1);
+}
+
 	// todo: add check for fov value
 	// todo: add check for orientation value (normalized vector)
-}

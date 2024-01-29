@@ -14,12 +14,12 @@
 
 t_matrix	matrix_transpose(t_matrix m)
 {
-    int			i;
-    int			j;
-    t_matrix	m2;
+	int			i;
+	int			j;
+	t_matrix	m2;
 
-    i = 0;
-    while (i < m.size)
+	i = 0;
+	while (i < m.size)
 	{
 		j = 0;
 		while (j < m.size)
@@ -30,5 +30,5 @@ t_matrix	matrix_transpose(t_matrix m)
 		i++;
 	}
 	m2.size = m.size;
-    return (m2);
+	return (m2);
 }

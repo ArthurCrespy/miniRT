@@ -47,32 +47,32 @@ void	ft_exit(char *msg, int status);
 void	ft_free(char **tab);
 
 //char	*get_next_line(int fd);
-//
+
 //void	ft_putchar(char c);
 //void	ft_putstr(char *str);
 //void	ft_putnbr(int n);
-//
-//int		ft_strlen(const char *str);
-//int		ft_strncmp(char *s1, char *s2, int i);
+
+//int	ft_strlen(const char *str);
+//int	ft_strncmp(char *s1, char *s2, int i);
 //char	*ft_strchr(const char *string, int c);
 //char	*ft_strdup(char *str);
 //char	*ft_strjoin(char const *s1, char const *s2);
 
-void    test_tick(t_minirt *minirt);
-void    test_maths(t_minirt *minirt);
+void	test_tick(t_minirt *minirt);
+void	test_maths(t_minirt *minirt);
 
 // parsing
 
-int	ft_parse_rt_file(t_scene *scene, char *file);
-int	ft_parse_sphere(t_scene *scene, char *line);
-int	ft_parse_plane(t_scene *scene, char *line);
-int	ft_parse_cylinder(t_scene *scene, char *line);
-int	ft_parse_camera(t_scene *scene, char *line);
-int	ft_parse_light(t_scene *scene, char *line);
-int	ft_parse_ambient(t_scene *scene, char *line);
-int	ft_parse_color(char *line, t_color *color);
-int	ft_parse_point(char *line, t_point *point);
-int	ft_parse_vector(char *line, t_vector *vector);
+int		ft_parse_rt_file(t_scene *scene, char *file);
+int		ft_parse_sphere(t_scene *scene, char *line);
+int		ft_parse_plane(t_scene *scene, char *line);
+int		ft_parse_cylinder(t_scene *scene, char *line);
+int		ft_parse_camera(t_scene *scene, char *line);
+int		ft_parse_light(t_scene *scene, char *line);
+int		ft_parse_ambient(t_scene *scene, char *line);
+int		ft_parse_color(char *line, t_color *color);
+int		ft_parse_point(char *line, t_point *point);
+int		ft_parse_vector(char *line, t_vector *vector);
 
 // utils
 

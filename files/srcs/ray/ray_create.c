@@ -14,9 +14,9 @@
 
 t_ray	ray_new(t_point origin, t_vector direction)
 {
-    t_ray	ray;
+	t_ray	ray;
 
-    ray.origin = origin;
-    ray.direction = direction;
-    return (ray);
+	ray.origin = origin;
+	ray.direction = direction;
+	return (ray);
 }

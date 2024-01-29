@@ -12,7 +12,7 @@
 
 #include "./../../includes/miniRT.h"
 
-double			matrix_cofactor(t_matrix m, int row, int col)
+double	matrix_cofactor(t_matrix m, int row, int col)
 {
 	double		minor;
 
