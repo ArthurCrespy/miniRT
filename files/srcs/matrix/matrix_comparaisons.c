@@ -14,8 +14,8 @@
 
 bool	matrix_compare(t_matrix m1, t_matrix m2)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	while (i < m1.size)

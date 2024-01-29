@@ -23,12 +23,12 @@ t_tuple	tuple_new(double x, double y, double z, double w)
     return (t);
 }
 
-t_point	point_new(double x, double y, double z)
+t_tuple	point_new(double x, double y, double z)
 {
     return (tuple_new(x, y, z, 1.0));
 }
 
-t_vector	vector_new(double x, double y, double z)
+t_tuple	vector_new(double x, double y, double z)
 {
     return (tuple_new(x, y, z, 0.0));
 }

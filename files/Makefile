@@ -12,11 +12,6 @@
 
 NAME        := miniRT
 
-LIBFT_DIR	:= libft
-LIBFT		:= $(LIBFT_DIR)/libft.a
-
-INC_DIR		= includes
-
 SRC_DIR     := srcs
 SRCS := \
 			main.c \
@@ -77,6 +72,11 @@ INCL_DIR     := includes
 MLX_DIR     := minilibx-linux
 MLX         := $(MLX_DIR)/libmlx.a
 
+LIBFT_DIR	:= libft
+LIBFT		:= $(LIBFT_DIR)/libft.a
+
+LIB_FLAGS   := -lm
+
 OS_NAME := $(shell uname -s | tr A-Z a-z)
 
 CC          := clang
@@ -107,13 +107,13 @@ ${MLX}:
 	${MAKE} all -C ${MLX_DIR}
 
 ${NAME}: ${MLX} ${LIBFT} ${OBJS}
-	${CC} ${OBJS} ${LIBFT} ${MLX_LINK} -o ${NAME}
+	${CC} ${OBJS} ${LIBFT} ${MLX_LINK} ${LIB_FLAGS} -o ${NAME}
 	${info EXECUTABLE CREATED: ${NAME}}
 
 
 ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c
 	${DIR_DUP}
-	${CC} ${CFLAGS} ${MLX_INCL} -I$(INC_DIR) -c -o $@ $<
+	${CC} ${CFLAGS} ${MLX_INCL} -c -o $@ $<
 	${info OBJECT CREATED: $@}
 
 clean:

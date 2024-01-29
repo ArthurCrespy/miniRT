@@ -32,7 +32,7 @@ double  tuple_dot(t_tuple t1, t_tuple t2)
 
 t_tuple tuple_cross(t_tuple t1, t_tuple t2)
 {
-    return (tuple_new_vector(t1.y * t2.z - t1.z * t2.y,
+    return (vector_new(t1.y * t2.z - t1.z * t2.y,
                        t1.z * t2.x - t1.x * t2.z,
                        t1.x * t2.y - t1.y * t2.x));
 }

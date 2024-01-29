@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "./../../includes/miniRT.h"
 
 void	free_parse_camera(t_camera *camera, char **tab)
 {

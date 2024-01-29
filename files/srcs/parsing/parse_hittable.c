@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "./../../includes/miniRT.h"
 
 void	free_parse_hittable(t_hittable *hittable, char **tab, int id)
 {

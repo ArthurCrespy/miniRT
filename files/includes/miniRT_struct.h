@@ -38,7 +38,7 @@ typedef struct s_ray
 typedef struct s_matrix
 {
 	double	matrix[MATRIX][MATRIX];
-	size_t	size;
+	int		size;
 }	t_matrix;
 
 typedef struct s_shearing

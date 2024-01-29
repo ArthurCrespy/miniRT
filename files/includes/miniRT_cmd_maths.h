@@ -34,7 +34,7 @@ double			matrix_cofactor(t_matrix m, int row, int col);
 
 bool			matrix_compare(t_matrix m1, t_matrix m2);
 
-t_matrix		matrix_new(double **m, size_t size);
+t_matrix		matrix_new(double **m, int size);
 t_matrix		matrix_identity(void);
 
 double			matrix_determinant(t_matrix m);
@@ -73,8 +73,8 @@ t_matrix		matrix_shearing(t_shearing x, t_shearing y, t_shearing z);
 /* -- */
 
 t_tuple			tuple_new(double x, double y, double z, double w);
-t_tuple			tuple_new_point(double x, double y, double z);
-t_tuple			tuple_new_vector(double x, double y, double z);
+t_tuple			point_new(double x, double y, double z);
+t_tuple			vector_new(double x, double y, double z);
 
 bool			tuple_equal(t_tuple t1, t_tuple t2);
 bool			tuple_inf(t_tuple t1, t_tuple t2);
@@ -91,9 +91,5 @@ t_tuple			tuple_norm(t_tuple t1);
 double			tuple_dot(t_tuple t1, t_tuple t2);
 t_tuple			tuple_cross(t_tuple t1, t_tuple t2);
 t_tuple			tuple_reflect(t_tuple t, t_tuple normal);
-
-
-
-
 
 #endif

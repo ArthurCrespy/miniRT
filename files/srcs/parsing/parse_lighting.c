@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "./../../includes/miniRT.h"
 
 void	free_parse_light(t_light *light, char **tab)
 {

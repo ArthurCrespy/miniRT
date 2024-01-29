@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "./../../includes/miniRT.h"
 
 int	ft_parse_line(t_scene *scene, char *line)
 {
