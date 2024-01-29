@@ -5,39 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 13:27:04 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/20 13:27:04 by acrespy          ###   ########.fr       */
+/*   Created: 2024/01/29 14:52:59 by acrespy           #+#    #+#             */
+/*   Updated: 2024/01/29 14:57:21 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../includes/miniRT.h"
 
-t_matrix_4	matrix_4_translation(t_vector v)
+t_matrix	matrix_translation(double x, double y, double z)
 {
-	t_matrix_4	m;
+	t_matrix	m;
 
-	m = matrix_4_new();
-	m.m[0][0] = 1;
-	m.m[0][3] = v.x;
-	m.m[1][1] = 1;
-	m.m[1][3] = v.y;
-	m.m[2][2] = 1;
-	m.m[2][3] = v.z;
-	m.m[3][3] = 1;
-	return (m);
-}
-
-t_matrix_4	matrix_4_translation_inv(t_vector v)
-{
-	t_matrix_4	m;
-
-	m = matrix_4_new();
-	m.m[0][0] = 1;
-	m.m[0][3] = -v.x;
-	m.m[1][1] = 1;
-	m.m[1][3] = -v.y;
-	m.m[2][2] = 1;
-	m.m[2][3] = -v.z;
-	m.m[3][3] = 1;
+	m = matrix_identity();
+	m.matrix[0][3] = x;
+	m.matrix[1][3] = y;
+	m.matrix[2][3] = z;
 	return (m);
 }

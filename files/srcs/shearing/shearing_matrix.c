@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   point_scalar.c                                     :+:      :+:    :+:   */
+/*   shearing_matrix.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/17 13:50:51 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/17 13:50:51 by acrespy          ###   ########.fr       */
+/*   Created: 2024/01/29 14:47:46 by acrespy           #+#    #+#             */
+/*   Updated: 2024/01/29 14:57:47 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../includes/miniRT.h"
 
-t_point	point_scale(t_point v1, double scale)
+t_matrix	matrix_shearing(t_shearing x, t_shearing y, t_shearing z)
 {
-	t_point	v3;
+	t_matrix	m;
 
-	v3.x = v1.x * scale;
-	v3.y = v1.y * scale;
-	v3.z = v1.z * scale;
-	return (v3);
-}
-
-t_point	point_unscale(t_point v1, double scale)
-{
-	t_point	v3;
-
-	v3.x = v1.x / scale;
-	v3.y = v1.y / scale;
-	v3.z = v1.z / scale;
-	return (v3);
+	m = matrix_identity();
+	m.matrix[0][1] = x.p1;
+	m.matrix[0][2] = x.p2;
+	m.matrix[1][0] = y.p1;
+	m.matrix[1][2] = y.p2;
+	m.matrix[2][0] = z.p1;
+	m.matrix[2][1] = z.p2;
+	return (m);
 }

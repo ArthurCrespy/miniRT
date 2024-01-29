@@ -1,48 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrix_determinant.c                               :+:      :+:    :+:   */
+/*   matrix_inverse.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 11:22:44 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/20 11:22:44 by acrespy          ###   ########.fr       */
+/*   Created: 2024/01/29 14:37:48 by acrespy           #+#    #+#             */
+/*   Updated: 2024/01/29 14:56:53 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../includes/miniRT.h"
 
-double	matrix_4_determinant(t_matrix_4 m)
+bool	matrix_invertible(t_matrix m)
 {
-	int			i;
-	double		det;
-
-	i = 0;
-	det = 0;
-	while (i < 4)
-	{
-		det += m.m[0][i] * matrix_4_cofactor(m, 0, i);
-		i++;
-	}
-	return (det);
+	return (matrix_determinant(m) != 0);
 }
 
-double	matrix_3_determinant(t_matrix_3 m)
+t_matrix	matrix_inverse(t_matrix m)
 {
-	int			i;
-	double		det;
+    int			i;
+    int			j;
+    double		det;
+    t_matrix	m2;
 
+    if (!matrix_invertible(m))
+	    return (matrix_identity());
+	det = matrix_determinant(m);
 	i = 0;
-	det = 0;
-	while (i < 3)
+	while (i < m.size)
 	{
-		det += m.m[0][i] * matrix_3_cofactor(m, 0, i);
+		j = 0;
+		while (j < m.size)
+		{
+			m2.matrix[i][j] = matrix_cofactor(m, i, j) / det;
+			j++;
+		}
 		i++;
 	}
-	return (det);
-}
-
-double	matrix_2_determinant(t_matrix_2 m)
-{
-	return (m.m[0][0] * m.m[1][1] - m.m[0][1] * m.m[1][0]);
+	m2.size = m.size;
+	return (matrix_transpose(m2));
 }

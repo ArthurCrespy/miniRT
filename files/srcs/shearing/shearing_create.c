@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector_point_operations.c                          :+:      :+:    :+:   */
+/*   shearing_create.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 10:11:28 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/20 10:11:28 by acrespy          ###   ########.fr       */
+/*   Created: 2024/01/29 14:47:00 by acrespy           #+#    #+#             */
+/*   Updated: 2024/01/29 14:57:42 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../includes/miniRT.h"
 
-t_vector	point_point_sub(t_point p1, t_point p2)
+t_shearing	shearing_new(double p1, double p2)
 {
-	t_vector	res;
+	t_shearing	s;
 
-	res.x = p1.x - p2.x;
-	res.y = p1.y - p2.y;
-	res.z = p1.z - p2.z;
-	return (res);
+	s.p1 = p1;
+	s.p2 = p2;
+	return (s);
 }

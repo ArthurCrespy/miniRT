@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrix_reflection.c                                :+:      :+:    :+:   */
+/*   ray_transform.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 13:29:10 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/20 13:29:10 by acrespy          ###   ########.fr       */
+/*   Created: 2024/01/29 15:16:09 by acrespy           #+#    #+#             */
+/*   Updated: 2024/01/29 15:16:09 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../includes/miniRT.h"
 
-t_matrix_4	matrix_4_reflection(t_vector v)
+t_ray	ray_transform(t_ray r, t_matrix m)
 {
-	t_matrix_4	m;
-
-	m = matrix_4_new();
-	m.m[0][0] = 1 - 2 * v.x * v.x;
-	m.m[0][1] = -2 * v.x * v.y;
-	m.m[0][2] = -2 * v.x * v.z;
-	m.m[1][0] = -2 * v.y * v.x;
-	m.m[1][1] = 1 - 2 * v.y * v.y;
-	m.m[1][2] = -2 * v.y * v.z;
-	m.m[2][0] = -2 * v.z * v.x;
-	m.m[2][1] = -2 * v.z * v.y;
-	m.m[2][2] = 1 - 2 * v.z * v.z;
-	m.m[3][3] = 1;
-	return (m);
+    return (ray_new(matrix_tuple_mult(m, r.origin),matrix_tuple_mult(m, r.direction)));
 }
