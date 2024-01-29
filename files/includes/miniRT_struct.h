@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "./miniRT_include.h"
+
 #ifndef MINIRT_STRUCT_H
 # define MINIRT_STRUCT_H
 
@@ -75,6 +77,7 @@ typedef struct s_hittable
 	t_color		color;
 	t_vector	orientation;
 	double		radius;
+	double		diameter;
 	double		height;
 }				t_hittable;
 
@@ -92,7 +95,7 @@ typedef struct s_light
 	t_color	color;
 }				t_light;
 
-typedef struct s_ambiant
+typedef struct s_ambient
 {
 	double	brightness;
 	t_color	color;
@@ -100,7 +103,7 @@ typedef struct s_ambiant
 
 typedef struct s_scene
 {
-	t_ambiant	*ambiant;
+	t_ambient	*ambient;
 	t_list		*lights;
 	t_list		*objects;
 	t_camera	*camera;

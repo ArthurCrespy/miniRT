@@ -14,32 +14,58 @@ NAME        := miniRT
 
 LIBFT_DIR	:= libft
 LIBFT		:= $(LIBFT_DIR)/libft.a
-INC_DIR		= includes/
+
+INC_DIR		= includes
+
 SRC_DIR     := srcs
 SRCS := \
+			main.c \
 			args/args_check.c \
+			color/color_new.c \
+			color/color_operations.c \
 			data/data_free.c \
 			data/data_initialize.c \
+			double/double_comparaisons.c \
 			events/event_key.c \
 			events/event_resize.c \
 			file/file_check.c \
 			file/file_save.c \
+			matrix/matrix_cofactor.c \
+			matrix/matrix_comparaisons.c \
+			matrix/matrix_create.c \
+			matrix/matrix_determinant.c \
+			matrix/matrix_inverse.c \
+			matrix/matrix_minor.c \
+			matrix/matrix_operations.c \
+			matrix/matrix_rotation.c \
+			matrix/matrix_scale.c \
+			matrix/matrix_submatrix.c \
+			matrix/matrix_translation.c \
+			matrix/matrix_transpose.c \
 			mlx/mlx_exit.c \
 			mlx/mlx_initialize.c \
 			mlx/mlx_loop.c \
 			mlx/mlx_render.c \
-			parsing/parsing.c \
 			parsing/parse_camera.c \
 			parsing/parse_hittable.c \
 			parsing/parse_lighting.c \
 			parsing/parse_subcomponents.c \
-			utils/ft_print.c \
+			parsing/parsing.c \
+			ray/ray_create.c \
+			ray/ray_position.c \
+			ray/ray_transform.c \
+			shearing/shearing_create.c \
+			shearing/shearing_matrix.c \
+			tuple/tuple_functions.c \
+			tuple/tuple_new.c \
+			tuple/tuple_operations.c \
+			utils/ft_calloc.c \
 			utils/ft_exit.c \
 			utils/ft_free.c \
 			utils/ft_gnl.c \
+			utils/ft_print.c \
 			utils/ft_put.c \
-			utils/ft_str.c \
-			main.c
+			utils/ft_str.c
 
 SRCS := ${SRCS:%=${SRC_DIR}/%}
 
