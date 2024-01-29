@@ -1,3 +1,6 @@
 [submodule "files/libft"]
 	path = files/libft
 	url = https://github.com/dkeraudren/libft_42.git
+[submodule "files/minilibx-linux"]
+	path = files/minilibx-linux
+	url = https://github.com/42Paris/minilibx-linux.git

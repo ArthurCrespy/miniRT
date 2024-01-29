@@ -14,7 +14,6 @@
 
 int	event_resize(t_minirt *data)
 {
-	// ?
 	mlx_render_frame(data);
 	return (0);
 }
