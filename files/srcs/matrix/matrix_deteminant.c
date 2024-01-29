@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrix_scalar.c                                    :+:      :+:    :+:   */
+/*   matrix_deteminant.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 13:30:12 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/20 13:30:12 by acrespy          ###   ########.fr       */
+/*   Created: 2024/01/29 14:49:30 by acrespy           #+#    #+#             */
+/*   Updated: 2024/01/29 14:56:47 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../includes/miniRT.h"
 
-t_matrix_4	matrix_4_scale(t_vector v, double scale)
+double	matrix_determinant(t_matrix m)
 {
-	t_matrix_4	m;
+    int		i;
+    double	det;
 
-	m = matrix_4_new();
-	m.m[0][0] = v.x * scale;
-	m.m[1][1] = v.y * scale;
-	m.m[2][2] = v.z * scale;
-	m.m[3][3] = 1;
-	return (m);
-}
-
-t_matrix_4	matrix_4_unscale(t_vector v, double scale)
-{
-	t_matrix_4	m;
-
-	m = matrix_4_new();
-	m.m[0][0] = v.x / scale;
-	m.m[1][1] = v.y / scale;
-	m.m[2][2] = v.z / scale;
-	m.m[3][3] = 1;
-	return (m);
+    i = 0;
+    det = 0;
+    if (m.size == 2)
+        return (m.matrix[0][0] * m.matrix[1][1] - m.matrix[0][1] * m.matrix[1][0]);
+    while (i < m.size)
+    {
+		det += (m.matrix[0][i] * matrix_cofactor(m, 0, i));
+        i++;
+    }
+    return (det);
 }

@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   point_scalar.c                                     :+:      :+:    :+:   */
+/*   matrix_scale.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/17 13:50:51 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/17 13:50:51 by acrespy          ###   ########.fr       */
+/*   Created: 2024/01/29 14:53:37 by acrespy           #+#    #+#             */
+/*   Updated: 2024/01/29 14:57:12 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../includes/miniRT.h"
 
-t_point	point_scale(t_point v1, double scale)
+t_matrix	matrix_scale(double x, double y, double z)
 {
-	t_point	v3;
+	t_matrix	m;
 
-	v3.x = v1.x * scale;
-	v3.y = v1.y * scale;
-	v3.z = v1.z * scale;
-	return (v3);
-}
-
-t_point	point_unscale(t_point v1, double scale)
-{
-	t_point	v3;
-
-	v3.x = v1.x / scale;
-	v3.y = v1.y / scale;
-	v3.z = v1.z / scale;
-	return (v3);
+	m = matrix_identity();
+	m.matrix[0][0] = x;
+	m.matrix[1][1] = y;
+	m.matrix[2][2] = z;
+	return (m);
 }

@@ -13,6 +13,8 @@
 #ifndef MINIRT_STRUCT_H
 # define MINIRT_STRUCT_H
 
+# define MATRIX 4
+
 typedef struct s_tuple
 {
 	double	x;
@@ -33,7 +35,7 @@ typedef struct s_ray
 
 typedef struct s_matrix
 {
-	double	matrix[4][4];
+	double	matrix[MATRIX][MATRIX];
 	size_t	size;
 }	t_matrix;
 

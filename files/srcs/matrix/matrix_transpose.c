@@ -5,30 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 11:38:11 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/20 11:38:11 by acrespy          ###   ########.fr       */
+/*   Created: 2024/01/29 14:44:43 by acrespy           #+#    #+#             */
+/*   Updated: 2024/01/29 14:57:26 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../includes/miniRT.h"
 
-t_matrix_4	matrix_4_transpose(t_matrix_4 m)
+t_matrix	matrix_transpose(t_matrix m)
 {
-	int			i;
-	int			j;
-	t_matrix_4	m2;
+    int			i;
+    int			j;
+    t_matrix	m2;
 
-	i = 0;
-	m2 = matrix_4_new();
-	while (i < 4)
+    i = 0;
+    while (i < m.size)
 	{
 		j = 0;
-		while (j < 4)
+		while (j < m.size)
 		{
-			m2.m[i][j] = m.m[j][i];
+			m2.matrix[i][j] = m.matrix[j][i];
 			j++;
 		}
 		i++;
 	}
-	return (m2);
+	m2.size = m.size;
+    return (m2);
 }

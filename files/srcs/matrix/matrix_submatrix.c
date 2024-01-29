@@ -5,57 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 11:22:06 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/20 11:22:06 by acrespy          ###   ########.fr       */
+/*   Created: 2024/01/29 14:48:47 by acrespy           #+#    #+#             */
+/*   Updated: 2024/01/29 14:57:17 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../../includes/miniRT.h"
 
-t_matrix_3	matrix_4_sub(t_matrix_4 m, int row, int col)
+t_matrix	matrix_submatrix(t_matrix m, int row, int col)
 {
 	int			i;
 	int			j;
-	t_matrix_3	sub;
+	t_matrix	m2;
 
 	i = 0;
-	while (i < 4)
+	while (i < m.size)
 	{
-		if (i != row)
+		j = 0;
+		while (j < m.size)
 		{
-			j = 0;
-			while (j < 4)
-			{
-				if (j != col)
-					sub.m[i][j] = m.m[i][j];
-				j++;
-			}
+			if (i != row && j != col)
+				m2.matrix[i][j] = m.matrix[i][j];
+			j++;
 		}
 		i++;
 	}
-	return (sub);
-}
-
-t_matrix_2	matrix_3_sub(t_matrix_3 m, int row, int col)
-{
-	int			i;
-	int			j;
-	t_matrix_2	sub;
-
-	i = 0;
-	while (i < 3)
-	{
-		if (i != row)
-		{
-			j = 0;
-			while (j < 3)
-			{
-				if (j != col)
-					sub.m[i][j] = m.m[i][j];
-				j++;
-			}
-		}
-		i++;
-	}
-	return (sub);
+	m2.size = m.size - 1;
+	return (m2);
 }
