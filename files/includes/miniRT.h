@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:31:24 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/28 19:37:51 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/01/31 19:26:02 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,13 @@ t_vector	vector_div(t_vector v1, t_vector v2);
 double		vector_dot(t_vector v1, t_vector v2);
 t_point		point_from_vector(t_vector v);
 t_vector	vector_from_point(t_point p);
+
+// point
+t_point	point_add(t_point v1, t_point v2);
+t_point	point_sub(t_point v1, t_point v2);
+t_point	point_mult(t_point v1, t_point v2);
+t_point	point_div(t_point v1, t_point v2);
+
 // utils
 
 void	ft_print_scene(t_scene *scene);

@@ -6,7 +6,7 @@
 #    By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 14:54:39 by acrespy           #+#    #+#              #
-#    Updated: 2024/01/28 19:19:25 by dkeraudr         ###   ########.fr        #
+#    Updated: 2024/01/31 19:27:29 by dkeraudr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRCS := \
 			image/trgb_utils.c \
 			vector/operations.c \
 			vector/creation.c \
+			point/operations.c\
 			engine/viewport.c \
 			main.c
 

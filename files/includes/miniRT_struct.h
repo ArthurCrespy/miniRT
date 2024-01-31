@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/01/28 18:55:05 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/01/31 19:14:40 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ typedef struct s_point {
 	double	y;
 	double	z;
 }				t_point;
+
+typedef struct s_ray {
+	t_point		*origin;
+	t_vector	*direction;
+}				t_ray;
 
 typedef struct s_hittable {
 	int			id;
