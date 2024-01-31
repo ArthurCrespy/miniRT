@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 21:07:41 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/01/24 22:03:44 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/01/31 20:21:04 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	ft_parse_point(char *line, t_point *point)
 	tab = ft_split(line, ',');
 	if (!tab)
 		return (ft_error(ERROR_MALLOC), 0);
-	if (ft_tablen(tab) != 3 || ft_isfloat(tab[0])
-		|| ft_isfloat(tab[1]) || ft_isfloat(tab[2]))
+	if (ft_tablen(tab) != 3 || !ft_isfloat(tab[0])
+		|| !ft_isfloat(tab[1]) || !ft_isfloat(tab[2]))
 	{
 		ft_free_2d_list(tab);
 		ft_error(ERROR_PARSING_POINT);
@@ -40,8 +40,8 @@ int	ft_parse_color(char *line, t_color *color)
 	tab = ft_split(line, ',');
 	if (!tab)
 		return (ft_error(ERROR_MALLOC), 0);
-	if (ft_tablen(tab) != 3 || ft_isfloat(tab[0])
-		|| ft_isfloat(tab[1]) || ft_isfloat(tab[2]))
+	if (ft_tablen(tab) != 3 || !ft_isint(tab[0])
+		|| !ft_isint(tab[1]) || !ft_isint(tab[2]))
 	{
 		ft_free_2d_list(tab);
 		ft_error(ERROR_PARSING_COLOR);
@@ -61,8 +61,8 @@ int	ft_parse_vector(char *line, t_vector *vector)
 	tab = ft_split(line, ',');
 	if (!tab)
 		return (ft_error(ERROR_MALLOC), 0);
-	if (ft_tablen(tab) != 3 || ft_isfloat(tab[0])
-		|| ft_isfloat(tab[1]) || ft_isfloat(tab[2]))
+	if (ft_tablen(tab) != 3 || !ft_isfloat(tab[0])
+		|| !ft_isfloat(tab[1]) || !ft_isfloat(tab[2]))
 	{
 		ft_free_2d_list(tab);
 		ft_error(ERROR_PARSING_VECTOR);

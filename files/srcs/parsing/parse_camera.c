@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 22:01:44 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/01/24 22:12:09 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/01/31 20:21:30 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_parse_camera(t_scene *scene, char *line)
 		return (free_parse_camera(camera, tab), 0);
 	if (!ft_isint(tab[3]))
 		return (free_parse_camera(camera, tab), 0);
-	camera->fov = ft_atoi(tab[3]);
+	camera->fov = ft_atof(tab[3]);
 	scene->camera = camera;
 	ft_free_2d_list(tab);
 	return (1);
