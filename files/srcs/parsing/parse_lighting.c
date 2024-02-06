@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 22:05:20 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/01/24 22:37:37 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/06 20:29:37 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,5 @@ int	ft_parse_ambient(t_scene *scene, char *line)
 		return (free_parse_ambient(ambient, tab), 0);
 	scene->ambient = ambient;
 	ft_free_2d_list(tab);
-	free(ambient);
 	return (1);
 }
