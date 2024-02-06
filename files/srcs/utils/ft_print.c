@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:38:59 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/01/18 21:46:46 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/06 20:19:46 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_print_camera(t_camera *camera)
 	ft_print_point(camera->center);
 	printf("orientation: ");
 	ft_print_vector(camera->orientation);
-	printf("fov: %d\n", camera->fov);
+	printf("fov: %f\n", camera->fov);
 }
 
 void	ft_print_light(t_light *light)
