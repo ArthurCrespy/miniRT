@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 18:30:53 by acrespy           #+#    #+#             */
-/*   Updated: 2024/02/06 20:45:05 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/06 20:46:45 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	main(int argc, char **argv, char **envp)
 	data_initialize(&minirt);
 	args_check(argc, argv, envp);
 //	file_save(&minirt, argv[1]);
+	if (!init_minirt(&minirt))
+		return (0);
 	if (!ft_parse_rt_file(minirt.scene, argv[1]))
 	{
 		data_free(&minirt);
@@ -44,8 +46,6 @@ int	main(int argc, char **argv, char **envp)
 	mlx_hook_loop(&minirt);
 	mlx_free(&minirt);
 	data_free(&minirt);
-	if (!init_minirt(&minirt))
-		return (0);
 	ft_print_scene(minirt.scene);
 	// mlx_initialize_win(&minirt);
 	// mlx_hook_loop(&minirt);
