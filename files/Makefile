@@ -6,7 +6,7 @@
 #    By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 14:54:39 by acrespy           #+#    #+#              #
-#    Updated: 2024/01/24 22:46:22 by dkeraudr         ###   ########.fr        #
+#    Updated: 2024/02/11 19:38:47 by dkeraudr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,15 +59,23 @@ SRCS := \
 			utils/ft_free.c \
 			utils/ft_gnl.c \
 			utils/ft_print.c \
-			utils/ft_put.c \
-			utils/ft_str.c
 
 SRCS := ${SRCS:%=${SRC_DIR}/%}
 
+TEST_SRCS := \
+			tests/do_tests.c \
+			tests/test_sphere_intersection.c \
+
+TEST_SRCS := ${TEST_SRCS:%=${SRC_DIR}/%}
+
 OBJ_DIR     := .objs
 OBJS := ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
+TEST_OBJS  := ${TEST_SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 
 INCL_DIR     := includes
+MAIN_HEADER := ${INCL_DIR}/miniRT.h
+
+INCL_FLAGS  := -I${INCL_DIR}
 
 MLX_DIR     := minilibx-linux
 MLX         := $(MLX_DIR)/libmlx.a
@@ -75,12 +83,20 @@ MLX         := $(MLX_DIR)/libmlx.a
 LIBFT_DIR	:= libft
 LIBFT		:= $(LIBFT_DIR)/libft.a
 
-LIB_FLAGS   := -lm
+LDFLAGS := -L./libft/
+LDLIBS  := -lft
+
+LIB_FLAGS   := $(LDFLAGS) $(LDLIBS) -lm
 
 OS_NAME := $(shell uname -s | tr A-Z a-z)
 
 CC          := clang
 CFLAGS      := -Wall -Wextra -Werror
+
+# if test remove -Werror
+ifeq ($(MAKECMDGOALS),test)
+	CFLAGS := -Wall -Wextra
+endif
 
 ifeq ($(OS_NAME),linux)
 	MLX_LINK	:= -L$(MLX_DIR) -lmlx -lX11 -lXext
@@ -98,6 +114,9 @@ DIR_DUP     = mkdir -p ${@D}
 
 all: ${NAME}
 
+test: ${MLX} ${LIBFT} ${TEST_OBJS} ${OBJS}
+	${CC} ${TEST_OBJS} ${OBJS} -lcunit ${LIB_FLAGS} ${MLX_LINK} -o test
+
 ${LIBFT}:
 	git submodule update --init
 	${MAKE} all -C ${LIBFT_DIR}
@@ -107,23 +126,30 @@ ${MLX}:
 	${MAKE} all -C ${MLX_DIR}
 
 ${NAME}: ${MLX} ${LIBFT} ${OBJS}
-	${CC} ${OBJS} ${LIBFT} ${MLX_LINK} ${LIB_FLAGS} -o ${NAME}
+	${CC} ${OBJS} ${MLX_LINK} ${LIB_FLAGS} -o ${NAME}
 	${info EXECUTABLE CREATED: ${NAME}}
 
 
 ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c
 	${DIR_DUP}
-	${CC} ${CFLAGS} ${MLX_INCL} -c -o $@ $<
+	${CC} ${CFLAGS} ${MLX_INCL} $(INCL_FLAGS) -c -o $@ $<
 	${info OBJECT CREATED: $@}
+
+# $(TEST_OBJS): %.o: %.c
+# 	${DIR_DUP}
+# 	${CC} ${CFLAGS} -c -o $@ $<
+# 	$(info OBJECT CREATED: $@)
 
 clean:
 	${RM} ${OBJS}
+	${RM} ${TEST_OBJS}
 	make clean -C ${LIBFT_DIR}
 	make clean -C ${MLX_DIR}
 	${info REMOVED OBJECTS: ${OBJS}}
 
 fclean: clean
 	${RM} ${NAME}
+	${RM} test
 	make fclean -C ${LIBFT_DIR}
 	${info REMOVED EXECUTABLES: ${NAME}}
 
@@ -131,5 +157,9 @@ re:
 	${MAKE} fclean
 	${MAKE} all
 
-.PHONY: clean fclean re
+retest:
+	${MAKE} fclean
+	${MAKE} test
+
+.PHONY: clean fclean re all test retest
 .SILENT: ${NAME} ${SRCS} ${OBJS} ${LIBFT} all clean fclean re
