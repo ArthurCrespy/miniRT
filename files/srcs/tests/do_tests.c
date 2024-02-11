@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 16:34:21 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/11 19:37:40 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/11 19:58:00 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ int	do_tests(void)
 	}
 	
 	if (NULL == CU_add_test(suite, "sphere_intersect_01", do_sphere_intersect_01))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+	
+	if (NULL == CU_add_test(suite, "sphere_intersect_02", do_sphere_intersect_02))
 	{
 		CU_cleanup_registry();
 		return CU_get_error();

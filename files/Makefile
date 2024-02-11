@@ -6,7 +6,7 @@
 #    By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 14:54:39 by acrespy           #+#    #+#              #
-#    Updated: 2024/02/11 19:38:47 by dkeraudr         ###   ########.fr        #
+#    Updated: 2024/02/11 20:07:06 by dkeraudr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,7 @@ SRCS := \
 			utils/ft_free.c \
 			utils/ft_gnl.c \
 			utils/ft_print.c \
+			intersections/sphere_intersection.c \
 
 SRCS := ${SRCS:%=${SRC_DIR}/%}
 

@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 19:33:55 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/11 19:37:27 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/11 19:57:45 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 # include <CUnit/Basic.h>
 # include "miniRT.h"
 
-int	do_sphere_intersect_00(void);
-int	do_sphere_intersect_01(void);
+void	do_sphere_intersect_00(void);
+void	do_sphere_intersect_01(void);
+void	do_sphere_intersect_02(void);
 
 #endif
