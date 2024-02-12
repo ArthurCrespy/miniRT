@@ -6,7 +6,7 @@
 #    By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 14:54:39 by acrespy           #+#    #+#              #
-#    Updated: 2024/02/12 20:17:50 by dkeraudr         ###   ########.fr        #
+#    Updated: 2024/02/12 20:39:05 by dkeraudr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,12 +61,14 @@ SRCS := \
 			utils/ft_print.c \
 			intersections/sphere_intersection.c \
 			intersections/intersect.c \
+			intersections/hit.c \
 
 SRCS := ${SRCS:%=${SRC_DIR}/%}
 
 TEST_SRCS := \
 			tests/do_tests.c \
 			tests/test_sphere_intersection.c \
+			tests/test_hit.c \
 
 TEST_SRCS := ${TEST_SRCS:%=${SRC_DIR}/%}
 

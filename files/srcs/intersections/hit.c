@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT_test.h                                      :+:      :+:    :+:   */
+/*   hit.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/11 19:33:55 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/12 20:45:36 by dkeraudr         ###   ########.fr       */
+/*   Created: 2024/02/12 20:33:47 by dkeraudr          #+#    #+#             */
+/*   Updated: 2024/02/12 20:44:08 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_TEST_H
-# define MINIRT_TEST_H
+#include "miniRT.h"
 
-# include <CUnit/CUnit.h>
-# include <CUnit/Basic.h>
-# include "miniRT.h"
+t_intersection	*ft_hit(t_list *intersections)
+{
+	t_list			*tmp;
+	t_intersection	*hit;
 
-void	do_sphere_intersect_00(void);
-void	do_sphere_intersect_01(void);
-void	do_sphere_intersect_02(void);
-
-void	do_hit_00(void);
-void	do_hit_01(void);
-void	do_hit_02(void);
-void	do_hit_03(void);
-void	do_hit_04(void);
-
-#endif
+	tmp = intersections;
+	hit = NULL;
+	while (tmp)
+	{
+		if ((!hit || ((t_intersection *)tmp->content)->t < hit->t)
+			&& ((t_intersection *)tmp->content)->t > 0)
+			hit = tmp->content;
+		tmp = tmp->next;
+	}
+	return (hit);
+}
