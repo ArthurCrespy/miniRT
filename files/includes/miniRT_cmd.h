@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/11 20:06:14 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/12 20:16:55 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	ft_print_scene(t_scene *scene);
 
 // intersect
 
+t_list	*ft_intersect(t_list *objects, t_ray ray);
 double	*intersect_with_sphere(t_hittable *sphere, t_ray ray);
 
 #endif
