@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/12 20:40:39 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/14 18:47:26 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int		ft_parse_vector(char *line, t_vector *vector);
 // utils
 
 void	ft_print_scene(t_scene *scene);
+void	ft_print_matrix(t_matrix matrix);
 
 // intersect
 

@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/12 20:08:37 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/14 18:36:37 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ typedef struct s_hittable
 	t_point		center;
 	t_color		color;
 	t_vector	orientation;
+	t_matrix	transform;
 	double		radius;
 	double		diameter;
 	double		height;
