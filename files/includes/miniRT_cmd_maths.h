@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:48:54 by acrespy           #+#    #+#             */
-/*   Updated: 2024/02/17 15:25:24 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/17 16:03:05 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_matrix		*matrix_identity(void);
 double			matrix_determinant(t_matrix m);
 
 bool			matrix_invertible(t_matrix m);
-t_matrix		matrix_inverse(t_matrix m);
+t_matrix		*matrix_inverse(t_matrix m);
 
 double			matrix_minor(t_matrix m, int row, int col);
 
@@ -69,7 +69,7 @@ t_point			ray_position(t_ray ray, double t);
 
 /* -- */
 
-t_matrix		matrix_shearing(t_shearing x, t_shearing y, t_shearing z);
+t_matrix		*matrix_shearing(t_shearing x, t_shearing y, t_shearing z);
 
 /* -- */
 

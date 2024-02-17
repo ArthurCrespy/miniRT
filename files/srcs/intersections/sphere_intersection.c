@@ -6,13 +6,13 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 20:04:37 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/17 15:09:05 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/17 15:52:44 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-double	*intersect_with_sphere(t_hittable *sphere, t_ray ray)
+double	*intersect_with_sphere(t_ray ray)
 {
 	double		*intersections;
 	double		a;
@@ -22,7 +22,6 @@ double	*intersect_with_sphere(t_hittable *sphere, t_ray ray)
 	double		discriminant;
 
 	// sphere center is at (0, 0, 0)
-	(void)sphere;
 	sphere_to_ray = tuple_sub(ray.origin, point_new(0, 0, 0));
 	a = tuple_dot(ray.direction, ray.direction);
 	b = 2 * tuple_dot(ray.direction, sphere_to_ray);

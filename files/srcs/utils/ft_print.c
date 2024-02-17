@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:38:59 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/17 15:07:35 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/17 16:03:34 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_print_hittable(t_hittable *hittable)
 {
 	printf("id: %d\n", hittable->id);
 	printf("matrix: ");
-	ft_print_matrix(hittable->transform);
+	ft_print_matrix(*hittable->transform);
 	printf("color: ");
 	ft_print_color(hittable->color);
 	printf("orientation: ");

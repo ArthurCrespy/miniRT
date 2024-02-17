@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_determinant.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 20:37:02 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/29 20:37:02 by acrespy          ###   ########.fr       */
+/*   Updated: 2024/02/17 18:26:53 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@ double	matrix_determinant(t_matrix m)
 
 	i = 0;
 	det = 0;
+	printf("size = %d\n", m.size);
 	if (m.size == 2)
 		return (m.matrix[0][0] * m.matrix[1][1]
 				- m.matrix[0][1] * m.matrix[1][0]);
 	while (i < m.size)
 	{
-		det += (m.matrix[0][i] * matrix_cofactor(m, 0, i));
+		det += m.matrix[0][i] * matrix_cofactor(m, 0, i);
 		i++;
 	}
 	return (det);

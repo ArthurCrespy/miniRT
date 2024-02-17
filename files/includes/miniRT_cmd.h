@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/17 15:06:14 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/17 15:53:42 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	ft_print_matrix(t_matrix matrix);
 
 t_intersection	*create_intersect(double t, t_hittable *obj);
 t_list	*ft_intersect(t_list *objects, t_ray ray);
-double	*intersect_with_sphere(t_hittable *sphere, t_ray ray);
+double	*intersect_with_sphere(t_ray ray);
 t_intersection	*ft_hit(t_list *intersections);
 
 #endif

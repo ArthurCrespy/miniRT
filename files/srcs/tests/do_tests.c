@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 16:34:21 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/14 18:43:36 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/17 16:20:17 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,12 +96,30 @@ int	do_tests(void)
 		return CU_get_error();
 	}
 
+	if (NULL == CU_add_test(suite, "ray_translate_01", do_ray_translate_01))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "ray_translate_02", do_ray_translate_02))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
 	if (NULL == CU_add_test(suite, "ray_scaling_00", do_ray_scaling_00))
 	{
 		CU_cleanup_registry();
 		return CU_get_error();
 	}
 
+	if (NULL == CU_add_test(suite, "ray_scaling_01", do_ray_scaling_01))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+	
 	CU_basic_set_mode(CU_BRM_VERBOSE);
 	CU_basic_run_tests();
 	CU_cleanup_registry();

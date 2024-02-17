@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 19:51:55 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/17 14:52:27 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/17 16:02:27 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ int	ft_parse_sphere(t_scene *scene, char *line)
 		return (ft_error(ERROR_WRONG_ARGS_NB),
 			free_parse_hittable(sphere, tab, SPHERE), 0);
 	sphere->id = SPHERE;
-	if (!ft_parse_center(tab[1], &sphere->transform))
+	if (!ft_parse_center(tab[1], sphere->transform))
 		return (free_parse_hittable(sphere, tab, SPHERE), 0);
 	if (!ft_isfloat(tab[2]))
 		return (free_parse_hittable(sphere, tab, SPHERE), 0);
 	diameter = ft_atof(tab[2]);
-	ft_parse_scale(diameter / 2, diameter / 2, diameter / 2, &sphere->transform);
+	ft_parse_scale(diameter / 2, diameter / 2, diameter / 2, sphere->transform);
 	if (!ft_parse_color(tab[3], &sphere->color))
 		return (free_parse_hittable(sphere, tab, SPHERE), 0);
 	ft_lstadd_back(&scene->objects, ft_lstnew(sphere));
@@ -70,13 +70,13 @@ int	ft_parse_cylinder(t_scene *scene, char *line)
 		return (ft_error(ERROR_WRONG_ARGS_NB),
 			free_parse_hittable(cylinder, tab, CYLINDER), 0);
 	cylinder->id = CYLINDER;
-	if (!ft_parse_center(tab[1], &cylinder->transform))
+	if (!ft_parse_center(tab[1], cylinder->transform))
 		return (free_parse_hittable(cylinder, tab, CYLINDER), 0);
-	if (!ft_parse_rotation(tab[2], &cylinder->transform))
+	if (!ft_parse_rotation(tab[2], cylinder->transform))
 		return (free_parse_hittable(cylinder, tab, CYLINDER), 0);
 	if (!ft_isfloat(tab[3]) || !ft_isfloat(tab[4]))
 		return (free_parse_hittable(cylinder, tab, CYLINDER), 0);
-	ft_parse_scale(ft_atof(tab[3]), ft_atof(tab[4]), 1, &cylinder->transform);
+	ft_parse_scale(ft_atof(tab[3]), ft_atof(tab[4]), 1, cylinder->transform);
 	if (!ft_parse_color(tab[5], &cylinder->color))
 		return (free_parse_hittable(cylinder, tab, CYLINDER), 0);
 	ft_lstadd_back(&scene->objects, ft_lstnew(cylinder));
@@ -98,9 +98,9 @@ int	ft_parse_plane(t_scene *scene, char *line)
 		return (ft_error(ERROR_WRONG_ARGS_NB),
 			free_parse_hittable(plane, tab, PLANE), 0);
 	plane->id = PLANE;
-	if (!ft_parse_center(tab[1], &plane->transform))
+	if (!ft_parse_center(tab[1], plane->transform))
 		return (free_parse_hittable(plane, tab, PLANE), 0);
-	if (!ft_parse_rotation(tab[2], &plane->transform))
+	if (!ft_parse_rotation(tab[2], plane->transform))
 		return (free_parse_hittable(plane, tab, PLANE), 0);
 	if (!ft_parse_color(tab[3], &plane->color))
 		return (free_parse_hittable(plane, tab, PLANE), 0);
