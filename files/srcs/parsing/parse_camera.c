@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 22:01:44 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/01/31 20:21:30 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/17 14:44:42 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ int	ft_parse_camera(t_scene *scene, char *line)
 	if (ft_tablen(tab) != 4)
 		return (ft_error(ERROR_WRONG_ARGS_NB),
 			free_parse_camera(camera, tab), 0);
-	if (!ft_parse_point(tab[1], &camera->center))
+	if (!ft_parse_center(tab[1], &camera->transform))
 		return (free_parse_camera(camera, tab), 0);
-	if (!ft_parse_vector(tab[2], &camera->orientation))
+	if (!ft_parse_rotation(tab[2], &camera->transform))
 		return (free_parse_camera(camera, tab), 0);
 	if (!ft_isint(tab[3]))
 		return (free_parse_camera(camera, tab), 0);

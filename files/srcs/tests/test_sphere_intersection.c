@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 16:14:35 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/12 20:31:54 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/17 15:09:47 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	do_sphere_intersect_00(void)
 
 	ray = ray_new(point_new(0, 0, -5), vector_new(0, 0, 1));
 	sphere = malloc(sizeof(t_hittable));
-	sphere->center = point_new(0, 0, 0);
+	sphere->transform = matrix_identity();
 	sphere->type = SPHERE;
 	do_sphere_intersect(sphere, ray, (double [2]){4.0, 6.0}, 2);
 }
@@ -66,7 +66,7 @@ void	do_sphere_intersect_01(void)
 
 	ray = ray_new(point_new(0, 1, -5), vector_new(0, 0, 1));
 	sphere = malloc(sizeof(t_hittable));
-	sphere->center = point_new(0, 0, 0);
+	sphere->transform = matrix_identity();
 	sphere->type = SPHERE;
 	do_sphere_intersect(sphere, ray, (double [1]){5.0}, 1);
 }
@@ -78,7 +78,7 @@ void	do_sphere_intersect_02(void)
 
 	ray = ray_new(point_new(0, 2, -5), vector_new(0, 0, 1));
 	sphere = malloc(sizeof(t_hittable));
-	sphere->center = point_new(0, 0, 0);
+	sphere->transform = matrix_identity();
 	sphere->type = SPHERE;
 	do_sphere_intersect(sphere, ray, NULL, 0);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   miniRT_define.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/01/16 20:59:14 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/17 14:24:29 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 # define ERROR_MALLOC "Malloc error"
 # define ERROR_NOT_ENOUGH_ARGS "Not enough arguments"
 # define ERROR_WRONG_ARGS_NB "Wrong number of arguments"
-# define ERROR_PARSING_VECTOR "Error while parsing vector"
-# define ERROR_PARSING_POINT "Error while parsing point"
+# define ERROR_PARSING_ROTATION "Error while parsing rotation"
+# define ERROR_PARSING_CENTER "Error while parsing center"
 # define ERROR_PARSING_COLOR "Error while parsing color"
 # define ERROR_PARSING_PLANE "Could not parse plane, aborting"
 # define ERROR_PARSING_SPHERE "Could not parse sphere, aborting"

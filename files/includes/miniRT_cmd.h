@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/14 18:47:26 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/17 15:06:14 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,9 @@ int		ft_parse_camera(t_scene *scene, char *line);
 int		ft_parse_light(t_scene *scene, char *line);
 int		ft_parse_ambient(t_scene *scene, char *line);
 int		ft_parse_color(char *line, t_color *color);
-int		ft_parse_point(char *line, t_point *point);
-int		ft_parse_vector(char *line, t_vector *vector);
+int		ft_parse_center(char *line, t_matrix *transform);
+int		ft_parse_rotation(char *line, t_matrix *transform);
+int		ft_parse_scale(double x, double y, double z, t_matrix *matrix);
 
 // utils
 

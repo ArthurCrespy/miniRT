@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT_cmd_maths.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:48:54 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/20 10:17:51 by acrespy          ###   ########.fr       */
+/*   Updated: 2024/02/17 15:25:24 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ double			matrix_cofactor(t_matrix m, int row, int col);
 
 bool			matrix_compare(t_matrix m1, t_matrix m2);
 
-t_matrix		matrix_new(double **m, int size);
-t_matrix		matrix_identity(void);
+t_matrix		*matrix_new(double **m, int size);
+t_matrix		*matrix_identity(void);
 
 double			matrix_determinant(t_matrix m);
 
@@ -44,18 +44,19 @@ t_matrix		matrix_inverse(t_matrix m);
 
 double			matrix_minor(t_matrix m, int row, int col);
 
-t_matrix		matrix_mult(t_matrix m1, t_matrix m2);
+t_matrix		*matrix_mult(t_matrix m1, t_matrix m2);
 t_tuple			matrix_tuple_mult(t_matrix m, t_tuple t);
 
-t_matrix		matrix_rotation_x(double angle);
-t_matrix		matrix_rotation_y(double angle);
-t_matrix		matrix_rotation_z(double angle);
+t_matrix		*matrix_rotation_x(double angle);
+t_matrix		*matrix_rotation_y(double angle);
+t_matrix		*matrix_rotation_z(double angle);
+t_matrix		*matrix_rotation(t_matrix *m, t_vector v);
 
-t_matrix		matrix_scale(double x, double y, double z);
+t_matrix		*matrix_scale(double x, double y, double z);
 
 t_matrix		matrix_submatrix(t_matrix m, int row, int col);
 
-t_matrix		matrix_translation(double x, double y, double z);
+t_matrix	*matrix_translation(double x, double y, double z);
 
 t_matrix		matrix_transpose(t_matrix m);
 

@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/14 18:36:37 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/17 15:13:59 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,27 +73,21 @@ typedef struct s_hittable
 {
 	int			id;
 	int			type;
-	t_point		center;
 	t_color		color;
-	t_vector	orientation;
-	t_matrix	transform;
-	double		radius;
-	double		diameter;
-	double		height;
+	t_matrix	*transform;
 }				t_hittable;
 
 typedef struct s_camera
 {
-	t_point		center;
-	t_vector	orientation;
+	t_matrix		transform;
 	double			fov;
 }				t_camera;
 
 typedef struct s_light
 {
-	t_point	center;
-	double	brightness;
-	t_color	color;
+	t_matrix	transform;
+	double		brightness;
+	t_color		color;
 }				t_light;
 
 typedef struct s_ambient

@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 22:05:20 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/06 20:29:37 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/17 14:52:56 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	ft_parse_light(t_scene *scene, char *line)
 	if (ft_tablen(tab) != 4)
 		return (ft_error(ERROR_WRONG_ARGS_NB),
 			free_parse_light(light, tab), 0);
-	if (!ft_parse_point(tab[1], &light->center))
+	if (!ft_parse_center(tab[1], &light->transform))
 		return (free_parse_light(light, tab), 0);
 	if (!ft_isfloat(tab[2]))
 		return (free_parse_light(light, tab), 0);

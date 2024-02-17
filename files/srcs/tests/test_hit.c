@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 20:34:48 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/12 20:45:24 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/17 15:14:58 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	do_hit_00(void)
 	t_hittable		*obj;
 
 	obj = malloc(sizeof(t_hittable));
-	obj->center = point_new(0, 0, 0);
+	obj->transform = matrix_identity();
 	obj->type = SPHERE;
 	intersections = ft_lstnew(create_intersect(1.0, obj));
 	ft_lstadd_back(&intersections, ft_lstnew(create_intersect(2.0, obj)));
@@ -40,7 +40,7 @@ void	do_hit_01(void)
 	t_hittable		*obj;
 
 	obj = malloc(sizeof(t_hittable));
-	obj->center = point_new(0, 0, 0);
+	obj->transform = matrix_identity();
 	obj->type = SPHERE;
 	intersections = ft_lstnew(create_intersect(-1, obj));
 	ft_lstadd_back(&intersections, ft_lstnew(create_intersect(1, obj)));
@@ -60,7 +60,7 @@ void	do_hit_02(void)
 	t_hittable		*obj;
 
 	obj = malloc(sizeof(t_hittable));
-	obj->center = point_new(0, 0, 0);
+	obj->transform = matrix_identity();
 	obj->type = SPHERE;
 	intersections = ft_lstnew(create_intersect(-2, obj));
 	ft_lstadd_back(&intersections, ft_lstnew(create_intersect(-1, obj)));
@@ -80,7 +80,7 @@ void	do_hit_03(void)
 	t_hittable		*obj;
 
 	obj = malloc(sizeof(t_hittable));
-	obj->center = point_new(0, 0, 0);
+	obj->transform = matrix_identity();
 	obj->type = SPHERE;
 	intersections = NULL;
 	hit = ft_hit(intersections);
@@ -98,7 +98,7 @@ void	do_hit_04(void)
 	t_hittable		*obj;
 
 	obj = malloc(sizeof(t_hittable));
-	obj->center = point_new(0, 0, 0);
+	obj->transform = matrix_identity();
 	obj->type = SPHERE;
 	intersections = ft_lstnew(create_intersect(5.0, obj));
 	ft_lstadd_back(&intersections, ft_lstnew(create_intersect(7.0, obj)));
