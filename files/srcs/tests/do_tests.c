@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 16:34:21 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/17 16:20:17 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/17 19:03:13 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,124 @@
 
 int	do_tests(void)
 {
+	CU_pSuite suite;
+
 	if (CUE_SUCCESS != CU_initialize_registry())
 		return CU_get_error();
 
+	// matrix
+	suite = CU_add_suite("matrix", NULL, NULL);
+	if (NULL == suite)
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "do_matrix_multiplication_00", do_matrix_multiplication_00))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "do_matrix_transpose", do_matrix_transpose))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+	
+	// matrix_determinant
+	suite = CU_add_suite("matrix_determinant", NULL, NULL);
+	if (NULL == suite)
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "do_matrix_determinant_00", do_matrix_determinant_00))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "do_matrix_det_3x3", do_matrix_det_3x3))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "do_matrix_det_4x4", do_matrix_det_4x4))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	// submatrix
+
+	suite = CU_add_suite("submatrix", NULL, NULL);
+	if (NULL == suite)
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "do_submatrix_3_2", do_submatrix_3_2))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "do_submatrix_4_3", do_submatrix_4_3))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	// minor
+	suite = CU_add_suite("minor", NULL, NULL);
+	if (NULL == suite)
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "do_minor_3x3", do_minor_3x3))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	// cofactor
+
+	suite = CU_add_suite("cofactor", NULL, NULL);
+	if (NULL == suite)
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "do_cofactor_3x3", do_cofactor_3x3))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	// inverse_matrix
+
+	suite = CU_add_suite("inverse_matrix", NULL, NULL);
+	if (NULL == suite)
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "do_inverse_matrix_4x4", do_inverse_matrix_4x4))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
 
 	// sphere_intersects
-	CU_pSuite suite = CU_add_suite("sphere_intersects", NULL, NULL);
+	suite = CU_add_suite("sphere_intersects", NULL, NULL);
 	if (NULL == suite)
 	{
 		CU_cleanup_registry();

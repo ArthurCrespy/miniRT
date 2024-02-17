@@ -6,7 +6,7 @@
 #    By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 14:54:39 by acrespy           #+#    #+#              #
-#    Updated: 2024/02/14 18:44:01 by dkeraudr         ###   ########.fr        #
+#    Updated: 2024/02/17 18:37:12 by dkeraudr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,6 +70,7 @@ TEST_SRCS := \
 			tests/test_sphere_intersection.c \
 			tests/test_hit.c \
 			tests/test_transform.c \
+			tests/test_matrix.c \
 
 TEST_SRCS := ${TEST_SRCS:%=${SRC_DIR}/%}
 
