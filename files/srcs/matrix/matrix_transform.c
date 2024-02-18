@@ -1,20 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event_key.c                                        :+:      :+:    :+:   */
+/*   matrix_transform.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/19 14:39:43 by acrespy           #+#    #+#             */
-/*   Updated: 2024/02/18 14:01:46 by dkeraudr         ###   ########.fr       */
+/*   Created: 2024/02/18 14:42:21 by dkeraudr          #+#    #+#             */
+/*   Updated: 2024/02/18 14:44:47 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../includes/miniRT.h"
+#include "miniRT.h"
 
-int	event_key(int keycode, void *data)
+void	ft_matrix_copy(t_matrix *dst, t_matrix *src)
 {
-	if (keycode == 65307)
-		mlx_exit(data, "NULL", 0);
-	return (0);
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < MATRIX)
+	{
+		j = 0;
+		while (j < MATRIX)
+		{
+			dst->matrix[i][j] = src->matrix[i][j];
+			j++;
+		}
+		i++;
+	}
+}
+
+void	ft_matrix_transform(t_matrix *matrix, t_matrix *transform)
+{
+	t_matrix	*tmp;
+
+	tmp = matrix_mult(*matrix, *transform);
+	ft_matrix_copy(matrix, tmp);
+	ft_matrix_free(tmp);
 }

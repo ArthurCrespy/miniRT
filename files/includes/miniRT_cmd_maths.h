@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:48:54 by acrespy           #+#    #+#             */
-/*   Updated: 2024/02/17 16:03:05 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/18 14:46:19 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,14 @@ t_tuple			matrix_tuple_mult(t_matrix m, t_tuple t);
 t_matrix		*matrix_rotation_x(double angle);
 t_matrix		*matrix_rotation_y(double angle);
 t_matrix		*matrix_rotation_z(double angle);
-t_matrix		*matrix_rotation(t_matrix *m, t_vector v);
 
+t_matrix		*matrix_translation(double x, double y, double z);
+t_matrix		*matrix_rotation(t_vector v);
 t_matrix		*matrix_scale(double x, double y, double z);
+void			ft_matrix_transform(t_matrix *matrix, t_matrix *transform);
 
 t_matrix		matrix_submatrix(t_matrix m, int row, int col);
 
-t_matrix	*matrix_translation(double x, double y, double z);
 
 t_matrix		matrix_transpose(t_matrix m);
 

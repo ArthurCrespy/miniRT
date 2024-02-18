@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/18 13:36:08 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/18 13:58:23 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # endif
 
 # define EPSILON 0.00001
+# define WIDHT 150
+# define HEIGHT 100
 
 # define SPHERE 1
 # define PLANE 2

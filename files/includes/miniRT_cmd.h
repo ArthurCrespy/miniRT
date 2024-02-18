@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/17 15:53:42 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/18 14:25:46 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	file_save(t_minirt *data, char *path);
 void	mlx_free(t_minirt *data);
 void	mlx_exit(t_minirt *data, char *msg, int status);
 void	mlx_error(t_minirt *data);
-void	mlx_hook_exit(t_minirt *data);
+int		mlx_hook_exit(t_minirt *data);
 
 void	mlx_initialize_win(t_minirt *data);
 
@@ -45,6 +45,7 @@ int		mlx_render_frame(t_minirt *data);
 void	ft_exit(char *msg, int status);
 
 void	ft_free(char **tab);
+void	ft_matrix_free(t_matrix *matrix);
 
 //char	*get_next_line(int fd);
 

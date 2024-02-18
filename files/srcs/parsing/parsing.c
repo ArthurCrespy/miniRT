@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 07:17:07 by acrespy           #+#    #+#             */
-/*   Updated: 2024/02/06 20:45:41 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/18 14:51:12 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ int	ft_parse_rt_file(t_scene *scene, char *file)
 	}
 	free(line);
 	close(fd);
+	// ft_print_scene(scene);
 	return (1);
 }

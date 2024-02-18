@@ -6,7 +6,7 @@
 #    By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 14:54:39 by acrespy           #+#    #+#              #
-#    Updated: 2024/02/17 18:37:12 by dkeraudr         ###   ########.fr        #
+#    Updated: 2024/02/18 14:43:19 by dkeraudr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRCS := \
 			matrix/matrix_submatrix.c \
 			matrix/matrix_translation.c \
 			matrix/matrix_transpose.c \
+			matrix/matrix_transform.c \
 			mlx/mlx_exit.c \
 			mlx/mlx_initialize.c \
 			mlx/mlx_loop.c \
@@ -96,8 +97,8 @@ LIB_FLAGS   := $(LDFLAGS) $(LDLIBS) -lm
 
 OS_NAME := $(shell uname -s | tr A-Z a-z)
 
-CC          := clang
-CFLAGS      := -Wall -Wextra -Werror
+CC          := gcc
+CFLAGS      := -Wall -Wextra -Werror -g
 
 # if test remove -Werror
 ifeq ($(MAKECMDGOALS),test)

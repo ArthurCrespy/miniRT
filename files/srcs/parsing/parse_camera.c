@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 22:01:44 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/17 14:44:42 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/18 14:09:25 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,38 @@ void	free_parse_camera(t_camera *camera, char **tab)
 		ft_free_2d_list(tab);
 	ft_error(ERROR_PARSING_CAMERA);
 }
+t_camera	*ft_init_camera(void)
+{
+	t_camera	*camera;
+
+	camera = malloc(sizeof(t_camera));
+	if (!camera)
+		return (NULL);
+	camera->fov = 0;
+	camera->transform = matrix_identity();
+	if (!camera->transform)
+	{
+		free(camera);
+		return (ft_error(ERROR_MALLOC), NULL);
+	}
+	return (camera);
+}
 
 int	ft_parse_camera(t_scene *scene, char *line)
 {
 	t_camera	*camera;
 	char		**tab;
 
-	camera = malloc(sizeof(t_camera));
-	if (!camera)
-		return (ft_error(ERROR_MALLOC), 0);
+	camera = ft_init_camera();
 	tab = ft_split(line, ' ');
 	if (!tab)
 		return (free(camera), ft_error(ERROR_MALLOC), 0);
 	if (ft_tablen(tab) != 4)
 		return (ft_error(ERROR_WRONG_ARGS_NB),
 			free_parse_camera(camera, tab), 0);
-	if (!ft_parse_center(tab[1], &camera->transform))
+	if (!ft_parse_center(tab[1], camera->transform))
 		return (free_parse_camera(camera, tab), 0);
-	if (!ft_parse_rotation(tab[2], &camera->transform))
+	if (!ft_parse_rotation(tab[2], camera->transform))
 		return (free_parse_camera(camera, tab), 0);
 	if (!ft_isint(tab[3]))
 		return (free_parse_camera(camera, tab), 0);

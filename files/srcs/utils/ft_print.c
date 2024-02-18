@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:38:59 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/17 16:03:34 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/18 14:21:41 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ void	ft_print_hittable(t_hittable *hittable)
 void	ft_print_camera(t_camera *camera)
 {
 	printf("matrix: ");
-	ft_print_matrix(camera->transform);
+	ft_print_matrix(*camera->transform);
 	printf("fov: %f\n", camera->fov);
 }
 
 void	ft_print_light(t_light *light)
 {
 	printf("matrix: ");
-	ft_print_matrix(light->transform);
+	ft_print_matrix(*light->transform);
 	printf("brightness: %f\n", light->brightness);
 	printf("color: ");
 	ft_print_color(light->color);

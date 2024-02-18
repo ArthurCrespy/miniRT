@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/17 15:13:59 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/18 14:05:36 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,13 @@ typedef struct s_hittable
 
 typedef struct s_camera
 {
-	t_matrix		transform;
+	t_matrix		*transform;
 	double			fov;
 }				t_camera;
 
 typedef struct s_light
 {
-	t_matrix	transform;
+	t_matrix	*transform;
 	double		brightness;
 	t_color		color;
 }				t_light;

@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:34:06 by acrespy           #+#    #+#             */
-/*   Updated: 2024/02/17 15:16:05 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/18 14:40:53 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,22 +48,23 @@ t_matrix	*matrix_rotation_z(double angle)
 	return (m);
 }
 
-t_matrix	*matrix_rotation(t_matrix *m, t_vector v)
+// return a new matrix with the rotation applied
+t_matrix	*matrix_rotation(t_vector v)
 {
-	t_matrix	*mx;
-	t_matrix	*my;
-	t_matrix	*mz;
-	t_matrix	*matrix_temp;
+	t_matrix	*rx;
+	t_matrix	*ry;
+	t_matrix	*rz;
+	t_matrix	*tmp;
+	t_matrix	*res;
 
-	mx = matrix_rotation_x(v.x);
-	my = matrix_rotation_y(v.y);
-	mz = matrix_rotation_z(v.z);
-	matrix_temp = matrix_mult(*mx, *my);
-	free(m);
-	m = matrix_mult(*matrix_temp, *mz);
-	free(matrix_temp);
-	free(mx);
-	free(my);
-	free(mz);
-	return (m);
+	rx = matrix_rotation_x(v.x);
+	ry = matrix_rotation_y(v.y);
+	rz = matrix_rotation_z(v.z);
+	tmp = matrix_mult(*rx, *ry);
+	res = matrix_mult(*tmp, *rz);
+	ft_matrix_free(rx);
+	ft_matrix_free(ry);
+	ft_matrix_free(rz);
+	ft_matrix_free(tmp);
+	return (res);
 }
