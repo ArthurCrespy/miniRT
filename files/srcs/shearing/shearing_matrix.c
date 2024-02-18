@@ -6,11 +6,11 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:47:46 by acrespy           #+#    #+#             */
-/*   Updated: 2024/02/17 16:02:53 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/18 15:09:21 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../includes/miniRT.h"
+#include "miniRT.h"
 
 t_matrix	*matrix_shearing(t_shearing x, t_shearing y, t_shearing z)
 {
