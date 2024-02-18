@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 18:37:16 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/17 18:30:32 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/18 13:38:11 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,16 +76,12 @@ void	do_ray_scaling_01(void)
 
 	sphere = malloc(sizeof(t_hittable));
 	sphere->transform = matrix_scale(2, 2, 2);
-	// printf("sphere->transform\n");
-	// ft_print_matrix(*sphere->transform);
 	sphere->type = SPHERE;
 	r = ray_new(point_new(0, 0, -5), vector_new(0, 0, 1));
 	hit = ft_intersect(ft_lstnew(sphere), r);
 	CU_ASSERT_DOUBLE_EQUAL(ft_lstsize(hit), 2, 1e-6);
-	// printf("hit->t = %f\n", ((t_intersection *)hit->content)->t);
-	// printf("hit->next->t = %f\n", ((t_intersection *)hit->next->content)->t);
-	CU_ASSERT_DOUBLE_EQUAL(((t_intersection *)hit->content)->t, 7.0, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(((t_intersection *)hit->next->content)->t, 3.0, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(((t_intersection *)hit->content)->t, 3.0, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(((t_intersection *)hit->next->content)->t, 7.0, 1e-6);
 }
 
 void	do_ray_translate_02(void)

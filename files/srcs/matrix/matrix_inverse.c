@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:37:48 by acrespy           #+#    #+#             */
-/*   Updated: 2024/02/17 19:09:21 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/18 13:38:32 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ t_matrix	*matrix_inverse(t_matrix m)
 	double		det;
 	t_matrix	*m2;
 
-	printf("is invertible: %d\n", matrix_invertible(m));
 	if (!matrix_invertible(m))
 		return (matrix_identity());
 	m2 = malloc(sizeof(t_matrix));
