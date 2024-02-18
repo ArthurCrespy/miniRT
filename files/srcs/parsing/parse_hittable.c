@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 19:51:55 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/18 15:09:21 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/18 16:50:10 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_hittable	*ft_init_hittable(int id)
 	hittable = malloc(sizeof(t_hittable));
 	if (!hittable)
 		return (NULL);
-	hittable->id = id;
+	hittable->type = id;
 	hittable->transform = matrix_identity();
 	if (!hittable->transform)
 	{

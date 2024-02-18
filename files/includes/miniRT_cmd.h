@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/18 14:25:46 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/18 16:19:24 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,14 @@ void	mlx_free(t_minirt *data);
 void	mlx_exit(t_minirt *data, char *msg, int status);
 void	mlx_error(t_minirt *data);
 int		mlx_hook_exit(t_minirt *data);
+void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color);
 
 void	mlx_initialize_win(t_minirt *data);
 
 void	mlx_hook_loop(t_minirt *data);
 
 int		mlx_render_frame(t_minirt *data);
+void	render_scene(t_minirt *data);
 
 //char	*ft_calloc(size_t nmemb, size_t size);
 
@@ -80,6 +82,8 @@ int		ft_parse_scale(double x, double y, double z, t_matrix *matrix);
 
 void	ft_print_scene(t_scene *scene);
 void	ft_print_matrix(t_matrix matrix);
+void	ft_print_point(t_point point);
+void	ft_print_vector(t_vector vector);
 
 // intersect
 

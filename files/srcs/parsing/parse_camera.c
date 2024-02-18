@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 22:01:44 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/18 15:09:21 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/18 16:33:18 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	free_parse_camera(t_camera *camera, char **tab)
 		ft_free_2d_list(tab);
 	ft_error(ERROR_PARSING_CAMERA);
 }
+
 t_camera	*ft_init_camera(void)
 {
 	t_camera	*camera;
@@ -35,6 +36,28 @@ t_camera	*ft_init_camera(void)
 		return (ft_error(ERROR_MALLOC), NULL);
 	}
 	return (camera);
+}
+
+void	ft_get_pixel_size(t_camera *camera)
+{
+	// double		half_view;
+	double		aspect_ratio;
+
+	// fov is in degree
+	camera->half_view = tan(camera->fov * M_PI / 360);
+	printf("half_view: %f\n", camera->half_view);
+	aspect_ratio = (double)WIDHT / (double)HEIGHT;
+	if (aspect_ratio >= 1)
+	{
+		camera->half_width = camera->half_view;
+		camera->half_height = camera->half_view / aspect_ratio;
+	}
+	else
+	{
+		camera->half_width = camera->half_view * aspect_ratio;
+		camera->half_height = camera->half_view;
+	}
+	camera->pixel_size = (camera->half_width * 2) / (double)WIDHT;
 }
 
 int	ft_parse_camera(t_scene *scene, char *line)
@@ -57,6 +80,7 @@ int	ft_parse_camera(t_scene *scene, char *line)
 		return (free_parse_camera(camera, tab), 0);
 	camera->fov = ft_atof(tab[3]);
 	scene->camera = camera;
+	ft_get_pixel_size(camera);
 	ft_free_2d_list(tab);
 	return (1);
 }

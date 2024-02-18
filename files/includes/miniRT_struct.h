@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/18 14:05:36 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/18 16:10:37 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,10 @@ typedef struct s_camera
 {
 	t_matrix		*transform;
 	double			fov;
+	double			pixel_size;
+	double			half_view;
+	double			half_width;
+	double			half_height;
 }				t_camera;
 
 typedef struct s_light
@@ -131,6 +135,7 @@ typedef struct s_mlx
 typedef struct s_minirt {
 	t_mlx		*mlx;
 	t_scene		*scene;
+	unsigned int	pxl_rendered;
 }				t_minirt;
 
 #endif
