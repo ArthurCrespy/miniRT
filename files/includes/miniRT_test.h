@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 19:33:55 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/21 20:04:01 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/21 20:25:17 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ void	do_sphere_normal_02(void);
 void	do_sphere_normal_03(void);
 void	do_sphere_normal_04(void);
 void	do_sphere_normal_05(void);
+
+void	do_reflect_00(void);
+void	do_reflect_01(void);
 
 
 #endif
