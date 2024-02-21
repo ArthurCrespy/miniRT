@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:48:54 by acrespy           #+#    #+#             */
-/*   Updated: 2024/02/18 16:28:39 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/21 19:58:54 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,5 @@ t_tuple			tuple_reflect(t_tuple t, t_tuple normal);
 t_tuple	tuple_transform(t_tuple tuple, t_matrix matrix);
 t_tuple	tuple_normalize(t_tuple tuple);
 
+t_vector	normal_at(t_hittable *obj, t_point world_point);
 #endif

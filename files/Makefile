@@ -6,7 +6,7 @@
 #    By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 14:54:39 by acrespy           #+#    #+#              #
-#    Updated: 2024/02/18 16:26:40 by dkeraudr         ###   ########.fr        #
+#    Updated: 2024/02/21 20:02:05 by dkeraudr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ SRCS := \
 			intersections/sphere_intersection.c \
 			intersections/intersect.c \
 			intersections/hit.c \
+			normal/normal_at.c \
 
 SRCS := ${SRCS:%=${SRC_DIR}/%}
 
@@ -75,6 +76,7 @@ TEST_SRCS := \
 			tests/test_hit.c \
 			tests/test_transform.c \
 			tests/test_matrix.c \
+			tests/test_sphere_normal.c \
 
 TEST_SRCS := ${TEST_SRCS:%=${SRC_DIR}/%}
 

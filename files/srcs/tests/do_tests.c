@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 16:34:21 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/17 19:03:13 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/21 20:05:17 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,6 +227,50 @@ int	do_tests(void)
 	}
 
 	if (NULL == CU_add_test(suite, "ray_scaling_01", do_ray_scaling_01))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+	
+	// sphere_normal
+	suite = CU_add_suite("sphere_normal", NULL, NULL);
+	if (NULL == suite)
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "sphere_normal_00", do_sphere_normal_00))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "sphere_normal_01", do_sphere_normal_01))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "sphere_normal_02", do_sphere_normal_02))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "sphere_normal_03", do_sphere_normal_03))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "sphere_normal_04", do_sphere_normal_04))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "sphere_normal_05", do_sphere_normal_05))
 	{
 		CU_cleanup_registry();
 		return CU_get_error();
