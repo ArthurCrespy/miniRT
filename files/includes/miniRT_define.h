@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/18 13:58:23 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/28 21:36:50 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@
 # define ERROR_PARSING_LIGHT "Could not parse light, aborting"
 # define ERROR_PARSING_AMBIENT "Could not parse ambient, aborting"
 # define ERROR_PARSING_CAMERA "Could not parse camera, aborting"
+# define ERROR_PARSING_POINT "Could not parse point, aborting"
 
 #endif

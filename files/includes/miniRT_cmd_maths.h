@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:48:54 by acrespy           #+#    #+#             */
-/*   Updated: 2024/02/21 20:24:22 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/28 21:35:26 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 /* -- */
 
-t_color			color_new(double r, double g, double b);
+t_color			*color_new(double r, double g, double b);
 
 t_color			color_add(t_color c1, t_color c2);
 t_color			color_sub(t_color c1, t_color c2);

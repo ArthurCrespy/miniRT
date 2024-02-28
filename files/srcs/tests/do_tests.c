@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 16:34:21 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/21 20:24:46 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/28 21:42:20 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -297,6 +297,22 @@ int	do_tests(void)
 		CU_cleanup_registry();
 		return CU_get_error();
 	}
+
+	// lighting
+
+	suite = CU_add_suite("lighting", NULL, NULL);
+	if (NULL == suite)
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "lighting_00", do_lighting_00))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+	
 
 	CU_basic_set_mode(CU_BRM_VERBOSE);
 	CU_basic_run_tests();

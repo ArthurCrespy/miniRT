@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 18:30:53 by acrespy           #+#    #+#             */
-/*   Updated: 2024/02/21 20:01:44 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/28 21:49:12 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,11 @@ int	init_minirt(t_minirt *minirt)
 // }
 
 void	do_tests(void);
+// void	do_lighting_00(void);
 
 int	main(void)
 {
 	do_tests();
+	do_lighting_00();
 	return (1);
 }

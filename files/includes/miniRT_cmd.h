@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/18 16:19:24 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/28 21:40:52 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int		ft_parse_color(char *line, t_color *color);
 int		ft_parse_center(char *line, t_matrix *transform);
 int		ft_parse_rotation(char *line, t_matrix *transform);
 int		ft_parse_scale(double x, double y, double z, t_matrix *matrix);
+int		ft_parse_point(char *line, t_point *point);
 
 // utils
 
@@ -91,5 +92,9 @@ t_intersection	*create_intersect(double t, t_hittable *obj);
 t_list	*ft_intersect(t_list *objects, t_ray ray);
 double	*intersect_with_sphere(t_ray ray);
 t_intersection	*ft_hit(t_list *intersections);
+
+// lighting
+
+t_color	lighting(t_computation	*lighting_info);
 
 #endif
