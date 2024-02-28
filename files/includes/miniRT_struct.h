@@ -76,6 +76,7 @@ typedef struct s_hittable
 	t_point		center;
 	t_color		color;
 	t_vector	orientation;
+	t_vector 	normal;
 	t_matrix	transform;
 	double		radius;
 	double		diameter;
