@@ -60,6 +60,7 @@ SRCS := \
 			utils/ft_gnl.c \
 			utils/ft_print.c \
 			intersections/sphere_intersection.c \
+			intersections/cylinder_intersection.c \
 			intersections/intersect.c \
 			intersections/hit.c \
 

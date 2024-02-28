@@ -28,6 +28,8 @@ double	*intersect_with(t_hittable *obj, t_ray ray)
 {
 	if (obj->type == SPHERE)
 		return (intersect_with_sphere(obj, ray));
+	else if (obj->type == CYLINDER)
+		return (intersect_with_cylinder(obj, ray));
 	return (NULL);
 }
 

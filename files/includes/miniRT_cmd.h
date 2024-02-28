@@ -84,6 +84,7 @@ void	ft_print_matrix(t_matrix matrix);
 t_intersection	*create_intersect(double t, t_hittable *obj);
 t_list	*ft_intersect(t_list *objects, t_ray ray);
 double	*intersect_with_sphere(t_hittable *sphere, t_ray ray);
+double *intersect_with_cylinder(t_hittable *cylinder, t_ray ray);
 t_intersection	*ft_hit(t_list *intersections);
 
 #endif
