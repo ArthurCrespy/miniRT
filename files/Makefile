@@ -64,6 +64,7 @@ SRCS := \
 			utils/ft_print.c \
 			render/render_scene.c \
 			intersections/sphere_intersection.c \
+			intersections/plane_intersection.c \
 			intersections/cylinder_intersection.c \
 			intersections/intersect.c \
 			intersections/hit.c \
