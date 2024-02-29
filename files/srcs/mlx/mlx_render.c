@@ -25,10 +25,6 @@ char	*get_percent(double percent)
 
 int	mlx_render_frame(t_minirt *data)
 {
-	// mlx_string_put(data->mlx->mlx, data->mlx->mlx_win, 50, 50, 0x00FFFFFF,
-	// 	"Hello, World!");
-	// mlx_string_put(data->mlx->mlx, data->mlx->mlx_win, 50, 70, 0x00FFFFFF,
-	// 	"Welcome in miniRT!");
 	render_scene(data);
 	mlx_string_put(data->mlx->mlx, data->mlx->mlx_win, 50, 50, 0x00FFFFFF,
 		get_percent((double)data->pxl_rendered * 100 / (data->mlx->win_width * data->mlx->win_height)));

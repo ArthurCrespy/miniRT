@@ -22,7 +22,7 @@ double	*intersect_with_sphere(t_ray ray)
 	double		discriminant;
 
 	// sphere center is at (0, 0, 0)
-	printf("here\n");
+	printf("-> sphere\n");
 	sphere_to_ray = tuple_sub(ray.origin, point_new(0, 0, 0));
 	a = tuple_dot(ray.direction, ray.direction);
 	b = 2 * tuple_dot(ray.direction, sphere_to_ray);

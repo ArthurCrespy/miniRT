@@ -18,8 +18,8 @@
 # endif
 
 # define EPSILON 0.00001
-# define WIDHT 150
-# define HEIGHT 100
+# define WIDHT 300
+# define HEIGHT 300
 
 # define SPHERE 1
 # define PLANE 2

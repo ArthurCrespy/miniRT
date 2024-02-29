@@ -18,10 +18,13 @@ double	*intersect_with_plane(t_hittable *plane, t_ray ray)
 	double  denominator;
 	double  t;
 
+	printf("-> plane\n");
+
 	denominator = tuple_dot(plane->normal, ray.direction);
 	if (denominator == 0)
 		return (NULL);
-	t = tuple_dot(tuple_sub(plane->center, ray.origin), plane->normal) / denominator;
+	plane->point = point_new(0, 0, 0);
+	t = fabs(tuple_dot(tuple_sub(plane->point, ray.origin), plane->normal)) / denominator;
 	if (t < 0)
 		return (NULL);
 	intersections = malloc(sizeof(double) * 1);

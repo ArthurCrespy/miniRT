@@ -74,11 +74,11 @@ typedef struct s_hittable
 	int			id;
 	int			type;
 	t_color		color;
-	t_vector	orientation;
+//	t_vector	orientation;
 	t_vector 	normal;
-	t_matrix	transform;
+	t_point		point;
 	double		radius;
-	double		diameter;
+//	double		diameter;
 	double		height;
 	t_matrix	*transform;
 }				t_hittable;

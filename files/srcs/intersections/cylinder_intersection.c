@@ -1,27 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cylinder_intersection.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/29 13:34:47 by acrespy           #+#    #+#             */
+/*   Updated: 2024/02/29 13:46:37 by acrespy          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./../../includes/miniRT.h"
 
 double *intersect_with_cylinder(t_hittable *cylinder, t_ray ray)
 {
     double  a[3];
-	double  b[3];
-	double  c[3];
+    double  b[3];
     double *intersections;
     double discriminant;
-    double t1, t2;
+
+    printf("-> cylinder\n");
 
     a[0] = pow(ray.direction.x, 2) + pow(ray.direction.z, 2);
     a[1] = 2 * (ray.origin.x * ray.direction.x + ray.origin.z * ray.direction.z);
-    a[2] = pow(ray.origin.x, 2) + pow(ray.origin.z, 2) - 1;
+    a[2] = pow(ray.origin.x, 2) + pow(ray.origin.z, 2) - pow(cylinder->radius, 2);
 
-    b[0] = 2 * ray.origin.x * ray.direction.x + 2 * ray.origin.z * ray.direction.z;
+    b[0] = a[1];
     b[1] = 2 * (ray.origin.x * ray.direction.x + ray.origin.z * ray.direction.z);
-    b[2] = 2 * ray.origin.x * ray.origin.x + 2 * ray.origin.z * ray.origin.z - 2;
+    b[2] = 0;
 
-    c[0] = pow(ray.origin.x, 2) + pow(ray.origin.z, 2);
-    c[1] = 2 * ray.origin.x * ray.origin.x + 2 * ray.origin.z * ray.origin.z;
-    c[2] = pow(ray.origin.x, 2) + pow(ray.origin.z, 2) - 1;
-
-    discriminant = pow(b[1], 2) - 4 * a[0] * c[2];
+    discriminant = pow(b[0], 2) - 4 * a[2] * (a[0] - pow(ray.direction.y, 2));
     if (discriminant < 0)
         return (NULL);
 
@@ -29,18 +37,11 @@ double *intersect_with_cylinder(t_hittable *cylinder, t_ray ray)
     if (!intersections)
         return (NULL);
 
-    t1 = (-b[1] - sqrt(discriminant)) / (2 * a[0]);
-    t2 = (-b[1] + sqrt(discriminant)) / (2 * a[0]);
+    intersections[0] = (-b[0] - sqrt(discriminant)) / (2 * a[2]);
+    intersections[1] = (-b[0] + sqrt(discriminant)) / (2 * a[2]);
 
-    if (t1 >= 0 && t1 <= cylinder->height)
-        intersections[0] = t1;
-    else
-        intersections[0] = -1;
-
-    if (t2 >= 0 && t2 <= cylinder->height)
-        intersections[1] = t2;
-    else
-        intersections[1] = -1;
+	printf("i0 = %f\n", intersections[0]);
+	printf("i1 = %f\n", intersections[1]);
 
     return (intersections);
 }
