@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   double_comparaisons.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:48:38 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/17 13:48:38 by acrespy          ###   ########.fr       */
+/*   Updated: 2024/02/18 15:09:21 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../includes/miniRT.h"
+#include "miniRT.h"
 
 bool	double_equal(double nb1, double nb2)
 {

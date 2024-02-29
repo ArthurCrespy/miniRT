@@ -6,11 +6,11 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:38:59 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/14 18:47:13 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/18 15:09:21 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../includes/miniRT.h"
+#include "miniRT.h"
 
 void	ft_print_point(t_point point)
 {
@@ -30,29 +30,24 @@ void	ft_print_vector(t_vector vector)
 void	ft_print_hittable(t_hittable *hittable)
 {
 	printf("id: %d\n", hittable->id);
-	printf("center: ");
-	ft_print_point(hittable->center);
+	printf("matrix: ");
+	ft_print_matrix(*hittable->transform);
 	printf("color: ");
 	ft_print_color(hittable->color);
 	printf("orientation: ");
-	ft_print_vector(hittable->orientation);
-	printf("diameter: %f\n", hittable->diameter);
-	printf("height: %f\n", hittable->height);
 }
 
 void	ft_print_camera(t_camera *camera)
 {
-	printf("center: ");
-	ft_print_point(camera->center);
-	printf("orientation: ");
-	ft_print_vector(camera->orientation);
+	printf("matrix: ");
+	ft_print_matrix(*camera->transform);
 	printf("fov: %f\n", camera->fov);
 }
 
 void	ft_print_light(t_light *light)
 {
-	printf("center: ");
-	ft_print_point(light->center);
+	printf("matrix: ");
+	ft_print_matrix(*light->transform);
 	printf("brightness: %f\n", light->brightness);
 	printf("color: ");
 	ft_print_color(light->color);

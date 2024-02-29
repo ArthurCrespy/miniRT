@@ -6,11 +6,11 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 14:37:39 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/16 21:00:56 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/18 15:09:21 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../includes/miniRT.h"
+#include "miniRT.h"
 
 void	mlx_free(t_minirt *data)
 {
@@ -37,7 +37,7 @@ void	mlx_error(t_minirt *data)
 	ft_exit("Error: Something went wrong with MiniLibX\n", 1);
 }
 
-void	mlx_hook_exit(t_minirt *data)
+int	mlx_hook_exit(t_minirt *data)
 {
 	mlx_free(data);
 	data_free(data);

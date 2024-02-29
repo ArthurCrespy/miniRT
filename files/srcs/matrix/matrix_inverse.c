@@ -3,41 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_inverse.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:37:48 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/29 14:56:53 by acrespy          ###   ########.fr       */
+/*   Updated: 2024/02/18 15:09:21 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../includes/miniRT.h"
+#include "miniRT.h"
 
 bool	matrix_invertible(t_matrix m)
 {
 	return (matrix_determinant(m) != 0);
 }
 
-t_matrix	matrix_inverse(t_matrix m)
+t_matrix	*matrix_inverse(t_matrix m)
 {
-	int			i;
-	int			j;
+	int			row;
+	int			col;
 	double		det;
-	t_matrix	m2;
+	t_matrix	*m2;
 
 	if (!matrix_invertible(m))
 		return (matrix_identity());
+	m2 = malloc(sizeof(t_matrix));
+	if (!m2)
+		return (NULL);
 	det = matrix_determinant(m);
-	i = 0;
-	while (i < m.size)
+	row = 0;
+	while (row < m.size)
 	{
-		j = 0;
-		while (j < m.size)
+		col = 0;
+		while (col < m.size)
 		{
-			m2.matrix[i][j] = matrix_cofactor(m, i, j) / det;
-			j++;
+			m2->matrix[col][row] = matrix_cofactor(m, row, col) / det;
+			col++;
 		}
-		i++;
+		row++;
 	}
-	m2.size = m.size;
-	return (matrix_transpose(m2));
+	m2->size = m.size;
+	matrix_transpose(*m2);
+	return (m2);
 }

@@ -6,26 +6,29 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:12:34 by acrespy           #+#    #+#             */
-/*   Updated: 2024/02/14 18:51:32 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/18 15:09:21 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../includes/miniRT.h"
+#include "miniRT.h"
 
-t_matrix	matrix_new(double **m, int size)
+t_matrix	*matrix_new(double **m, int size)
 {
 	int			i;
 	int			j;
-	t_matrix	matrix;
+	t_matrix	*matrix;
 
+	matrix = malloc(sizeof(t_matrix));
+	if (!matrix)
+		return (NULL);
 	i = 0;
-	matrix.size = size;
+	matrix->size = size;
 	while (i < size)
 	{
 		j = 0;
 		while (j < size)
 		{
-			matrix.matrix[i][j] = m[i][j];
+			matrix->matrix[i][j] = m[i][j];
 			j++;
 		}
 		i++;
@@ -33,12 +36,15 @@ t_matrix	matrix_new(double **m, int size)
 	return (matrix);
 }
 
-t_matrix	matrix_identity(void)
+t_matrix	*matrix_identity(void)
 {
 	int			i;
 	int			j;
-	t_matrix	m;
+	t_matrix	*matrix_return;
 
+	matrix_return = malloc(sizeof(t_matrix));
+	if (!matrix_return)
+		return (NULL);
 	i = 0;
 	while (i < MATRIX)
 	{
@@ -46,13 +52,13 @@ t_matrix	matrix_identity(void)
 		while (j < MATRIX)
 		{
 			if (i == j)
-				m.matrix[i][j] = 1;
+				matrix_return->matrix[i][j] = 1;
 			else
-				m.matrix[i][j] = 0;
+				matrix_return->matrix[i][j] = 0;
 			j++;
 		}
 		i++;
 	}
-	m.size = MATRIX;
-	return (m);
+	matrix_return->size = MATRIX;
+	return (matrix_return);
 }

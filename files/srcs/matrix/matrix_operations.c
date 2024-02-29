@@ -3,27 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_operations.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 22:44:39 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/29 14:56:58 by acrespy          ###   ########.fr       */
+/*   Updated: 2024/02/17 15:20:51 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "./../../includes/miniRT.h"
 
-t_matrix	matrix_mult(t_matrix m1, t_matrix m2)
+#include "miniRT.h"
+
+t_matrix	*matrix_mult(t_matrix m1, t_matrix m2)
 {
 	int			i;
 	int			j;
-	t_matrix	m3;
+	t_matrix	*matrix_return;
 
+	matrix_return = malloc(sizeof(t_matrix));
+	if (!matrix_return)
+		return (NULL);
 	i = 0;
 	while (i < MATRIX)
 	{
 		j = 0;
 		while (j < MATRIX)
 		{
-			m3.matrix[i][j] = m1.matrix[i][0] * m2.matrix[0][j]
+			matrix_return->matrix[i][j] = m1.matrix[i][0] * m2.matrix[0][j]
 				+ m1.matrix[i][1] * m2.matrix[1][j]
 				+ m1.matrix[i][2] * m2.matrix[2][j]
 				+ m1.matrix[i][3] * m2.matrix[3][j];
@@ -31,8 +35,8 @@ t_matrix	matrix_mult(t_matrix m1, t_matrix m2)
 		}
 		i++;
 	}
-	m3.size = m1.size;
-	return (m3);
+	matrix_return->size = m1.size;
+	return (matrix_return);
 }
 
 t_tuple	matrix_tuple_mult(t_matrix m, t_tuple t)
