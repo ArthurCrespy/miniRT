@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   color_operations.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 15:19:53 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/29 15:19:53 by acrespy          ###   ########.fr       */
+/*   Updated: 2024/02/18 15:09:21 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../includes/miniRT.h"
+#include "miniRT.h"
 
 t_color	color_add(t_color c1, t_color c2)
 {

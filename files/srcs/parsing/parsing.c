@@ -6,11 +6,11 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 07:17:07 by acrespy           #+#    #+#             */
-/*   Updated: 2024/02/06 20:45:41 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/18 15:09:21 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../includes/miniRT.h"
+#include "miniRT.h"
 
 int	ft_parse_line(t_scene *scene, char *line)
 {
@@ -51,5 +51,6 @@ int	ft_parse_rt_file(t_scene *scene, char *file)
 	}
 	free(line);
 	close(fd);
+	// ft_print_scene(scene);
 	return (1);
 }

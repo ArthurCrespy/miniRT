@@ -6,7 +6,7 @@
 #    By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 14:54:39 by acrespy           #+#    #+#              #
-#    Updated: 2024/02/14 18:44:01 by dkeraudr         ###   ########.fr        #
+#    Updated: 2024/02/18 16:26:40 by dkeraudr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,10 +37,12 @@ SRCS := \
 			matrix/matrix_submatrix.c \
 			matrix/matrix_translation.c \
 			matrix/matrix_transpose.c \
+			matrix/matrix_transform.c \
 			mlx/mlx_exit.c \
 			mlx/mlx_initialize.c \
 			mlx/mlx_loop.c \
 			mlx/mlx_render.c \
+			mlx/mlx_pixel_put.c \
 			parsing/parse_camera.c \
 			parsing/parse_hittable.c \
 			parsing/parse_lighting.c \
@@ -54,11 +56,13 @@ SRCS := \
 			tuple/tuple_functions.c \
 			tuple/tuple_new.c \
 			tuple/tuple_operations.c \
+			tuple/tuple_transform.c \
 			utils/ft_calloc.c \
 			utils/ft_exit.c \
 			utils/ft_free.c \
 			utils/ft_gnl.c \
 			utils/ft_print.c \
+			render/render_scene.c \
 			intersections/sphere_intersection.c \
 			intersections/cylinder_intersection.c \
 			intersections/intersect.c \
@@ -71,6 +75,7 @@ TEST_SRCS := \
 			tests/test_sphere_intersection.c \
 			tests/test_hit.c \
 			tests/test_transform.c \
+			tests/test_matrix.c \
 
 TEST_SRCS := ${TEST_SRCS:%=${SRC_DIR}/%}
 
@@ -96,8 +101,8 @@ LIB_FLAGS   := $(LDFLAGS) $(LDLIBS) -lm
 
 OS_NAME := $(shell uname -s | tr A-Z a-z)
 
-CC          := clang
-CFLAGS      := -Wall -Wextra -Werror
+CC          := gcc
+CFLAGS      := -Wall -Wextra -Werror -g
 
 # if test remove -Werror
 ifeq ($(MAKECMDGOALS),test)

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 07:25:46 by acrespy           #+#    #+#             */
-/*   Updated: 2023/11/20 07:25:46 by acrespy          ###   ########.fr       */
+/*   Updated: 2024/02/18 15:09:21 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../includes/miniRT.h"
+#include "miniRT.h"
 
 void	ft_free(char **tab)
 {
@@ -23,4 +23,9 @@ void	ft_free(char **tab)
 		i++;
 	}
 	free(tab);
+}
+
+void	ft_matrix_free(t_matrix *matrix)
+{
+	free(matrix);
 }

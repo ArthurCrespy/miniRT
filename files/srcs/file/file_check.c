@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   file_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 15:24:41 by acrespy           #+#    #+#             */
-/*   Updated: 2023/11/19 15:24:44 by acrespy          ###   ########.fr       */
+/*   Updated: 2024/02/18 15:09:21 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../includes/miniRT.h"
+#include "miniRT.h"
 
 void	file_check_ext(char *path)
 {

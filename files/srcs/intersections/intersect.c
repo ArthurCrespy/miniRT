@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 20:46:09 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/12 20:31:30 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/18 16:50:28 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,17 @@ t_intersection	*create_intersect(double t, t_hittable *obj)
 
 double	*intersect_with(t_hittable *obj, t_ray ray)
 {
+	t_ray	ray_transformed;
+	t_matrix	*invert_transform;
+
+	// printf("base_matrix\n");
+	// ft_print_matrix(*obj->transform);
+	invert_transform = matrix_inverse(*obj->transform);
+	ray_transformed = ray_transform(ray, *invert_transform);
+	// printf("invert_matrix\n");
+	// ft_print_matrix(*invert_transform);
 	if (obj->type == SPHERE)
-		return (intersect_with_sphere(obj, ray));
+		return (intersect_with_sphere(ray_transformed));
 	else if (obj->type == CYLINDER)
 		return (intersect_with_cylinder(obj, ray));
 	return (NULL);
