@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 18:30:53 by acrespy           #+#    #+#             */
-/*   Updated: 2024/02/28 21:49:12 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/01 19:46:04 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,40 +25,40 @@ int	init_minirt(t_minirt *minirt)
 }
 
 
-// int	main(int argc, char **argv, char **envp)
-// {
-// 	t_minirt	minirt;
-
-// 	data_initialize(&minirt);
-// 	args_check(argc, argv, envp);
-// // //	file_save(&minirt, argv[1]);
-// 	if (!init_minirt(&minirt))
-// 		return (0);
-// 	if (!ft_parse_rt_file(minirt.scene, argv[1]))
-// 	{
-// 		data_free(&minirt);
-// 		ft_printf("Error while parsing\n");
-// 		return (0);
-// 	}
-// 	mlx_initialize_win(&minirt);
-	
-// 	mlx_hook_loop(&minirt);
-// 	mlx_free(&minirt);
-// 	data_free(&minirt);
-// 	// mlx_initialize_win(&minirt);
-// 	// mlx_hook_loop(&minirt);
-// 	// mlx_free(&minirt);
-// 	// data_free(&minirt);
-
-// 	return (1);
-// }
-
-void	do_tests(void);
-// void	do_lighting_00(void);
-
-int	main(void)
+int	main(int argc, char **argv, char **envp)
 {
-	do_tests();
-	do_lighting_00();
+	t_minirt	minirt;
+
+	data_initialize(&minirt);
+	args_check(argc, argv, envp);
+// //	file_save(&minirt, argv[1]);
+	if (!init_minirt(&minirt))
+		return (0);
+	if (!ft_parse_rt_file(minirt.scene, argv[1]))
+	{
+		data_free(&minirt);
+		ft_printf("Error while parsing\n");
+		return (0);
+	}
+	mlx_initialize_win(&minirt);
+	
+	mlx_hook_loop(&minirt);
+	mlx_free(&minirt);
+	data_free(&minirt);
+	// mlx_initialize_win(&minirt);
+	// mlx_hook_loop(&minirt);
+	// mlx_free(&minirt);
+	// data_free(&minirt);
+
 	return (1);
 }
+
+// void	do_tests(void);
+// // void	do_lighting_00(void);
+
+// int	main(void)
+// {
+// 	do_tests();
+// 	do_lighting_00();
+// 	return (1);
+// }
