@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:38:59 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/18 15:09:21 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/28 21:46:08 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	ft_print_point(t_point point)
 	printf("x: %f, y: %f, z: %f\n", point.x, point.y, point.z);
 }
 
-void	ft_print_color(t_color color)
+void	ft_print_color(t_color *color)
 {
-	printf("chan_1: %f, chan_2: %f, chan_3: %f\n", color.chan_1, color.chan_2, color.chan_3);
+	printf("chan_1: %f, chan_2: %f, chan_3: %f\n", color->chan_1, color->chan_2, color->chan_3);
 }
 
 void	ft_print_vector(t_vector vector)
@@ -33,7 +33,7 @@ void	ft_print_hittable(t_hittable *hittable)
 	printf("matrix: ");
 	ft_print_matrix(*hittable->transform);
 	printf("color: ");
-	ft_print_color(hittable->color);
+	ft_print_color(hittable->material->color);
 	printf("orientation: ");
 }
 
@@ -47,7 +47,7 @@ void	ft_print_camera(t_camera *camera)
 void	ft_print_light(t_light *light)
 {
 	printf("matrix: ");
-	ft_print_matrix(*light->transform);
+	ft_print_point(light->position);
 	printf("brightness: %f\n", light->brightness);
 	printf("color: ");
 	ft_print_color(light->color);

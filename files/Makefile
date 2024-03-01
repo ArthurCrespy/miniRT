@@ -6,7 +6,7 @@
 #    By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 14:54:39 by acrespy           #+#    #+#              #
-#    Updated: 2024/02/18 16:26:40 by dkeraudr         ###   ########.fr        #
+#    Updated: 2024/02/28 21:43:52 by dkeraudr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,11 +63,14 @@ SRCS := \
 			utils/ft_gnl.c \
 			utils/ft_print.c \
 			render/render_scene.c \
+			render/lighting.c \
 			intersections/sphere_intersection.c \
 			intersections/plane_intersection.c \
 			intersections/cylinder_intersection.c \
 			intersections/intersect.c \
 			intersections/hit.c \
+			normal/normal_at.c \
+			normal/reflect.c \
 
 SRCS := ${SRCS:%=${SRC_DIR}/%}
 
@@ -77,6 +80,9 @@ TEST_SRCS := \
 			tests/test_hit.c \
 			tests/test_transform.c \
 			tests/test_matrix.c \
+			tests/test_sphere_normal.c \
+			tests/test_reflect.c \
+			tests/test_lighting.c \
 
 TEST_SRCS := ${TEST_SRCS:%=${SRC_DIR}/%}
 
@@ -103,7 +109,7 @@ LIB_FLAGS   := $(LDFLAGS) $(LDLIBS) -lm
 OS_NAME := $(shell uname -s | tr A-Z a-z)
 
 CC          := gcc
-CFLAGS      := -Wall -Wextra -Werror -g
+CFLAGS      := -Wall -Wextra -Werror -g3
 
 # if test remove -Werror
 ifeq ($(MAKECMDGOALS),test)

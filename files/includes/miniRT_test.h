@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 19:33:55 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/17 19:02:58 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/29 20:41:37 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,19 @@ void	do_cofactor_3x3(void);
 void	do_matrix_det_3x3(void);
 void	do_matrix_det_4x4(void);
 void	do_inverse_matrix_4x4(void);
+
+void	do_sphere_normal_00(void);
+void	do_sphere_normal_01(void);
+void	do_sphere_normal_02(void);
+void	do_sphere_normal_03(void);
+void	do_sphere_normal_04(void);
+void	do_sphere_normal_05(void);
+
+void	do_reflect_00(void);
+void	do_reflect_01(void);
+
+void	do_lighting_00(void);
+void	do_lighting_01(void);
+void	do_lighting_02(void);
 
 #endif

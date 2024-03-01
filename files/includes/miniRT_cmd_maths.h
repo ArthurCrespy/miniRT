@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:48:54 by acrespy           #+#    #+#             */
-/*   Updated: 2024/02/18 16:28:39 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/28 21:35:26 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 /* -- */
 
-t_color			color_new(double r, double g, double b);
+t_color			*color_new(double r, double g, double b);
 
 t_color			color_add(t_color c1, t_color c2);
 t_color			color_sub(t_color c1, t_color c2);
@@ -96,5 +96,8 @@ t_tuple			tuple_reflect(t_tuple t, t_tuple normal);
 
 t_tuple	tuple_transform(t_tuple tuple, t_matrix matrix);
 t_tuple	tuple_normalize(t_tuple tuple);
+
+t_vector	normal_at(t_hittable *obj, t_point world_point);
+t_vector	reflect(t_vector in, t_vector normal);
 
 #endif

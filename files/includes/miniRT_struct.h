@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/18 16:10:37 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/01 19:41:31 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,17 +69,15 @@ typedef struct s_color
 	double	chan_3;
 }				t_color;
 
+// write prototype of t_material here
+
+typedef struct s_material t_material; 
+
 typedef struct s_hittable
 {
 	int			id;
 	int			type;
-	t_color		color;
-//	t_vector	orientation;
-	t_vector 	normal;
-	t_point		point;
-	double		radius;
-//	double		diameter;
-	double		height;
+	t_material	*material;
 	t_matrix	*transform;
 }				t_hittable;
 
@@ -95,15 +93,15 @@ typedef struct s_camera
 
 typedef struct s_light
 {
-	t_matrix	*transform;
+	t_point		position;
 	double		brightness;
-	t_color		color;
+	t_color		*color;
 }				t_light;
 
 typedef struct s_ambient
 {
 	double	brightness;
-	t_color	color;
+	t_color	*color;
 }				t_ambient;
 
 typedef struct s_scene
@@ -123,6 +121,24 @@ typedef struct s_intersection
 	// t_vector	normal;
 }				t_intersection;
 
+typedef struct s_computation
+{
+	t_hittable	*object;
+	t_light		*light;
+	t_point		point;
+	t_vector	eye;
+	t_vector	normal;
+	bool		inside;
+}				t_computation;
+
+typedef struct s_material
+{
+	t_color		*color;
+	t_ambient	*ambient;
+	double		diffuse;
+	double		specular;
+	double		shininess;
+}				t_material;
 typedef struct s_mlx
 {
 	void		*mlx;

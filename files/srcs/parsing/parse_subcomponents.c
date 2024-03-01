@@ -6,11 +6,32 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 21:07:41 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/18 14:49:04 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/28 21:32:59 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
+
+int	ft_parse_point(char *line, t_point *point)
+{
+	char	**tab;
+
+	tab = ft_split(line, ',');
+	if (!tab)
+		return (ft_error(ERROR_MALLOC), 0);
+	if (ft_tablen(tab) != 3 || !ft_isfloat(tab[0])
+		|| !ft_isfloat(tab[1]) || !ft_isfloat(tab[2]))
+	{
+		ft_free_2d_list(tab);
+		ft_error(ERROR_PARSING_POINT);
+		return (0);
+	}
+	point->x = ft_atof(tab[0]);
+	point->y = ft_atof(tab[1]);
+	point->z = ft_atof(tab[2]);
+	ft_free_2d_list(tab);
+	return (1);
+}
 
 int	ft_parse_center(char *line, t_matrix *transform)
 {

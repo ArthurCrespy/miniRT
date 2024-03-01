@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 19:51:55 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/18 16:50:10 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/28 21:37:40 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	ft_parse_sphere(t_scene *scene, char *line)
 		return (free_parse_hittable(sphere, tab, SPHERE), 0);
 	diameter = ft_atof(tab[2]);
 	ft_parse_scale(diameter / 2, diameter / 2, diameter / 2, sphere->transform);
-	if (!ft_parse_color(tab[3], &sphere->color))
+	if (!ft_parse_color(tab[3], sphere->material->color))
 		return (free_parse_hittable(sphere, tab, SPHERE), 0);
 	ft_lstadd_back(&scene->objects, ft_lstnew(sphere));
 	ft_free_2d_list(tab);
@@ -88,7 +88,7 @@ int	ft_parse_cylinder(t_scene *scene, char *line)
 	if (!ft_isfloat(tab[3]) || !ft_isfloat(tab[4]))
 		return (free_parse_hittable(cylinder, tab, CYLINDER), 0);
 	ft_parse_scale(ft_atof(tab[3]), ft_atof(tab[4]), 1, cylinder->transform);
-	if (!ft_parse_color(tab[5], &cylinder->color))
+	if (!ft_parse_color(tab[5], cylinder->material->color))
 		return (free_parse_hittable(cylinder, tab, CYLINDER), 0);
 	ft_lstadd_back(&scene->objects, ft_lstnew(cylinder));
 	return (ft_free_2d_list(tab), 1);
@@ -111,7 +111,7 @@ int	ft_parse_plane(t_scene *scene, char *line)
 		return (free_parse_hittable(plane, tab, PLANE), 0);
 	if (!ft_parse_rotation(tab[2], plane->transform))
 		return (free_parse_hittable(plane, tab, PLANE), 0);
-	if (!ft_parse_color(tab[3], &plane->color))
+	if (!ft_parse_color(tab[3], plane->material->color))
 		return (free_parse_hittable(plane, tab, PLANE), 0);
 	ft_lstadd_back(&scene->objects, ft_lstnew(plane));
 	ft_free_2d_list(tab);

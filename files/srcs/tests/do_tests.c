@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 16:34:21 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/17 19:03:13 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/02/29 20:41:52 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,6 +232,99 @@ int	do_tests(void)
 		return CU_get_error();
 	}
 	
+	// sphere_normal
+	suite = CU_add_suite("sphere_normal", NULL, NULL);
+	if (NULL == suite)
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "sphere_normal_00", do_sphere_normal_00))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "sphere_normal_01", do_sphere_normal_01))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "sphere_normal_02", do_sphere_normal_02))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "sphere_normal_03", do_sphere_normal_03))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "sphere_normal_04", do_sphere_normal_04))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "sphere_normal_05", do_sphere_normal_05))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+	
+
+	// reflect
+
+	suite = CU_add_suite("reflect", NULL, NULL);
+	if (NULL == suite)
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "reflect_00", do_reflect_00))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "reflect_01", do_reflect_01))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	// lighting
+
+	suite = CU_add_suite("lighting", NULL, NULL);
+	if (NULL == suite)
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "lighting_00", do_lighting_00))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+	
+	if (NULL == CU_add_test(suite, "lighting_01", do_lighting_01))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "lighting_02", do_lighting_02))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
 	CU_basic_set_mode(CU_BRM_VERBOSE);
 	CU_basic_run_tests();
 	CU_cleanup_registry();
