@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 21:07:41 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/01 20:22:05 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/02 21:48:06 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,12 +119,9 @@ int	ft_parse_color(char *line, t_color *color)
 		ft_error(ERROR_PARSING_COLOR);
 		return (0);
 	}
-	color->chan_1 = 255.0 / ft_atoi(tab[0]);
-	color->chan_2 = 255.0 / ft_atoi(tab[1]);
-	color->chan_3 = 255.0 / ft_atoi(tab[2]);
-	printf("color->chan_1: %f\n", color->chan_1);
-	printf("color->chan_2: %f\n", color->chan_2);
-	printf("color->chan_3: %f\n", color->chan_3);
+	color->chan_1 = 1 / 255.0 * ft_atoi(tab[0]);
+	color->chan_2 = 1 / 255.0 * ft_atoi(tab[1]);
+	color->chan_3 = 1 / 255.0 * ft_atoi(tab[2]);
 	if (color->chan_1 < 0 || color->chan_1 > 255
 		|| color->chan_2 < 0 || color->chan_2 > 255
 		|| color->chan_3 < 0 || color->chan_3 > 255)
