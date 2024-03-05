@@ -71,6 +71,9 @@ t_computation	prepare_computations(t_intersection *intersection, t_ray ray)
 	comps.point = ft_point_at(ray, intersection->t);
 	comps.eye = tuple_negate(ray.direction);
 	comps.normal = normal_at(comps.object, comps.point);
+//	normal < 0 → angle +90° → intersection point inside the object
+//	if (tuple_dot(comps.normal, comps.eye) < 0)
+//		comps.normal = tuple_negate(comps.normal);
 	return (comps);
 }
 
