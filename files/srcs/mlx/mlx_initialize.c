@@ -26,7 +26,7 @@ void	mlx_initialize_win(t_minirt *data)
 	data->mlx->win_width = WIDHT;
 	data->mlx->win_height = HEIGHT;
 	data->mlx->mlx_win = mlx_new_window(data->mlx->mlx, data->mlx->win_width,
-			data->mlx->win_height, "miniRT | acrespy");
+			data->mlx->win_height, "miniRT");
 	if (!data->mlx->mlx_win)
 		mlx_error(data);
 	data->mlx->img = mlx_new_image(data->mlx->mlx,
