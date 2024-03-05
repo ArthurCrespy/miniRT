@@ -24,8 +24,8 @@ t_color	lighting(t_computation	*lighting_info)
 	t_vector	lightv;
 
 	effective_color = color_scalar(color_mult(*lighting_info->object->material->color, *lighting_info->light->color), lighting_info->light->brightness);
-	lightv = tuple_normalize(tuple_sub(lighting_info->light->position, lighting_info->point));
 	ambient = color_scalar(effective_color, lighting_info->object->material->ambient->brightness);
+	lightv = tuple_normalize(tuple_sub(lighting_info->point, lighting_info->light->position));
 	light_dot_normal = tuple_dot(lightv, lighting_info->normal);
 	// diffuse = malloc(sizeof(t_color));
 	// specular = malloc(sizeof(t_color));
