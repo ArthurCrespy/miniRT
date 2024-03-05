@@ -77,6 +77,8 @@ typedef struct s_hittable
 {
 	int			id;
 	int			type;
+	double 		radius;
+	double 		height;
 	t_material	*material;
 	t_matrix	*transform;
 }				t_hittable;

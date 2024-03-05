@@ -12,16 +12,41 @@
 
 #include "miniRT.h"
 
+t_vector cylinder_normal_at(t_hittable *cylinder, t_tuple object_point)
+{
+	double y;
+	double dist;
+
+	y = 0;
+	dist = object_point.x * object_point.x + object_point.z * object_point.z;
+	if (dist < 1 && object_point.y >= cylinder->height - EPSILON) // Top
+		return (vector_new(0, 1, 0));
+	else if (dist < 1 && object_point.y <= EPSILON) // Bottom
+		return (vector_new(0, -1, 0));
+	else
+	{
+		if (object_point.y > 0 && object_point.y < cylinder->height)
+			y = 0;
+		else if (object_point.y >= cylinder->height)
+			y = object_point.y - cylinder->height;
+		else if (object_point.y <= 0)
+			y = object_point.y;
+		return (vector_new(object_point.x, y, object_point.z));
+	}
+}
+
 t_vector	object_normal_at(t_hittable *obj, t_tuple object_point)
 {
 	t_vector	normal;
 
 	if (obj->type == SPHERE)
-	{
 		normal = tuple_sub(object_point, point_new(0, 0, 0));
-		return (tuple_normalize(normal));
-	}
-	return (vector_new(0, 0, 0));
+	else if (obj->type == CYLINDER)
+		normal = tuple_sub(object_point, point_new(0, 0, 0));
+		//normal = cylinder_normal_at(obj, object_point);
+	else
+		return (vector_new(0, 0, 0));
+	return (tuple_normalize(normal));
 }
 
 t_vector	normal_at(t_hittable *obj, t_point world_point)

@@ -12,41 +12,65 @@
 
 #include "./../../includes/miniRT.h"
 
-// I may have to compute the normal of the cylinder before computing the intersection
-
 double *intersect_with_cylinder(t_ray ray)
 {
-    double  a[3];
-    double  b[3];
     double *intersections;
+    double a;
+    double b;
+    double c;
+	double t;
+	double y;
+	double t_top;
+	double t_bottom;
+	double x_top;
+	double z_top;
+	double x_bottom;
+	double z_bottom;
     double discriminant;
+	int i;
 
-    printf("-> cylinder\n");
-
-	// t = (-b ± sqrt(b² - 4ac)) / 2a
-
-    a[0] = pow(ray.direction.x, 2) + pow(ray.direction.z, 2); // a[0] = dx^2 + dz^2
-    a[1] = 2 * (ray.origin.x * ray.direction.x + ray.origin.z * ray.direction.z); // a[1] = 2 * (ox * dx + oz * dz)
-//    a[2] = pow(ray.origin.x, 2) + pow(ray.origin.z, 2) - pow(cylinder->radius, 2); // a[2] = ox^2 + oz^2 - r^2
-	a[2] = 0;
-
-    b[0] = a[1]; // b[0] = dx^2 + dz^2
-    b[1] = 2 * (ray.origin.x * ray.direction.x + ray.origin.z * ray.direction.z); // b[0] = 2 * (ox * dx + oz * dz)
-    b[2] = 0; // b[2] = 0
-
-    discriminant = pow(b[0], 2) - 4 * a[2] * (a[0] - pow(ray.direction.y, 2));
+	i = 0;
+    a = pow(ray.direction.x, 2) + pow(ray.direction.z, 2);
+    b = 2 * (ray.origin.x * ray.direction.x + ray.origin.z * ray.direction.z);
+    c = pow(ray.origin.x, 2) + pow(ray.origin.z, 2) - 1;
+    discriminant = pow(b, 2) - 4 * a * c;
     if (discriminant < 0)
         return (NULL);
-
     intersections = malloc(sizeof(double) * 2);
     if (!intersections)
         return (NULL);
+    intersections[0] = (-b - sqrt(discriminant)) / (2 * a);
+    intersections[1] = (-b + sqrt(discriminant)) / (2 * a);
 
-    intersections[0] = (-b[0] - sqrt(discriminant)) / (2 * a[2]);
-    intersections[1] = (-b[0] + sqrt(discriminant)) / (2 * a[2]);
+    t_top = (1 - ray.origin.y) / ray.direction.y;
+    t_bottom = (-1 - ray.origin.y) / ray.direction.y;
 
-	printf("i0 = %f\n", intersections[0]);
-	printf("i1 = %f\n", intersections[1]);
+    if (t_top >= 0)
+    {
+        x_top = ray.origin.x + t_top * ray.direction.x;
+        z_top = ray.origin.z + t_top * ray.direction.z;
+        if (x_top * x_top + z_top * z_top <= 1)
+            intersections[0] = t_top;
+    }
 
-    return (intersections);
+    if (t_bottom >= 0)
+    {
+        x_bottom = ray.origin.x + t_bottom * ray.direction.x;
+        z_bottom = ray.origin.z + t_bottom * ray.direction.z;
+        if (x_bottom * x_bottom + z_bottom * z_bottom <= 1)
+            intersections[1] = t_bottom;
+    }
+
+	while (i < 2)
+    {
+        t = intersections[i];
+        y = ray.origin.y + t * ray.direction.y;
+        if (t > 0 && (y < 0 || y > 1))
+            intersections[i] = -1;
+		i++;
+    }
+
+    printf("cy - i0: %f, i1: %f\n", intersections[0], intersections[1]);
+    return intersections;
 }
+
