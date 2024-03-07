@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_sphere_intersection.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 16:14:35 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/17 15:09:47 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/07 17:14:32 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	do_sphere_intersect(t_hittable *sphere, t_ray ray, double *expected, int expected_cnt)
 {
-	int			i;
+	int		i;
 	t_list	*intersections;
 	t_list	*tmp;
 	t_list	*objects;
