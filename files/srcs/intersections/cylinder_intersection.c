@@ -12,24 +12,16 @@
 
 #include "./../../includes/miniRT.h"
 
-double *intersect_with_cylinder(t_ray ray)
+double *intersect_with_cylinder(t_hittable *cylinder, t_ray ray)
 {
     double *intersections;
     double a;
     double b;
     double c;
-	double t;
-	double y;
-	double t_top;
-	double t_bottom;
-	double x_top;
-	double z_top;
-	double x_bottom;
-	double z_bottom;
     double discriminant;
-	int i;
+	double y0;
+	double y1;
 
-	i = 0;
     a = pow(ray.direction.x, 2) + pow(ray.direction.z, 2);
     b = 2 * (ray.origin.x * ray.direction.x + ray.origin.z * ray.direction.z);
     c = pow(ray.origin.x, 2) + pow(ray.origin.z, 2) - 1;
@@ -42,35 +34,19 @@ double *intersect_with_cylinder(t_ray ray)
     intersections[0] = (-b - sqrt(discriminant)) / (2 * a);
     intersections[1] = (-b + sqrt(discriminant)) / (2 * a);
 
-    t_top = (1 - ray.origin.y) / ray.direction.y;
-    t_bottom = (-1 - ray.origin.y) / ray.direction.y;
+    y0 = ray.origin.y + intersections[0] * ray.direction.y;
+    y1 = ray.origin.y + intersections[1] * ray.direction.y;
 
-    if (t_top >= 0)
+    if ((y0 < -cylinder->height/2 || y0 > cylinder->height/2) && (y1 < -cylinder->height/2 || y1 > cylinder->height/2))
     {
-        x_top = ray.origin.x + t_top * ray.direction.x;
-        z_top = ray.origin.z + t_top * ray.direction.z;
-        if (x_top * x_top + z_top * z_top <= 1)
-            intersections[0] = t_top;
+        free(intersections);
+        return (NULL);
     }
-
-    if (t_bottom >= 0)
-    {
-        x_bottom = ray.origin.x + t_bottom * ray.direction.x;
-        z_bottom = ray.origin.z + t_bottom * ray.direction.z;
-        if (x_bottom * x_bottom + z_bottom * z_bottom <= 1)
-            intersections[1] = t_bottom;
-    }
-
-	while (i < 2)
-    {
-        t = intersections[i];
-        y = ray.origin.y + t * ray.direction.y;
-        if (t > 0 && (y < 0 || y > 1))
-            intersections[i] = -1;
-		i++;
-    }
+    else if (y0 < -cylinder->height/2 || y0 > cylinder->height/2)
+        intersections[0] = intersections[1];
+    else if (y1 < -cylinder->height/2 || y1 > cylinder->height/2)
+        intersections[1] = intersections[0];
 
     printf("cy - i0: %f, i1: %f\n", intersections[0], intersections[1]);
-    return intersections;
+    return (intersections);
 }
-
