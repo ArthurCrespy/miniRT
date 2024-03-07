@@ -33,20 +33,15 @@ double *intersect_with_cylinder(t_hittable *cylinder, t_ray ray)
         return (NULL);
     intersections[0] = (-b - sqrt(discriminant)) / (2 * a);
     intersections[1] = (-b + sqrt(discriminant)) / (2 * a);
-
     y0 = ray.origin.y + intersections[0] * ray.direction.y;
     y1 = ray.origin.y + intersections[1] * ray.direction.y;
-
-    if ((y0 < -cylinder->height/2 || y0 > cylinder->height/2) && (y1 < -cylinder->height/2 || y1 > cylinder->height/2))
-    {
-        free(intersections);
+    if ((y0 < -cylinder->height/2 || y0 > cylinder->height/2) &&
+		(y1 < -cylinder->height/2 || y1 > cylinder->height/2))
         return (NULL);
-    }
     else if (y0 < -cylinder->height/2 || y0 > cylinder->height/2)
         intersections[0] = intersections[1];
     else if (y1 < -cylinder->height/2 || y1 > cylinder->height/2)
         intersections[1] = intersections[0];
-
     printf("cy - i0: %f, i1: %f\n", intersections[0], intersections[1]);
     return (intersections);
 }

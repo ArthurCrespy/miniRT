@@ -20,8 +20,8 @@ t_vector	object_normal_at(t_hittable *obj, t_tuple object_point)
 		normal = tuple_sub(object_point, point_new(0, 0, 0));
 	else if (obj->type == CYLINDER)
 		normal = tuple_sub(object_point, point_new(0, 0, 0));
-	else
-		return (vector_new(0, 0, 0));
+	else if (obj->type == PLANE)
+		normal = vector_new(0, 1, 0);
 	return (tuple_normalize(normal));
 }
 

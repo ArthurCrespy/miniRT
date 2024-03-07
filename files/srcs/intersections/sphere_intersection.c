@@ -21,7 +21,6 @@ double	*intersect_with_sphere(t_ray ray)
 	t_tuple		sphere_to_ray;
 	double		discriminant;
 
-	// sphere center is at (0, 0, 0)
 	sphere_to_ray = tuple_sub(ray.origin, point_new(0, 0, 0));
 	a = tuple_dot(ray.direction, ray.direction);
 	b = 2 * tuple_dot(ray.direction, sphere_to_ray);
@@ -34,5 +33,6 @@ double	*intersect_with_sphere(t_ray ray)
 		return (NULL);
 	intersections[0] = (-b - sqrt(discriminant)) / (2 * a);
 	intersections[1] = (-b + sqrt(discriminant)) / (2 * a);
+    printf("sp - i0: %f, i1: %f\n", intersections[0], intersections[1]);
 	return (intersections);
 }
