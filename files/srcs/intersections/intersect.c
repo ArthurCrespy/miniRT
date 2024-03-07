@@ -62,6 +62,32 @@ void	add_intersections(t_list **intersections, t_hittable *obj, t_ray ray)
 	}
 }
 
+void	ft_lstsort(t_list **intersections)
+{
+	t_list	*tmp;
+	t_list	*tmp2;
+	t_intersection	*inter;
+	t_intersection	*inter2;
+
+	tmp = *intersections;
+	while (tmp)
+	{
+		tmp2 = tmp->next;
+		while (tmp2)
+		{
+			inter = tmp->content;
+			inter2 = tmp2->content;
+			if (inter->t > inter2->t)
+			{
+				tmp->content = inter2;
+				tmp2->content = inter;
+			}
+			tmp2 = tmp2->next;
+		}
+		tmp = tmp->next;
+	}
+}
+
 t_list	*ft_intersect(t_list *objects, t_ray ray)
 {
 	t_list		*intersections;
@@ -76,5 +102,6 @@ t_list	*ft_intersect(t_list *objects, t_ray ray)
 		add_intersections(&intersections, obj, ray);
 		tmp = tmp->next;
 	}
+	ft_lstsort(&intersections);
 	return (intersections);
 }

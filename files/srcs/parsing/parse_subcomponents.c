@@ -6,13 +6,13 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 21:07:41 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/02 22:44:38 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/06 22:56:17 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	ft_parse_point(char *line, t_point *point)
+int	ft_parse_tuple(char *line, t_tuple *tuple)
 {
 	char	**tab;
 
@@ -26,9 +26,9 @@ int	ft_parse_point(char *line, t_point *point)
 		ft_error(ERROR_PARSING_POINT);
 		return (0);
 	}
-	point->x = ft_atof(tab[0]);
-	point->y = ft_atof(tab[1]);
-	point->z = ft_atof(tab[2]);
+	tuple->x = ft_atof(tab[0]);
+	tuple->y = ft_atof(tab[1]);
+	tuple->z = ft_atof(tab[2]);
 	ft_free_2d_list(tab);
 	return (1);
 }
