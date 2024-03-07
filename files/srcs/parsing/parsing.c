@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 07:17:07 by acrespy           #+#    #+#             */
-/*   Updated: 2024/02/18 15:09:21 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/01 19:54:10 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,18 @@ int	ft_parse_line(t_scene *scene, char *line)
 	return (0);
 }
 
+void	ft_set_amblight(t_scene *scene)
+{
+	t_list	*tmp;
+
+	tmp = scene->objects;
+	while (tmp)
+	{
+		((t_hittable *)tmp->content)->material->ambient = scene->ambient;
+		tmp = tmp->next;
+	}
+}
+
 int	ft_parse_rt_file(t_scene *scene, char *file)
 {
 	int		fd;
@@ -51,6 +63,7 @@ int	ft_parse_rt_file(t_scene *scene, char *file)
 	}
 	free(line);
 	close(fd);
+	ft_set_amblight(scene);
 	// ft_print_scene(scene);
 	return (1);
 }

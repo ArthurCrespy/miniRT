@@ -6,13 +6,13 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 21:07:41 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/28 21:32:59 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/06 22:56:17 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	ft_parse_point(char *line, t_point *point)
+int	ft_parse_tuple(char *line, t_tuple *tuple)
 {
 	char	**tab;
 
@@ -26,9 +26,9 @@ int	ft_parse_point(char *line, t_point *point)
 		ft_error(ERROR_PARSING_POINT);
 		return (0);
 	}
-	point->x = ft_atof(tab[0]);
-	point->y = ft_atof(tab[1]);
-	point->z = ft_atof(tab[2]);
+	tuple->x = ft_atof(tab[0]);
+	tuple->y = ft_atof(tab[1]);
+	tuple->z = ft_atof(tab[2]);
 	ft_free_2d_list(tab);
 	return (1);
 }
@@ -76,8 +76,11 @@ int	ft_parse_rotation(char *line, t_matrix *transform)
 		ft_error(ERROR_PARSING_ROTATION);
 		return (0);
 	}
-	rotation = matrix_rotation(vector_new(ft_atof(tab[0]),
+	rotation = vector_to_matrix(vector_new(ft_atof(tab[0]),
 			ft_atof(tab[1]), ft_atof(tab[2])));
+	ft_print_vector(vector_new(ft_atof(tab[0]),
+			ft_atof(tab[1]), ft_atof(tab[2])));
+	ft_print_matrix(*rotation);
 	if (!rotation)
 	{
 		ft_free_2d_list(tab);
@@ -119,9 +122,9 @@ int	ft_parse_color(char *line, t_color *color)
 		ft_error(ERROR_PARSING_COLOR);
 		return (0);
 	}
-	color->chan_1 = ft_atof(tab[0]);
-	color->chan_2 = ft_atof(tab[1]);
-	color->chan_3 = ft_atof(tab[2]);
+	color->chan_1 = 1 / 255.0 * ft_atoi(tab[0]);
+	color->chan_2 = 1 / 255.0 * ft_atoi(tab[1]);
+	color->chan_3 = 1 / 255.0 * ft_atoi(tab[2]);
 	if (color->chan_1 < 0 || color->chan_1 > 255
 		|| color->chan_2 < 0 || color->chan_2 > 255
 		|| color->chan_3 < 0 || color->chan_3 > 255)

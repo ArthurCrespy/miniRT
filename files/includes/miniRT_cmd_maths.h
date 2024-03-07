@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:48:54 by acrespy           #+#    #+#             */
-/*   Updated: 2024/02/28 21:35:26 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/02 22:44:48 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_color			color_add(t_color c1, t_color c2);
 t_color			color_sub(t_color c1, t_color c2);
 t_color			color_mult(t_color c1, t_color c2);
 t_color			color_scalar(t_color c, double scalar);
+int				color_to_int(t_color color);
 
 /* -- */
 
@@ -53,6 +54,7 @@ t_matrix		*matrix_rotation_z(double angle);
 
 t_matrix		*matrix_translation(double x, double y, double z);
 t_matrix		*matrix_rotation(t_vector v);
+t_matrix		*vector_to_matrix(t_vector v);
 t_matrix		*matrix_scale(double x, double y, double z);
 void			ft_matrix_transform(t_matrix *matrix, t_matrix *transform);
 

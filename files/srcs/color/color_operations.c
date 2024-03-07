@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 15:19:53 by acrespy           #+#    #+#             */
-/*   Updated: 2024/02/18 15:09:21 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/01 20:18:57 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,22 @@ t_color	color_scalar(t_color c, double scalar)
 	color.chan_2 = c.chan_2 * scalar;
 	color.chan_3 = c.chan_3 * scalar;
 	return (color);
+}
+
+int	color_to_int(t_color color)
+{
+	int		r;
+	int		g;
+	int		b;
+
+	if (color.chan_1 > 1)
+		color.chan_1 = 1;
+	if (color.chan_2 > 1)
+		color.chan_2 = 1;
+	if (color.chan_3 > 1)
+		color.chan_3 = 1;
+	r = 255 * color.chan_1;
+	g = 255 * color.chan_2;
+	b = 255 * color.chan_3;
+	return (r << 16 | g << 8 | b);
 }

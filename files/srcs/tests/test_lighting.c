@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:33:41 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/29 20:42:20 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/02 21:57:01 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,7 @@ void	do_lighting_02(void)
 	lighting_info.light->position = point_new(0, 10, -10);
 	lighting_info.light->brightness = 1;
 	lighting_info.light->color = color_new(1, 1, 1);
+	result = lighting(&lighting_info);
 	CU_ASSERT_DOUBLE_EQUAL(result.chan_1, 0.7364, EPSILON);
 	CU_ASSERT_DOUBLE_EQUAL(result.chan_2, 0.7364, EPSILON);
 	CU_ASSERT_DOUBLE_EQUAL(result.chan_3, 0.7364, EPSILON);

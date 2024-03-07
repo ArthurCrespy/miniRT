@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 19:51:55 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/28 21:37:40 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/01 19:51:13 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@ void	free_parse_hittable(t_hittable *hittable, char **tab, int id)
 		ft_error(ERROR_PARSING_PLANE);
 }
 
+void	material_init(t_material *material)
+{
+	material->diffuse = 0.9;
+	material->specular = 0.9;
+	material->shininess = 200;
+}
+
 t_hittable	*ft_init_hittable(int id)
 {
 	t_hittable	*hittable;
@@ -40,6 +47,22 @@ t_hittable	*ft_init_hittable(int id)
 		free(hittable);
 		return (ft_error(ERROR_MALLOC), NULL);
 	}
+	hittable->material = malloc(sizeof(t_material));
+	if (!hittable->material)
+	{
+		free(hittable->transform);
+		free(hittable);
+		return (ft_error(ERROR_MALLOC), NULL);
+	}
+	hittable->material->color = malloc(sizeof(t_color));
+	if (!hittable->material->color)
+	{
+		free(hittable->material);
+		free(hittable->transform);
+		free(hittable);
+		return (ft_error(ERROR_MALLOC), NULL);
+	}
+	material_init(hittable->material);
 	return (hittable);
 }
 
@@ -87,6 +110,8 @@ int	ft_parse_cylinder(t_scene *scene, char *line)
 		return (free_parse_hittable(cylinder, tab, CYLINDER), 0);
 	if (!ft_isfloat(tab[3]) || !ft_isfloat(tab[4]))
 		return (free_parse_hittable(cylinder, tab, CYLINDER), 0);
+	cylinder->radius = ft_atof(tab[3]) / 2;
+	cylinder->height = ft_atof(tab[4]);
 	ft_parse_scale(ft_atof(tab[3]), ft_atof(tab[4]), 1, cylinder->transform);
 	if (!ft_parse_color(tab[5], cylinder->material->color))
 		return (free_parse_hittable(cylinder, tab, CYLINDER), 0);

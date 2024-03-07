@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:34:06 by acrespy           #+#    #+#             */
-/*   Updated: 2024/02/18 15:09:21 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/05 18:26:17 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,11 @@ t_matrix	*matrix_rotation(t_vector v)
 	t_matrix	*res;
 
 	rx = matrix_rotation_x(v.x);
+	ft_print_matrix(*rx);
 	ry = matrix_rotation_y(v.y);
+	ft_print_matrix(*ry);
 	rz = matrix_rotation_z(v.z);
+	ft_print_matrix(*rz);
 	tmp = matrix_mult(*rx, *ry);
 	res = matrix_mult(*tmp, *rz);
 	ft_matrix_free(rx);
@@ -67,4 +70,16 @@ t_matrix	*matrix_rotation(t_vector v)
 	ft_matrix_free(rz);
 	ft_matrix_free(tmp);
 	return (res);
+}
+
+
+t_matrix	*vector_to_matrix(t_vector v)
+{
+	t_matrix	*m;
+
+	m = matrix_identity();
+	m->matrix[0][3] = v.x;
+	m->matrix[1][3] = v.y;
+	m->matrix[2][3] = v.z;
+	return (m);
 }

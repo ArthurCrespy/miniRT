@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:08:57 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/18 16:50:45 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/06 22:38:57 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,65 @@ t_ray	get_ray(t_scene *scene, int x, int y)
 	ray = ray_new(origin, direction);
 	// (void)direction;
 	// ray = ray_new(point_new(0, 0, -5), vector_new(0, 0, 1));
+	if (x == 100 && y == 50)
+	// if (x == 0 && y == 0)
+	{
+		// ft_print_point(pixel);
+		ft_printf("X: %d, Y: %d\n", x, y);
+		ft_printf("Origin: ");
+		ft_print_point(origin);
+		ft_printf("Direction: ");
+		ft_print_vector(direction);
+		ft_print_matrix(*scene->camera->transform);
+		ft_printf("\n");
+		ft_print_matrix(*matrix_inverse(*scene->camera->transform));
+		ft_printf("\n");
+
+	}
 	return (ray);
+}
+
+t_point	ft_point_at(t_ray ray, double t)
+{
+	return (tuple_add(ray.origin, tuple_mult(ray.direction, t)));
+}
+
+
+t_computation	prepare_computations(t_intersection *intersection, t_ray ray)
+{
+	t_computation	comps;
+
+	comps.object = intersection->obj;
+	comps.point = ft_point_at(ray, intersection->t);
+	comps.eye = tuple_negate(ray.direction);
+	// comps.eye = ray.direction;
+	comps.normal = normal_at(comps.object, comps.point);
+//	normal < 0 → angle +90° → intersection point inside the object
+	if (tuple_dot(comps.normal, comps.eye) < 0)
+	{
+		comps.normal = tuple_negate(comps.normal);
+		comps.inside = true;
+	}
+	else
+		comps.inside = false;
+	return (comps);
 }
 
 int	ray_color(t_minirt *data, t_ray ray)
 {
-	if (ft_hit(ft_intersect(data->scene->objects, ray)))
-		return (0x00FF0000);
+	t_computation	comps;
+	t_intersection	*intersection;
+	t_color			color;
+
+	intersection = ft_hit(ft_intersect(data->scene->objects, ray));
+	if (intersection)
+	{
+		// actual color
+		comps = prepare_computations(intersection, ray);
+		comps.light = data->scene->lights->content;
+		color = lighting(&comps);
+		return (color_to_int(color));
+	}
 	return (0x00000000);
 }
 
@@ -71,8 +123,8 @@ int	get_pixel_color(t_minirt *data, int x, int y)
 
 	ray = get_ray(data->scene, x, y);
 	// (void)ray;
-	ft_print_point(ray.origin);
-	ft_print_vector(ray.direction);
+	// ft_print_point(ray.origin);
+	// ft_print_vector(ray.direction);
 	color = ray_color(data, ray);
 	return (color);
 }

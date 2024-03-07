@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 16:34:21 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/29 20:41:52 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/06 20:17:35 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -320,6 +320,39 @@ int	do_tests(void)
 	}
 
 	if (NULL == CU_add_test(suite, "lighting_02", do_lighting_02))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	// shading
+
+	suite = CU_add_suite("shading", NULL, NULL);
+	if (NULL == suite)
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "test_precompute_intersections_00", test_precompute_intersections_00))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "test_precompute_intersections_01", test_precompute_intersections_01))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "test_precompute_intersections_02", test_precompute_intersections_02))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "test_shading_00", test_shading_00))
 	{
 		CU_cleanup_registry();
 		return CU_get_error();
