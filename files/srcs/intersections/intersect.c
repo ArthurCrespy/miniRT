@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 20:46:09 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/06 20:01:24 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/07 17:11:37 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ double	*intersect_with(t_hittable *obj, t_ray ray)
 	// ft_print_matrix(*invert_transform);
 	if (obj->type == SPHERE)
 		return (intersect_with_sphere(ray_transformed));
+	else if (obj->type == CYLINDER)
+		return (intersect_with_cylinder(obj, ray_transformed));
+	else if (obj->type == PLANE)
+		return (intersect_with_plane(ray_transformed));
 	return (NULL);
 }
 

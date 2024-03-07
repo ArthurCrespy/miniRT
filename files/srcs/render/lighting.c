@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lighting.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:21:14 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/02 21:54:07 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/07 17:12:54 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 t_color	lighting(t_computation	*lighting_info)
 {
-	t_color	effective_color;
-	t_color	ambient;
-	t_color	diffuse;
-	t_color	specular;
+	t_color		effective_color;
+	t_color		ambient;
+	t_color		diffuse;
+	t_color		specular;
 	t_vector	reflectv;
-	double	light_dot_normal;
-	double	reflect_dot_eye;
 	t_vector	lightv;
+	double		light_dot_normal;
+	double		reflect_dot_eye;
 
 	effective_color = color_scalar(color_mult(*lighting_info->object->material->color, *lighting_info->light->color), lighting_info->light->brightness);
 	ambient = color_scalar(effective_color, lighting_info->object->material->ambient->brightness);

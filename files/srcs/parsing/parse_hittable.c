@@ -110,6 +110,8 @@ int	ft_parse_cylinder(t_scene *scene, char *line)
 		return (free_parse_hittable(cylinder, tab, CYLINDER), 0);
 	if (!ft_isfloat(tab[3]) || !ft_isfloat(tab[4]))
 		return (free_parse_hittable(cylinder, tab, CYLINDER), 0);
+	cylinder->radius = ft_atof(tab[3]) / 2;
+	cylinder->height = ft_atof(tab[4]);
 	ft_parse_scale(ft_atof(tab[3]), ft_atof(tab[4]), 1, cylinder->transform);
 	if (!ft_parse_color(tab[5], cylinder->material->color))
 		return (free_parse_hittable(cylinder, tab, CYLINDER), 0);
