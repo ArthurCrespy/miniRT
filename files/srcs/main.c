@@ -24,14 +24,13 @@ int	init_minirt(t_minirt *minirt)
 	return (1);
 }
 
-
 int	main(int argc, char **argv, char **envp)
 {
 	t_minirt	minirt;
 
 	data_initialize(&minirt);
 	args_check(argc, argv, envp);
-// //	file_save(&minirt, argv[1]);
+	// file_save(&minirt, argv[1]);
 	if (!init_minirt(&minirt))
 		return (0);
 	if (!ft_parse_rt_file(minirt.scene, argv[1]))
@@ -41,7 +40,6 @@ int	main(int argc, char **argv, char **envp)
 		return (0);
 	}
 	mlx_initialize_win(&minirt);
-	
 	mlx_hook_loop(&minirt);
 	mlx_free(&minirt);
 	data_free(&minirt);
@@ -49,7 +47,6 @@ int	main(int argc, char **argv, char **envp)
 	// mlx_hook_loop(&minirt);
 	// mlx_free(&minirt);
 	// data_free(&minirt);
-
 	return (1);
 }
 
