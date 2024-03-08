@@ -13,12 +13,11 @@
 #ifndef MINIRT_DEFINE_H
 # define MINIRT_DEFINE_H
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 50
-# endif
-
 # define EPSILON 0.00001
-# define WIDHT 720
+
+# define MATRIX 4
+
+# define WIDTH 720
 # define HEIGHT 480
 
 # define SPHERE 1

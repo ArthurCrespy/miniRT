@@ -96,10 +96,10 @@ double			tuple_dot(t_tuple t1, t_tuple t2);
 t_tuple			tuple_cross(t_tuple t1, t_tuple t2);
 t_tuple			tuple_reflect(t_tuple t, t_tuple normal);
 
-t_tuple	tuple_transform(t_tuple tuple, t_matrix matrix);
-t_tuple	tuple_normalize(t_tuple tuple);
+t_tuple			tuple_transform(t_tuple tuple, t_matrix matrix);
+t_tuple			tuple_normalize(t_tuple tuple);
 
-t_vector	normal_at(t_hittable *obj, t_point world_point);
-t_vector	reflect(t_vector in, t_vector normal);
+t_vector		normal_at(t_hittable *obj, t_point world_point);
+t_vector		reflect(t_vector in, t_vector normal);
 
 #endif

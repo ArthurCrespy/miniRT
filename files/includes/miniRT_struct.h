@@ -13,20 +13,17 @@
 #ifndef MINIRT_STRUCT_H
 # define MINIRT_STRUCT_H
 
-# define MATRIX 4
-
 # include "./miniRT_include.h"
 
 typedef struct s_tuple
 {
-	double	x;
-	double	y;
-	double	z;
-	double	w;
-}	t_tuple;
+	double		x;
+	double		y;
+	double		z;
+	double		w;
+}			t_tuple;
 
 typedef t_tuple	t_point;
-
 typedef t_tuple	t_vector;
 
 typedef struct s_ray
@@ -37,41 +34,37 @@ typedef struct s_ray
 
 typedef struct s_matrix
 {
-	double	matrix[MATRIX][MATRIX];
-	int		size;
+	double		matrix[MATRIX][MATRIX];
+	int			size;
 }	t_matrix;
 
 typedef struct s_shearing
 {
-	double	p1;
-	double	p2;
+	double		p1;
+	double		p2;
 }				t_shearing;
-
-typedef struct s_img_data
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}			t_img_data;
-
-typedef struct s_vars
-{
-	void	*mlx;
-	void	*win;
-}				t_vars;
 
 typedef struct s_color
 {
-	double	chan_1;
-	double	chan_2;
-	double	chan_3;
+	double		chan_1;
+	double		chan_2;
+	double		chan_3;
 }				t_color;
 
-// write prototype of t_material here
+typedef struct s_ambient
+{
+	double		brightness;
+	t_color		*color;
+}				t_ambient;
 
-typedef struct s_material t_material; 
+typedef struct s_material
+{
+	t_color		*color;
+	t_ambient	*ambient;
+	double		diffuse;
+	double		specular;
+	double		shininess;
+}				t_material;
 
 typedef struct s_hittable
 {
@@ -85,12 +78,12 @@ typedef struct s_hittable
 
 typedef struct s_camera
 {
-	t_matrix		*transform;
-	double			fov;
-	double			pixel_size;
-	double			half_view;
-	double			half_width;
-	double			half_height;
+	t_matrix	*transform;
+	double		fov;
+	double		pixel_size;
+	double		half_view;
+	double		half_width;
+	double		half_height;
 }				t_camera;
 
 typedef struct s_light
@@ -99,12 +92,6 @@ typedef struct s_light
 	double		brightness;
 	t_color		*color;
 }				t_light;
-
-typedef struct s_ambient
-{
-	double	brightness;
-	t_color	*color;
-}				t_ambient;
 
 typedef struct s_scene
 {
@@ -119,7 +106,7 @@ typedef struct s_intersection
 	// bool		hit;
 	double		t;
 	t_hittable	*obj;
-	// t_point		point;
+	// t_point	point;
 	// t_vector	normal;
 }				t_intersection;
 
@@ -133,14 +120,6 @@ typedef struct s_computation
 	bool		inside;
 }				t_computation;
 
-typedef struct s_material
-{
-	t_color		*color;
-	t_ambient	*ambient;
-	double		diffuse;
-	double		specular;
-	double		shininess;
-}				t_material;
 typedef struct s_mlx
 {
 	void		*mlx;
@@ -156,9 +135,10 @@ typedef struct s_mlx
 	int			bpp;
 }				t_mlx;
 
-typedef struct s_minirt {
-	t_mlx		*mlx;
-	t_scene		*scene;
+typedef struct s_minirt
+{
+	t_mlx			*mlx;
+	t_scene			*scene;
 	unsigned int	pxl_rendered;
 }				t_minirt;
 

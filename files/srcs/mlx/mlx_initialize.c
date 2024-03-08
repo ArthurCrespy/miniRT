@@ -23,7 +23,7 @@ void	mlx_initialize_win(t_minirt *data)
 		&data->mlx->screen_width, &data->mlx->screen_height);
 	if (data->mlx->screen_width <= 0 || data->mlx->screen_height <= 0)
 		mlx_error(data);
-	data->mlx->win_width = WIDHT;
+	data->mlx->win_width = WIDTH;
 	data->mlx->win_height = HEIGHT;
 	data->mlx->mlx_win = mlx_new_window(data->mlx->mlx, data->mlx->win_width,
 			data->mlx->win_height, "miniRT");
