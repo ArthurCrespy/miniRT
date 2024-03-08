@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_pixel_put.c                                    :+:      :+:    :+:   */
+/*   main_tests.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/18 15:42:40 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/08 21:59:50 by dkeraudr         ###   ########.fr       */
+/*   Created: 2024/03/07 20:36:43 by dkeraudr          #+#    #+#             */
+/*   Updated: 2024/03/07 20:37:00 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color)
+void	do_tests(void);
+// void	do_lighting_00(void);
+void	test_world_intersections(void);
+void	test_precompute_intersections(void);
+
+int	main(void)
 {
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bpp / 8));
-	*(unsigned int *)dst = color;
+	do_tests();
+	// test_world_intersections();
+	// test_precompute_intersections();
+	return (1);
 }
-

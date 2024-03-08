@@ -6,7 +6,7 @@
 #    By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 14:54:39 by acrespy           #+#    #+#              #
-#    Updated: 2024/02/28 21:43:52 by dkeraudr         ###   ########.fr        #
+#    Updated: 2024/03/07 20:40:19 by dkeraudr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,13 @@ SRCS := \
 			normal/normal_at.c \
 			normal/reflect.c \
 
+# if test remove main.c and replace it with main_tests.c
+ifeq ($(MAKECMDGOALS),test)
+	SRCS := $(filter-out main.c, $(SRCS))
+	SRCS += main_tests.c
+endif
+
+
 SRCS := ${SRCS:%=${SRC_DIR}/%}
 
 TEST_SRCS := \
@@ -83,6 +90,7 @@ TEST_SRCS := \
 			tests/test_sphere_normal.c \
 			tests/test_reflect.c \
 			tests/test_lighting.c \
+			tests/test_shading.c \
 
 TEST_SRCS := ${TEST_SRCS:%=${SRC_DIR}/%}
 

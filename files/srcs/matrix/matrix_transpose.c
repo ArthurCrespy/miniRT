@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:44:43 by acrespy           #+#    #+#             */
-/*   Updated: 2024/02/18 15:09:21 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/08 20:21:16 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,9 @@ t_matrix	matrix_transpose(t_matrix m)
 		i++;
 	}
 	m2.size = m.size;
+	m2.matrix[3][0] = 0;
+	m2.matrix[3][1] = 0;
+	m2.matrix[3][2] = 0;
+	m2.matrix[3][3] = 1;
 	return (m2);
 }

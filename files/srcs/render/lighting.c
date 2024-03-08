@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lighting.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:21:14 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/07 17:12:54 by acrespy          ###   ########.fr       */
+/*   Updated: 2024/03/08 22:00:18 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,10 @@ t_color	lighting(t_computation	*lighting_info)
 	double		light_dot_normal;
 	double		reflect_dot_eye;
 
-	effective_color = color_scalar(color_mult(*lighting_info->object->material->color, *lighting_info->light->color), lighting_info->light->brightness);
+	effective_color = color_mult(*lighting_info->object->material->color, color_scalar(*lighting_info->light->color, lighting_info->light->brightness));
+	lightv = tuple_normalize(tuple_sub(lighting_info->light->position, lighting_info->point));
 	ambient = color_scalar(effective_color, lighting_info->object->material->ambient->brightness);
-	lightv = tuple_normalize(tuple_sub(lighting_info->point, lighting_info->light->position));
 	light_dot_normal = tuple_dot(lightv, lighting_info->normal);
-	// diffuse = malloc(sizeof(t_color));
-	// specular = malloc(sizeof(t_color));
-	// if (!diffuse || !specular)
-	// {
-	// 	if (diffuse)
-	// 		free(diffuse);
-	// 	if (specular)
-	// 		free(specular);
-	// 	return (*color_new(0, 0, 0));
-	// }
 	if (light_dot_normal < 0)
 	{
 		diffuse = *color_new(0, 0, 0);
