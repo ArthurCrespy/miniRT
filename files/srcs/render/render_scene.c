@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:08:57 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/06 22:38:57 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/08 22:14:13 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ t_computation	prepare_computations(t_intersection *intersection, t_ray ray)
 	}
 	else
 		comps.inside = false;
+	comps.over_point = tuple_add(comps.point, tuple_mult(comps.normal, EPSILON));
 	return (comps);
 }
 
@@ -110,6 +111,7 @@ int	ray_color(t_minirt *data, t_ray ray)
 		// actual color
 		comps = prepare_computations(intersection, ray);
 		comps.light = data->scene->lights->content;
+		comps.scene = data->scene;
 		color = lighting(&comps);
 		return (color_to_int(color));
 	}
