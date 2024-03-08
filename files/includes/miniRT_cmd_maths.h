@@ -61,7 +61,7 @@ void			ft_matrix_transform(t_matrix *matrix, t_matrix *transform);
 t_matrix		matrix_submatrix(t_matrix m, int row, int col);
 
 
-t_matrix		matrix_transpose(t_matrix m);
+t_matrix		*matrix_transpose(t_matrix m);
 
 /* -- */
 
