@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 18:30:53 by acrespy           #+#    #+#             */
-/*   Updated: 2024/03/02 22:13:35 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/07 20:36:42 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,3 @@ int	main(int argc, char **argv, char **envp)
 	return (1);
 }
 
-// void	do_tests(void);
-// // void	do_lighting_00(void);
-
-// int	main(void)
-// {
-// 	do_tests();
-// 	do_lighting_00();
-// 	return (1);
-// }

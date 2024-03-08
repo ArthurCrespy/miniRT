@@ -1,38 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrix_transpose.c                                 :+:      :+:    :+:   */
+/*   main_tests.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/29 14:44:43 by acrespy           #+#    #+#             */
-/*   Updated: 2024/03/08 20:21:16 by dkeraudr         ###   ########.fr       */
+/*   Created: 2024/03/07 20:36:43 by dkeraudr          #+#    #+#             */
+/*   Updated: 2024/03/07 20:37:00 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_matrix	matrix_transpose(t_matrix m)
-{
-	int			i;
-	int			j;
-	t_matrix	m2;
+void	do_tests(void);
+// void	do_lighting_00(void);
+void	test_world_intersections(void);
+void	test_precompute_intersections(void);
 
-	i = 0;
-	while (i < m.size)
-	{
-		j = 0;
-		while (j < m.size)
-		{
-			m2.matrix[i][j] = m.matrix[j][i];
-			j++;
-		}
-		i++;
-	}
-	m2.size = m.size;
-	m2.matrix[3][0] = 0;
-	m2.matrix[3][1] = 0;
-	m2.matrix[3][2] = 0;
-	m2.matrix[3][3] = 1;
-	return (m2);
+int	main(void)
+{
+	do_tests();
+	// test_world_intersections();
+	// test_precompute_intersections();
+	return (1);
 }
