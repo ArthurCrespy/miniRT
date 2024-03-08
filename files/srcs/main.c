@@ -53,12 +53,10 @@ int	main(int argc, char **argv, char **envp)
 	return (1);
 }
 
-// void	do_tests(void);
-// // void	do_lighting_00(void);
-
-// int	main(void)
-// {
-// 	do_tests();
-// 	do_lighting_00();
-// 	return (1);
-// }
+//#include "./../includes/miniRT_test.h"
+//
+//int	main(void)
+//{
+//	do_tests();
+//	return (1);
+//}

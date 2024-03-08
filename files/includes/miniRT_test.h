@@ -17,6 +17,8 @@
 # include <CUnit/Basic.h>
 # include "miniRT.h"
 
+int		do_tests(void);
+
 void	do_sphere_intersect_00(void);
 void	do_sphere_intersect_01(void);
 void	do_sphere_intersect_02(void);
