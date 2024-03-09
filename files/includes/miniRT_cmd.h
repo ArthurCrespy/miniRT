@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/06 22:55:11 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/09 16:03:37 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ t_intersection	*ft_hit(t_list *intersections);
 
 // lighting
 
-t_color	lighting(t_computation	*lighting_info);
+t_color	lighting(t_computation	*lighting_info, bool	shadowed);
+bool	is_shadowed(t_scene *scene, t_point point);
 
 #endif

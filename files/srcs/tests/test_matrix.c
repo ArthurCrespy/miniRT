@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 18:32:34 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/18 13:36:34 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/09 16:08:36 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ void	do_matrix_transpose(void)
 	CU_ASSERT_DOUBLE_EQUAL(res.matrix[2][2], 5, 1e-6);
 	CU_ASSERT_DOUBLE_EQUAL(res.matrix[2][3], 5, 1e-6);
 	CU_ASSERT_DOUBLE_EQUAL(res.matrix[3][0], 0, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res.matrix[3][1], 8, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res.matrix[3][2], 3, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res.matrix[3][3], 8, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res.matrix[3][1], 0, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res.matrix[3][2], 0, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res.matrix[3][3], 1, 1e-6);
 }
 
 void	do_matrix_determinant_00(void)

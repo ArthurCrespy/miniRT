@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 20:09:07 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/06 20:22:45 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/09 16:16:32 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,21 @@ t_computation	prepare_computations(t_intersection *intersection, t_ray ray);
 t_scene		*default_world(void)
 {
 	t_scene	*scene;
+	t_list	*tmp;
 
 	scene = malloc(sizeof(t_scene));
 	if (!scene)
 		return (NULL);
 	ft_parse_rt_file(scene, "default_world.rt");
+	tmp = scene->objects;
+	while (tmp)
+	{
+		((t_hittable *)tmp->content)->material->diffuse = 0.7;
+		((t_hittable *)tmp->content)->material->specular = 0.2;
+		((t_hittable *)tmp->content)->material->shininess = 200;
+		tmp = tmp->next;
+	}
+
 	return (scene);
 }
 
@@ -179,8 +189,7 @@ void	test_shading_00(void)
 	inter = create_intersect(4, scene->objects->content);
 	comps = prepare_computations(inter, r);
 	comps.light = scene->lights->content;
-	c = lighting(&comps);
-	printf("c: %f, %f, %f\n", c.chan_1, c.chan_2, c.chan_3);
+	c = lighting(&comps, false);
 	CU_ASSERT_DOUBLE_EQUAL(c.chan_1, 0.38066, EPSILON);
 	CU_ASSERT_DOUBLE_EQUAL(c.chan_2, 0.47583, EPSILON);
 	CU_ASSERT_DOUBLE_EQUAL(c.chan_3, 0.2855, EPSILON);

@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:08:57 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/08 22:14:13 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/09 16:03:19 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int	ray_color(t_minirt *data, t_ray ray)
 		comps = prepare_computations(intersection, ray);
 		comps.light = data->scene->lights->content;
 		comps.scene = data->scene;
-		color = lighting(&comps);
+		color = lighting(&comps, is_shadowed(data->scene, comps.over_point));
 		return (color_to_int(color));
 	}
 	return (0x00000000);
