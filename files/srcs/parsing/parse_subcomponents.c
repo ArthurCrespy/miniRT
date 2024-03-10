@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 21:07:41 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/06 22:56:17 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/10 18:19:16 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int	ft_parse_center(char *line, t_matrix *transform)
 	}
 	ft_matrix_transform(transform, translation);
 	ft_free_2d_list(tab);
+	free(translation);
 	return (1);
 }
 
@@ -89,6 +90,7 @@ int	ft_parse_rotation(char *line, t_matrix *transform)
 	}
 	ft_matrix_transform(transform, rotation);
 	ft_free_2d_list(tab);
+	free(rotation);
 	return (1);
 }
 
@@ -104,6 +106,7 @@ int	ft_parse_scale(double scale_x, double scale_y, double scale_z,
 		return (0);
 	}
 	ft_matrix_transform(transform, scale);
+	free(scale);
 	return (1);
 }
 

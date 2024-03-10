@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 22:01:44 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/06 23:02:26 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/10 18:23:24 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,6 @@ t_camera	*ft_init_camera(void)
 	if (!camera)
 		return (NULL);
 	camera->fov = 0;
-	camera->transform = matrix_identity();
-	if (!camera->transform)
-	{
-		free(camera);
-		return (ft_error(ERROR_MALLOC), NULL);
-	}
 	return (camera);
 }
 
@@ -68,6 +62,7 @@ t_matrix	*view_transform(t_point from, t_point to, t_vector up)
 	t_vector	true_up;
 	t_matrix	*orientation;
 	t_matrix	*translation;
+	t_matrix	*result;
 	double		**matrix_values;
 
 	forward = tuple_normalize(tuple_sub(to, from));
@@ -89,8 +84,10 @@ t_matrix	*view_transform(t_point from, t_point to, t_vector up)
 		free(orientation);
 		return (NULL);
 	}
-	orientation = matrix_mult(*orientation, *translation);
-	return (orientation);
+	result = matrix_mult(*orientation, *translation);
+	free(translation);
+	free(orientation);
+	return (result);
 }
 
 int	ft_parse_camera(t_scene *scene, char *line)
@@ -125,6 +122,8 @@ int	ft_parse_camera(t_scene *scene, char *line)
 	// camera->transform =  matrix_mult(*matrix_rotation_y(M_PI/4), *matrix_translation(0, -2, 5));
 	ft_get_pixel_size(camera);
 	ft_free_2d_list(tab);
+	free(from);
+	free(to);
 	return (1);
 }
 
