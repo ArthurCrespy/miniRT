@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 19:33:55 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/06 20:17:28 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/09 16:45:37 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <CUnit/CUnit.h>
 # include <CUnit/Basic.h>
 # include "miniRT.h"
+
+t_scene		*default_world(void);
 
 void	do_sphere_intersect_00(void);
 void	do_sphere_intersect_01(void);
@@ -64,4 +66,10 @@ void	test_precompute_intersections_01(void);
 void	test_precompute_intersections_02(void);
 
 void	test_shading_00(void);
+
+void	test_shadows_00(void);
+void	test_shadows_01(void);
+void	test_shadows_02(void);
+void	test_shadows_03(void);
+
 #endif

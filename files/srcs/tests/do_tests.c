@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 16:34:21 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/06 20:17:35 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/09 16:45:03 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -358,6 +358,40 @@ int	do_tests(void)
 		return CU_get_error();
 	}
 
+	// shadows
+
+	suite = CU_add_suite("shadows", NULL, NULL);
+
+	if (NULL == suite)
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "test_shadows_00", test_shadows_00))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "test_shadows_01", test_shadows_01))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "test_shadows_02", test_shadows_02))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "test_shadows_03", test_shadows_03))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+	
 	CU_basic_set_mode(CU_BRM_VERBOSE);
 	CU_basic_run_tests();
 	CU_cleanup_registry();

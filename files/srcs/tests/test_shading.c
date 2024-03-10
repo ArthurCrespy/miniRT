@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 20:09:07 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/09 16:16:32 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/09 16:35:00 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,6 +189,8 @@ void	test_shading_00(void)
 	inter = create_intersect(4, scene->objects->content);
 	comps = prepare_computations(inter, r);
 	comps.light = scene->lights->content;
+	comps.scene = scene;
+	comps.object = scene->objects->content;
 	c = lighting(&comps, false);
 	CU_ASSERT_DOUBLE_EQUAL(c.chan_1, 0.38066, EPSILON);
 	CU_ASSERT_DOUBLE_EQUAL(c.chan_2, 0.47583, EPSILON);
