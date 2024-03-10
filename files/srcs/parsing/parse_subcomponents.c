@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 21:07:41 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/10 18:19:16 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/10 18:32:50 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ int	ft_parse_scale(double scale_x, double scale_y, double scale_z,
 	t_matrix *transform)
 {
 	t_matrix	*scale;
+
 	scale = matrix_scale(scale_x, scale_y, scale_z);
 	if (!scale)
 	{

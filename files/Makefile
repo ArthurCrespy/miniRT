@@ -6,7 +6,7 @@
 #    By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 14:54:39 by acrespy           #+#    #+#              #
-#    Updated: 2024/03/07 20:40:19 by dkeraudr         ###   ########.fr        #
+#    Updated: 2024/03/10 18:38:54 by dkeraudr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRCS := \
 			mlx/mlx_loop.c \
 			mlx/mlx_render.c \
 			mlx/mlx_pixel_put.c \
+			parsing/material_init.c \
 			parsing/parse_camera.c \
 			parsing/parse_hittable.c \
 			parsing/parse_lighting.c \

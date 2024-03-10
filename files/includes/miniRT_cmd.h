@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/06 22:55:11 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/10 18:36:05 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int		ft_parse_rotation(char *line, t_matrix *transform);
 int		ft_parse_scale(double x, double y, double z, t_matrix *matrix);
 int		ft_parse_tuple(char *line, t_point *point);
 
+t_material	*material_init(void);
 // utils
 
 void	ft_print_scene(t_scene *scene);
@@ -99,4 +100,7 @@ t_intersection	*ft_hit(t_list *intersections);
 
 t_color	lighting(t_computation	*lighting_info);
 
+//free
+
+void	free_hittable(void *hittable);
 #endif
