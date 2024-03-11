@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 20:38:32 by arthur            #+#    #+#             */
-/*   Updated: 2024/03/01 20:00:20 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/11 23:05:26 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 double	tuple_mag(t_tuple t1)
 {
-	return (sqrt(pow(t1.x, 2) + pow(t1.y, 2) + pow(t1.z, 2) + pow(t1.w, 2)));
+	return (sqrt(pow(t1.x, 2) + pow(t1.y, 2) + pow(t1.z, 2)));
 }
 
 t_tuple	tuple_norm(t_tuple t1)
@@ -27,7 +27,7 @@ t_tuple	tuple_norm(t_tuple t1)
 
 double	tuple_dot(t_tuple t1, t_tuple t2)
 {
-	return (t1.x * t2.x + t1.y * t2.y + t1.z * t2.z + t1.w * t2.w);
+	return (t1.x * t2.x + t1.y * t2.y + t1.z * t2.z);
 }
 
 t_tuple	tuple_cross(t_tuple t1, t_tuple t2)

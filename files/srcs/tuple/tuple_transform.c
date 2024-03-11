@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tuple_transform.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 16:24:11 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/07 17:11:49 by acrespy          ###   ########.fr       */
+/*   Updated: 2024/03/11 23:09:35 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ t_tuple	tuple_normalize(t_tuple tuple)
 	tuple.x /= magnitude;
 	tuple.y /= magnitude;
 	tuple.z /= magnitude;
+	tuple.w /= magnitude;
 	return (tuple);
 }

@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:08:57 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/09 16:03:19 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/11 22:50:39 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,14 @@ t_computation	prepare_computations(t_intersection *intersection, t_ray ray)
 	{
 		comps.normal = tuple_negate(comps.normal);
 		comps.inside = true;
+		comps.over_point = tuple_sub(comps.point, tuple_mult(comps.normal, EPSILON));
 	}
 	else
+	{
 		comps.inside = false;
-	comps.over_point = tuple_add(comps.point, tuple_mult(comps.normal, EPSILON));
+		comps.over_point = tuple_add(comps.point, tuple_mult(comps.normal, EPSILON));
+	}
+	// comps.over_point = tuple_add(comps.point, tuple_mult(comps.normal, EPSILON));
 	return (comps);
 }
 
