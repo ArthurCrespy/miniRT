@@ -12,6 +12,48 @@
 
 #include "miniRT_test.h"
 
+int	do_transform_tests(CU_pSuite suite)
+{
+	suite = CU_add_suite("ray_transform", NULL, NULL);
+	if (NULL == suite)
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "ray_translate_00", do_ray_translate_00))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "ray_translate_01", do_ray_translate_01))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "ray_translate_02", do_ray_translate_02))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "ray_scaling_00", do_ray_scaling_00))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "ray_scaling_01", do_ray_scaling_01))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	return (0);
+}
+
 void	do_ray_translate_00(void)
 {
 	t_matrix	*transform;

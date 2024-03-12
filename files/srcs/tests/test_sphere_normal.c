@@ -12,6 +12,53 @@
 
 #include "miniRT_test.h"
 
+int	do_sphere_normal_tests(CU_pSuite suite)
+{
+	suite = CU_add_suite("sphere_normal", NULL, NULL);
+	if (NULL == suite)
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "sphere_normal_00", do_sphere_normal_00))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "sphere_normal_01", do_sphere_normal_01))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "sphere_normal_02", do_sphere_normal_02))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "sphere_normal_03", do_sphere_normal_03))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "sphere_normal_04", do_sphere_normal_04))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "sphere_normal_05", do_sphere_normal_05))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+	return (0);
+}
+
 void	do_sphere_normal_00(void)
 {
 	t_hittable	*sphere;

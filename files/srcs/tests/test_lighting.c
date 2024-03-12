@@ -12,6 +12,36 @@
 
 #include "miniRT_test.h"
 
+int		do_lighting_tests(CU_pSuite suite)
+{
+	suite = CU_add_suite("lighting", NULL, NULL);
+	if (NULL == suite)
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "lighting_00", do_lighting_00))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "lighting_01", do_lighting_01))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "lighting_02", do_lighting_02))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	return (0);
+}
+
 void	do_lighting_00(void)
 {
 	t_computation	lighting_info;

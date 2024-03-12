@@ -12,6 +12,42 @@
 
 #include "miniRT_test.h"
 
+int		do_shadows_tests(CU_pSuite suite)
+{
+	suite = CU_add_suite("shadows", NULL, NULL);
+	if (NULL == suite)
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "shadows_00", test_shadows_00))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "shadows_01", test_shadows_01))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "shadows_02", test_shadows_02))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "shadows_03", test_shadows_03))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	return (0);
+}
+
 // Scenario: Lighting with the surface in shadow
 // Given eyev ← vector(0, 0, -1)
 // And normalv ← vector(0, 0, -1)

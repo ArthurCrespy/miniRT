@@ -12,6 +12,30 @@
 
 #include "miniRT_test.h"
 
+int	do_reflect_tests(CU_pSuite suite)
+{
+	suite = CU_add_suite("reflect", NULL, NULL);
+	if (NULL == suite)
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "do_reflect_00", do_reflect_00))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "do_reflect_01", do_reflect_01))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	return (0);
+}
+
 void	do_reflect_00(void)
 {
 	t_vector	in;

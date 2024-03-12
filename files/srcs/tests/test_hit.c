@@ -12,6 +12,47 @@
 
 #include "miniRT_test.h"
 
+int	do_hit_tests(CU_pSuite suite)
+{
+	suite = CU_add_suite("hit", NULL, NULL);
+	if (NULL == suite)
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "do_hit_00", do_hit_00))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "do_hit_01", do_hit_01))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "do_hit_02", do_hit_02))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "do_hit_03", do_hit_03))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	if (NULL == CU_add_test(suite, "do_hit_04", do_hit_04))
+	{
+		CU_cleanup_registry();
+		return CU_get_error();
+	}
+
+	return (0);
+}
 
 void	do_hit_00(void)
 {
