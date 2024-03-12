@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.24)
+cmake_minimum_required(VERSION 3.22)
 project(miniRT C)
 
 set(CMAKE_C_STANDARD 23)
@@ -36,6 +36,21 @@ if(APPLE)
         /usr/X11/include)
 endif()
 
+if(LINUX)
+    target_include_directories(miniRT PRIVATE
+       /usr/lib/X11
+       /usr/bin/X11
+       /mnt/nfs/homes/acrespy/.brew/Cellar/cunit/2.1-3/include)
+    target_link_libraries(miniRT PRIVATE
+        X11
+        Xext
+        m
+        /mnt/nfs/homes/acrespy/.brew/Cellar/cunit/2.1-3/lib/libcunit.so.1.0.1)
+    target_include_directories(miniRT PRIVATE
+        /usr/include/X11
+        /mnt/nfs/homes/acrespy/.brew/Cellar/cunit/2.1-3/include)
+endif()
+
 #miniRT_test
 file(GLOB SOURCES_TEST
     files/srcs/main_tests.c
@@ -65,4 +80,19 @@ if(APPLE)
     target_include_directories(miniRT_test PRIVATE
         /usr/X11/include
         /usr/local/Cellar/cunit/2.1-3/include)
+endif()
+
+if(LINUX)
+    target_include_directories(miniRT_test PRIVATE
+       /usr/lib/X11
+       /usr/bin/X11
+       /mnt/nfs/homes/acrespy/.brew/Cellar/cunit/2.1-3/include)
+    target_link_libraries(miniRT_test PRIVATE
+        X11
+        Xext
+        m
+        /mnt/nfs/homes/acrespy/.brew/Cellar/cunit/2.1-3/lib/libcunit.so.1.0.1)
+    target_include_directories(miniRT_test PRIVATE
+        /usr/include/X11
+        /mnt/nfs/homes/acrespy/.brew/Cellar/cunit/2.1-3/include)
 endif()
