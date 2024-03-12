@@ -56,7 +56,7 @@ int	ft_parse_center(char *line, t_matrix *transform)
 		ft_error(ERROR_MALLOC);
 		return (0);
 	}
-	ft_matrix_transform(transform, translation);
+	matrix_transform(transform, translation);
 	ft_free_2d_list(tab);
 	return (1);
 }
@@ -87,7 +87,7 @@ int	ft_parse_rotation(char *line, t_matrix *transform)
 		ft_error(ERROR_MALLOC);
 		return (0);
 	}
-	ft_matrix_transform(transform, rotation);
+	matrix_transform(transform, rotation);
 	ft_free_2d_list(tab);
 	return (1);
 }
@@ -103,7 +103,7 @@ int	ft_parse_scale(double scale_x, double scale_y, double scale_z,
 		ft_error(ERROR_MALLOC);
 		return (0);
 	}
-	ft_matrix_transform(transform, scale);
+	matrix_transform(transform, scale);
 	return (1);
 }
 

@@ -23,7 +23,7 @@ bool	is_shadowed(t_scene *scene, t_point point)
 
 	v = tuple_sub(((t_light*)scene->lights->content)->position, point);
 	distance = tuple_mag(v);
-	direction = tuple_normalize(v);
+	direction = tuple_norm(v);
 	ray = ray_new(point, direction);
 	intersections = ft_intersect(scene->objects, ray);
 	hit = ft_hit(intersections);
@@ -48,7 +48,7 @@ t_color	lighting(t_computation	*lighting_info, bool	shadowed)
 	double		reflect_dot_eye;
 
 	effective_color = color_mult(*lighting_info->object->material->color, color_scalar(*lighting_info->light->color, lighting_info->light->brightness));
-	lightv = tuple_normalize(tuple_sub(lighting_info->light->position, lighting_info->point));
+	lightv = tuple_norm(tuple_sub(lighting_info->light->position, lighting_info->point));
 	ambient = color_scalar(effective_color, lighting_info->object->material->ambient->brightness);
 	if (shadowed)
 		return (ambient);

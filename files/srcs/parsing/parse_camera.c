@@ -70,8 +70,8 @@ t_matrix	*view_transform(t_point from, t_point to, t_vector up)
 	t_matrix	*translation;
 	double		**matrix_values;
 
-	forward = tuple_normalize(tuple_sub(to, from));
-	up_normalized = tuple_normalize(up);
+	forward = tuple_norm(tuple_sub(to, from));
+	up_normalized = tuple_norm(up);
 	left = tuple_cross(forward, up_normalized);
 	true_up = tuple_cross(left, forward);
 	matrix_values = (double *[]) {

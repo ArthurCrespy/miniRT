@@ -22,7 +22,7 @@ t_vector	object_normal_at(t_hittable *obj, t_tuple object_point)
 		normal = tuple_sub(object_point, point_new(0, 0, 0));
 	else if (obj->type == PLANE)
 		normal = vector_new(0, 1, 0);
-	return (tuple_normalize(normal));
+	return (tuple_norm(normal));
 }
 
 t_vector	normal_at(t_hittable *obj, t_point world_point)
@@ -36,5 +36,5 @@ t_vector	normal_at(t_hittable *obj, t_point world_point)
 	object_normal = object_normal_at(obj, object_point);
 	transpose = matrix_transpose(*matrix_inverse(*obj->transform));
 	world_normal = tuple_transform(object_normal, transpose);
-	return (tuple_normalize(world_normal));
+	return (tuple_norm(world_normal));
 }

@@ -50,7 +50,7 @@ t_ray	get_ray(t_scene *scene, int x, int y)
 	world_y = scene->camera->half_height - yoffset;
 	pixel = tuple_transform(point_new(world_x, world_y, -1), *matrix_inverse(*scene->camera->transform));
 	origin = tuple_transform(point_new(0, 0, 0), *matrix_inverse(*scene->camera->transform));
-	direction = tuple_normalize(tuple_sub(pixel, origin));
+	direction = tuple_norm(tuple_sub(pixel, origin));
 	ray = ray_new(origin, direction);
 	// (void)direction;
 	// ray = ray_new(point_new(0, 0, -5), vector_new(0, 0, 1));
