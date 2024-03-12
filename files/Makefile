@@ -6,7 +6,7 @@
 #    By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 14:54:39 by acrespy           #+#    #+#              #
-#    Updated: 2024/03/10 18:38:54 by dkeraudr         ###   ########.fr        #
+#    Updated: 2024/03/12 19:42:49 by dkeraudr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,13 +76,13 @@ SRCS := \
 # if test remove main.c and replace it with main_tests.c
 ifeq ($(MAKECMDGOALS),test)
 	SRCS := $(filter-out main.c, $(SRCS))
-	SRCS += main_tests.c
 endif
 
 
 SRCS := ${SRCS:%=${SRC_DIR}/%}
 
 TEST_SRCS := \
+			main_tests.c \
 			tests/do_tests.c \
 			tests/test_sphere_intersection.c \
 			tests/test_hit.c \
@@ -92,6 +92,7 @@ TEST_SRCS := \
 			tests/test_reflect.c \
 			tests/test_lighting.c \
 			tests/test_shading.c \
+			tests/test_shadow.c \
 
 TEST_SRCS := ${TEST_SRCS:%=${SRC_DIR}/%}
 
@@ -122,7 +123,7 @@ CFLAGS      := -Wall -Wextra -Werror -g3
 
 # if test remove -Werror
 ifeq ($(MAKECMDGOALS),test)
-	CFLAGS := -Wall -Wextra
+	CFLAGS := -Wall -Wextra -g3
 endif
 
 ifeq ($(OS_NAME),linux)

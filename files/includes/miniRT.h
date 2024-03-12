@@ -19,10 +19,10 @@
 # include "./miniRT_cmd.h"
 # include "./miniRT_cmd_maths.h"
 
-# include <../libft/includes/libft.h>
+//# include <../libft/includes/libft.h>
 
-# include "./../minilibx-linux/mlx.h"
-# include "./../minilibx-linux/mlx_int.h"
+//# include "./../minilibx-linux/mlx.h"
+//# include "./../minilibx-linux/mlx_int.h"
 
 # include <stdio.h>
 # include <stdlib.h>

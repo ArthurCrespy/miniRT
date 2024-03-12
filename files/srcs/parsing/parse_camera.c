@@ -39,7 +39,7 @@ void	ft_get_pixel_size(t_camera *camera)
 
 	// fov is in degree
 	camera->half_view = tan(camera->fov * M_PI / 360);
-	printf("half_view: %f\n", camera->half_view);
+	//printf("half_view: %f\n", camera->half_view);
 	aspect_ratio = (double)WIDHT / (double)HEIGHT;
 	if (aspect_ratio >= 1)
 	{
@@ -65,8 +65,8 @@ t_matrix	*view_transform(t_point from, t_point to, t_vector up)
 	t_matrix	*result;
 	double		**matrix_values;
 
-	forward = tuple_normalize(tuple_sub(to, from));
-	up_normalized = tuple_normalize(up);
+	forward = tuple_norm(tuple_sub(to, from));
+	up_normalized = tuple_norm(up);
 	left = tuple_cross(forward, up_normalized);
 	true_up = tuple_cross(left, forward);
 	matrix_values = (double *[]) {

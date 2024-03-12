@@ -6,11 +6,25 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:33:41 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/02 21:57:01 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/09 16:11:49 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT_test.h"
+
+int		do_lighting_tests(CU_pSuite suite)
+{
+	suite = CU_add_suite("Lighting", NULL, NULL);
+	if (NULL == suite)
+		return (CU_cleanup_registry(), CU_get_error());
+
+	if (!CU_add_test(suite, "Lighting 00", do_lighting_00)
+		|| !CU_add_test(suite, "Lighting 01", do_lighting_01)
+		|| !CU_add_test(suite, "Lighting 02", do_lighting_02))
+		return (CU_cleanup_registry(), CU_get_error());
+
+	return (0);
+}
 
 void	do_lighting_00(void)
 {
@@ -57,7 +71,7 @@ void	do_lighting_00(void)
 	lighting_info.light->position = point_new(0, 0, -10);
 	lighting_info.light->brightness = 1;
 	lighting_info.light->color = color_new(1, 1, 1);
-	result = lighting(&lighting_info);
+	result = lighting(&lighting_info, false);
 	CU_ASSERT_DOUBLE_EQUAL(result.chan_1, 1.9, EPSILON);
 	CU_ASSERT_DOUBLE_EQUAL(result.chan_2, 1.9, EPSILON);
 	CU_ASSERT_DOUBLE_EQUAL(result.chan_3, 1.9, EPSILON);
@@ -108,7 +122,7 @@ void	do_lighting_01(void)
 	lighting_info.light->position = point_new(0, 0, -10);
 	lighting_info.light->brightness = 1;
 	lighting_info.light->color = color_new(1, 1, 1);
-	result = lighting(&lighting_info);
+	result = lighting(&lighting_info, false);
 	CU_ASSERT_DOUBLE_EQUAL(result.chan_1, 1.0, EPSILON);
 	CU_ASSERT_DOUBLE_EQUAL(result.chan_2, 1.0, EPSILON);
 	CU_ASSERT_DOUBLE_EQUAL(result.chan_3, 1.0, EPSILON);
@@ -160,7 +174,7 @@ void	do_lighting_02(void)
 	lighting_info.light->position = point_new(0, 10, -10);
 	lighting_info.light->brightness = 1;
 	lighting_info.light->color = color_new(1, 1, 1);
-	result = lighting(&lighting_info);
+	result = lighting(&lighting_info, false);
 	CU_ASSERT_DOUBLE_EQUAL(result.chan_1, 0.7364, EPSILON);
 	CU_ASSERT_DOUBLE_EQUAL(result.chan_2, 0.7364, EPSILON);
 	CU_ASSERT_DOUBLE_EQUAL(result.chan_3, 0.7364, EPSILON);

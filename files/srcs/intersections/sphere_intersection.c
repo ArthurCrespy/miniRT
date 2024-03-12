@@ -33,6 +33,6 @@ double	*intersect_with_sphere(t_ray ray)
 		return (NULL);
 	intersections[0] = (-b - sqrt(discriminant)) / (2 * a);
 	intersections[1] = (-b + sqrt(discriminant)) / (2 * a);
-	printf("sp - i0: %f, i1: %f\n", intersections[0], intersections[1]);
+	//printf("sp - i0: %f, i1: %f\n", intersections[0], intersections[1]);
 	return (intersections);
 }

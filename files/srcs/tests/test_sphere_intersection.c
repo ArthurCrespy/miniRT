@@ -12,6 +12,20 @@
 
 #include "miniRT_test.h"
 
+int	do_sphere_intersect_tests(CU_pSuite suite)
+{
+	suite = CU_add_suite("Sphere intersection", NULL, NULL);
+	if (NULL == suite)
+		return (CU_cleanup_registry(), CU_get_error());
+
+	if (!CU_add_test(suite, "Sphere intersect 00", do_sphere_intersect_00)
+		|| !CU_add_test(suite, "Sphere intersect 01", do_sphere_intersect_01)
+		|| !CU_add_test(suite, "Sphere intersect 02", do_sphere_intersect_02))
+		return (CU_cleanup_registry(), CU_get_error());
+
+	return (0);
+}
+
 void	do_sphere_intersect(t_hittable *sphere, t_ray ray, double *expected, int expected_cnt)
 {
 	int		i;

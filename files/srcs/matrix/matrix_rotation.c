@@ -71,15 +71,3 @@ t_matrix	*matrix_rotation(t_vector v)
 	ft_matrix_free(tmp);
 	return (res);
 }
-
-
-t_matrix	*vector_to_matrix(t_vector v)
-{
-	t_matrix	*m;
-
-	m = matrix_identity();
-	m->matrix[0][3] = v.x;
-	m->matrix[1][3] = v.y;
-	m->matrix[2][3] = v.z;
-	return (m);
-}

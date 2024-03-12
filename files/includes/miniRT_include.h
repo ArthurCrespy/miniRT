@@ -14,7 +14,7 @@
 # define MINIRT_INCLUDE_H
 
 # include "./../minilibx-linux/mlx.h"
-# include "./../minilibx-linux/mlx_int.h"
+//# include "./../minilibx-linux/mlx_int.h"
 
 # include "./../libft/includes/libft.h"
 

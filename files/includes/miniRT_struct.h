@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/01 19:41:31 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/08 22:13:50 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,8 +128,10 @@ typedef struct s_computation
 	t_hittable	*object;
 	t_light		*light;
 	t_point		point;
+	t_point		over_point;
 	t_vector	eye;
 	t_vector	normal;
+	t_scene		*scene;
 	bool		inside;
 }				t_computation;
 

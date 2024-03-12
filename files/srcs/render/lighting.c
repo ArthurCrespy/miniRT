@@ -6,13 +6,37 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:21:14 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/08 22:00:18 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/09 16:06:03 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_color	lighting(t_computation	*lighting_info)
+bool	is_shadowed(t_scene *scene, t_point point)
+{
+	t_vector	v;
+	t_vector	direction;
+	double		distance;
+	t_ray		ray;
+	t_list	*intersections;
+	t_intersection	*hit;
+
+	v = tuple_sub(((t_light*)scene->lights->content)->position, point);
+	distance = tuple_mag(v);
+	direction = tuple_norm(v);
+	ray = ray_new(point, direction);
+	intersections = ft_intersect(scene->objects, ray);
+	hit = ft_hit(intersections);
+	if (hit != NULL && hit->t < distance)
+	{
+		free(hit);
+		return (true);
+	}
+	free(hit);
+	return (false);
+}
+
+t_color	lighting(t_computation	*lighting_info, bool	shadowed)
 {
 	t_color		effective_color;
 	t_color		ambient;
@@ -24,8 +48,10 @@ t_color	lighting(t_computation	*lighting_info)
 	double		reflect_dot_eye;
 
 	effective_color = color_mult(*lighting_info->object->material->color, color_scalar(*lighting_info->light->color, lighting_info->light->brightness));
-	lightv = tuple_normalize(tuple_sub(lighting_info->light->position, lighting_info->point));
+	lightv = tuple_norm(tuple_sub(lighting_info->light->position, lighting_info->point));
 	ambient = color_scalar(effective_color, lighting_info->object->material->ambient->brightness);
+	if (shadowed)
+		return (ambient);
 	light_dot_normal = tuple_dot(lightv, lighting_info->normal);
 	if (light_dot_normal < 0)
 	{

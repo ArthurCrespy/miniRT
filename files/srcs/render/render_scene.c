@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:08:57 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/06 22:38:57 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/11 22:50:39 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_ray	get_ray(t_scene *scene, int x, int y)
 	world_y = scene->camera->half_height - yoffset;
 	pixel = tuple_transform(point_new(world_x, world_y, -1), *matrix_inverse(*scene->camera->transform));
 	origin = tuple_transform(point_new(0, 0, 0), *matrix_inverse(*scene->camera->transform));
-	direction = tuple_normalize(tuple_sub(pixel, origin));
+	direction = tuple_norm(tuple_sub(pixel, origin));
 	ray = ray_new(origin, direction);
 	// (void)direction;
 	// ray = ray_new(point_new(0, 0, -5), vector_new(0, 0, 1));
@@ -92,9 +92,14 @@ t_computation	prepare_computations(t_intersection *intersection, t_ray ray)
 	{
 		comps.normal = tuple_negate(comps.normal);
 		comps.inside = true;
+		comps.over_point = tuple_sub(comps.point, tuple_mult(comps.normal, EPSILON));
 	}
 	else
+	{
 		comps.inside = false;
+		comps.over_point = tuple_add(comps.point, tuple_mult(comps.normal, EPSILON));
+	}
+	// comps.over_point = tuple_add(comps.point, tuple_mult(comps.normal, EPSILON));
 	return (comps);
 }
 
@@ -109,8 +114,9 @@ int	ray_color(t_minirt *data, t_ray ray)
 	{
 		// actual color
 		comps = prepare_computations(intersection, ray);
-		comps.light = data->scene->lights->content;
-		color = lighting(&comps);
+		comps.light = data->scene->lights->content; // SEGFAULT HERE WHEN NO LIGHT
+		comps.scene = data->scene;
+		color = lighting(&comps, is_shadowed(data->scene, comps.over_point));
 		return (color_to_int(color));
 	}
 	return (0x00000000);

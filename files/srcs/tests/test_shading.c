@@ -6,156 +6,24 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 20:09:07 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/06 20:22:45 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/09 16:35:00 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT_test.h"
 
-t_computation	prepare_computations(t_intersection *intersection, t_ray ray);
-
-t_scene		*default_world(void)
+int		do_shading_tests(CU_pSuite suite)
 {
-	t_scene	*scene;
+	suite = CU_add_suite("Shading", NULL, NULL);
+	if (NULL == suite)
+		return (CU_cleanup_registry(), CU_get_error());
 
-	scene = malloc(sizeof(t_scene));
-	if (!scene)
-		return (NULL);
-	ft_parse_rt_file(scene, "default_world.rt");
-	return (scene);
+	if (!CU_add_test(suite, "Shading 00", test_shading_00))
+		return (CU_cleanup_registry(), CU_get_error());
+
+	return (0);
 }
 
-
-void	test_world_intersections(void)
-{
-	t_scene	*scene;
-	t_ray	r;
-	// t_intersection	*intersections;
-	t_list	*intersections;
-	t_list	*tmp;
-
-	scene = default_world();
-	r = ray_new(point_new(0, 0, -5), vector_new(0, 0, 1));
-	intersections = ft_intersect(scene->objects, r);
-	tmp = intersections;
-	while (tmp)
-	{
-		printf("t: %f\n", ((t_intersection *)tmp->content)->t);
-		tmp = tmp->next;
-	}
-}
-
-// Scenario: Precomputing the state of an intersection
-// Given r ← ray(point(0, 0, -5), vector(0, 0, 1))
-// And shape ← sphere()
-// And i ← intersection(4, shape)
-// When comps ← prepare_computations(i, r)
-// Then comps.t = i.t
-// And comps.object = i.object
-// And comps.point = point(0, 0, -1)
-// And comps.eyev = vector(0, 0, -1)
-// And comps.normalv = vector(0, 0, -1)
-t_intersection	*create_intersect(double t, t_hittable *obj);
-
-void	test_precompute_intersections_00(void)
-{
-	t_hittable	*obj;
-	t_intersection	*inter;
-	t_computation	comps;
-	t_ray	r;
-
-	obj = malloc(sizeof(t_hittable));
-	if (!obj)
-	{
-		CU_FAIL("malloc failed");
-		return ;
-	}
-	obj->type = SPHERE;
-	obj->transform = matrix_identity();
-	inter = create_intersect(4, obj);
-	r = ray_new(point_new(0, 0, -5), vector_new(0, 0, 1));
-	comps = prepare_computations(inter, r);
-	// CU_ASSERT_DOUBLE_EQUAL(comps.t, inter->t, EPSILON);
-	CU_ASSERT_PTR_EQUAL(comps.object, inter->obj);
-	CU_ASSERT_DOUBLE_EQUAL(comps.point.x, 0, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(comps.point.y, 0, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(comps.point.z, -1, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(comps.eye.x, 0, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(comps.eye.y, 0, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(comps.eye.z, -1, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(comps.normal.x, 0, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(comps.normal.y, 0, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(comps.normal.z, -1, EPSILON);
-}
-
-// Scenario: The hit, when an intersection occurs on the outside
-// Given r ← ray(point(0, 0, -5), vector(0, 0, 1))
-// And shape ← sphere()
-// And i ← intersection(4, shape)
-// When comps ← prepare_computations(i, r)
-// Then comps.inside = false
-
-void	test_precompute_intersections_01(void)
-{
-	t_hittable	*obj;
-	t_intersection	*inter;
-	t_computation	comps;
-	t_ray	r;
-
-	obj = malloc(sizeof(t_hittable));
-	if (!obj)
-	{
-		CU_FAIL("malloc failed");
-		return ;
-	}
-	obj->type = SPHERE;
-	obj->transform = matrix_identity();
-	inter = create_intersect(4, obj);
-	r = ray_new(point_new(0, 0, -5), vector_new(0, 0, 1));
-	comps = prepare_computations(inter, r);
-	CU_ASSERT_FALSE(comps.inside);
-}
-
-// Scenario: The hit, when an intersection occurs on the inside
-// Given r ← ray(point(0, 0, 0), vector(0, 0, 1))
-// And shape ← sphere()
-// And i ← intersection(1, shape)
-// When comps ← prepare_computations(i, r)
-// Then comps.point = point(0, 0, 1)
-// And comps.eyev = vector(0, 0, -1)
-// And comps.inside = true
-// # normal would have been (0, 0, 1), but is inverted!
-// And comps.normalv = vector(0, 0, -1)
-
-void	test_precompute_intersections_02(void)
-{
-	t_hittable	*obj;
-	t_intersection	*inter;
-	t_computation	comps;
-	t_ray	r;
-
-	obj = malloc(sizeof(t_hittable));
-	if (!obj)
-	{
-		CU_FAIL("malloc failed");
-		return ;
-	}
-	obj->type = SPHERE;
-	obj->transform = matrix_identity();
-	inter = create_intersect(1, obj);
-	r = ray_new(point_new(0, 0, 0), vector_new(0, 0, 1));
-	comps = prepare_computations(inter, r);
-	CU_ASSERT_DOUBLE_EQUAL(comps.point.x, 0, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(comps.point.y, 0, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(comps.point.z, 1, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(comps.eye.x, 0, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(comps.eye.y, 0, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(comps.eye.z, -1, EPSILON);
-	CU_ASSERT_TRUE(comps.inside);
-	CU_ASSERT_DOUBLE_EQUAL(comps.normal.x, 0, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(comps.normal.y, 0, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(comps.normal.z, -1, EPSILON);
-}
 
 // Scenario: Shading an intersection
 // Given w ← default_world()
@@ -179,8 +47,9 @@ void	test_shading_00(void)
 	inter = create_intersect(4, scene->objects->content);
 	comps = prepare_computations(inter, r);
 	comps.light = scene->lights->content;
-	c = lighting(&comps);
-	printf("c: %f, %f, %f\n", c.chan_1, c.chan_2, c.chan_3);
+	comps.scene = scene;
+	comps.object = scene->objects->content;
+	c = lighting(&comps, false);
 	CU_ASSERT_DOUBLE_EQUAL(c.chan_1, 0.38066, EPSILON);
 	CU_ASSERT_DOUBLE_EQUAL(c.chan_2, 0.47583, EPSILON);
 	CU_ASSERT_DOUBLE_EQUAL(c.chan_3, 0.2855, EPSILON);

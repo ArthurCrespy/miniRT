@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 21:38:59 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/28 21:46:08 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/10 17:17:12 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,17 @@ void	ft_print_vector(t_vector vector)
 
 void	ft_print_hittable(t_hittable *hittable)
 {
-	printf("id: %d\n", hittable->id);
+	printf("id: %i\n", hittable->id);
+	if (hittable->type == SPHERE)
+		printf("type: sphere\n");
+	else if (hittable->type == PLANE)
+		printf("type: plane\n");
+	else if (hittable->type == CYLINDER)
+		printf("type: cylinder\n");
 	printf("matrix: ");
 	ft_print_matrix(*hittable->transform);
 	printf("color: ");
 	ft_print_color(hittable->material->color);
-	printf("orientation: ");
 }
 
 void	ft_print_camera(t_camera *camera)
@@ -70,6 +75,7 @@ void	ft_print_scene(t_scene *scene)
 		ft_print_hittable(tmp->content);
 		tmp = tmp->next;
 	}
+	printf("camera: ");
 	ft_print_camera(scene->camera);
 	tmp = scene->lights;
 	while (tmp)
