@@ -42,6 +42,6 @@ double	*intersect_with_cylinder(t_hittable *cylinder, t_ray ray)
 		intersections[0] = intersections[1];
 	else if (y1 < -cylinder->height / 2 || y1 > cylinder->height / 2)
 		intersections[1] = intersections[0];
-	printf("cy - i0: %f, i1: %f\n", intersections[0], intersections[1]);
+	//printf("cy - i0: %f, i1: %f\n", intersections[0], intersections[1]);
 	return (intersections);
 }

@@ -45,7 +45,7 @@ void	ft_get_pixel_size(t_camera *camera)
 
 	// fov is in degree
 	camera->half_view = tan(camera->fov * M_PI / 360);
-	printf("half_view: %f\n", camera->half_view);
+	//printf("half_view: %f\n", camera->half_view);
 	aspect_ratio = (double)WIDHT / (double)HEIGHT;
 	if (aspect_ratio >= 1)
 	{
