@@ -114,7 +114,7 @@ int	ray_color(t_minirt *data, t_ray ray)
 	{
 		// actual color
 		comps = prepare_computations(intersection, ray);
-		comps.light = data->scene->lights->content;
+		comps.light = data->scene->lights->content; // SEGFAULT HERE WHEN NO LIGHT
 		comps.scene = data->scene;
 		color = lighting(&comps, is_shadowed(data->scene, comps.over_point));
 		return (color_to_int(color));
