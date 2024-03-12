@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 22:01:44 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/10 18:23:24 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/12 20:45:41 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,15 @@ t_camera	*ft_init_camera(void)
 	if (!camera)
 		return (NULL);
 	camera->fov = 0;
+	camera->transform = matrix_identity();
 	return (camera);
 }
 
 void	ft_get_pixel_size(t_camera *camera)
 {
-	// double		half_view;
 	double		aspect_ratio;
 
-	// fov is in degree
 	camera->half_view = tan(camera->fov * M_PI / 360);
-	//printf("half_view: %f\n", camera->half_view);
 	aspect_ratio = (double)WIDHT / (double)HEIGHT;
 	if (aspect_ratio >= 1)
 	{
@@ -126,6 +124,42 @@ int	ft_parse_camera(t_scene *scene, char *line)
 	free(to);
 	return (1);
 }
+
+// int	ft_parse_camera(t_scene *scene, char *line)
+// {
+// 	t_camera	*camera;
+// 	char		**tab;
+// 	// t_point		*from;
+// 	// t_vector	*to;
+
+// 	if (scene->camera)
+// 		return (ft_error(ERROR_MULTIPLE_CAMERA));
+// 	camera = ft_init_camera();
+// 	// to = malloc(sizeof(t_vector));
+// 	// from = malloc(sizeof(t_point));
+// 	if (!camera)
+// 		return (free_parse_camera(camera, NULL), 0);
+// 	tab = ft_split(line, ' ');
+// 	if (!tab)
+// 		return (free(camera), ft_error(ERROR_MALLOC), 0);
+// 	if (ft_tablen(tab) != 4)
+// 		return (ft_error(ERROR_WRONG_ARGS_NB),
+// 			free_parse_camera(camera, tab), 0);
+// 	if (!ft_parse_rotation(tab[2], camera->transform))
+// 		return (free_parse_camera(camera, tab), 0);
+// 	if (!ft_parse_center(tab[1], camera->transform))
+// 		return (free_parse_camera(camera, tab), 0);
+// 	// camera->transform = view_transform(*from, *to, vector_new(0, 1, 0));
+// 	if (!ft_isint(tab[3]))
+// 		return (free_parse_camera(camera, tab), 0);
+// 	camera->fov = ft_atof(tab[3]);
+// 	scene->camera = camera;
+// 	ft_get_pixel_size(camera);
+// 	ft_free_2d_list(tab);
+// 	// free(from);
+// 	// free(to);
+// 	return (1);
+// }
 
 	// todo: add check for fov value
 	// todo: add check for orientation value (normalized vector)

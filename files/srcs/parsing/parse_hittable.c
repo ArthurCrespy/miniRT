@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 19:51:55 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/10 18:38:08 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/12 20:46:51 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,9 +116,9 @@ int	ft_parse_plane(t_scene *scene, char *line)
 		return (ft_error(ERROR_WRONG_ARGS_NB),
 			free_parse_hittable(plane, tab, PLANE), 0);
 	plane->id = PLANE;
-	if (!ft_parse_center(tab[1], plane->transform))
-		return (free_parse_hittable(plane, tab, PLANE), 0);
 	if (!ft_parse_rotation(tab[2], plane->transform))
+		return (free_parse_hittable(plane, tab, PLANE), 0);
+	if (!ft_parse_center(tab[1], plane->transform))
 		return (free_parse_hittable(plane, tab, PLANE), 0);
 	if (!ft_parse_color(tab[3], plane->material->color))
 		return (free_parse_hittable(plane, tab, PLANE), 0);

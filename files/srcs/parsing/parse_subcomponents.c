@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 21:07:41 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/12 19:41:29 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/12 20:33:54 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,28 @@ int	ft_parse_center(char *line, t_matrix *transform)
 	return (1);
 }
 
+int	ft_apply_rotation(t_vector orientation, t_matrix *transform)
+{
+	t_matrix	*rotation;
+
+	rotation = matrix_rotation(orientation);
+	// (void)orientation;
+	// rotation = matrix_identity();
+	if (!rotation)
+	{
+		ft_error(ERROR_MALLOC);
+		return 0;
+	}
+	matrix_transform(transform, rotation);
+	free(rotation);
+	return 1;
+}
+
 int	ft_parse_rotation(char *line, t_matrix *transform)
 {
 	char	**tab;
-	t_matrix	*rotation;
+	t_vector	orientation;
+	// t_matrix	*rotation;
 
 	tab = ft_split(line, ',');
 	if (!tab)
@@ -77,20 +95,14 @@ int	ft_parse_rotation(char *line, t_matrix *transform)
 		ft_error(ERROR_PARSING_ROTATION);
 		return (0);
 	}
-	rotation = vector_to_matrix(vector_new(ft_atof(tab[0]),
-			ft_atof(tab[1]), ft_atof(tab[2])));
-	ft_print_vector(vector_new(ft_atof(tab[0]),
-			ft_atof(tab[1]), ft_atof(tab[2])));
-	ft_print_matrix(*rotation);
-	if (!rotation)
-	{
-		ft_free_2d_list(tab);
-		ft_error(ERROR_MALLOC);
-		return (0);
-	}
-	matrix_transform(transform, rotation);
-	ft_free_2d_list(tab);
-	free(rotation);
+	orientation = vector_new(ft_atof(tab[0]), ft_atof(tab[1]), ft_atof(tab[2]));
+	// if (tuple_mag(orientation) != 1)
+	// {
+	// 	ft_free_2d_list(tab);
+	// 	ft_error(ERROR_ORIENTATION_NORMALIZED);
+	// 	return (0);
+	// }
+	ft_apply_rotation(orientation, transform);
 	return (1);
 }
 
