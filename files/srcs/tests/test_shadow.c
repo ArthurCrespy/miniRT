@@ -14,36 +14,15 @@
 
 int		do_shadows_tests(CU_pSuite suite)
 {
-	suite = CU_add_suite("shadows", NULL, NULL);
+	suite = CU_add_suite("Shadow", NULL, NULL);
 	if (NULL == suite)
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
+		return (CU_cleanup_registry(), CU_get_error());
 
-	if (NULL == CU_add_test(suite, "shadows_00", test_shadows_00))
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
-
-	if (NULL == CU_add_test(suite, "shadows_01", test_shadows_01))
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
-
-	if (NULL == CU_add_test(suite, "shadows_02", test_shadows_02))
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
-
-	if (NULL == CU_add_test(suite, "shadows_03", test_shadows_03))
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
+	if (!CU_add_test(suite, "Shadow 00", test_shadows_00)
+		|| !CU_add_test(suite, "Shadow 01", test_shadows_01)
+		|| !CU_add_test(suite, "Shadow 02", test_shadows_02)
+		|| !CU_add_test(suite, "Shadow 03", test_shadows_03))
+		return (CU_cleanup_registry(), CU_get_error());
 
 	return (0);
 }

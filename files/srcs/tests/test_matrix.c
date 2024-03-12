@@ -12,6 +12,53 @@
 
 #include "miniRT_test.h"
 
+int	do_matrix_tests(CU_pSuite suite)
+{
+	// matrix
+	suite = CU_add_suite("Matrix", NULL, NULL);
+	if (suite == NULL)
+		return (CU_cleanup_registry(), CU_get_error());
+
+
+	if (!CU_add_test(suite, "Matrix multiplication 00", do_matrix_multiplication_00))
+		return (CU_cleanup_registry(), CU_get_error());
+
+	if (!CU_add_test(suite, "Matrix transpose 00", do_matrix_transpose))
+		return (CU_cleanup_registry(), CU_get_error());
+
+	// matrix_determinant
+	if (!CU_add_test(suite, "Matrix determinant 2x2 00", do_matrix_determinant_00))
+		return (CU_cleanup_registry(), CU_get_error());
+
+	if (!CU_add_test(suite, "Matrix determinant 3x3 00", do_matrix_det_3x3))
+		return (CU_cleanup_registry(), CU_get_error());
+
+	if (!CU_add_test(suite, "Matrix determinant 4x4 00", do_matrix_det_4x4))
+		return (CU_cleanup_registry(), CU_get_error());
+
+	// submatrix
+
+	if (!CU_add_test(suite, "Matrix submatix 3>2", do_submatrix_3_2))
+		return (CU_cleanup_registry(), CU_get_error());
+
+	if (!CU_add_test(suite, "Matrix submatrix 4>3", do_submatrix_4_3))
+		return (CU_cleanup_registry(), CU_get_error());
+
+	// minor
+	if (!CU_add_test(suite, "Matrix minor 3x3", do_minor_3x3))
+		return (CU_cleanup_registry(), CU_get_error());
+
+	// cofactor
+	if (!CU_add_test(suite, "Matrix cofactor 3x3", do_cofactor_3x3))
+		return (CU_cleanup_registry(), CU_get_error());
+
+	// inverse_matrix
+	if (!CU_add_test(suite, "Matrix inverse 4x4", do_inverse_matrix_4x4))
+		return (CU_cleanup_registry(), CU_get_error());
+
+	return (0);
+}
+
 void	do_matrix_multiplication_00(void)
 {
 	t_matrix	*m1;

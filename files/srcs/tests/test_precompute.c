@@ -14,30 +14,14 @@
 
 int		do_precompute_intersections_tests(CU_pSuite suite)
 {
-	suite = CU_add_suite("precompute_intersections", NULL, NULL);
+	suite = CU_add_suite("Precompute intersection", NULL, NULL);
 	if (NULL == suite)
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
+		return (CU_cleanup_registry(), CU_get_error());
 
-	if (NULL == CU_add_test(suite, "test_precompute_intersections_00", test_precompute_intersections_00))
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
-
-	if (NULL == CU_add_test(suite, "test_precompute_intersections_01", test_precompute_intersections_01))
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
-
-	if (NULL == CU_add_test(suite, "test_precompute_intersections_02", test_precompute_intersections_02))
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
+	if (!CU_add_test(suite, "Precompute intersect 00", test_precompute_intersections_00)
+		|| !CU_add_test(suite, "Precompute intersect 01", test_precompute_intersections_01)
+		|| !CU_add_test(suite, "Precompute intersect 02", test_precompute_intersections_02))
+		return (CU_cleanup_registry(), CU_get_error());
 
 	return (0);
 }

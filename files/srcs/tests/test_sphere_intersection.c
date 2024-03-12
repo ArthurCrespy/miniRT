@@ -14,30 +14,14 @@
 
 int	do_sphere_intersect_tests(CU_pSuite suite)
 {
-	suite = CU_add_suite("sphere_intersection", NULL, NULL);
+	suite = CU_add_suite("Sphere intersection", NULL, NULL);
 	if (NULL == suite)
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
+		return (CU_cleanup_registry(), CU_get_error());
 
-	if (NULL == CU_add_test(suite, "do_sphere_intersect_00", do_sphere_intersect_00))
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
-
-	if (NULL == CU_add_test(suite, "do_sphere_intersect_01", do_sphere_intersect_01))
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
-
-	if (NULL == CU_add_test(suite, "do_sphere_intersect_02", do_sphere_intersect_02))
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
+	if (!CU_add_test(suite, "Sphere intersect 00", do_sphere_intersect_00)
+		|| !CU_add_test(suite, "Sphere intersect 01", do_sphere_intersect_01)
+		|| !CU_add_test(suite, "Sphere intersect 02", do_sphere_intersect_02))
+		return (CU_cleanup_registry(), CU_get_error());
 
 	return (0);
 }

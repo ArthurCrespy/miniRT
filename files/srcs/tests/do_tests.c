@@ -20,112 +20,10 @@ int	do_tests(void)
 		return CU_get_error();
 
 	// matrix
-	suite = CU_add_suite("matrix", NULL, NULL);
-	if (NULL == suite)
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
+	do_matrix_tests(suite);
 
-	if (NULL == CU_add_test(suite, "do_matrix_multiplication_00", do_matrix_multiplication_00))
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
-
-	if (NULL == CU_add_test(suite, "do_matrix_transpose", do_matrix_transpose))
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
-	
-	// matrix_determinant
-	suite = CU_add_suite("matrix_determinant", NULL, NULL);
-	if (NULL == suite)
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
-
-	if (NULL == CU_add_test(suite, "do_matrix_determinant_00", do_matrix_determinant_00))
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
-
-	if (NULL == CU_add_test(suite, "do_matrix_det_3x3", do_matrix_det_3x3))
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
-
-	if (NULL == CU_add_test(suite, "do_matrix_det_4x4", do_matrix_det_4x4))
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
-
-	// submatrix
-	suite = CU_add_suite("submatrix", NULL, NULL);
-	if (NULL == suite)
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
-
-	if (NULL == CU_add_test(suite, "do_submatrix_3_2", do_submatrix_3_2))
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
-
-	if (NULL == CU_add_test(suite, "do_submatrix_4_3", do_submatrix_4_3))
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
-
-	// minor
-	suite = CU_add_suite("minor", NULL, NULL);
-	if (NULL == suite)
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
-
-	if (NULL == CU_add_test(suite, "do_minor_3x3", do_minor_3x3))
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
-
-	// cofactor
-	suite = CU_add_suite("cofactor", NULL, NULL);
-	if (NULL == suite)
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
-
-	if (NULL == CU_add_test(suite, "do_cofactor_3x3", do_cofactor_3x3))
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
-
-	// inverse_matrix
-	suite = CU_add_suite("inverse_matrix", NULL, NULL);
-	if (NULL == suite)
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
-
-	if (NULL == CU_add_test(suite, "do_inverse_matrix_4x4", do_inverse_matrix_4x4))
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
+	// tuple
+	do_tuple_tests(suite);
 
 	// sphere_intersects
 	do_sphere_intersect_tests(suite);
@@ -169,7 +67,7 @@ t_scene		*default_world(void)
 	scene = malloc(sizeof(t_scene));
 	if (!scene)
 		return (NULL);
-	ft_parse_rt_file(scene, "default_world.rt");
+	ft_parse_rt_file(scene, "/mnt/nfs/homes/acrespy/42/42Cursus/42Projets/miniRT/files/default_world.rt");
 	tmp = scene->objects;
 	while (tmp)
 	{

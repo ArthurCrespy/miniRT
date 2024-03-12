@@ -14,18 +14,12 @@
 
 int		do_shading_tests(CU_pSuite suite)
 {
-	suite = CU_add_suite("shading", NULL, NULL);
+	suite = CU_add_suite("Shading", NULL, NULL);
 	if (NULL == suite)
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
+		return (CU_cleanup_registry(), CU_get_error());
 
-	if (NULL == CU_add_test(suite, "test_shading_00", test_shading_00))
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
+	if (!CU_add_test(suite, "Shading 00", test_shading_00))
+		return (CU_cleanup_registry(), CU_get_error());
 
 	return (0);
 }

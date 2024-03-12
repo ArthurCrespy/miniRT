@@ -14,24 +14,13 @@
 
 int	do_reflect_tests(CU_pSuite suite)
 {
-	suite = CU_add_suite("reflect", NULL, NULL);
+	suite = CU_add_suite("Reflect", NULL, NULL);
 	if (NULL == suite)
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
+		return (CU_cleanup_registry(), CU_get_error());
 
-	if (NULL == CU_add_test(suite, "do_reflect_00", do_reflect_00))
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
-
-	if (NULL == CU_add_test(suite, "do_reflect_01", do_reflect_01))
-	{
-		CU_cleanup_registry();
-		return CU_get_error();
-	}
+	if (!CU_add_test(suite, "Reflect 00", do_reflect_00)
+		|| !CU_add_test(suite, "Reflect 01", do_reflect_01))
+		return (CU_cleanup_registry(), CU_get_error());
 
 	return (0);
 }

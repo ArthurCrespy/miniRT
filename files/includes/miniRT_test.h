@@ -40,6 +40,7 @@ void	do_ray_translate_02(void);
 void	do_ray_scaling_00(void);
 void	do_ray_scaling_01(void);
 
+int		do_matrix_tests(CU_pSuite suite);
 void	do_matrix_multiplication_00(void);
 void	do_matrix_transpose(void);
 void	do_matrix_determinant_00(void);
@@ -81,5 +82,15 @@ void	test_shadows_00(void);
 void	test_shadows_01(void);
 void	test_shadows_02(void);
 void	test_shadows_03(void);
+
+int		do_tuple_tests(CU_pSuite suite);
+void	do_tuple_mag_00(void);
+void	do_tuple_mag_01(void);
+void	do_tuple_mag_02(void);
+void	do_tuple_mag_03(void);
+
+void	do_tuple_norm_00(void);
+void	do_tuple_norm_01(void);
+void	do_tuple_norm_02(void);
 
 #endif

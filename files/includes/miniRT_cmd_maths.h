@@ -37,10 +37,10 @@ bool			matrix_compare(t_matrix m1, t_matrix m2);
 
 t_matrix		*matrix_new(double **m, int size);
 t_matrix		*matrix_identity(void);
+t_matrix		*vector_to_matrix(t_vector v);
 
 double			matrix_determinant(t_matrix m);
 
-bool			matrix_invertible(t_matrix m);
 t_matrix		*matrix_inverse(t_matrix m);
 
 double			matrix_minor(t_matrix m, int row, int col);
@@ -51,15 +51,15 @@ t_tuple			matrix_tuple_mult(t_matrix m, t_tuple t);
 t_matrix		*matrix_rotation_x(double angle);
 t_matrix		*matrix_rotation_y(double angle);
 t_matrix		*matrix_rotation_z(double angle);
-
-t_matrix		*matrix_translation(double x, double y, double z);
 t_matrix		*matrix_rotation(t_vector v);
-t_matrix		*vector_to_matrix(t_vector v);
+
 t_matrix		*matrix_scale(double x, double y, double z);
-void			ft_matrix_transform(t_matrix *matrix, t_matrix *transform);
 
 t_matrix		matrix_submatrix(t_matrix m, int row, int col);
 
+void			matrix_transform(t_matrix *matrix, t_matrix *transform);
+
+t_matrix		*matrix_translation(double x, double y, double z);
 
 t_matrix		matrix_transpose(t_matrix m);
 
@@ -98,7 +98,7 @@ t_tuple			tuple_reflect(t_tuple t, t_tuple normal);
 
 t_tuple			tuple_transform(t_tuple tuple, t_matrix matrix);
 
-t_vector	normal_at(t_hittable *obj, t_point world_point);
-t_vector	reflect(t_vector in, t_vector normal);
+t_vector		normal_at(t_hittable *obj, t_point world_point);
+t_vector		reflect(t_vector in, t_vector normal);
 
 #endif
