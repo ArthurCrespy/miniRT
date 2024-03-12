@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:31:24 by acrespy           #+#    #+#             */
-/*   Updated: 2024/01/24 22:51:48 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/12 23:44:34 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <limits.h>
+# include <math.h>
 
 #endif
