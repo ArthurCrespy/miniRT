@@ -62,3 +62,14 @@ t_matrix	*matrix_identity(void)
 	matrix_return->size = MATRIX;
 	return (matrix_return);
 }
+
+t_matrix	*vector_to_matrix(t_vector v)
+{
+	t_matrix	*m;
+
+	m = matrix_identity();
+	m->matrix[0][3] = v.x;
+	m->matrix[1][3] = v.y;
+	m->matrix[2][3] = v.z;
+	return (m);
+}
