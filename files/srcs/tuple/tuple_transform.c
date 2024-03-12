@@ -27,14 +27,4 @@ t_tuple	tuple_transform(t_tuple tuple, t_matrix matrix)
 	return (res);
 }
 
-t_tuple	tuple_normalize(t_tuple tuple)
-{
-	double	magnitude;
 
-	magnitude = sqrt(pow(tuple.x, 2) + pow(tuple.y, 2) + pow(tuple.z, 2));
-	tuple.x /= magnitude;
-	tuple.y /= magnitude;
-	tuple.z /= magnitude;
-	tuple.w /= magnitude;
-	return (tuple);
-}

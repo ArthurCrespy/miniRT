@@ -19,10 +19,14 @@ double	tuple_mag(t_tuple t1)
 
 t_tuple	tuple_norm(t_tuple t1)
 {
-	double	mag;
+	double	magnitude;
 
-	mag = tuple_mag(t1);
-	return (tuple_new(t1.x / mag, t1.y / mag, t1.z / mag, t1.w / mag));
+	magnitude = sqrt(pow(t1.x, 2) + pow(t1.y, 2) + pow(t1.z, 2));
+	t1.x /= magnitude;
+	t1.y /= magnitude;
+	t1.z /= magnitude;
+	t1.w /= magnitude;
+	return (t1);
 }
 
 double	tuple_dot(t_tuple t1, t_tuple t2)
