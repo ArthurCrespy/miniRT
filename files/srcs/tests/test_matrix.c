@@ -103,7 +103,7 @@ void	do_matrix_transpose(void)
 {
 	t_matrix	*m1;
 	double **m1_values;
-	t_matrix	res;
+	t_matrix	*res;
 
 	// | 0 | 9 | 3 | 0 |
 	// | 9 | 8 | 0 | 8 |
@@ -113,22 +113,22 @@ void	do_matrix_transpose(void)
 	m1_values = (double *[]){(double[]){0, 9, 3, 0}, (double[]){9, 8, 0, 8}, (double[]){1, 8, 5, 3}, (double[]){0, 0, 5, 8}};
 	m1 = matrix_new(m1_values, 4);
 	res = matrix_transpose(*m1);
-	CU_ASSERT_DOUBLE_EQUAL(res.matrix[0][0], 0, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res.matrix[0][1], 9, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res.matrix[0][2], 1, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res.matrix[0][3], 0, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res.matrix[1][0], 9, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res.matrix[1][1], 8, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res.matrix[1][2], 8, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res.matrix[1][3], 0, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res.matrix[2][0], 3, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res.matrix[2][1], 0, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res.matrix[2][2], 5, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res.matrix[2][3], 5, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res.matrix[3][0], 0, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res.matrix[3][1], 0, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res.matrix[3][2], 0, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res.matrix[3][3], 1, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res->matrix[0][0], 0, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res->matrix[0][1], 9, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res->matrix[0][2], 1, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res->matrix[0][3], 0, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res->matrix[1][0], 9, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res->matrix[1][1], 8, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res->matrix[1][2], 8, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res->matrix[1][3], 0, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res->matrix[2][0], 3, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res->matrix[2][1], 0, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res->matrix[2][2], 5, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res->matrix[2][3], 5, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res->matrix[3][0], 0, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res->matrix[3][1], 0, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res->matrix[3][2], 0, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res->matrix[3][3], 1, 1e-6);
 }
 
 void	do_matrix_determinant_00(void)

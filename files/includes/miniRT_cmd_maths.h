@@ -61,7 +61,7 @@ void			matrix_transform(t_matrix *matrix, t_matrix *transform);
 
 t_matrix		*matrix_translation(double x, double y, double z);
 
-t_matrix		matrix_transpose(t_matrix m);
+t_matrix		*matrix_transpose(t_matrix m);
 
 /* -- */
 

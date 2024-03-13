@@ -23,6 +23,7 @@ t_matrix	*matrix_inverse(t_matrix m)
 	int			col;
 	double		det;
 	t_matrix	*m2;
+	t_matrix    *m3;
 
 	if (!matrix_invertible(m))
 		return (matrix_identity());
@@ -42,6 +43,6 @@ t_matrix	*matrix_inverse(t_matrix m)
 		row++;
 	}
 	m2->size = m.size;
-	matrix_transpose(*m2);
-	return (m2);
+	m3 = matrix_transpose(*m2);
+	return *(&m3);
 }

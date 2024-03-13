@@ -46,6 +46,9 @@ t_color	lighting(t_computation	*lighting_info, bool	shadowed)
 	t_vector	lightv;
 	double		light_dot_normal;
 	double		reflect_dot_eye;
+	double		factor;
+	t_color		result;
+
 
 	effective_color = color_mult(*lighting_info->object->material->color, color_scalar(*lighting_info->light->color, lighting_info->light->brightness));
 	lightv = tuple_norm(tuple_sub(lighting_info->light->position, lighting_info->point));
@@ -67,9 +70,10 @@ t_color	lighting(t_computation	*lighting_info, bool	shadowed)
 			specular = *color_new(0, 0, 0);
 		else
 		{
-			double	factor = pow(reflect_dot_eye, lighting_info->object->material->shininess);
+			factor = pow(reflect_dot_eye, lighting_info->object->material->shininess);
 			specular = color_scalar(*lighting_info->light->color, lighting_info->object->material->specular * factor);
 		}
 	}
-	return (color_add(color_add(ambient, diffuse), specular));
+	result = color_add(color_add(ambient, diffuse), specular);
+	return (result);
 }

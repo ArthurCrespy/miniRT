@@ -28,6 +28,7 @@ double	*intersect_with_plane(t_ray ray)
 	if (!intersections)
 		return (NULL);
 	intersections[0] = t;
+	intersections[1] = 0;
 	//printf("pl - i0: %f, i1: %f\n", intersections[0], intersections[1]);
 	return (intersections);
 }

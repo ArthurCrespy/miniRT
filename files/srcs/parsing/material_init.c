@@ -19,7 +19,12 @@ t_material	*material_init(void)
 	material = malloc(sizeof(t_material));
 	if (!material)
 		return (NULL);
-	material->color = NULL;
+	material->color = malloc(sizeof(t_color));
+	if (!material->color)
+	{
+		free(material);
+		return (NULL);
+	}
 	material->ambient = NULL;
 	material->diffuse = 0.9;
 	material->specular = 0.9;

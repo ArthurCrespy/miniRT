@@ -47,15 +47,6 @@ typedef struct s_shearing
 	double	p2;
 }				t_shearing;
 
-typedef struct s_img_data
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}			t_img_data;
-
 typedef struct s_vars
 {
 	void	*mlx;
