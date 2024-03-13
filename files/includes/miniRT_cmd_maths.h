@@ -94,7 +94,6 @@ double			tuple_mag(t_tuple t1);
 t_tuple			tuple_norm(t_tuple t1);
 double			tuple_dot(t_tuple t1, t_tuple t2);
 t_tuple			tuple_cross(t_tuple t1, t_tuple t2);
-t_tuple			tuple_reflect(t_tuple t, t_tuple normal);
 
 t_tuple			tuple_transform(t_tuple tuple, t_matrix matrix);
 

@@ -88,9 +88,15 @@ void	do_tuple_mag_00(void);
 void	do_tuple_mag_01(void);
 void	do_tuple_mag_02(void);
 void	do_tuple_mag_03(void);
-
 void	do_tuple_norm_00(void);
 void	do_tuple_norm_01(void);
 void	do_tuple_norm_02(void);
+void	do_tuple_dot_00(void);
+void	do_tuple_cross_00(void);
+void	do_tuple_normal_00(void);
+void	do_tuple_normal_01(void);
+void	do_tuple_normal_02(void);
+void	do_tuple_normal_03(void);
+
 
 #endif
