@@ -63,9 +63,9 @@ t_ray	get_ray(t_scene *scene, int x, int y)
 		ft_print_point(origin);
 		ft_printf("Direction: ");
 		ft_print_vector(direction);
-		ft_print_matrix(*scene->camera->transform);
+		//ft_print_matrix(*scene->camera->transform);
 		ft_printf("\n");
-		ft_print_matrix(*matrix_inverse(*scene->camera->transform));
+		//ft_print_matrix(*matrix_inverse(*scene->camera->transform));
 		ft_printf("\n");
 
 	}

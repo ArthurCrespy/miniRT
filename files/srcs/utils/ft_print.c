@@ -37,7 +37,7 @@ void	ft_print_hittable(t_hittable *hittable)
 	else if (hittable->type == CYLINDER)
 		printf("type: cylinder\n");
 	printf("matrix: ");
-	ft_print_matrix(*hittable->transform);
+	//ft_print_matrix(*hittable->transform);
 	printf("color: ");
 	ft_print_color(hittable->material->color);
 }
@@ -45,7 +45,7 @@ void	ft_print_hittable(t_hittable *hittable)
 void	ft_print_camera(t_camera *camera)
 {
 	printf("matrix: ");
-	ft_print_matrix(*camera->transform);
+	//ft_print_matrix(*camera->transform);
 	printf("fov: %f\n", camera->fov);
 }
 

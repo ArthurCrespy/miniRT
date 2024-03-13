@@ -80,7 +80,7 @@ int	ft_parse_rotation(char *line, t_matrix *transform)
 			ft_atof(tab[1]), ft_atof(tab[2])));
 	ft_print_vector(vector_new(ft_atof(tab[0]),
 			ft_atof(tab[1]), ft_atof(tab[2])));
-	ft_print_matrix(*rotation);
+	//ft_print_matrix(*rotation);
 	if (!rotation)
 	{
 		ft_free_2d_list(tab);

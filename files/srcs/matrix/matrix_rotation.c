@@ -58,11 +58,11 @@ t_matrix	*matrix_rotation(t_vector v)
 	t_matrix	*res;
 
 	rx = matrix_rotation_x(v.x);
-	ft_print_matrix(*rx);
+	//ft_print_matrix(*rx);
 	ry = matrix_rotation_y(v.y);
-	ft_print_matrix(*ry);
+	//ft_print_matrix(*ry);
 	rz = matrix_rotation_z(v.z);
-	ft_print_matrix(*rz);
+	//ft_print_matrix(*rz);
 	tmp = matrix_mult(*rx, *ry);
 	res = matrix_mult(*tmp, *rz);
 	ft_matrix_free(rx);
