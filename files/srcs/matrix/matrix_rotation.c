@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:34:06 by acrespy           #+#    #+#             */
-/*   Updated: 2024/03/12 23:43:40 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/13 19:57:11 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ t_matrix	*matrix_rotation_z(double angle)
 
 
 // 	x_angle = acos(tuple_dot(orientation, vector_new(1, 0, 0)));
-// 	y_angle = acos(tuple_dot(orientation, vector_new(0, 1, 0)));
+// 	y_angle = acos(tuple_dot(orientation, vector_new(0, -1, 0)));
 // 	z_angle = acos(tuple_dot(orientation, vector_new(0, 0, 1)));
 // 	// x_angle = (M_PI/180) * 15;
 // 	// y_angle = (M_PI/180) * 0;
@@ -105,37 +105,75 @@ t_matrix	*matrix_from_euler(double x, double y, double z)
 	return (res);
 }
 
-t_matrix	*matrix_rotation(t_vector orientation)
+// t_matrix	*matrix_rotation(t_vector orientation)
+// {
+// 	double		yaw;
+// 	double		pitch;
+// 	double		roll;
+
+// 	orientation = tuple_norm(orientation);
+// 	pitch = atan2(orientation.y, sqrt(orientation.x * orientation.x + orientation.z * orientation.z));
+
+// 	yaw = atan2(orientation.x, orientation.z);
+	
+// 	roll = atan2(orientation.y, orientation.z);
+
+// 	// roll = 0.0;
+// 	printf("x_angle = %f\n", pitch*180/M_PI);
+// 	printf("y_angle = %f\n", yaw*180/M_PI);
+// 	printf("z_angle = %f\n", roll*180/M_PI);
+// 	return (matrix_from_euler(pitch, yaw, roll));
+// }
+
+t_matrix	*matrix_skew_sym(t_vector axis)
 {
-	double		yaw;
-	double		pitch;
-	double		roll;
+	t_matrix	*res;
 
-	orientation = tuple_norm(orientation);
-	orientation = tuple_norm(orientation);
-	// Calculate yaw (rotation around y-axis)
-	if (orientation.y != 0.0 || orientation.x != 0.0) {
-		yaw = atan2(orientation.y, orientation.x);
-	} else {
-		yaw = 0.0;
-	}
+	res = matrix_identity();
+	res->matrix[0][0] = 0;
+	res->matrix[0][1] = -axis.z;
+	res->matrix[0][2] = axis.y;
+	res->matrix[1][0] = axis.z;
+	res->matrix[1][1] = 0;
+	res->matrix[1][2] = -axis.x;
+	res->matrix[2][0] = -axis.y;
+	res->matrix[2][1] = axis.x;
+	res->matrix[2][2] = 0;
+	return (res);
+}
 
-	// Calculate pitch (rotation around x-axis)
-	if (orientation.z != 0.0 || orientation.y != 1.0) {
-		pitch = atan2(-orientation.z, sqrt(orientation.x * orientation.x + orientation.y * orientation.y));
-	} else {
-		pitch = 0.0;
-	}
+t_matrix	*matrix_rotation(t_vector axis)
+{
+	double		dot;
+	double		angle;
+	t_matrix	*res;
+	double		cos_theta;
+	double		sin_theta;
+	t_matrix	*skew_sym;
+	t_matrix	*identity;
+	int			i;
+	int			j;
 
-	// Calculate roll (rotation around z-axis)
-	if (orientation.x != 0.0 || orientation.y != 0.0) {
-		roll = atan2(orientation.x, orientation.y);
-	} else {
-		roll = orientation.z >= 0.0 ? M_PI / 2.0 : -M_PI / 2.0;
+	axis = tuple_norm(axis);
+	skew_sym = matrix_skew_sym(axis);
+	dot = tuple_dot(axis, vector_new(0, 1, 0));
+	angle = acos(dot);
+	sin_theta = sin(angle);
+	cos_theta = cos(angle);
+	res = matrix_identity();
+	identity = matrix_identity();
+	i=0;
+	while (i < 3)
+	{
+		j = 0;
+		while (j < 3)
+		{
+			res->matrix[i][j] = cos_theta * identity->matrix[i][j] + (1 - cos_theta) * skew_sym->matrix[i][j] + sin_theta * skew_sym->matrix[i][j];
+			j++;
+		}
+		i++;
 	}
-	// roll = 0.0;
-	printf("x_angle = %f\n", pitch*180/M_PI);
-	printf("y_angle = %f\n", yaw*180/M_PI);
-	printf("z_angle = %f\n", roll*180/M_PI);
-	return (matrix_from_euler(pitch, yaw, roll));
+	ft_matrix_free(skew_sym);
+	ft_matrix_free(identity);
+	return (res);
 }
