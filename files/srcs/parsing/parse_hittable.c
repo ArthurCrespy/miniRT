@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 19:51:55 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/12 20:46:51 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/14 19:44:18 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	ft_parse_cylinder(t_scene *scene, char *line)
 			free_parse_hittable(cylinder, tab, CYLINDER), 0);
 	if (!ft_parse_center(tab[1], cylinder->transform))
 		return (free_parse_hittable(cylinder, tab, CYLINDER), 0);
-	if (!ft_parse_rotation(tab[2], cylinder->transform))
+	if (!ft_parse_rotation(tab[2], cylinder->transform, vector_new(0, 1, 0)))
 		return (free_parse_hittable(cylinder, tab, CYLINDER), 0);
 	if (!ft_isfloat(tab[3]) || !ft_isfloat(tab[4]))
 		return (free_parse_hittable(cylinder, tab, CYLINDER), 0);
@@ -116,7 +116,7 @@ int	ft_parse_plane(t_scene *scene, char *line)
 		return (ft_error(ERROR_WRONG_ARGS_NB),
 			free_parse_hittable(plane, tab, PLANE), 0);
 	plane->id = PLANE;
-	if (!ft_parse_rotation(tab[2], plane->transform))
+	if (!ft_parse_rotation(tab[2], plane->transform, vector_new(0, 1, 0)))
 		return (free_parse_hittable(plane, tab, PLANE), 0);
 	if (!ft_parse_center(tab[1], plane->transform))
 		return (free_parse_hittable(plane, tab, PLANE), 0);

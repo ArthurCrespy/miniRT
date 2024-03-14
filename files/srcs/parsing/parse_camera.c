@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 22:01:44 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/12 20:45:41 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/14 20:20:22 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ t_camera	*ft_init_camera(void)
 		return (NULL);
 	camera->fov = 0;
 	camera->transform = matrix_identity();
+	if (!camera->transform)
+	{
+		free(camera);
+		return (ft_error(ERROR_MALLOC), NULL);
+	}
+	camera->orientation = malloc(sizeof(t_vector));
 	return (camera);
 }
 
@@ -92,13 +98,13 @@ int	ft_parse_camera(t_scene *scene, char *line)
 {
 	t_camera	*camera;
 	char		**tab;
-	t_point		*from;
-	t_vector	*to;
+	// t_point		*from;
+	// t_vector	*to;
 
 	camera = ft_init_camera();
-	to = malloc(sizeof(t_vector));
-	from = malloc(sizeof(t_point));
-	if (!camera || !to || !from)
+	// to = malloc(sizeof(t_vector));
+	// from = malloc(sizeof(t_point));
+	if (!camera)
 		return (free_parse_camera(camera, NULL), 0);
 	tab = ft_split(line, ' ');
 	if (!tab)
@@ -106,11 +112,11 @@ int	ft_parse_camera(t_scene *scene, char *line)
 	if (ft_tablen(tab) != 4)
 		return (ft_error(ERROR_WRONG_ARGS_NB),
 			free_parse_camera(camera, tab), 0);
-	if (!ft_parse_tuple(tab[1], from))
-		return (free_parse_camera(camera, tab), 0);
-	if (!ft_parse_tuple(tab[2], to))
-		return (free_parse_camera(camera, tab), 0);
-	camera->transform = view_transform(*from, *to, vector_new(0, 1, 0));
+	// if (!ft_parse_tuple(tab[1], from))
+		// // return (free_parse_camera(camera, tab), 0);
+	// if (!ft_parse_tuple(tab[2], to))
+		// return (free_parse_camera(camera, tab), 0);
+	// camera->transform = view_transform(*from, *to, vector_new(0, 1, 0));
 	if (!ft_isint(tab[3]))
 		return (free_parse_camera(camera, tab), 0);
 	camera->fov = ft_atof(tab[3]);
@@ -118,10 +124,14 @@ int	ft_parse_camera(t_scene *scene, char *line)
 	// camera->transform = matrix_rotation_y(M_PI/4);
 	// translate the camera
 	// camera->transform =  matrix_mult(*matrix_rotation_y(M_PI/4), *matrix_translation(0, -2, 5));
+	// ft_parse_rotation(tab[2], camera->transform, vector_new(1, 0, 0));
+	ft_parse_vector(tab[2], camera->orientation);
+	ft_parse_center(tab[1], camera->transform);
+	ft_print_matrix(*camera->transform);
 	ft_get_pixel_size(camera);
 	ft_free_2d_list(tab);
-	free(from);
-	free(to);
+	// free(from);
+	// free(to);
 	return (1);
 }
 

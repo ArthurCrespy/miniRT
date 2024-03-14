@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:34:06 by acrespy           #+#    #+#             */
-/*   Updated: 2024/03/13 19:57:11 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/14 19:40:25 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ t_matrix	*matrix_skew_sym(t_vector axis)
 	return (res);
 }
 
-t_matrix	*matrix_rotation(t_vector axis)
+t_matrix	*matrix_rotation(t_vector axis, t_vector up)
 {
 	double		dot;
 	double		angle;
@@ -156,7 +156,7 @@ t_matrix	*matrix_rotation(t_vector axis)
 
 	axis = tuple_norm(axis);
 	skew_sym = matrix_skew_sym(axis);
-	dot = tuple_dot(axis, vector_new(0, 1, 0));
+	dot = tuple_dot(axis, up);
 	angle = acos(dot);
 	sin_theta = sin(angle);
 	cos_theta = cos(angle);

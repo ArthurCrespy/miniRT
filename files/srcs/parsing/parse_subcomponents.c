@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 21:07:41 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/12 20:33:54 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/14 20:21:41 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	ft_parse_tuple(char *line, t_tuple *tuple)
 	tuple->x = ft_atof(tab[0]);
 	tuple->y = ft_atof(tab[1]);
 	tuple->z = ft_atof(tab[2]);
+	tuple->w = 1;
 	ft_free_2d_list(tab);
 	return (1);
 }
@@ -62,11 +63,11 @@ int	ft_parse_center(char *line, t_matrix *transform)
 	return (1);
 }
 
-int	ft_apply_rotation(t_vector orientation, t_matrix *transform)
+int	ft_apply_rotation(t_vector orientation, t_matrix *transform, t_vector default_up)
 {
 	t_matrix	*rotation;
 
-	rotation = matrix_rotation(orientation);
+	rotation = matrix_rotation(orientation, default_up);
 	// (void)orientation;
 	// rotation = matrix_identity();
 	if (!rotation)
@@ -79,7 +80,7 @@ int	ft_apply_rotation(t_vector orientation, t_matrix *transform)
 	return 1;
 }
 
-int	ft_parse_rotation(char *line, t_matrix *transform)
+int	ft_parse_rotation(char *line, t_matrix *transform, t_vector default_up)
 {
 	char	**tab;
 	t_vector	orientation;
@@ -102,7 +103,7 @@ int	ft_parse_rotation(char *line, t_matrix *transform)
 	// 	ft_error(ERROR_ORIENTATION_NORMALIZED);
 	// 	return (0);
 	// }
-	ft_apply_rotation(orientation, transform);
+	ft_apply_rotation(orientation, transform, default_up);
 	return (1);
 }
 
@@ -149,6 +150,27 @@ int	ft_parse_color(char *line, t_color *color)
 		ft_error(ERROR_PARSING_COLOR);
 		return (0);
 	}
+	ft_free_2d_list(tab);
+	return (1);
+}
+int	ft_parse_vector(char *line, t_vector *vector)
+{
+	char	**tab;
+
+	tab = ft_split(line, ',');
+	if (!tab)
+		return (ft_error(ERROR_MALLOC));
+	if (ft_tablen(tab) != 3 || !ft_isfloat(tab[0])
+		|| !ft_isfloat(tab[1]) || !ft_isfloat(tab[2]))
+	{
+		ft_free_2d_list(tab);
+		ft_error(ERROR_PARSING_VECTOR);
+		return (0);
+	}
+	vector->x = ft_atof(tab[0]);
+	vector->y = ft_atof(tab[1]);
+	vector->z = ft_atof(tab[2]);
+	vector->w = 0;
 	ft_free_2d_list(tab);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/08 22:13:50 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/14 20:20:32 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ typedef struct s_hittable
 typedef struct s_camera
 {
 	t_matrix		*transform;
+	t_vector		*orientation;
 	double			fov;
 	double			pixel_size;
 	double			half_view;

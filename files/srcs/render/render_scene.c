@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:08:57 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/11 22:50:39 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/14 21:11:16 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,20 @@
 // return ray(origin, direction)
 // end function
 
+t_vector	apply_camera_orient(t_vector direction, t_vector *orientation)
+{
+	// direction.x = -direction.x;
+	direction.z = -direction.z;
+	// if (orientation->x != 0)
+	// 	direction.x = direction.x * orientation->x;
+	// if (orientation->y != 0)
+	// 	direction.y = direction.y * orientation->y;
+	// if (orientation->z != 0)
+	// 	direction.z = direction.z * orientation->z;
+	(void)orientation;
+	return (direction);
+}
+
 t_ray	get_ray(t_scene *scene, int x, int y)
 {
 	t_ray	ray;
@@ -51,10 +65,12 @@ t_ray	get_ray(t_scene *scene, int x, int y)
 	pixel = tuple_transform(point_new(world_x, world_y, -1), *matrix_inverse(*scene->camera->transform));
 	origin = tuple_transform(point_new(0, 0, 0), *matrix_inverse(*scene->camera->transform));
 	direction = tuple_norm(tuple_sub(pixel, origin));
+	// direction = apply_camera_orient(direction, scene->camera->orientation);
+	// direction= tuple_add(direction, *scene->camera->orientation);
 	ray = ray_new(origin, direction);
 	// (void)direction;
 	// ray = ray_new(point_new(0, 0, -5), vector_new(0, 0, 1));
-	if (x == 100 && y == 50)
+	if (x == HEIGHT/2 && y == WIDHT/2)
 	// if (x == 0 && y == 0)
 	{
 		// ft_print_point(pixel);

@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/12 19:42:40 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/14 20:21:06 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,10 @@ int		ft_parse_light(t_scene *scene, char *line);
 int		ft_parse_ambient(t_scene *scene, char *line);
 int		ft_parse_color(char *line, t_color *color);
 int		ft_parse_center(char *line, t_matrix *transform);
-int		ft_parse_rotation(char *line, t_matrix *transform);
+int		ft_parse_rotation(char *line, t_matrix *transform, t_vector default_up);
 int		ft_parse_scale(double x, double y, double z, t_matrix *matrix);
 int		ft_parse_tuple(char *line, t_point *point);
+int		ft_parse_vector(char *line, t_vector *vector);
 
 t_material	*material_init(void);
 // utils
