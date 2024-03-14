@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 22:01:44 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/14 20:20:22 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/14 21:17:10 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,9 +124,9 @@ int	ft_parse_camera(t_scene *scene, char *line)
 	// camera->transform = matrix_rotation_y(M_PI/4);
 	// translate the camera
 	// camera->transform =  matrix_mult(*matrix_rotation_y(M_PI/4), *matrix_translation(0, -2, 5));
-	// ft_parse_rotation(tab[2], camera->transform, vector_new(1, 0, 0));
-	ft_parse_vector(tab[2], camera->orientation);
+	// ft_parse_vector(tab[2], camera->orientation);
 	ft_parse_center(tab[1], camera->transform);
+	ft_parse_rotation(tab[2], camera->transform, vector_new(0, 0, -1));
 	ft_print_matrix(*camera->transform);
 	ft_get_pixel_size(camera);
 	ft_free_2d_list(tab);
