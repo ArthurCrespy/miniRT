@@ -103,7 +103,7 @@ void	do_matrix_transpose(void)
 {
 	t_matrix	*m1;
 	double **m1_values;
-	t_matrix	*res;
+	t_matrix	res;
 
 	// | 0 | 9 | 3 | 0 |
 	// | 9 | 8 | 0 | 8 |
@@ -113,22 +113,22 @@ void	do_matrix_transpose(void)
 	m1_values = (double *[]){(double[]){0, 9, 3, 0}, (double[]){9, 8, 0, 8}, (double[]){1, 8, 5, 3}, (double[]){0, 0, 5, 8}};
 	m1 = matrix_new(m1_values, 4);
 	res = matrix_transpose(*m1);
-	CU_ASSERT_DOUBLE_EQUAL(res->matrix[0][0], 0, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res->matrix[0][1], 9, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res->matrix[0][2], 1, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res->matrix[0][3], 0, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res->matrix[1][0], 9, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res->matrix[1][1], 8, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res->matrix[1][2], 8, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res->matrix[1][3], 0, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res->matrix[2][0], 3, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res->matrix[2][1], 0, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res->matrix[2][2], 5, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res->matrix[2][3], 5, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res->matrix[3][0], 0, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res->matrix[3][1], 0, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res->matrix[3][2], 0, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(res->matrix[3][3], 1, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res.matrix[0][0], 0, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res.matrix[0][1], 9, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res.matrix[0][2], 1, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res.matrix[0][3], 0, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res.matrix[1][0], 9, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res.matrix[1][1], 8, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res.matrix[1][2], 8, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res.matrix[1][3], 0, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res.matrix[2][0], 3, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res.matrix[2][1], 0, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res.matrix[2][2], 5, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res.matrix[2][3], 5, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res.matrix[3][0], 0, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res.matrix[3][1], 0, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res.matrix[3][2], 0, 1e-6);
+	CU_ASSERT_DOUBLE_EQUAL(res.matrix[3][3], 1, 1e-6);
 }
 
 void	do_matrix_determinant_00(void)
@@ -287,7 +287,7 @@ void	do_inverse_matrix_4x4(void)
 {
 	t_matrix	*m1;
 	double **m1_values;
-	t_matrix	*inverse_m1;
+	t_matrix	inverse_m1;
 	double		det_m1;
 	double	cofactor_m1;
 	double	cofactor_m1_2;
@@ -305,22 +305,22 @@ void	do_inverse_matrix_4x4(void)
 	CU_ASSERT_DOUBLE_EQUAL(det_m1, 532, 1e-6);
 	CU_ASSERT_DOUBLE_EQUAL(cofactor_m1, -160, 1e-6);
 	CU_ASSERT_DOUBLE_EQUAL(cofactor_m1_2, 105, 1e-6);
-	CU_ASSERT_DOUBLE_EQUAL(inverse_m1->matrix[0][0], 0.21805, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(inverse_m1->matrix[0][1], 0.45113, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(inverse_m1->matrix[0][2], 0.24060, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(inverse_m1->matrix[0][3], -0.04511, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(inverse_m1->matrix[1][0], -0.80827, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(inverse_m1->matrix[1][1], -1.45677, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(inverse_m1->matrix[1][2], -0.44361, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(inverse_m1->matrix[1][3], 0.52068, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(inverse_m1->matrix[2][0], -0.07895, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(inverse_m1->matrix[2][1], -0.22368, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(inverse_m1->matrix[2][2], -0.05263, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(inverse_m1->matrix[2][3], 0.19737, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(inverse_m1->matrix[3][0], -0.52256, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(inverse_m1->matrix[3][1], -0.81391, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(inverse_m1->matrix[3][2], -0.30075, EPSILON);
-	CU_ASSERT_DOUBLE_EQUAL(inverse_m1->matrix[3][3], 0.30639, EPSILON);
+	CU_ASSERT_DOUBLE_EQUAL(inverse_m1.matrix[0][0], 0.21805, EPSILON);
+	CU_ASSERT_DOUBLE_EQUAL(inverse_m1.matrix[0][1], 0.45113, EPSILON);
+	CU_ASSERT_DOUBLE_EQUAL(inverse_m1.matrix[0][2], 0.24060, EPSILON);
+	CU_ASSERT_DOUBLE_EQUAL(inverse_m1.matrix[0][3], -0.04511, EPSILON);
+	CU_ASSERT_DOUBLE_EQUAL(inverse_m1.matrix[1][0], -0.80827, EPSILON);
+	CU_ASSERT_DOUBLE_EQUAL(inverse_m1.matrix[1][1], -1.45677, EPSILON);
+	CU_ASSERT_DOUBLE_EQUAL(inverse_m1.matrix[1][2], -0.44361, EPSILON);
+	CU_ASSERT_DOUBLE_EQUAL(inverse_m1.matrix[1][3], 0.52068, EPSILON);
+	CU_ASSERT_DOUBLE_EQUAL(inverse_m1.matrix[2][0], -0.07895, EPSILON);
+	CU_ASSERT_DOUBLE_EQUAL(inverse_m1.matrix[2][1], -0.22368, EPSILON);
+	CU_ASSERT_DOUBLE_EQUAL(inverse_m1.matrix[2][2], -0.05263, EPSILON);
+	CU_ASSERT_DOUBLE_EQUAL(inverse_m1.matrix[2][3], 0.19737, EPSILON);
+	CU_ASSERT_DOUBLE_EQUAL(inverse_m1.matrix[3][0], -0.52256, EPSILON);
+	CU_ASSERT_DOUBLE_EQUAL(inverse_m1.matrix[3][1], -0.81391, EPSILON);
+	CU_ASSERT_DOUBLE_EQUAL(inverse_m1.matrix[3][2], -0.30075, EPSILON);
+	CU_ASSERT_DOUBLE_EQUAL(inverse_m1.matrix[3][3], 0.30639, EPSILON);
 }
 
 void    do_matrix_cofactor_4x4(void)
