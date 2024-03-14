@@ -25,6 +25,7 @@ double	*intersect_with_sphere(t_ray ray)
 	a = tuple_dot(ray.direction, ray.direction);
 	b = 2 * tuple_dot(ray.direction, sphere_to_ray);
 	c = tuple_dot(sphere_to_ray, sphere_to_ray) - 1;
+	discriminant = 0;
 	discriminant = (b * b) - (4 * a * c);
 	if (discriminant < 0)
 		return (NULL);

@@ -47,15 +47,6 @@ typedef struct s_shearing
 	double	p2;
 }				t_shearing;
 
-typedef struct s_img_data
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}			t_img_data;
-
 typedef struct s_vars
 {
 	void	*mlx;
@@ -97,13 +88,13 @@ typedef struct s_light
 {
 	t_point		position;
 	double		brightness;
-	t_color		*color;
+	t_color		color;
 }				t_light;
 
 typedef struct s_ambient
 {
 	double	brightness;
-	t_color	*color;
+	t_color	color;
 }				t_ambient;
 
 typedef struct s_scene
@@ -137,7 +128,7 @@ typedef struct s_computation
 
 typedef struct s_material
 {
-	t_color		*color;
+	t_color		color;
 	t_ambient	*ambient;
 	double		diffuse;
 	double		specular;

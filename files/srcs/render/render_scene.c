@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_scene.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:08:57 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/11 22:50:39 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/14 20:20:02 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ t_ray	get_ray(t_scene *scene, int x, int y)
 	yoffset = (y + 0.5) * scene->camera->pixel_size;
 	world_x = scene->camera->half_width - xoffset;
 	world_y = scene->camera->half_height - yoffset;
-	pixel = tuple_transform(point_new(world_x, world_y, -1), *matrix_inverse(*scene->camera->transform));
-	origin = tuple_transform(point_new(0, 0, 0), *matrix_inverse(*scene->camera->transform));
+	pixel = tuple_transform(point_new(world_x, world_y, -1), matrix_inverse(*scene->camera->transform));
+	origin = tuple_transform(point_new(0, 0, 0), matrix_inverse(*scene->camera->transform));
 	direction = tuple_norm(tuple_sub(pixel, origin));
 	ray = ray_new(origin, direction);
 	// (void)direction;
@@ -65,7 +65,7 @@ t_ray	get_ray(t_scene *scene, int x, int y)
 		ft_print_vector(direction);
 		ft_print_matrix(*scene->camera->transform);
 		ft_printf("\n");
-		ft_print_matrix(*matrix_inverse(*scene->camera->transform));
+		ft_print_matrix(matrix_inverse(*scene->camera->transform));
 		ft_printf("\n");
 
 	}
@@ -87,7 +87,7 @@ t_computation	prepare_computations(t_intersection *intersection, t_ray ray)
 	comps.eye = tuple_negate(ray.direction);
 	// comps.eye = ray.direction;
 	comps.normal = normal_at(comps.object, comps.point);
-//	normal < 0 → angle +90° → intersection point inside the object
+	// normal < 0 → angle +90° → intersection point inside the object
 	if (tuple_dot(comps.normal, comps.eye) < 0)
 	{
 		comps.normal = tuple_negate(comps.normal);
@@ -107,19 +107,26 @@ int	ray_color(t_minirt *data, t_ray ray)
 {
 	t_computation	comps;
 	t_intersection	*intersection;
+	t_list			*intersections;
 	t_color			color;
+	int				result;
 
-	intersection = ft_hit(ft_intersect(data->scene->objects, ray));
+	intersections = ft_intersect(data->scene->objects, ray);
+	intersection = ft_hit(intersections);
+	result = 0;
 	if (intersection)
 	{
 		// actual color
 		comps = prepare_computations(intersection, ray);
 		comps.light = data->scene->lights->content; // SEGFAULT HERE WHEN NO LIGHT
 		comps.scene = data->scene;
+		ft_lstclear(&intersections, free_intersection);
 		color = lighting(&comps, is_shadowed(data->scene, comps.over_point));
-		return (color_to_int(color));
+		result = color_to_int(color);
 	}
-	return (0x00000000);
+	if (intersections)
+		ft_lstclear(&intersections, free_intersection);
+	return (result);
 }
 
 int	get_pixel_color(t_minirt *data, int x, int y)
@@ -154,7 +161,7 @@ void	render_scene(t_minirt *data)
 			x++;
 			pxl_rendered++;
 			if (pxl_rendered >= 10)
-				break;
+				break ;
 		}
 		if (pxl_rendered >= 10)
 		{

@@ -21,9 +21,9 @@ t_intersection	*ft_hit(t_list *intersections)
 	hit = NULL;
 	while (tmp)
 	{
-		if ((!hit || ((t_intersection *)tmp->content)->t < hit->t)
-			&& ((t_intersection *)tmp->content)->t > 0)
-			hit = tmp->content;
+		if (tmp->content && (!hit || ((t_intersection *)tmp->content)->t < hit->t)
+		    && ((t_intersection *)tmp->content)->t > 0)
+		    hit = tmp->content;
 		tmp = tmp->next;
 	}
 	return (hit);
