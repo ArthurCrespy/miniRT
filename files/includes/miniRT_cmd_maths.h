@@ -15,7 +15,7 @@
 
 /* -- */
 
-t_color			*color_new(double r, double g, double b);
+t_color			color_new(double r, double g, double b);
 
 t_color			color_add(t_color c1, t_color c2);
 t_color			color_sub(t_color c1, t_color c2);
@@ -41,7 +41,7 @@ t_matrix		*vector_to_matrix(t_vector v);
 
 double			matrix_determinant(t_matrix m);
 
-t_matrix		*matrix_inverse(t_matrix m);
+t_matrix		matrix_inverse(t_matrix m);
 
 double			matrix_minor(t_matrix m, int row, int col);
 
@@ -61,7 +61,7 @@ void			matrix_transform(t_matrix *matrix, t_matrix *transform);
 
 t_matrix		*matrix_translation(double x, double y, double z);
 
-t_matrix		*matrix_transpose(t_matrix m);
+t_matrix		matrix_transpose(t_matrix m);
 
 /* -- */
 

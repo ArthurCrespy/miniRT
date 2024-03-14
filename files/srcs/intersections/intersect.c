@@ -26,13 +26,12 @@ t_intersection	*create_intersect(double t, t_hittable *obj)
 
 double	*intersect_with(t_hittable *obj, t_ray ray)
 {
-	t_ray	ray_transformed;
-	t_matrix	*invert_transform;
+	t_ray		ray_transformed;
+	t_matrix	invert_transform;
 
 
 	invert_transform = matrix_inverse(*obj->transform);
-	ray_transformed = ray_transform(ray, *invert_transform);
-	free(invert_transform);
+	ray_transformed = ray_transform(ray, invert_transform);
 	if (obj->type == SPHERE)
 		return (intersect_with_sphere(ray_transformed));
 	else if (obj->type == CYLINDER)
@@ -57,6 +56,7 @@ void	add_intersections(t_list **intersections, t_hittable *obj, t_ray ray)
 			new = ft_lstnew(create_intersect(inter[1], obj));
 			ft_lstadd_back(intersections, new);
 		}
+		free(inter);
 	}
 }
 

@@ -30,12 +30,12 @@ t_vector	normal_at(t_hittable *obj, t_point world_point)
 	t_tuple		object_point;
 	t_tuple		object_normal;
 	t_tuple		world_normal;
-	t_matrix	*transpose;
+	t_matrix	transpose;
 
-	object_point = tuple_transform(world_point, *matrix_inverse(*obj->transform));
+	object_point = tuple_transform(world_point, matrix_inverse(*obj->transform));
 	object_normal = object_normal_at(obj, object_point);
-	transpose = matrix_transpose(*matrix_inverse(*obj->transform));
-	world_normal = tuple_transform(object_normal, *transpose);
-	free(transpose);
+	transpose = matrix_transpose(matrix_inverse(*obj->transform));
+	world_normal = tuple_transform(object_normal, transpose);
+//	free(transpose);
 	return (tuple_norm(world_normal));
 }

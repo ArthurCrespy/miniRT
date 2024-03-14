@@ -12,15 +12,12 @@
 
 #include "miniRT.h"
 
-t_color	*color_new(double r, double g, double b)
+t_color	color_new(double r, double g, double b)
 {
-	t_color	*color;
+	t_color	color;
 
-	color = malloc(sizeof(t_color));
-	if (!color)
-		return (NULL);
-	color->chan_1 = r;
-	color->chan_2 = b;
-	color->chan_3 = g;
+	color.chan_1 = r;
+	color.chan_2 = b;
+	color.chan_3 = g;
 	return (color);
 }

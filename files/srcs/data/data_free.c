@@ -12,6 +12,15 @@
 
 #include "miniRT.h"
 
+void free_intersection(void *content)
+{
+	t_intersection	*inter;
+
+	inter = (t_intersection *)content;
+	free(inter);
+}
+
+
 void	free_light(void *light)
 {
 	t_light	*tmp;
@@ -33,8 +42,8 @@ void	free_material(t_material *material)
 {
 	if (material->color)
 		free(material->color);
-	if (material->ambient)
-		free(material->ambient);
+//	if (material->ambient)
+//		free(material->ambient);
 	free(material);
 }
 

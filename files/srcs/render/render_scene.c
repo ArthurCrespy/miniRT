@@ -48,8 +48,8 @@ t_ray	get_ray(t_scene *scene, int x, int y)
 	yoffset = (y + 0.5) * scene->camera->pixel_size;
 	world_x = scene->camera->half_width - xoffset;
 	world_y = scene->camera->half_height - yoffset;
-	pixel = tuple_transform(point_new(world_x, world_y, -1), *matrix_inverse(*scene->camera->transform));
-	origin = tuple_transform(point_new(0, 0, 0), *matrix_inverse(*scene->camera->transform));
+	pixel = tuple_transform(point_new(world_x, world_y, -1), matrix_inverse(*scene->camera->transform));
+	origin = tuple_transform(point_new(0, 0, 0), matrix_inverse(*scene->camera->transform));
 	direction = tuple_norm(tuple_sub(pixel, origin));
 	ray = ray_new(origin, direction);
 	// (void)direction;
@@ -65,7 +65,7 @@ t_ray	get_ray(t_scene *scene, int x, int y)
 		ft_print_vector(direction);
 		ft_print_matrix(*scene->camera->transform);
 		ft_printf("\n");
-		ft_print_matrix(*matrix_inverse(*scene->camera->transform));
+		ft_print_matrix(matrix_inverse(*scene->camera->transform));
 		ft_printf("\n");
 
 	}
@@ -107,9 +107,13 @@ int	ray_color(t_minirt *data, t_ray ray)
 {
 	t_computation	comps;
 	t_intersection	*intersection;
+	t_list			*intersections;
 	t_color			color;
+	int result;
 
-	intersection = ft_hit(ft_intersect(data->scene->objects, ray));
+	intersections = ft_intersect(data->scene->objects, ray);
+	intersection = ft_hit(intersections);
+	result = 0;
 	if (intersection)
 	{
 		// actual color
@@ -117,9 +121,10 @@ int	ray_color(t_minirt *data, t_ray ray)
 		comps.light = data->scene->lights->content; // SEGFAULT HERE WHEN NO LIGHT
 		comps.scene = data->scene;
 		color = lighting(&comps, is_shadowed(data->scene, comps.over_point));
-		return (color_to_int(color));
+		result = color_to_int(color);
 	}
-	return (0x00000000);
+	ft_lstclear(&intersections, free_intersection);
+	return (result);
 }
 
 int	get_pixel_color(t_minirt *data, int x, int y)

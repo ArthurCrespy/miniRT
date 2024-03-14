@@ -42,6 +42,7 @@ int	main(int argc, char **argv, char **envp)
 	mlx_hook_loop(&minirt);
 	mlx_free(&minirt);
 	data_free(&minirt);
+
 	return (1);
 }
 

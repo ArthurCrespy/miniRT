@@ -12,13 +12,14 @@
 
 #include "miniRT.h"
 
+
 bool	is_shadowed(t_scene *scene, t_point point)
 {
-	t_vector	v;
-	t_vector	direction;
-	double		distance;
-	t_ray		ray;
-	t_list	*intersections;
+	t_vector		v;
+	t_vector		direction;
+	double			distance;
+	t_ray			ray;
+	t_list			*intersections;
 	t_intersection	*hit;
 
 	v = tuple_sub(((t_light*)scene->lights->content)->position, point);
@@ -27,11 +28,9 @@ bool	is_shadowed(t_scene *scene, t_point point)
 	ray = ray_new(point, direction);
 	intersections = ft_intersect(scene->objects, ray);
 	hit = ft_hit(intersections);
+	ft_lstclear(&intersections, free_intersection);
 	if (hit != NULL && hit->t < distance)
-	{
-		free(hit);
 		return (true);
-	}
 	free(hit);
 	return (false);
 }
@@ -47,7 +46,6 @@ t_color	lighting(t_computation	*lighting_info, bool	shadowed)
 	double		light_dot_normal;
 	double		reflect_dot_eye;
 	double		factor;
-	t_color		result;
 
 
 	effective_color = color_mult(*lighting_info->object->material->color, color_scalar(*lighting_info->light->color, lighting_info->light->brightness));
@@ -58,8 +56,8 @@ t_color	lighting(t_computation	*lighting_info, bool	shadowed)
 	light_dot_normal = tuple_dot(lightv, lighting_info->normal);
 	if (light_dot_normal < 0)
 	{
-		diffuse = *color_new(0, 0, 0);
-		specular = *color_new(0, 0, 0);
+		diffuse = color_new(0, 0, 0);
+		specular = color_new(0, 0, 0);
 	}
 	else
 	{
@@ -67,13 +65,12 @@ t_color	lighting(t_computation	*lighting_info, bool	shadowed)
 		reflectv = reflect(tuple_negate(lightv), lighting_info->normal);
 		reflect_dot_eye = tuple_dot(reflectv, lighting_info->eye);
 		if (reflect_dot_eye <= 0)
-			specular = *color_new(0, 0, 0);
+			specular = color_new(0, 0, 0);
 		else
 		{
 			factor = pow(reflect_dot_eye, lighting_info->object->material->shininess);
 			specular = color_scalar(*lighting_info->light->color, lighting_info->object->material->specular * factor);
 		}
 	}
-	result = color_add(color_add(ambient, diffuse), specular);
-	return (result);
+	return (color_add(color_add(ambient, diffuse), specular));
 }

@@ -65,7 +65,6 @@ void	test_tick(t_minirt *minirt);
 void	test_maths(t_minirt *minirt);
 
 // parsing
-
 int		ft_parse_rt_file(t_scene *scene, char *file);
 int		ft_parse_sphere(t_scene *scene, char *line);
 int		ft_parse_plane(t_scene *scene, char *line);
@@ -80,15 +79,14 @@ int		ft_parse_scale(double x, double y, double z, t_matrix *matrix);
 int		ft_parse_tuple(char *line, t_point *point);
 
 t_material	*material_init(void);
-// utils
 
+// utils
 void	ft_print_scene(t_scene *scene);
 void	ft_print_matrix(t_matrix matrix);
 void	ft_print_point(t_point point);
 void	ft_print_vector(t_vector vector);
 
 // intersect
-
 t_intersection	*create_intersect(double t, t_hittable *obj);
 t_list	*ft_intersect(t_list *objects, t_ray ray);
 double	*intersect_with_sphere(t_ray ray);
@@ -97,11 +95,11 @@ double *intersect_with_plane(t_ray ray);
 t_intersection	*ft_hit(t_list *intersections);
 
 // lighting
-
 t_color	lighting(t_computation	*lighting_info, bool	shadowed);
 bool	is_shadowed(t_scene *scene, t_point point);
 
 //free
-
+void	free_intersection(void *content);
 void	free_hittable(void *hittable);
+
 #endif
