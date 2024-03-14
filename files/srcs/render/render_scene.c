@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_scene.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:08:57 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/11 22:50:39 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/14 20:20:02 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ t_computation	prepare_computations(t_intersection *intersection, t_ray ray)
 	comps.eye = tuple_negate(ray.direction);
 	// comps.eye = ray.direction;
 	comps.normal = normal_at(comps.object, comps.point);
-//	normal < 0 → angle +90° → intersection point inside the object
+	// normal < 0 → angle +90° → intersection point inside the object
 	if (tuple_dot(comps.normal, comps.eye) < 0)
 	{
 		comps.normal = tuple_negate(comps.normal);
@@ -109,7 +109,7 @@ int	ray_color(t_minirt *data, t_ray ray)
 	t_intersection	*intersection;
 	t_list			*intersections;
 	t_color			color;
-	int result;
+	int				result;
 
 	intersections = ft_intersect(data->scene->objects, ray);
 	intersection = ft_hit(intersections);
@@ -120,10 +120,12 @@ int	ray_color(t_minirt *data, t_ray ray)
 		comps = prepare_computations(intersection, ray);
 		comps.light = data->scene->lights->content; // SEGFAULT HERE WHEN NO LIGHT
 		comps.scene = data->scene;
+		ft_lstclear(&intersections, free_intersection);
 		color = lighting(&comps, is_shadowed(data->scene, comps.over_point));
 		result = color_to_int(color);
 	}
-	ft_lstclear(&intersections, free_intersection);
+	if (intersections)
+		ft_lstclear(&intersections, free_intersection);
 	return (result);
 }
 
@@ -159,7 +161,7 @@ void	render_scene(t_minirt *data)
 			x++;
 			pxl_rendered++;
 			if (pxl_rendered >= 10)
-				break;
+				break ;
 		}
 		if (pxl_rendered >= 10)
 		{

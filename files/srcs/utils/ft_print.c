@@ -39,7 +39,7 @@ void	ft_print_hittable(t_hittable *hittable)
 	printf("matrix: ");
 	ft_print_matrix(*hittable->transform);
 	printf("color: ");
-	ft_print_color(hittable->material->color);
+	ft_print_color(&hittable->material->color);
 }
 
 void	ft_print_camera(t_camera *camera)
@@ -55,14 +55,14 @@ void	ft_print_light(t_light *light)
 	ft_print_point(light->position);
 	printf("brightness: %f\n", light->brightness);
 	printf("color: ");
-	ft_print_color(light->color);
+	ft_print_color(&light->color);
 }
 
 void	ft_print_ambient(t_ambient *ambient)
 {
 	printf("brightness: %f\n", ambient->brightness);
 	printf("color: ");
-	ft_print_color(ambient->color);
+	ft_print_color(&ambient->color);
 }
 
 void	ft_print_scene(t_scene *scene)

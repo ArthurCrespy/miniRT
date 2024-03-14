@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lighting.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:21:14 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/09 16:06:03 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/14 20:20:29 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ bool	is_shadowed(t_scene *scene, t_point point)
 	t_list			*intersections;
 	t_intersection	*hit;
 
-	v = tuple_sub(((t_light*)scene->lights->content)->position, point);
+	v = tuple_sub(((t_light *)scene->lights->content)->position, point);
 	distance = tuple_mag(v);
 	direction = tuple_norm(v);
 	ray = ray_new(point, direction);
@@ -48,7 +48,7 @@ t_color	lighting(t_computation	*lighting_info, bool	shadowed)
 	double		factor;
 
 
-	effective_color = color_mult(*lighting_info->object->material->color, color_scalar(*lighting_info->light->color, lighting_info->light->brightness));
+	effective_color = color_mult(lighting_info->object->material->color, color_scalar(lighting_info->light->color, lighting_info->light->brightness));
 	lightv = tuple_norm(tuple_sub(lighting_info->light->position, lighting_info->point));
 	ambient = color_scalar(effective_color, lighting_info->object->material->ambient->brightness);
 	if (shadowed)
@@ -61,7 +61,7 @@ t_color	lighting(t_computation	*lighting_info, bool	shadowed)
 	}
 	else
 	{
-		diffuse = color_scalar(*lighting_info->object->material->color, lighting_info->object->material->diffuse * light_dot_normal);
+		diffuse = color_scalar(lighting_info->object->material->color, lighting_info->object->material->diffuse * light_dot_normal);
 		reflectv = reflect(tuple_negate(lightv), lighting_info->normal);
 		reflect_dot_eye = tuple_dot(reflectv, lighting_info->eye);
 		if (reflect_dot_eye <= 0)
@@ -69,7 +69,7 @@ t_color	lighting(t_computation	*lighting_info, bool	shadowed)
 		else
 		{
 			factor = pow(reflect_dot_eye, lighting_info->object->material->shininess);
-			specular = color_scalar(*lighting_info->light->color, lighting_info->object->material->specular * factor);
+			specular = color_scalar(lighting_info->light->color, lighting_info->object->material->specular * factor);
 		}
 	}
 	return (color_add(color_add(ambient, diffuse), specular));

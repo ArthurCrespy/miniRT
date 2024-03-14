@@ -26,22 +26,22 @@ void	free_light(void *light)
 	t_light	*tmp;
 
 	tmp = (t_light *)light;
-	if (tmp->color)
-		free(tmp->color);
+//	if (tmp->color)
+//		free(tmp->color);
 	free(tmp);
 }
 
 void	free_ambient(t_ambient *ambient)
 {
-	if (ambient->color)
-		free(ambient->color);
+//	if (ambient->color)
+//		free(ambient->color);
 	free(ambient);
 }
 
 void	free_material(t_material *material)
 {
-	if (material->color)
-		free(material->color);
+//	if (material->color)
+//		free(material->color);
 //	if (material->ambient)
 //		free(material->ambient);
 	free(material);

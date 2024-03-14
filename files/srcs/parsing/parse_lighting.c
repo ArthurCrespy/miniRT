@@ -49,10 +49,10 @@ int	ft_parse_light(t_scene *scene, char *line)
 	if (!ft_isfloat(tab[2]))
 		return (free_parse_light(light, tab), 0);
 	light->brightness = ft_atof(tab[2]);
-	light->color = malloc(sizeof(t_color));
-	if (!light->color)
-		return (free_parse_light(light, tab), ft_error(ERROR_MALLOC), 0);
-	if (!ft_parse_color(tab[3], light->color))
+//	light->color = malloc(sizeof(t_color));
+//	if (!light->color)
+//		return (free_parse_light(light, tab), ft_error(ERROR_MALLOC), 0);
+	if (!ft_parse_color(tab[3], &light->color))
 		return (free_parse_light(light, tab), 0);
 	ft_lstadd_back(&scene->lights, ft_lstnew(light));
 	ft_free_2d_list(tab);
@@ -76,10 +76,10 @@ int	ft_parse_ambient(t_scene *scene, char *line)
 	if (!ft_isfloat(tab[1]))
 		return (free_parse_ambient(ambient, tab), 0);
 	ambient->brightness = ft_atof(tab[1]);
-	ambient->color = malloc(sizeof(t_color));
-	if (!ambient->color)
-		return (free_parse_ambient(ambient, tab), ft_error(ERROR_MALLOC), 0);
-	if (!ft_parse_color(tab[2], ambient->color))
+//	ambient->color = malloc(sizeof(t_color));
+//	if (!ambient->color)
+//		return (free_parse_ambient(ambient, tab), ft_error(ERROR_MALLOC), 0);
+	if (!ft_parse_color(tab[2], &ambient->color))
 		return (free_parse_ambient(ambient, tab), 0);
 	scene->ambient = ambient;
 	ft_free_2d_list(tab);

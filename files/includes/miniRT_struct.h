@@ -88,13 +88,13 @@ typedef struct s_light
 {
 	t_point		position;
 	double		brightness;
-	t_color		*color;
+	t_color		color;
 }				t_light;
 
 typedef struct s_ambient
 {
 	double	brightness;
-	t_color	*color;
+	t_color	color;
 }				t_ambient;
 
 typedef struct s_scene
@@ -128,7 +128,7 @@ typedef struct s_computation
 
 typedef struct s_material
 {
-	t_color		*color;
+	t_color		color;
 	t_ambient	*ambient;
 	double		diffuse;
 	double		specular;
