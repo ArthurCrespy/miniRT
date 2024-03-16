@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 20:38:32 by arthur            #+#    #+#             */
-/*   Updated: 2024/03/11 23:05:26 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/16 12:44:26 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ t_tuple	tuple_norm(t_tuple t1)
 	double	magnitude;
 
 	magnitude = sqrt(pow(t1.x, 2) + pow(t1.y, 2) + pow(t1.z, 2));
+	if (magnitude == 0)
+		return (t1);
 	t1.x /= magnitude;
 	t1.y /= magnitude;
 	t1.z /= magnitude;
