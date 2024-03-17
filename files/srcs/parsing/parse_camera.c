@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 22:01:44 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/12 20:45:41 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/17 17:28:40 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_camera	*ft_init_camera(void)
 		return (NULL);
 	camera->fov = 0;
 	camera->transform = matrix_identity();
+	camera->normal = vector_new(0, 1, 0);
 	return (camera);
 }
 
@@ -52,53 +53,43 @@ void	ft_get_pixel_size(t_camera *camera)
 	camera->pixel_size = (camera->half_width * 2) / (double)WIDHT;
 }
 
-t_matrix	*view_transform(t_point from, t_point to, t_vector up)
-{
-	t_vector	forward;
-	t_vector	up_normalized;
-	t_vector	left;
-	t_vector	true_up;
-	t_matrix	*orientation;
-	t_matrix	*translation;
-	t_matrix	*result;
-	double		**matrix_values;
+// t_matrix	*view_transform(t_point from, t_vector normal)
+// {
+// 	t_vector	x_axis;
+// 	t_vector	y_axis;
+// 	t_vector	z_axis;
+// 	t_vector	up;
+// 	t_point		to;
 
-	forward = tuple_norm(tuple_sub(to, from));
-	up_normalized = tuple_norm(up);
-	left = tuple_cross(forward, up_normalized);
-	true_up = tuple_cross(left, forward);
-	matrix_values = (double *[]) {
-		(double []) {left.x, left.y, left.z, 0},
-		(double []) {true_up.x, true_up.y, true_up.z, 0},
-		(double []) {-forward.x, -forward.y, -forward.z, 0},
-		(double []) {0, 0, 0, 1}
-	};
-	orientation = matrix_new(matrix_values, 4);
-	if (!orientation)
-		return (NULL);
-	translation = matrix_translation(-from.x, -from.y, -from.z);
-	if (!translation)
-	{
-		free(orientation);
-		return (NULL);
-	}
-	result = matrix_mult(*orientation, *translation);
-	free(translation);
-	free(orientation);
-	return (result);
-}
+// 	up = vector_new(0, 1, 0);
+// 	z_axis = normal;
+// 	if (normal.y == 1 || normal.y == -1)
+// 		x_axis = vector_new(normal.y, 0, 0);
+// 	else
+// 		x_axis = tuple_cross(up, z_axis);
+// 	y_axis = tuple_cross(z_axis, x_axis);
+// 	to.x = from.x * x_axis.x + from.y * y_axis.x + from.z * z_axis.x;
+// 	to.y = from.x * x_axis.y + from.y * y_axis.y + from.z * z_axis.y;
+// 	to.z = from.x * x_axis.z + from.y * y_axis.z + from.z * z_axis.z;
+// 	to.y = 1;
+// 	printf("x: %f, y: %f, z: %f\n", x_axis.x, x_axis.y, x_axis.z);
+// 	return (matrix_new((double[]){x_axis.x, x_axis.y, x_axis.z, 0,
+// 		y_axis.x, y_axis.y, y_axis.z, 0,
+// 		-z_axis.x, -z_axis.y, -z_axis.z, 0,
+// 		0, 0, 0, 1}, 4));
+// }
 
 int	ft_parse_camera(t_scene *scene, char *line)
 {
 	t_camera	*camera;
 	char		**tab;
-	t_point		*from;
-	t_vector	*to;
+	// t_point		*from;
+	// t_vector	*to;
 
 	camera = ft_init_camera();
-	to = malloc(sizeof(t_vector));
-	from = malloc(sizeof(t_point));
-	if (!camera || !to || !from)
+	// to = malloc(sizeof(t_vector));
+	// from = malloc(sizeof(t_point));
+	if (!camera)
 		return (free_parse_camera(camera, NULL), 0);
 	tab = ft_split(line, ' ');
 	if (!tab)
@@ -106,11 +97,12 @@ int	ft_parse_camera(t_scene *scene, char *line)
 	if (ft_tablen(tab) != 4)
 		return (ft_error(ERROR_WRONG_ARGS_NB),
 			free_parse_camera(camera, tab), 0);
-	if (!ft_parse_tuple(tab[1], from))
-		return (free_parse_camera(camera, tab), 0);
-	if (!ft_parse_tuple(tab[2], to))
-		return (free_parse_camera(camera, tab), 0);
-	camera->transform = view_transform(*from, *to, vector_new(0, 1, 0));
+	// if (!ft_parse_tuple(tab[1], from))
+		// return (free_parse_camera(camera, tab), 0);
+	// if (!ft_parse_tuple(tab[2], to))
+		// return (free_parse_camera(camera, tab), 0);
+	ft_parse_center(tab[1], camera->transform);
+	ft_parse_vector(tab[2], &camera->normal);
 	if (!ft_isint(tab[3]))
 		return (free_parse_camera(camera, tab), 0);
 	camera->fov = ft_atof(tab[3]);
@@ -120,8 +112,8 @@ int	ft_parse_camera(t_scene *scene, char *line)
 	// camera->transform =  matrix_mult(*matrix_rotation_y(M_PI/4), *matrix_translation(0, -2, 5));
 	ft_get_pixel_size(camera);
 	ft_free_2d_list(tab);
-	free(from);
-	free(to);
+	// free(from);
+	// free(to);
 	return (1);
 }
 

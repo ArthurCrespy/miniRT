@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 21:07:41 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/12 20:33:54 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/17 17:27:08 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,28 @@ int	ft_parse_color(char *line, t_color *color)
 		ft_error(ERROR_PARSING_COLOR);
 		return (0);
 	}
+	ft_free_2d_list(tab);
+	return (1);
+}
+
+int	ft_parse_vector(char *line, t_vector *vector)
+{
+	char	**tab;
+
+	tab = ft_split(line, ',');
+	if (!tab)
+		return (ft_error(ERROR_MALLOC), 0);
+	if (ft_tablen(tab) != 3 || !ft_isfloat(tab[0])
+		|| !ft_isfloat(tab[1]) || !ft_isfloat(tab[2]))
+	{
+		ft_free_2d_list(tab);
+		ft_error(ERROR_PARSING_VECTOR);
+		return (0);
+	}
+	vector->w = 0;
+	vector->x = ft_atof(tab[0]);
+	vector->y = ft_atof(tab[1]);
+	vector->z = ft_atof(tab[2]);
 	ft_free_2d_list(tab);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:08:57 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/11 22:50:39 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/17 17:36:16 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,27 @@
 // return ray(origin, direction)
 // end function
 
+t_vector	look_at(t_vector	direction, t_vector	camera_normal)
+{
+		t_vector	x_axis;
+	t_vector	y_axis;
+	t_vector	z_axis;
+	t_vector	up;
+	t_point		to;
+
+	up = vector_new(0, 1, 0);
+	z_axis = camera_normal;
+	if (camera_normal.y == 1 || camera_normal.y == -1)
+		x_axis = vector_new(camera_normal.y, 0, 0);
+	else
+		x_axis = tuple_cross(up, z_axis);
+	y_axis = tuple_cross(z_axis, x_axis);
+	to.x = direction.x * x_axis.x + direction.y * y_axis.x + direction.z * z_axis.x;
+	to.y = direction.x * x_axis.y + direction.y * y_axis.y + direction.z * z_axis.y;
+	to.z = direction.x * x_axis.z + direction.y * y_axis.z + direction.z * z_axis.z;
+	return (to);
+}
+
 t_ray	get_ray(t_scene *scene, int x, int y)
 {
 	t_ray	ray;
@@ -51,6 +72,7 @@ t_ray	get_ray(t_scene *scene, int x, int y)
 	pixel = tuple_transform(point_new(world_x, world_y, -1), *matrix_inverse(*scene->camera->transform));
 	origin = tuple_transform(point_new(0, 0, 0), *matrix_inverse(*scene->camera->transform));
 	direction = tuple_norm(tuple_sub(pixel, origin));
+	direction = look_at(direction, scene->camera->normal);
 	ray = ray_new(origin, direction);
 	// (void)direction;
 	// ray = ray_new(point_new(0, 0, -5), vector_new(0, 0, 1));
