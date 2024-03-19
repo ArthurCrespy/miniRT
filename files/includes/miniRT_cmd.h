@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/19 21:31:24 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/19 22:27:21 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,9 @@ int		ft_parse_scale(double x, double y, double z, t_matrix *matrix);
 int		ft_parse_point(char *line, t_point *point);
 int		ft_parse_vector(char *line, t_vector *vector);
 
+// inits
 t_material	*material_init(void);
+t_camera	*ft_init_camera(void);
 
 // utils
 void	ft_print_scene(t_scene *scene);
@@ -102,5 +104,9 @@ bool	is_shadowed(t_scene *scene, t_point point);
 //free
 void	free_intersection(void *content);
 void	free_hittable(void *hittable);
+void	free_parse_camera(t_camera *camera, char **tab);
+void	free_parse_hittable(t_hittable *hittable, char **tab, int id);
+void	free_parse_light(t_light *light, char **tab);
+void	free_parse_ambient(t_ambient *ambient, char **tab);
 
 #endif

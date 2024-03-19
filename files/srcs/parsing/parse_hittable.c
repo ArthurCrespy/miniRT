@@ -6,26 +6,11 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 19:51:55 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/19 21:43:47 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/19 22:25:18 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
-
-void	free_parse_hittable(t_hittable *hittable, char **tab, int id)
-{
-	if (hittable)
-		free(hittable);
-	if (tab)
-		ft_free_2d_list(tab);
-	if (id == SPHERE)
-		ft_error(ERROR_PARSING_SPHERE);
-	else if (id == CYLINDER)
-		ft_error(ERROR_PARSING_CYLINDER);
-	else if (id == PLANE)
-		ft_error(ERROR_PARSING_PLANE);
-}
-
 
 t_hittable	*ft_init_hittable(int id)
 {
@@ -120,7 +105,7 @@ int	ft_parse_plane(t_scene *scene, char *line)
 		return (free_parse_hittable(plane, tab, PLANE), 0);
 	if (!ft_parse_translation(tab[1], plane->transform))
 		return (free_parse_hittable(plane, tab, PLANE), 0);
-	if (!ft_parse_color(tab[3], plane->material->color))
+	if (!ft_parse_color(tab[3], &plane->material->color))
 		return (free_parse_hittable(plane, tab, PLANE), 0);
 	ft_lstadd_back(&scene->objects, ft_lstnew(plane));
 	ft_free_2d_list(tab);

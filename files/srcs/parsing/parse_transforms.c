@@ -6,11 +6,11 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 21:29:51 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/19 21:30:58 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/19 22:28:46 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "miniRT.h"
+#include "miniRT.h"
 
 int	ft_apply_rotation(t_vector orientation, t_matrix *transform)
 {
@@ -53,7 +53,6 @@ int	ft_parse_rotation(char *line, t_matrix *transform)
 	ft_free_2d_list(tab);
 	return (1);
 }
-
 
 int	ft_parse_scale(double scale_x, double scale_y, double scale_z,
 	t_matrix *transform)

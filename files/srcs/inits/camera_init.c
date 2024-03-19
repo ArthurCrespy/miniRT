@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   material_init.c                                    :+:      :+:    :+:   */
+/*   camera_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/10 18:11:31 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/19 21:43:05 by dkeraudr         ###   ########.fr       */
+/*   Created: 2024/03/19 22:22:04 by dkeraudr          #+#    #+#             */
+/*   Updated: 2024/03/19 22:31:22 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_material	*material_init(void)
+t_camera	*ft_init_camera(void)
 {
-	t_material	*material;
+	t_camera	*camera;
 
-	material = malloc(sizeof(t_material));
-	if (!material)
+	camera = malloc(sizeof(t_camera));
+	if (!camera)
 		return (NULL);
-	material->color = color_new(255, 255, 255);
-	material->ambient = NULL;
-	material->diffuse = 0.9;
-	material->specular = 0.9;
-	material->shininess = 200;
-	return (material);
+	camera->fov = 0;
+	camera->transform = NULL;
+	return (camera);
 }
