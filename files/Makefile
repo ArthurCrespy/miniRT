@@ -6,7 +6,7 @@
 #    By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 14:54:39 by acrespy           #+#    #+#              #
-#    Updated: 2024/03/12 19:42:49 by dkeraudr         ###   ########.fr        #
+#    Updated: 2024/03/19 21:31:43 by dkeraudr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ SRCS := \
 			parsing/parse_hittable.c \
 			parsing/parse_lighting.c \
 			parsing/parse_subcomponents.c \
+			parsing/parse_transforms.c \
 			parsing/parsing.c \
 			ray/ray_create.c \
 			ray/ray_position.c \

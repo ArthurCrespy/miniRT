@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/08 22:05:58 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/19 20:43:51 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,9 @@
 # define ERROR_PARSING_AMBIENT "Could not parse ambient, aborting"
 # define ERROR_PARSING_CAMERA "Could not parse camera, aborting"
 # define ERROR_PARSING_POINT "Could not parse point, aborting"
+# define ERROR_PARSING_VECTOR "Could not parse vector, aborting"
+# define ERROR_MULTIPLE_AMBIENT "Multiple ambient light detected, aborting"
+# define ERROR_MULTIPLE_CAMERA "Multiple camera detected, aborting"
+# define ERROR_ORIENTATION_NORMALIZED "Orientation vector not normalized"
 
 #endif

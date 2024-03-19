@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 22:01:44 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/10 18:23:24 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/19 20:39:11 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,15 @@ t_camera	*ft_init_camera(void)
 	if (!camera)
 		return (NULL);
 	camera->fov = 0;
+	camera->transform = matrix_identity();
 	return (camera);
 }
 
 void	ft_get_pixel_size(t_camera *camera)
 {
-	// double		half_view;
 	double		aspect_ratio;
 
-	// fov is in degree
 	camera->half_view = tan(camera->fov * M_PI / 360);
-	//printf("half_view: %f\n", camera->half_view);
 	aspect_ratio = (double)WIDHT / (double)HEIGHT;
 	if (aspect_ratio >= 1)
 	{
@@ -54,10 +52,9 @@ void	ft_get_pixel_size(t_camera *camera)
 	camera->pixel_size = (camera->half_width * 2) / (double)WIDHT;
 }
 
-t_matrix	*view_transform(t_point from, t_point to, t_vector up)
+t_matrix	*view_transform(t_point from, t_vector direction)
 {
 	t_vector	forward;
-	t_vector	up_normalized;
 	t_vector	left;
 	t_vector	true_up;
 	t_matrix	*orientation;
@@ -65,9 +62,11 @@ t_matrix	*view_transform(t_point from, t_point to, t_vector up)
 	t_matrix	*result;
 	double		**matrix_values;
 
-	forward = tuple_norm(tuple_sub(to, from));
-	up_normalized = tuple_norm(up);
-	left = tuple_cross(forward, up_normalized);
+	forward = direction;
+
+	left = tuple_cross(forward, vector_new(0, 1, 0));
+	if (left.x == 0 && left.y == 0 && left.z == 0)
+		left = tuple_cross(forward, vector_new(0, 0, 1));
 	true_up = tuple_cross(left, forward);
 	matrix_values = (double *[]) {
 		(double []) {left.x, left.y, left.z, 0},
@@ -88,7 +87,7 @@ t_matrix	*view_transform(t_point from, t_point to, t_vector up)
 	free(translation);
 	free(orientation);
 	return (result);
-}
+	}
 
 int	ft_parse_camera(t_scene *scene, char *line)
 {
@@ -108,24 +107,18 @@ int	ft_parse_camera(t_scene *scene, char *line)
 	if (ft_tablen(tab) != 4)
 		return (ft_error(ERROR_WRONG_ARGS_NB),
 			free_parse_camera(camera, tab), 0);
-	if (!ft_parse_tuple(tab[1], from))
+	if (!ft_parse_point(tab[1], from))
 		return (free_parse_camera(camera, tab), 0);
-	if (!ft_parse_tuple(tab[2], to))
+	if (!ft_parse_vector(tab[2], to))
 		return (free_parse_camera(camera, tab), 0);
-	camera->transform = view_transform(*from, *to, vector_new(0, 1, 0));
+	camera->transform = view_transform(*from, *to);
 	if (!ft_isint(tab[3]))
 		return (free_parse_camera(camera, tab), 0);
 	camera->fov = ft_atof(tab[3]);
 	scene->camera = camera;
-	// camera->transform = matrix_rotation_y(M_PI/4);
-	// translate the camera
-	// camera->transform =  matrix_mult(*matrix_rotation_y(M_PI/4), *matrix_translation(0, -2, 5));
 	ft_get_pixel_size(camera);
 	ft_free_2d_list(tab);
 	free(from);
 	free(to);
 	return (1);
 }
-
-	// todo: add check for fov value
-	// todo: add check for orientation value (normalized vector)
