@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lighting.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 20:21:14 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/14 20:20:29 by acrespy          ###   ########.fr       */
+/*   Updated: 2024/03/20 20:03:40 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,12 @@ bool	is_shadowed(t_scene *scene, t_point point)
 	ray = ray_new(point, direction);
 	intersections = ft_intersect(scene->objects, ray);
 	hit = ft_hit(intersections);
-	ft_lstclear(&intersections, free_intersection);
 	if (hit != NULL && hit->t < distance)
+	{
+		ft_lstclear(&intersections, free_intersection);
 		return (true);
-	free(hit);
+	}
+	ft_lstclear(&intersections, free_intersection);
 	return (false);
 }
 
