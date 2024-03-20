@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_scene.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:08:57 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/14 20:20:02 by acrespy          ###   ########.fr       */
+/*   Updated: 2024/03/20 20:16:20 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,23 +52,6 @@ t_ray	get_ray(t_scene *scene, int x, int y)
 	origin = tuple_transform(point_new(0, 0, 0), matrix_inverse(*scene->camera->transform));
 	direction = tuple_norm(tuple_sub(pixel, origin));
 	ray = ray_new(origin, direction);
-	// (void)direction;
-	// ray = ray_new(point_new(0, 0, -5), vector_new(0, 0, 1));
-	if (x == 100 && y == 50)
-	// if (x == 0 && y == 0)
-	{
-		// ft_print_point(pixel);
-		ft_printf("X: %d, Y: %d\n", x, y);
-		ft_printf("Origin: ");
-		ft_print_point(origin);
-		ft_printf("Direction: ");
-		ft_print_vector(direction);
-		ft_print_matrix(*scene->camera->transform);
-		ft_printf("\n");
-		ft_print_matrix(matrix_inverse(*scene->camera->transform));
-		ft_printf("\n");
-
-	}
 	return (ray);
 }
 

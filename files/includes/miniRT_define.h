@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/20 19:54:44 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/20 20:22:38 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,5 @@
 # define ERROR_OBJECT_NOT_DEFINED "No object defined"
 # define ERROR_LIGHT_NOT_DEFINED "No light defined"
 # define ERROR_PARSING_FILE "Error while parsing file"
+
 #endif

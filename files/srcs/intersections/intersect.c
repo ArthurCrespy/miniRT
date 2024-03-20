@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 20:46:09 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/07 17:11:37 by acrespy          ###   ########.fr       */
+/*   Updated: 2024/03/20 20:08:39 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ void	add_intersections(t_list **intersections, t_hittable *obj, t_ray ray)
 
 void	ft_lstsort(t_list **intersections)
 {
-	t_list	*tmp;
-	t_list	*tmp2;
+	t_list			*tmp;
+	t_list			*tmp2;
 	t_intersection	*inter;
 	t_intersection	*inter2;
 

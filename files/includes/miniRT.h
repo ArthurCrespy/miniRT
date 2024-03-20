@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:31:24 by acrespy           #+#    #+#             */
-/*   Updated: 2024/03/12 23:44:34 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/20 20:24:19 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,6 @@
 # include "./miniRT_struct.h"
 # include "./miniRT_cmd.h"
 # include "./miniRT_cmd_maths.h"
-
-//# include <../libft/includes/libft.h>
-
-//# include "./../minilibx-linux/mlx.h"
-//# include "./../minilibx-linux/mlx_int.h"
 
 # include <stdio.h>
 # include <stdlib.h>

@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/08 22:13:50 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/20 20:28:12 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_ray
 {
 	t_point		origin;
 	t_vector	direction;
-}				t_ray;
+}	t_ray;
 
 typedef struct s_matrix
 {
@@ -45,34 +45,32 @@ typedef struct s_shearing
 {
 	double	p1;
 	double	p2;
-}				t_shearing;
+}	t_shearing;
 
 typedef struct s_vars
 {
 	void	*mlx;
 	void	*win;
-}				t_vars;
+}	t_vars;
 
 typedef struct s_color
 {
 	double	chan_1;
 	double	chan_2;
 	double	chan_3;
-}				t_color;
+}	t_color;
 
-// write prototype of t_material here
-
-typedef struct s_material t_material; 
+typedef struct s_material	t_material;
 
 typedef struct s_hittable
 {
 	int			id;
 	int			type;
-	double 		radius;
-	double 		height;
+	double		radius;
+	double		height;
 	t_material	*material;
 	t_matrix	*transform;
-}				t_hittable;
+}	t_hittable;
 
 typedef struct s_camera
 {
@@ -82,20 +80,20 @@ typedef struct s_camera
 	double			half_view;
 	double			half_width;
 	double			half_height;
-}				t_camera;
+}	t_camera;
 
 typedef struct s_light
 {
 	t_point		position;
 	double		brightness;
 	t_color		color;
-}				t_light;
+}	t_light;
 
 typedef struct s_ambient
 {
 	double	brightness;
 	t_color	color;
-}				t_ambient;
+}	t_ambient;
 
 typedef struct s_scene
 {
@@ -107,11 +105,8 @@ typedef struct s_scene
 
 typedef struct s_intersection
 {
-	// bool		hit;
 	double		t;
 	t_hittable	*obj;
-	// t_point		point;
-	// t_vector	normal;
 }				t_intersection;
 
 typedef struct s_computation
@@ -136,22 +131,22 @@ typedef struct s_material
 }				t_material;
 typedef struct s_mlx
 {
-	void		*mlx;
-	void		*mlx_win;
-	void		*img;
-	char		*addr;
-	int			screen_width;
-	int			screen_height;
-	int			win_width;
-	int			win_height;
-	int			line_length;
-	int			endian;
-	int			bpp;
+	void	*mlx;
+	void	*mlx_win;
+	void	*img;
+	char	*addr;
+	int		screen_width;
+	int		screen_height;
+	int		win_width;
+	int		win_height;
+	int		line_length;
+	int		endian;
+	int		bpp;
 }				t_mlx;
 
 typedef struct s_minirt {
-	t_mlx		*mlx;
-	t_scene		*scene;
+	t_mlx			*mlx;
+	t_scene			*scene;
 	unsigned int	pxl_rendered;
 }				t_minirt;
 
