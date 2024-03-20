@@ -6,32 +6,11 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:08:57 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/20 20:16:20 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/20 21:21:42 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
-
-// get_ray: get the ray from the camera to the pixel
-// origin is the camera center
-// lower_left_corner is the bottom left corner of the screen
-
-// function ray_for_pixel(camera, px, py)
-// # the offset from the edge of the canvas to the pixel's center
-// xoffset ← (px + 0.5) * camera.pixel_size
-// yoffset ← (py + 0.5) * camera.pixel_size
-// # the untransformed coordinates of the pixel in world space.
-// # (remember that the camera looks toward -z, so +x is to the *left*.)
-// world_x ← camera.half_width - xoffset
-// world_y ← camera.half_height - yoffset
-// # using the camera matrix, transform the canvas point and the origin,
-// # and then compute the ray's direction vector.
-// # (remember that the canvas is at z=-1)
-// pixel ← inverse(camera.transform) * point(world_x, world_y, -1)
-// origin ← inverse(camera.transform) * point(0, 0, 0)
-// direction ← normalize(pixel - origin)
-// return ray(origin, direction)
-// end function
 
 t_ray	get_ray(t_scene *scene, int x, int y)
 {
@@ -42,7 +21,6 @@ t_ray	get_ray(t_scene *scene, int x, int y)
 	double	world_y;
 	t_point	pixel;
 	t_point	origin;
-	t_vector	direction;
 
 	xoffset = (x + 0.5) * scene->camera->pixel_size;
 	yoffset = (y + 0.5) * scene->camera->pixel_size;
@@ -50,8 +28,7 @@ t_ray	get_ray(t_scene *scene, int x, int y)
 	world_y = scene->camera->half_height - yoffset;
 	pixel = tuple_transform(point_new(world_x, world_y, -1), matrix_inverse(*scene->camera->transform));
 	origin = tuple_transform(point_new(0, 0, 0), matrix_inverse(*scene->camera->transform));
-	direction = tuple_norm(tuple_sub(pixel, origin));
-	ray = ray_new(origin, direction);
+	ray = ray_new(origin, tuple_norm(tuple_sub(pixel, origin)));
 	return (ray);
 }
 

@@ -6,7 +6,7 @@
 #    By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 14:54:39 by acrespy           #+#    #+#              #
-#    Updated: 2024/03/20 21:06:15 by dkeraudr         ###   ########.fr        #
+#    Updated: 2024/03/20 21:25:09 by dkeraudr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,11 +63,7 @@ SRCS := \
 			tuple/tuple_new.c \
 			tuple/tuple_operations.c \
 			tuple/tuple_transform.c \
-			utils/ft_calloc.c \
 			utils/ft_exit.c \
-			utils/ft_free.c \
-			utils/ft_gnl.c \
-			utils/ft_print.c \
 			render/render_scene.c \
 			render/lighting.c \
 			intersections/cylinder_intersection.c \

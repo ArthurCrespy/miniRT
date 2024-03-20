@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/20 20:36:11 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/20 21:25:28 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void			render_scene(t_minirt *data);
 void			ft_exit(char *msg, int status);
 
 void			ft_free(char **tab);
-void			ft_matrix_free(t_matrix *matrix);
 
 void			test_tick(t_minirt *minirt);
 void			test_maths(t_minirt *minirt);

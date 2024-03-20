@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:34:06 by acrespy           #+#    #+#             */
-/*   Updated: 2024/03/20 21:05:48 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/20 21:24:49 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,6 @@ t_matrix	*matrix_rotation(t_vector axis)
 	cos_theta = cos(angle);
 	res = matrix_identity();
 	ft_fill_rotation_matrix(res, cos_theta, sin_theta, skew_sym);
-	ft_matrix_free(skew_sym);
+	free(skew_sym);
 	return (res);
 }
