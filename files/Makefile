@@ -6,7 +6,7 @@
 #    By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 14:54:39 by acrespy           #+#    #+#              #
-#    Updated: 2024/03/19 21:31:43 by dkeraudr         ###   ########.fr        #
+#    Updated: 2024/03/20 21:25:09 by dkeraudr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,18 +38,22 @@ SRCS := \
 			matrix/matrix_translation.c \
 			matrix/matrix_transpose.c \
 			matrix/matrix_transform.c \
+			matrix/matrix_skew_sym.c \
 			mlx/mlx_exit.c \
 			mlx/mlx_initialize.c \
 			mlx/mlx_loop.c \
 			mlx/mlx_render.c \
 			mlx/mlx_pixel_put.c \
-			parsing/material_init.c \
+			inits/material_init.c \
+			inits/camera_init.c \
 			parsing/parse_camera.c \
 			parsing/parse_hittable.c \
 			parsing/parse_lighting.c \
 			parsing/parse_subcomponents.c \
 			parsing/parse_transforms.c \
 			parsing/parsing.c \
+			free/parsing_free.c \
+			free/scene_free.c \
 			ray/ray_create.c \
 			ray/ray_position.c \
 			ray/ray_transform.c \
@@ -59,11 +63,7 @@ SRCS := \
 			tuple/tuple_new.c \
 			tuple/tuple_operations.c \
 			tuple/tuple_transform.c \
-			utils/ft_calloc.c \
 			utils/ft_exit.c \
-			utils/ft_free.c \
-			utils/ft_gnl.c \
-			utils/ft_print.c \
 			render/render_scene.c \
 			render/lighting.c \
 			intersections/cylinder_intersection.c \

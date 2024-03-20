@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 21:07:41 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/19 21:39:07 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/19 22:35:19 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ int	ft_parse_vector(char *line, t_vector *vector)
 	vector->z = ft_atof(tab[2]);
 	vector->w = 0;
 	ft_free_2d_list(tab);
+	if (tuple_mag(*vector) != 1)
+	{
+		ft_error(ERROR_VECTOR_NORMALIZED);
+		return (0);
+	}
 	return (1);
 }
 

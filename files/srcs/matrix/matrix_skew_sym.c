@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   matrix_skew_sym.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/19 15:40:20 by acrespy           #+#    #+#             */
-/*   Updated: 2024/02/18 15:09:21 by dkeraudr         ###   ########.fr       */
+/*   Created: 2024/03/20 21:05:00 by dkeraudr          #+#    #+#             */
+/*   Updated: 2024/03/20 21:06:09 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-/*
-char	*ft_calloc(size_t nmemb, size_t size)
+t_matrix	*matrix_skew_sym(t_vector axis)
 {
-	size_t	i;
-	char	*result;
+	t_matrix	*res;
 
-	i = 0;
-	if ((size != 0 && nmemb != 0) && ((nmemb * size) / size != nmemb))
-		return (NULL);
-	if (nmemb == 0 || size == 0)
-		return (NULL);
-	result = malloc(nmemb * size);
-	if (!result)
-		return (NULL);
-	while (i < nmemb * size)
-	{
-		result[i] = '\0';
-		i++;
-	}
-	return (result);
+	res = matrix_identity();
+	res->matrix[0][0] = 0;
+	res->matrix[0][1] = -axis.z;
+	res->matrix[0][2] = axis.y;
+	res->matrix[1][0] = axis.z;
+	res->matrix[1][1] = 0;
+	res->matrix[1][2] = -axis.x;
+	res->matrix[2][0] = -axis.y;
+	res->matrix[2][1] = axis.x;
+	res->matrix[2][2] = 0;
+	return (res);
 }
-*/

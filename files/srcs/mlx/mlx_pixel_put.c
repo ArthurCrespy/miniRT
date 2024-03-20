@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:42:40 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/08 21:59:50 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/20 21:11:43 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,3 @@ void	my_mlx_pixel_put(t_mlx *data, int x, int y, int color)
 	dst = data->addr + (y * data->line_length + x * (data->bpp / 8));
 	*(unsigned int *)dst = color;
 }
-

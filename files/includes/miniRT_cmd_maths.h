@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:48:54 by acrespy           #+#    #+#             */
-/*   Updated: 2024/03/02 22:44:48 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/20 21:06:42 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ t_matrix		*matrix_rotation_x(double angle);
 t_matrix		*matrix_rotation_y(double angle);
 t_matrix		*matrix_rotation_z(double angle);
 t_matrix		*matrix_rotation(t_vector v);
+t_matrix		*matrix_skew_sym(t_vector axis);
 
 t_matrix		*matrix_scale(double x, double y, double z);
 

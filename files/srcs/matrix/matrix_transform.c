@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 14:42:21 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/12 18:05:12 by acrespy          ###   ########.fr       */
+/*   Updated: 2024/03/20 21:24:49 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ void	matrix_transform(t_matrix *matrix, t_matrix *transform)
 
 	tmp = matrix_mult(*matrix, *transform);
 	ft_matrix_copy(matrix, tmp);
-	ft_matrix_free(tmp);
+	free(tmp);
 }
