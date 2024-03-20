@@ -29,7 +29,7 @@ t_camera	*ft_init_camera(void)
 	if (!camera)
 		return (NULL);
 	camera->fov = 0;
-	camera->transform = matrix_identity();
+	//camera->transform = matrix_identity();
 	return (camera);
 }
 
@@ -81,7 +81,7 @@ t_matrix	*view_transform(t_point from, t_vector direction)
 	if (!translation)
 	{
 		free(orientation);
-		return (NULL);
+		return (matrix_identity());
 	}
 	result = matrix_mult(*orientation, *translation);
 	free(translation);

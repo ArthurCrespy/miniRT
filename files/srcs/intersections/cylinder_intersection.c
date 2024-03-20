@@ -37,7 +37,10 @@ double	*intersect_with_cylinder(t_hittable *cylinder, t_ray ray)
 	y1 = ray.origin.y + intersections[1] * ray.direction.y;
 	if ((y0 < -cylinder->height / 2 || y0 > cylinder->height / 2)
 	    && (y1 < -cylinder->height / 2 || y1 > cylinder->height / 2))
+	{
+		free(intersections);
 		return (NULL);
+	}
 	else if (y0 < -cylinder->height / 2 || y0 > cylinder->height / 2)
 		intersections[0] = intersections[1];
 	else if (y1 < -cylinder->height / 2 || y1 > cylinder->height / 2)
