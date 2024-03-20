@@ -6,7 +6,7 @@
 #    By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 14:54:39 by acrespy           #+#    #+#              #
-#    Updated: 2024/03/20 19:09:59 by dkeraudr         ###   ########.fr        #
+#    Updated: 2024/03/20 21:06:15 by dkeraudr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRCS := \
 			matrix/matrix_translation.c \
 			matrix/matrix_transpose.c \
 			matrix/matrix_transform.c \
+			matrix/matrix_skew_sym.c \
 			mlx/mlx_exit.c \
 			mlx/mlx_initialize.c \
 			mlx/mlx_loop.c \

@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 20:46:09 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/20 20:08:39 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/20 20:42:31 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ double	*intersect_with(t_hittable *obj, t_ray ray)
 {
 	t_ray		ray_transformed;
 	t_matrix	invert_transform;
-
 
 	invert_transform = matrix_inverse(*obj->transform);
 	ray_transformed = ray_transform(ray, invert_transform);

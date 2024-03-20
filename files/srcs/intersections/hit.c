@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 20:33:47 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/02/12 20:44:08 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/20 20:39:10 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ t_intersection	*ft_hit(t_list *intersections)
 	hit = NULL;
 	while (tmp)
 	{
-		if (tmp->content && (!hit || ((t_intersection *)tmp->content)->t < hit->t)
-		    && ((t_intersection *)tmp->content)->t > 0)
-		    hit = tmp->content;
+		if (tmp->content
+			&& (!hit || ((t_intersection *)tmp->content)->t < hit->t)
+			&& ((t_intersection *)tmp->content)->t > 0)
+			hit = tmp->content;
 		tmp = tmp->next;
 	}
 	return (hit);

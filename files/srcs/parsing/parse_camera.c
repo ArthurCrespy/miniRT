@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 22:01:44 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/20 19:24:14 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/20 21:17:35 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,31 +31,11 @@ void	ft_get_pixel_size(t_camera *camera)
 	camera->pixel_size = (camera->half_width * 2) / (double)WIDHT;
 }
 
-t_matrix	*view_transform(t_point from, t_vector direction)
+t_matrix	*ft_get_view_transform(t_point from, t_matrix *orientation)
 {
-	t_vector	forward;
-	t_vector	left;
-	t_vector	true_up;
-	t_matrix	*orientation;
-	t_matrix	*translation;
 	t_matrix	*result;
-	double		**matrix_values;
+	t_matrix	*translation;
 
-	forward = direction;
-
-	left = tuple_cross(forward, vector_new(0, 1, 0));
-	if (left.x == 0 && left.y == 0 && left.z == 0)
-		left = tuple_cross(forward, vector_new(0, 0, 1));
-	true_up = tuple_cross(left, forward);
-	matrix_values = (double *[]) {
-		(double []) {left.x, left.y, left.z, 0},
-		(double []) {true_up.x, true_up.y, true_up.z, 0},
-		(double []) {-forward.x, -forward.y, -forward.z, 0},
-		(double []) {0, 0, 0, 1}
-	};
-	orientation = matrix_new(matrix_values, 4);
-	if (!orientation)
-		return (NULL);
 	translation = matrix_translation(-from.x, -from.y, -from.z);
 	if (!translation)
 	{
@@ -66,7 +46,32 @@ t_matrix	*view_transform(t_point from, t_vector direction)
 	free(translation);
 	free(orientation);
 	return (result);
-	}
+}
+
+t_matrix	*view_transform(t_point from, t_vector direction)
+{
+	t_vector	forward;
+	t_vector	left;
+	t_vector	true_up;
+	t_matrix	*orientation;
+	double		**matrix_values;
+
+	forward = direction;
+	left = tuple_cross(forward, vector_new(0, 1, 0));
+	if (left.x == 0 && left.y == 0 && left.z == 0)
+		left = tuple_cross(forward, vector_new(0, 0, 1));
+	true_up = tuple_cross(left, forward);
+	matrix_values = (double *[]){
+		(double []){left.x, left.y, left.z, 0},
+		(double []){true_up.x, true_up.y, true_up.z, 0},
+		(double []){-forward.x, -forward.y, -forward.z, 0},
+		(double []){0, 0, 0, 1}
+	};
+	orientation = matrix_new(matrix_values, 4);
+	if (!orientation)
+		return (NULL);
+	return (ft_get_view_transform(from, orientation));
+}
 
 int	ft_parse_camera_transform(t_camera *camera, char **tab)
 {

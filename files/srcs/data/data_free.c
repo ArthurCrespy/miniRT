@@ -6,13 +6,13 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 07:46:01 by acrespy           #+#    #+#             */
-/*   Updated: 2024/03/20 19:12:03 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/20 20:34:29 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void free_intersection(void *content)
+void	free_intersection(void *content)
 {
 	t_intersection	*inter;
 

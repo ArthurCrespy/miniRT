@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 15:00:18 by acrespy           #+#    #+#             */
-/*   Updated: 2024/02/18 15:50:02 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/20 21:12:49 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@ char	*get_percent(double percent)
 
 int	mlx_render_frame(t_minirt *data)
 {
-	char    *percent;
+	char	*percent;
 
 	render_scene(data);
-	percent = get_percent((double)data->pxl_rendered * 100 / (data->mlx->win_width * data->mlx->win_height));
-	mlx_string_put(data->mlx->mlx, data->mlx->mlx_win, 50, 50, 0x00FFFFFF, percent);
+	percent = get_percent((double)data->pxl_rendered * 100
+			/ (data->mlx->win_width * data->mlx->win_height));
+	mlx_string_put(data->mlx->mlx, data->mlx->mlx_win,
+		50, 50, 0x00FFFFFF, percent);
 	free(percent);
 	return (0);
 }

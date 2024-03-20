@@ -3,18 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   sphere_intersection.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 20:04:37 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/07 17:10:06 by acrespy          ###   ########.fr       */
+/*   Updated: 2024/03/20 20:41:31 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-double	*intersect_with_sphere(t_ray ray)
+double	*get_intersections(double a, double b, double discriminant)
 {
 	double		*intersections;
+
+	intersections = malloc(sizeof(double) * 2);
+	if (!intersections)
+		return (NULL);
+	intersections[0] = (-b - sqrt(discriminant)) / (2 * a);
+	intersections[1] = (-b + sqrt(discriminant)) / (2 * a);
+	return (intersections);
+}
+
+double	*intersect_with_sphere(t_ray ray)
+{
 	double		a;
 	double		b;
 	double		c;
@@ -29,11 +40,5 @@ double	*intersect_with_sphere(t_ray ray)
 	discriminant = (b * b) - (4 * a * c);
 	if (discriminant < 0)
 		return (NULL);
-	intersections = malloc(sizeof(double) * 2);
-	if (!intersections)
-		return (NULL);
-	intersections[0] = (-b - sqrt(discriminant)) / (2 * a);
-	intersections[1] = (-b + sqrt(discriminant)) / (2 * a);
-	//printf("sp - i0: %f, i1: %f\n", intersections[0], intersections[1]);
-	return (intersections);
+	return (get_intersections(a, b, discriminant));
 }

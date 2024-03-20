@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT_include.h                                   :+:      :+:    :+:   */
+/*   matrix_skew_sym.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/20 20:36:59 by dkeraudr         ###   ########.fr       */
+/*   Created: 2024/03/20 21:05:00 by dkeraudr          #+#    #+#             */
+/*   Updated: 2024/03/20 21:06:09 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_INCLUDE_H
-# define MINIRT_INCLUDE_H
+#include "miniRT.h"
 
-# include "./../minilibx-linux/mlx.h"
+t_matrix	*matrix_skew_sym(t_vector axis)
+{
+	t_matrix	*res;
 
-# include "./../libft/includes/libft.h"
-
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include <limits.h>
-# include <math.h>
-# include <stdbool.h>
-
-#endif
+	res = matrix_identity();
+	res->matrix[0][0] = 0;
+	res->matrix[0][1] = -axis.z;
+	res->matrix[0][2] = axis.y;
+	res->matrix[1][0] = axis.z;
+	res->matrix[1][1] = 0;
+	res->matrix[1][2] = -axis.x;
+	res->matrix[2][0] = -axis.y;
+	res->matrix[2][1] = axis.x;
+	res->matrix[2][2] = 0;
+	return (res);
+}
