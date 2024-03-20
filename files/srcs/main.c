@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 18:30:53 by acrespy           #+#    #+#             */
-/*   Updated: 2024/03/19 22:29:58 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/20 19:54:29 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int argc, char **argv, char **envp)
 	if (!ft_parse_rt_file(minirt.scene, argv[1]))
 	{
 		data_free(&minirt);
-		ft_printf("Error while parsing\n");
+		ft_error(ERROR_PARSING_FILE);
 		return (0);
 	}
 	mlx_initialize_win(&minirt);

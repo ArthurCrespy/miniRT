@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/19 22:35:48 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/20 19:54:44 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,9 @@
 # define ERROR_CAMERA_ALREADY_DEFINED "Only one camera can be defined"
 # define ERROR_AMBIENT_ALREADY_DEFINED "Only one ambient light can be defined"
 # define ERROR_VECTOR_NORMALIZED "Vector not normalized"
-
+# define ERROR_CAMERA_NOT_DEFINED "No camera defined"
+# define ERROR_AMBIENT_NOT_DEFINED "No ambient light defined"
+# define ERROR_OBJECT_NOT_DEFINED "No object defined"
+# define ERROR_LIGHT_NOT_DEFINED "No light defined"
+# define ERROR_PARSING_FILE "Error while parsing file"
 #endif

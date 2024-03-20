@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 22:01:44 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/19 22:38:11 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/20 19:24:14 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,18 +76,18 @@ int	ft_parse_camera_transform(t_camera *camera, char **tab)
 	origin = malloc(sizeof(t_point));
 	direction = malloc(sizeof(t_vector));
 	if (!origin || !direction)
-		return (free_parse_camera(camera, NULL), 0);
+		return (0);
 	if (!ft_parse_point(tab[1], origin))
 	{
 		free(origin);
 		free(direction);
-		return (free_parse_camera(camera, NULL), 0);
+		return (0);
 	}
 	if (!ft_parse_vector(tab[2], direction))
 	{
 		free(origin);
 		free(direction);
-		return (free_parse_camera(camera, NULL), 0);
+		return (0);
 	}
 	camera->transform = view_transform(*origin, *direction);
 	free(origin);

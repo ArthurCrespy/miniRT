@@ -6,7 +6,7 @@
 #    By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 14:54:39 by acrespy           #+#    #+#              #
-#    Updated: 2024/03/19 22:26:33 by dkeraudr         ###   ########.fr        #
+#    Updated: 2024/03/20 19:09:59 by dkeraudr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ SRCS := \
 			parsing/parse_transforms.c \
 			parsing/parsing.c \
 			free/parsing_free.c \
+			free/scene_free.c \
 			ray/ray_create.c \
 			ray/ray_position.c \
 			ray/ray_transform.c \

@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 22:24:45 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/19 22:26:08 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/20 19:57:51 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 void	free_parse_camera(t_camera *camera, char **tab)
 {
-	if (camera)
-		free(camera);
+	free_camera(camera);
 	if (tab)
 		ft_free_2d_list(tab);
 	ft_error(ERROR_PARSING_CAMERA);
@@ -24,7 +23,7 @@ void	free_parse_camera(t_camera *camera, char **tab)
 void	free_parse_hittable(t_hittable *hittable, char **tab, int id)
 {
 	if (hittable)
-		free(hittable);
+		free_hittable(hittable);
 	if (tab)
 		ft_free_2d_list(tab);
 	if (id == SPHERE)

@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 07:17:07 by acrespy           #+#    #+#             */
-/*   Updated: 2024/03/10 18:31:03 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/20 19:53:47 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,19 @@ void	ft_set_amblight(t_scene *scene)
 	}
 }
 
+int	check_scene(t_scene *scene)
+{
+	if (!scene->camera)
+		return (ft_error(ERROR_CAMERA_NOT_DEFINED), 0);
+	if (!scene->ambient)
+		return (ft_error(ERROR_AMBIENT_NOT_DEFINED), 0);
+	if (!scene->objects)
+		return (ft_error(ERROR_OBJECT_NOT_DEFINED), 0);
+	if (!scene->lights)
+		return (ft_error(ERROR_LIGHT_NOT_DEFINED), 0);
+	return (1);
+}
+
 int	ft_parse_rt_file(t_scene *scene, char *file)
 {
 	int		fd;
@@ -63,6 +76,8 @@ int	ft_parse_rt_file(t_scene *scene, char *file)
 	}
 	free(line);
 	close(fd);
+	if (!check_scene(scene))
+		return (0);
 	ft_set_amblight(scene);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/19 22:27:21 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/20 19:09:42 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,10 @@ void	free_parse_camera(t_camera *camera, char **tab);
 void	free_parse_hittable(t_hittable *hittable, char **tab, int id);
 void	free_parse_light(t_light *light, char **tab);
 void	free_parse_ambient(t_ambient *ambient, char **tab);
+void	free_light(void *light);
+void	free_ambient(t_ambient *ambient);
+void	free_material(t_material *material);
+void	free_camera(t_camera *camera);
+void	free_scene(t_scene *scene);
 
 #endif
