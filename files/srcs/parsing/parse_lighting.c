@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 22:05:20 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/19 22:33:46 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/21 19:19:15 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int	ft_parse_ambient(t_scene *scene, char *line)
 	ambient->brightness = ft_atof(tab[1]);
 	if (!ft_parse_color(tab[2], &ambient->color))
 		return (free_parse_ambient(ambient, tab), 0);
+	ambient->color = color_scalar(ambient->color, ambient->brightness);
 	scene->ambient = ambient;
 	ft_free_2d_list(tab);
 	return (1);
