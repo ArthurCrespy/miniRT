@@ -23,7 +23,7 @@ double	*intersect_with_cylinder(t_hittable *cylinder, t_ray ray)
 	double y1;
 
 	a = pow(ray.direction.x, 2) + pow(ray.direction.z, 2);
-	b = 2 * (ray.origin.x * ray.direction.x + ray.origin.z * ray.direction.z);
+	b = (2 * (ray.origin.x * ray.direction.x)) + (2 * (ray.origin.z * ray.direction.z));
 	c = pow(ray.origin.x, 2) + pow(ray.origin.z, 2) - 1;
 	discriminant = pow(b, 2) - 4 * a * c;
 	if (discriminant < 0)

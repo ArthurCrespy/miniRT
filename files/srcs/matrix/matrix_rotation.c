@@ -68,22 +68,3 @@ void	ft_fill_rotation_matrix(t_matrix *m, double cos_theta, double sin_theta,
 		i++;
 	}
 }
-
-t_matrix	*matrix_rotation(t_vector axis)
-{
-	double		angle;
-	t_matrix	*res;
-	double		cos_theta;
-	double		sin_theta;
-	t_matrix	*skew_sym;
-
-	axis = tuple_norm(axis);
-	skew_sym = matrix_skew_sym(axis);
-	angle = acos(tuple_dot(axis, vector_new(0, 1, 0)));
-	sin_theta = sin(angle);
-	cos_theta = cos(angle);
-	res = matrix_identity();
-	ft_fill_rotation_matrix(res, cos_theta, sin_theta, skew_sym);
-	free(skew_sym);
-	return (res);
-}

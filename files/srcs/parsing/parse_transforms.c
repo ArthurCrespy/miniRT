@@ -12,20 +12,35 @@
 
 #include "miniRT.h"
 
-int	ft_apply_rotation(t_vector orientation, t_matrix *transform)
+void	calculate_rotations(t_vector vector, double *x_angle, double *z_angle)
 {
-	t_matrix	*rotation;
+	double	ratio;
 
-	rotation = matrix_rotation(orientation);
-	if (!rotation)
-	{
-		ft_error(ERROR_MALLOC);
-		return (0);
-	}
-	matrix_transform(transform, rotation);
-	free(rotation);
-	return (1);
+	ratio = sqrt((vector.x * vector.x) + \
+	(vector.y * vector.y));
+	if (ratio < EPSILON)
+		*z_angle = M_PI_2;
+	else
+		*z_angle = acos(vector.y / ratio);
+	*x_angle = acos(ratio);
 }
+
+void	matrix_rotation(t_matrix *transform, t_vector vector)
+{
+	double		x_angle;
+	double		z_angle;
+	t_matrix	*rotate_z;
+	t_matrix	*rotate_x;
+	t_matrix	*result;
+
+	calculate_rotations(vector, &x_angle, &z_angle);
+	rotate_z = matrix_rotation_z(z_angle);
+	rotate_x = matrix_rotation_x(x_angle);
+    result = matrix_mult(*rotate_z, *rotate_x);
+	matrix_transform(transform, result);
+    free(result);
+}
+
 
 int	ft_parse_rotation(char *line, t_matrix *transform)
 {
@@ -49,7 +64,7 @@ int	ft_parse_rotation(char *line, t_matrix *transform)
 		ft_error(ERROR_ORIENTATION_NORMALIZED);
 		return (0);
 	}
-	ft_apply_rotation(orientation, transform);
+	matrix_rotation(transform, orientation);
 	ft_free_2d_list(tab);
 	return (1);
 }

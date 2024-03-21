@@ -19,7 +19,14 @@ t_vector	object_normal_at(t_hittable *obj, t_tuple object_point)
 	if (obj->type == SPHERE)
 		normal = tuple_sub(object_point, point_new(0, 0, 0));
 	else if (obj->type == CYLINDER)
-		normal = tuple_sub(object_point, point_new(0, 0, 0));
+	{
+		if (object_point.y >= obj->height / 2 - EPSILON)
+			normal = vector_new(0, 1, 0);
+		else if (object_point.y <= -obj->height / 2 + EPSILON)
+			normal = vector_new(0, -1, 0);
+		else
+			normal = vector_new(object_point.x, 0, object_point.z);
+	}
 	else if (obj->type == PLANE)
 		normal = vector_new(0, 1, 0);
 	return (tuple_norm(normal));

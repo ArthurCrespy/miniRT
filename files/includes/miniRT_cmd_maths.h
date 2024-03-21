@@ -51,8 +51,7 @@ t_tuple			matrix_tuple_mult(t_matrix m, t_tuple t);
 t_matrix		*matrix_rotation_x(double angle);
 t_matrix		*matrix_rotation_y(double angle);
 t_matrix		*matrix_rotation_z(double angle);
-t_matrix		*matrix_rotation(t_vector v);
-t_matrix		*matrix_skew_sym(t_vector axis);
+void			matrix_rotation(t_matrix *transform, t_vector vector);
 
 t_matrix		*matrix_scale(double x, double y, double z);
 
