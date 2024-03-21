@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 16:24:11 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/20 21:26:30 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/21 20:49:37 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,9 @@ t_tuple	tuple_transform(t_tuple tuple, t_matrix matrix)
 	res.w = matrix.matrix[3][0] * tuple.x + matrix.matrix[3][1] * tuple.y
 		+ matrix.matrix[3][2] * tuple.z + matrix.matrix[3][3] * tuple.w;
 	return (res);
+}
+
+t_point	ft_point_at(t_ray ray, double t)
+{
+	return (tuple_add(ray.origin, tuple_mult(ray.direction, t)));
 }
