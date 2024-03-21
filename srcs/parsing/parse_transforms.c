@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 21:29:51 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/19 22:28:46 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/21 22:53:23 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,10 @@ void	matrix_rotation(t_matrix *transform, t_vector vector)
 	calculate_rotations(vector, &x_angle, &z_angle);
 	rotate_z = matrix_rotation_z(z_angle);
 	rotate_x = matrix_rotation_x(x_angle);
-    result = matrix_mult(*rotate_z, *rotate_x);
+	result = matrix_mult(*rotate_z, *rotate_x);
 	matrix_transform(transform, result);
-    free(result);
+	free(result);
 }
-
 
 int	ft_parse_rotation(char *line, t_matrix *transform)
 {

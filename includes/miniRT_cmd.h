@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/20 21:25:28 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/21 22:54:50 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int				ft_parse_vector(char *line, t_vector *vector);
 // inits
 t_material		*material_init(void);
 t_camera		*ft_init_camera(void);
+int				init_minirt(t_minirt *minirt);
 
 // utils
 void			ft_print_scene(t_scene *scene);

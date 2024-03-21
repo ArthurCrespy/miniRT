@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   minirt_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/18 18:30:53 by acrespy           #+#    #+#             */
-/*   Updated: 2024/03/21 22:55:37 by dkeraudr         ###   ########.fr       */
+/*   Created: 2024/03/21 22:54:17 by dkeraudr          #+#    #+#             */
+/*   Updated: 2024/03/21 22:54:22 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	main(int argc, char **argv, char **envp)
+int	init_minirt(t_minirt *minirt)
 {
-	t_minirt	minirt;
-
-	data_initialize(&minirt);
-	args_check(argc, argv, envp);
-	if (!init_minirt(&minirt))
+	if (!minirt->scene)
 		return (0);
-	if (!ft_parse_rt_file(minirt.scene, argv[1]))
-	{
-		data_free(&minirt);
-		ft_error(ERROR_PARSING_FILE);
-		return (0);
-	}
-	mlx_initialize_win(&minirt);
-	mlx_hook_loop(&minirt);
-	mlx_free(&minirt);
-	data_free(&minirt);
+	minirt->scene->camera = NULL;
+	minirt->scene->ambient = NULL;
+	minirt->scene->lights = NULL;
+	minirt->scene->objects = NULL;
 	return (1);
 }

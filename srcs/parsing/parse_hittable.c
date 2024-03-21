@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 19:51:55 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/19 22:25:18 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/21 22:52:29 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ int	ft_parse_cylinder(t_scene *scene, char *line)
 			free_parse_hittable(cylinder, tab, CYLINDER), 0);
 	if (!ft_parse_rotation(tab[2], cylinder->transform))
 		return (free_parse_hittable(cylinder, tab, CYLINDER), 0);
-	ft_parse_scale(ft_atof(tab[3]) / 2, 1, ft_atof(tab[3]) / 2, cylinder->transform);
+	ft_parse_scale(ft_atof(tab[3]) / 2,
+		1, ft_atof(tab[3]) / 2, cylinder->transform);
 	if (!ft_parse_translation(tab[1], cylinder->transform))
 		return (free_parse_hittable(cylinder, tab, CYLINDER), 0);
 	if (!ft_isfloat(tab[3]) || !ft_isfloat(tab[4]))
