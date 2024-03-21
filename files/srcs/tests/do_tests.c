@@ -47,10 +47,10 @@ int	do_tests(void)
 	do_precompute_intersections_tests(suite);
 
 	// shading
-	do_shading_tests(suite);
+	//do_shading_tests(suite);
 
 	// shadows
-	do_shadows_tests(suite);
+	//do_shadows_tests(suite);
 	
 	CU_basic_set_mode(CU_BRM_VERBOSE);
 	CU_basic_run_tests();

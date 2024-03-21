@@ -85,7 +85,7 @@ void	test_shadows_02(void)
 	t_point	p;
 
 	scene = default_world();
-	ft_print_scene(scene);
+	//	ft_print_scene(scene);
 	p = point_new(10, -10, 10);
 	printf("is_shadowed: %d\n", is_shadowed(scene, p));
 	// CU_ASSERT_TRUE(is_shadowed(scene, p));
