@@ -6,7 +6,7 @@
 #    By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 14:54:39 by acrespy           #+#    #+#              #
-#    Updated: 2024/03/21 22:46:23 by dkeraudr         ###   ########.fr        #
+#    Updated: 2024/03/21 22:50:07 by dkeraudr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,32 +72,11 @@ SRCS := \
 			normal/normal_at.c \
 			normal/reflect.c \
 
-# if test remove main.c and replace it with main_tests.c
-ifeq ($(MAKECMDGOALS),test)
-	SRCS := $(filter-out main.c, $(SRCS))
-endif
-
 
 SRCS := ${SRCS:%=${SRC_DIR}/%}
 
-TEST_SRCS := \
-			main_tests.c \
-			tests/do_tests.c \
-			tests/test_sphere_intersection.c \
-			tests/test_hit.c \
-			tests/test_transform.c \
-			tests/test_matrix.c \
-			tests/test_sphere_normal.c \
-			tests/test_reflect.c \
-			tests/test_lighting.c \
-			tests/test_shading.c \
-			tests/test_shadow.c \
-
-TEST_SRCS := ${TEST_SRCS:%=${SRC_DIR}/%}
-
 OBJ_DIR     := .objs
 OBJS := ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
-TEST_OBJS  := ${TEST_SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 
 INCL_DIR     := includes
 MAIN_HEADER := ${INCL_DIR}/miniRT.h
@@ -120,10 +99,6 @@ OS_NAME := $(shell uname -s | tr A-Z a-z)
 CC          := gcc
 CFLAGS      := -Wall -Wextra -Werror -g3
 
-# if test remove -Werror
-ifeq ($(MAKECMDGOALS),test)
-	CFLAGS := -Wall -Wextra -g3
-endif
 
 ifeq ($(OS_NAME),linux)
 	MLX_LINK	:= -L$(MLX_DIR) -lmlx -lX11 -lXext
@@ -140,9 +115,6 @@ MAKEFLAGS   += --no-print-directory
 DIR_DUP     = mkdir -p ${@D}
 
 all: ${NAME}
-
-test: ${MLX} ${LIBFT} ${TEST_OBJS} ${OBJS}
-	${CC} ${TEST_OBJS} ${OBJS} -lcunit ${LIB_FLAGS} ${MLX_LINK} -o test
 
 ${LIBFT}:
 	git submodule update --init
@@ -162,21 +134,15 @@ ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c
 	${CC} ${CFLAGS} ${MLX_INCL} $(INCL_FLAGS) -c -o $@ $<
 	${info OBJECT CREATED: $@}
 
-# $(TEST_OBJS): %.o: %.c
-# 	${DIR_DUP}
-# 	${CC} ${CFLAGS} -c -o $@ $<
-# 	$(info OBJECT CREATED: $@)
 
 clean:
 	${RM} ${OBJS}
-	${RM} ${TEST_OBJS}
 	make clean -C ${LIBFT_DIR}
 	make clean -C ${MLX_DIR}
 	${info REMOVED OBJECTS: ${OBJS}}
 
 fclean: clean
 	${RM} ${NAME}
-	${RM} test
 	make fclean -C ${LIBFT_DIR}
 	${info REMOVED EXECUTABLES: ${NAME}}
 
@@ -184,9 +150,5 @@ re:
 	${MAKE} fclean
 	${MAKE} all
 
-retest:
-	${MAKE} fclean
-	${MAKE} test
-
-.PHONY: clean fclean re all test retest
+.PHONY: clean fclean re all
 .SILENT: ${NAME} ${SRCS} ${OBJS} ${LIBFT} all clean fclean re
