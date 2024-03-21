@@ -6,7 +6,7 @@
 #    By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 14:54:39 by acrespy           #+#    #+#              #
-#    Updated: 2024/03/20 21:25:09 by dkeraudr         ###   ########.fr        #
+#    Updated: 2024/03/21 22:46:23 by dkeraudr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,8 +57,6 @@ SRCS := \
 			ray/ray_create.c \
 			ray/ray_position.c \
 			ray/ray_transform.c \
-			shearing/shearing_create.c \
-			shearing/shearing_matrix.c \
 			tuple/tuple_functions.c \
 			tuple/tuple_new.c \
 			tuple/tuple_operations.c \
