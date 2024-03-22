@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 21:29:51 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/21 22:53:23 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/22 21:23:30 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ int	ft_parse_rotation(char *line, t_matrix *transform)
 		return (0);
 	}
 	orientation = vector_new(ft_atof(tab[0]), ft_atof(tab[1]), ft_atof(tab[2]));
-	if (tuple_mag(orientation) != 1)
+	if (tuple_mag(orientation) < 1 - EPSILON
+		|| tuple_mag(orientation) > 1 + EPSILON)
 	{
 		ft_free_2d_list(tab);
 		ft_error(ERROR_ORIENTATION_NORMALIZED);
