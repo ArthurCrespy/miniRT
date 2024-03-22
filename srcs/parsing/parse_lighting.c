@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 22:05:20 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/21 19:19:15 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/22 21:10:16 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_parse_light(t_scene *scene, char *line)
 	t_light	*light;
 	char	**tab;
 
+	if (scene->lights)
+		return (ft_error(ERROR_LIGHT_ALREADY_DEFINED), 0);
 	light = malloc(sizeof(t_light));
 	if (!light)
 		return (ft_error(ERROR_MALLOC), 0);

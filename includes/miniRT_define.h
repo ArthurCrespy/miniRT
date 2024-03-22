@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/20 20:22:38 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/22 21:10:10 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@
 # define ERROR_ORIENTATION_NORMALIZED "Orientation vector not normalized"
 # define ERROR_CAMERA_ALREADY_DEFINED "Only one camera can be defined"
 # define ERROR_AMBIENT_ALREADY_DEFINED "Only one ambient light can be defined"
+# define ERROR_LIGHT_ALREADY_DEFINED "Only one light can be defined"
 # define ERROR_VECTOR_NORMALIZED "Vector not normalized"
 # define ERROR_CAMERA_NOT_DEFINED "No camera defined"
 # define ERROR_AMBIENT_NOT_DEFINED "No ambient light defined"
