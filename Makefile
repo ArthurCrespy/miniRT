@@ -6,7 +6,7 @@
 #    By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 14:54:39 by acrespy           #+#    #+#              #
-#    Updated: 2024/03/22 20:41:41 by dkeraudr         ###   ########.fr        #
+#    Updated: 2024/03/22 20:53:09 by dkeraudr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,7 +111,7 @@ ifeq ($(OS_NAME),darwin)
 	CFLAGS		:= -Wall -Wextra -g
 endif
 
-RM			:= rm -f
+RM			:= rm -rf
 MAKEFLAGS	+= --no-print-directory
 DIR_DUP		= mkdir -p ${@D}
 
@@ -145,7 +145,7 @@ clean:
 	${info REMOVED OBJECTS: ${OBJS}}
 
 fclean: clean
-	${RM} ${NAME}
+	${RM} ${NAME} ${OBJ_DIR}
 	make fclean -C ${LIBFT_DIR}
 	${info REMOVED EXECUTABLES: ${NAME}}
 
