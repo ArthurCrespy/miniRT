@@ -39,6 +39,8 @@ void	matrix_rotation(t_matrix *transform, t_vector vector)
 	result = matrix_mult(*rotate_z, *rotate_x);
 	matrix_transform(transform, result);
 	free(result);
+	free(rotate_z);
+	free(rotate_x);
 }
 
 int	ft_parse_rotation(char *line, t_matrix *transform)
