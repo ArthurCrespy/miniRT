@@ -6,13 +6,14 @@
 #    By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 14:54:39 by acrespy           #+#    #+#              #
-#    Updated: 2024/03/21 22:55:08 by dkeraudr         ###   ########.fr        #
+#    Updated: 2024/03/22 20:22:33 by dkeraudr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME        := miniRT
+NAME		:= miniRT
 
-SRC_DIR     := srcs
+SRC_DIR		:= srcs
+
 SRCS := \
 			main.c \
 			args/args_check.c \
@@ -76,29 +77,29 @@ SRCS := \
 
 SRCS := ${SRCS:%=${SRC_DIR}/%}
 
-OBJ_DIR     := .objs
-OBJS := ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
+OBJ_DIR	:= .objs
+OBJS	:= ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 
-INCL_DIR     := includes
-MAIN_HEADER := ${INCL_DIR}/miniRT.h
+INCL_DIR	:= includes
+MAIN_HEADER	:= ${INCL_DIR}/miniRT.h
 
-INCL_FLAGS  := -I${INCL_DIR}
+INCL_FLAGS	:= -I${INCL_DIR}
 
-MLX_DIR     := minilibx-linux
-MLX         := $(MLX_DIR)/libmlx.a
+MLX_DIR	:= minilibx-linux
+MLX 		:= $(MLX_DIR)/libmlx.a
 
 LIBFT_DIR	:= libft
 LIBFT		:= $(LIBFT_DIR)/libft.a
 
-LDFLAGS := -L./libft/
-LDLIBS  := -lft
+LDFLAGS	:= -L./libft/
+LDLIBS	:= -lft
 
-LIB_FLAGS   := $(LDFLAGS) $(LDLIBS) -lm
+LIB_FLAGS	:= $(LDFLAGS) $(LDLIBS) -lm
 
 OS_NAME := $(shell uname -s | tr A-Z a-z)
 
-CC          := gcc
-CFLAGS      := -Wall -Wextra -Werror -g3
+CC			:= gcc
+CFLAGS		:= -Wall -Wextra -Werror
 
 
 ifeq ($(OS_NAME),linux)
@@ -108,14 +109,16 @@ endif
 ifeq ($(OS_NAME),darwin)
 	MLX_LINK	:= -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit -L/usr/X11/lib -lX11 -lXext
 	MLX_INCL	:= -I$(MLX_DIR) -I/usr/X11/include
-	CFLAGS      := -Wall -Wextra -g
+	CFLAGS		:= -Wall -Wextra -g
 endif
 
-RM          := rm -f
-MAKEFLAGS   += --no-print-directory
-DIR_DUP     = mkdir -p ${@D}
+RM			:= rm -f
+MAKEFLAGS	+= --no-print-directory
+DIR_DUP		= mkdir -p ${@D}
 
 all: ${NAME}
+
+bonus: ${NAME}
 
 ${LIBFT}:
 	git submodule update --init
@@ -151,5 +154,5 @@ re:
 	${MAKE} fclean
 	${MAKE} all
 
-.PHONY: clean fclean re all
-.SILENT: ${NAME} ${SRCS} ${OBJS} ${LIBFT} all clean fclean re
+.PHONY: clean fclean re all bonus
+.SILENT: ${NAME} ${SRCS} ${OBJS} ${LIBFT} all clean fclean re bonus
