@@ -6,7 +6,7 @@
 #    By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 14:54:39 by acrespy           #+#    #+#              #
-#    Updated: 2024/03/22 20:22:33 by dkeraudr         ###   ########.fr        #
+#    Updated: 2024/03/22 20:41:41 by dkeraudr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,6 @@ SRCS := \
 			events/event_key.c \
 			events/event_resize.c \
 			file/file_check.c \
-			file/file_save.c \
 			matrix/matrix_cofactor.c \
 			matrix/matrix_comparaisons.c \
 			matrix/matrix_create.c \

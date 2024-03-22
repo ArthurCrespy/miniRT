@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/21 22:54:50 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/22 20:42:49 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void			file_check_path(char *path);
 void			file_save(t_minirt *data, char *path);
 
 void			mlx_free(t_minirt *data);
-void			mlx_exit(t_minirt *data, char *msg, int status);
+void			mlx_exit(t_minirt *data, int status);
 void			mlx_error(t_minirt *data);
 int				mlx_hook_exit(t_minirt *data);
 void			my_mlx_pixel_put(t_mlx *data, int x, int y, int color);

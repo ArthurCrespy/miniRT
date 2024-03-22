@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 14:37:39 by acrespy           #+#    #+#             */
-/*   Updated: 2024/02/18 15:09:21 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/22 20:42:43 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void	mlx_free(t_minirt *data)
 		free(data->mlx->mlx);
 }
 
-void	mlx_exit(t_minirt *data, char *msg, int status)
+void	mlx_exit(t_minirt *data, int status)
 {
 	mlx_free(data);
 	data_free(data);
-	ft_exit(msg, status);
+	exit(status);
 }
 
 void	mlx_error(t_minirt *data)
