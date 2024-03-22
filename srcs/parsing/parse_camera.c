@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 22:01:44 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/20 21:34:28 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/22 21:15:34 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,9 +116,11 @@ int	ft_parse_camera(t_scene *scene, char *line)
 	if (ft_tablen(tab) != 4)
 		return (ft_error(ERROR_WRONG_ARGS_NB),
 			free_parse_camera(camera, tab), 0);
-	if (!ft_isint(tab[3]))
+	if (!ft_isfloat(tab[3]))
 		return (free_parse_camera(camera, tab), 0);
 	camera->fov = ft_atof(tab[3]);
+	if (camera->fov <= 0 || camera->fov >= 180)
+		return (ft_error(ERROR_CAMERA_FOV), free_parse_camera(camera, tab), 0);
 	if (!ft_parse_camera_transform(camera, tab))
 		return (free_parse_camera(camera, tab), 0);
 	scene->camera = camera;

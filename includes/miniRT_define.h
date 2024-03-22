@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 19:40:18 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/22 21:10:10 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/22 21:18:56 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@
 # define ERROR_OBJECT_NOT_DEFINED "No object defined"
 # define ERROR_LIGHT_NOT_DEFINED "No light defined"
 # define ERROR_PARSING_FILE "Error while parsing file"
+# define ERROR_CAMERA_FOV "Camera FOV must be between 0 and 180"
 
 #endif
