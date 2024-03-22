@@ -34,7 +34,7 @@ double	*intersect_with(t_hittable *obj, t_ray ray)
 	if (obj->type == SPHERE)
 		return (intersect_with_sphere(ray_transformed));
 	else if (obj->type == CYLINDER)
-		return (intersect_with_cylinder(obj, ray_transformed));
+		return (intersect_with_cylinder(obj, ray_transformed, 0, 0));
 	else if (obj->type == PLANE)
 		return (intersect_with_plane(ray_transformed));
 	return (NULL);

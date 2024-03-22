@@ -14,7 +14,6 @@
 # define MINIRT_INCLUDE_H
 
 # include "./../minilibx-linux/mlx.h"
-
 # include "./../libft/includes/libft.h"
 
 # include <stdio.h>

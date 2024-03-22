@@ -16,18 +16,7 @@
 # define MATRIX 4
 
 # include "./miniRT_include.h"
-
-typedef struct s_tuple
-{
-	double	x;
-	double	y;
-	double	z;
-	double	w;
-}	t_tuple;
-
-typedef t_tuple	t_point;
-
-typedef t_tuple	t_vector;
+# include "./miniRT_tuple.h"
 
 typedef struct s_ray
 {
