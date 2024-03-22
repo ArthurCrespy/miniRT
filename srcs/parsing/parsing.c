@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 07:17:07 by acrespy           #+#    #+#             */
-/*   Updated: 2024/03/22 19:55:44 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/22 20:46:34 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,10 @@ int	ft_parse_rt_file(t_scene *scene, char *file)
 	while (line)
 	{
 		ret = ft_parse_line(scene, ft_remove_newline(line));
+		ret = 0;
 		free(line);
 		if (ret == 0)
-			return (0);
+			return (close(fd), 0);
 		line = get_next_line(fd);
 	}
 	free(line);
