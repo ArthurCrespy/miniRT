@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 22:54:17 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/22 20:50:40 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/22 20:54:02 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ int	init_minirt(t_minirt *minirt)
 	minirt->scene->ambient = NULL;
 	minirt->scene->lights = NULL;
 	minirt->scene->objects = NULL;
-	return (0);
+	return (1);
 }
