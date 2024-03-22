@@ -6,7 +6,7 @@
 /*   By: dkeraudr <dkeraudr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 21:07:41 by dkeraudr          #+#    #+#             */
-/*   Updated: 2024/03/19 22:35:19 by dkeraudr         ###   ########.fr       */
+/*   Updated: 2024/03/22 20:14:36 by dkeraudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ int	ft_parse_color(char *line, t_color *color)
 	color->chan_1 = 1 / 255.0 * ft_atoi(tab[0]);
 	color->chan_2 = 1 / 255.0 * ft_atoi(tab[1]);
 	color->chan_3 = 1 / 255.0 * ft_atoi(tab[2]);
-	if (color->chan_1 < 0 || color->chan_1 > 255
-		|| color->chan_2 < 0 || color->chan_2 > 255
-		|| color->chan_3 < 0 || color->chan_3 > 255)
+	if (color->chan_1 < 0 || color->chan_1 > 1
+		|| color->chan_2 < 0 || color->chan_2 > 1
+		|| color->chan_3 < 0 || color->chan_3 > 1)
 	{
 		ft_free_2d_list(tab);
 		ft_error(ERROR_PARSING_COLOR);
